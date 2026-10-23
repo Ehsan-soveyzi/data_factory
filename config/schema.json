@@ -1,0 +1,353 @@
+{
+  "version": 1,
+  "description": "Case-level validation projection for closure analysis and a future population join. Full source records remain in raw storage.",
+  "fields": {
+    "unique_key": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": false,
+      "required_presence": true,
+      "pattern": "^[0-9]+$",
+      "on_invalid": "quarantine",
+      "missing_tokens": [
+        ""
+      ],
+      "description": "Service-request identifier and dataset-wide primary key; keep as text.",
+      "missing_policy": "Missing identifiers quarantine the record; never generate replacement IDs.",
+      "invalid_policy_reason": "A stable nonempty identifier is necessary for deduplication and provenance."
+    },
+    "created_date": {
+      "type": "datetime",
+      "source_types": [
+        "string"
+      ],
+      "nullable": false,
+      "required_presence": true,
+      "on_invalid": "quarantine",
+      "missing_tokens": [
+        ""
+      ],
+      "description": "Recorded creation timestamp; defines the selected scope and created_month.",
+      "missing_policy": "Missing creation dates quarantine the record; never impute them.",
+      "invalid_policy_reason": "An invalid creation date prevents scope checks and closure-duration calculation."
+    },
+    "closed_date": {
+      "type": "datetime",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "quarantine",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Recorded administrative closure timestamp, possibly absent.",
+      "missing_policy": "Keep missing dates null; derived closure_hours stays null, never zero.",
+      "invalid_policy_reason": "A malformed nonmissing closure date cannot be used as a trustworthy outcome."
+    },
+    "agency": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": false,
+      "required_presence": true,
+      "uppercase": true,
+      "on_invalid": "quarantine",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified",
+        "UNKNOWN"
+      ],
+      "description": "Responsible agency code; trim and normalize case, without an NYPD-only filter.",
+      "missing_policy": "Missing agency codes quarantine the record; do not infer them from the sample.",
+      "invalid_policy_reason": "Responsibility is a core analytical dimension; the sample is not a global domain list."
+    },
+    "agency_name": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional readable label for the responsible agency.",
+      "missing_policy": "Keep null and flag the missing value; do not copy or guess an agency name.",
+      "invalid_policy_reason": "The agency code remains usable when its descriptive label is invalid."
+    },
+    "complaint_type": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": false,
+      "required_presence": true,
+      "allowed_from_source": "complaint_types",
+      "on_invalid": "quarantine",
+      "missing_tokens": [
+        ""
+      ],
+      "description": "Problem category; permitted values come from source.complaint_types in settings.",
+      "missing_policy": "Missing categories quarantine the record; no category imputation.",
+      "invalid_policy_reason": "Missing or out-of-scope categories prevent the intended complaint comparison."
+    },
+    "descriptor": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional problem detail within the complaint category.",
+      "missing_policy": "Keep null and flag missing detail; retain the service request.",
+      "invalid_policy_reason": "Complaint type and dates remain useful without the optional problem detail."
+    },
+    "status": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified",
+        "UNKNOWN"
+      ],
+      "description": "Reported workflow status; preserve known and new nonmissing labels.",
+      "missing_policy": "Treat configured sentinels such as Unspecified as null with a flag.",
+      "invalid_policy_reason": "Unknown status alone does not invalidate a usable recorded closure date."
+    },
+    "incident_zip": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "pattern": "^[0-9]{5}$",
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "00000",
+        "Unspecified",
+        "UNKNOWN"
+      ],
+      "description": "Five-digit ZIP text used for a future population join; leading zeros are preserved.",
+      "missing_policy": "Null, blank and configured placeholders remain null with a visible flag.",
+      "invalid_policy_reason": "An unusable ZIP becomes null with a flag; retain the case for non-ZIP analyses."
+    },
+    "borough": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "uppercase": true,
+      "allowed": [
+        "BRONX",
+        "BROOKLYN",
+        "MANHATTAN",
+        "QUEENS",
+        "STATEN ISLAND"
+      ],
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified",
+        "UNKNOWN"
+      ],
+      "description": "Reported borough; normalize to the five listed NYC borough names when usable.",
+      "missing_policy": "Keep unknown borough null with a flag; do not infer it from ZIP in this stage.",
+      "invalid_policy_reason": "An unusable borough becomes null with a flag; a configured borough scope remains a hard rule."
+    },
+    "latitude": {
+      "type": "float",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "min": -90,
+      "max": 90,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A"
+      ],
+      "description": "Optional latitude converted from source text to a finite floating-point number.",
+      "missing_policy": "Keep missing coordinates null; a partial latitude/longitude pair becomes fully null.",
+      "invalid_policy_reason": "Global bounds detect impossible coordinates without rejecting an otherwise usable case."
+    },
+    "longitude": {
+      "type": "float",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "min": -180,
+      "max": 180,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A"
+      ],
+      "description": "Optional longitude converted from source text to a finite floating-point number.",
+      "missing_policy": "Keep missing coordinates null; a partial latitude/longitude pair becomes fully null.",
+      "invalid_policy_reason": "Global bounds do not prove a location is inside NYC; no invented NYC bounding box is used."
+    },
+    "location_type": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional category describing the incident setting.",
+      "missing_policy": "Keep null with a flag; no modal-category imputation.",
+      "invalid_policy_reason": "The incident setting is auxiliary and does not determine closure-duration validity."
+    },
+    "open_data_channel_type": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "uppercase": true,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A"
+      ],
+      "description": "Submission channel such as ONLINE, MOBILE, PHONE, OTHER or UNKNOWN.",
+      "missing_policy": "Keep absent values null with a flag; the literal UNKNOWN is retained as a category.",
+      "invalid_policy_reason": "An unusable value becomes null; new string labels are not rejected using sample-only categories."
+    },
+    "resolution_description": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional administrative narrative; its presence is not proof of issue resolution.",
+      "missing_policy": "Keep null with a flag; do not fabricate resolution narratives.",
+      "invalid_policy_reason": "The closure timestamp, not the narrative's presence, defines recorded closure duration."
+    },
+    "resolution_action_updated_date": {
+      "type": "datetime",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional timestamp of an administrative resolution update.",
+      "missing_policy": "Keep missing values null with a flag; do not substitute the closure date.",
+      "invalid_policy_reason": "An invalid optional update timestamp becomes null; it is not the duration endpoint."
+    },
+    "city": {
+      "type": "string",
+      "source_types": [
+        "string"
+      ],
+      "nullable": true,
+      "required_presence": false,
+      "on_invalid": "set_null",
+      "missing_tokens": [
+        "",
+        "N/A",
+        "Unspecified"
+      ],
+      "description": "Optional source locality label; it is not a replacement for borough.",
+      "missing_policy": "Keep null with a flag; do not populate it from the borough or ZIP.",
+      "invalid_policy_reason": "Locality spelling is not used to silently exclude otherwise in-scope cases."
+    }
+  },
+  "derived_fields": {
+    "created_month": {
+      "type": "string",
+      "nullable": false,
+      "description": "YYYY-MM from the floating created_date; no timezone conversion."
+    },
+    "closure_hours": {
+      "type": "float",
+      "nullable": true,
+      "description": "Difference of recorded floating closed_date and created_date in hours; null when closure is missing, zero is valid, no timezone conversion."
+    },
+    "has_recorded_closure": {
+      "type": "boolean",
+      "nullable": false,
+      "description": "Whether a usable closed_date is present; does not prove the issue was resolved."
+    },
+    "quality_flags": {
+      "type": "array",
+      "nullable": false,
+      "description": "Sorted warning codes for optional fields and status/date inconsistencies."
+    }
+  },
+  "relations": {
+    "primary_key": "unique_key",
+    "start_date_field": "created_date",
+    "closure_date_field": "closed_date",
+    "coordinate_fields": [
+      "latitude",
+      "longitude"
+    ]
+  },
+  "dataset_rules": {
+    "projection": "Retain the 17 declared source fields plus four derived fields. Extra source fields stay in immutable raw files and are listed in the later validation report.",
+    "scope": "created_date >= source.start_date and created_date < source.end_date_exclusive; complaint and optional borough restrictions come from source settings. closed_date is not restricted to this creation interval.",
+    "normalization": "Trim surrounding text whitespace and compare missing tokens case-insensitively before validation; apply uppercase only where explicitly declared. Record optional repairs as quality flags.",
+    "presence": "required_presence concerns batch-level source structure; nullable concerns an individual normalized record. Absence of optional keys alone does not prove schema drift.",
+    "uniqueness": "unique_key is unique across all accepted records, not just within a batch. Equal-looking complaints with different IDs are not duplicates.",
+    "duplicates": "Among individually valid records, retain the first ID occurrence in stored batch/row order. Quarantine later identical canonical full raw records as DUPLICATE_RECORD, or differing raw records with the same ID as DUPLICATE_KEY_CONFLICT. This is deterministic retention, not a claim to select the newest revision.",
+    "closure": "Quarantine closed_date before created_date. Allow a zero interval, preserve missing closure as null, and keep long positive durations for subsequent EDA rather than an arbitrary upper cutoff.",
+    "coordinates": "Require finite latitude/longitude within declared global bounds when present. An unusable optional value becomes null with a flag; null both coordinates if only one survives.",
+    "status": "Flag status/closed_date inconsistencies without inventing closure dates or rejecting the case solely on status. has_recorded_closure is not proof of real-world resolution.",
+    "zip": "The ZIP pattern is a syntactic check only; actual reference coverage and ZIP/ZCTA correspondence are assessed during the population join.",
+    "serialization": "datetime is the logical type. JSONL later stores normalized ISO timestamps with microsecond precision because JSON has no native datetime type.",
+    "stage_boundary": "This contract documents the next validation stage. Loading or displaying it does not clean records, produce quarantine outputs or complete acquisition."
+  }
+}

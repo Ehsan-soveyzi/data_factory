@@ -21,9 +21,21 @@
     "retry_backoff_seconds": 1,
     "max_retry_delay_seconds": 60
   },
+  "validation": {
+    "schema_path": "config/schema.json",
+    "inspection_batches": 6,
+    "inspection_sentinel_tokens": ["N/A", "Unspecified", "UNKNOWN", "00000"],
+    "inspection_categorical_fields": ["complaint_type", "agency", "borough", "status", "open_data_channel_type"],
+    "inspection_category_limit": 100,
+    "max_quarantine_fraction": 0.01,
+    "schema_drift_min_records": 100,
+    "profile_buffer_size": 1000
+  },
   "paths": {
     "raw_dir": "data/raw_data",
     "created_dir": "data/created_data",
-    "checkpoint_file": "checkpoint.json"
+    "checkpoint_file": "checkpoint.json",
+    "inspection_file": "raw_inspection.json",
+    "validation_dir": "validation"
   }
 }

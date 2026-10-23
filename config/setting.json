@@ -1,0 +1,17 @@
+{
+  "source": {
+    "endpoint": "https://data.cityofnewyork.us/resource/erm2-nwe9.json",
+    "start_date": "2024-01-01T00:00:00",
+    "end_date_exclusive": "2025-07-01T00:00:00",
+    "boroughs": ["BROOKLYN"]
+  },
+  "http": {
+    "batch_size": 5000,
+    "timeout_seconds": 60,
+    "max_retries": 3
+  },
+  "paths": {
+    "raw_dir": "data/raw",
+    "curated_dir": "data/curated"
+  }
+}

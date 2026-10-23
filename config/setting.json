@@ -17,7 +17,9 @@
   "http": {
     "batch_size": 5000,
     "timeout_seconds": 60,
-    "max_retries": 3
+    "max_retries": 3,
+    "retry_backoff_seconds": 1,
+    "max_retry_delay_seconds": 60
   },
   "paths": {
     "raw_dir": "data/raw_data",

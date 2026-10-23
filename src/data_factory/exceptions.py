@@ -14,7 +14,7 @@ class DownloadError(DataFactoryError):
 
 
 class DataError(DataFactoryError):
-    """The server returned an invalid batch."""
+    """A source response or its records are invalid."""
 
 
 class CheckpointError(DataFactoryError):

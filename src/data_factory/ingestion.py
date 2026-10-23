@@ -14,11 +14,8 @@ import json
 import os
 from pathlib import Path
 import tempfile
-import time
-
-import requests
-
-from .exceptions import CheckpointError, ConfigurationError, DataError, DownloadError
+from .exceptions import CheckpointError, ConfigurationError, DataError
+from .http_client import HttpClient, validate_http_settings
 
 
 ORDER = "created_date ASC, unique_key ASC"
@@ -60,13 +57,9 @@ def _settings(config):
             groups[name] = sorted(set(values))
         if not groups["complaint_types"]:
             raise ValueError("Select at least one complaint type.")
-        for name in ("batch_size", "max_retries"):
-            value = http[name]
-            if type(value) is not int or value < (1 if name == "batch_size" else 0):
-                raise ValueError(f"http.{name} has an invalid value.")
-        timeout = http["timeout_seconds"]
-        if isinstance(timeout, bool) or not isinstance(timeout, (float, int)) or not 0 < timeout < float("inf"):
-            raise ValueError("http.timeout_seconds must be positive and finite.")
+        validate_http_settings(http)
+        if type(http["batch_size"]) is not int or http["batch_size"] < 1:
+            raise ValueError("http.batch_size must be a positive integer.")
         raw_dir = Path(config["paths"]["raw_dir"])
         checkpoint_name = config["paths"]["checkpoint_file"]
         if not isinstance(checkpoint_name, str) or Path(checkpoint_name).name != checkpoint_name or checkpoint_name in (".", "..", ""):
@@ -301,41 +294,11 @@ def prepare_checkpoint(config):
         return deepcopy(_load_state(identity, fingerprint, raw_dir, checkpoint_path))
 
 
-def _fetch(session, config, params):
-    http = config["http"]
-    attempts = http["max_retries"] + 1
-    for attempt in range(attempts):
-        delay = min(2 ** attempt, 30)
-        try:
-            with session.get(config["source"]["endpoint"], params=params, timeout=http["timeout_seconds"]) as response:
-                if response.status_code == 429 or 500 <= response.status_code < 600:
-                    try:
-                        delay = min(max(float(response.headers.get("Retry-After", delay)), 0), 60)
-                    except (ValueError, TypeError):
-                        pass
-                    response.raise_for_status()
-                elif response.status_code != 200:
-                    raise DownloadError(f"Unexpected HTTP status {response.status_code}; no batch was committed.")
-                try:
-                    return response.json()
-                except ValueError as exc:
-                    if attempt + 1 == attempts:
-                        raise DataError("Response is not complete, valid JSON; no batch was committed.") from exc
-        except requests.RequestException as exc:
-            if attempt + 1 == attempts:
-                raise DownloadError(f"Request failed after {attempts} attempt(s): {exc}") from exc
-        if attempt + 1 < attempts:
-            time.sleep(delay)
-
-
 def count_records(config, *, session=None):
     """Count the current upstream scope (the source can change after counting)."""
     params = {"$select": "count(*) AS n_records", "$where": build_scope_filter(config)}
-    if session is None:
-        with requests.Session() as owned_session:
-            result = _fetch(owned_session, config, params)
-    else:
-        result = _fetch(session, config, params)
+    with HttpClient(config["http"], session=session) as client:
+        result = client.request_json("GET", config["source"]["endpoint"], params=params)
     try:
         if not isinstance(result, list) or len(result) != 1:
             raise ValueError("Expected one count row.")
@@ -365,11 +328,8 @@ def download_batches(config, *, max_batches=None, session=None, progress=print):
             if progress is not None:
                 progress(f"Already complete: {state['downloaded_records']:,} records.")
             return deepcopy(state)
-        owns_session = session is None
-        if owns_session:
-            session = requests.Session()
         fetched = 0
-        try:
+        with HttpClient(config["http"], session=session) as client:
             while max_batches is None or fetched < max_batches:
                 previous = _last_cursor(state)
                 where = scope_filter
@@ -377,7 +337,10 @@ def download_batches(config, *, max_batches=None, session=None, progress=print):
                     date = _quote(previous["created_date"])
                     key = _quote(previous["unique_key"])
                     where = f"({scope_filter}) AND (created_date > {date} OR (created_date = {date} AND unique_key > {key}))"
-                batch = _fetch(session, config, {"$where": where, "$order": ORDER, "$limit": config["http"]["batch_size"]})
+                batch = client.request_json(
+                    "GET", config["source"]["endpoint"],
+                    params={"$where": where, "$order": ORDER, "$limit": config["http"]["batch_size"]},
+                )
                 _validate_batch(batch, identity, previous, config["http"]["batch_size"])
                 if not batch:
                     state["completed"] = True
@@ -396,7 +359,4 @@ def download_batches(config, *, max_batches=None, session=None, progress=print):
                 fetched += 1
                 if progress is not None:
                     progress(f"Saved {name}: {len(batch):,} records | total {state['downloaded_records']:,} | checkpoint updated")
-        finally:
-            if owns_session:
-                session.close()
         return deepcopy(state)

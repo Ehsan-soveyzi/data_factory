@@ -34,7 +34,7 @@ def _settings(config):
             if not isinstance(value, str) or not value or Path(value).name != value or value in (".", ".."):
                 raise ValueError(f"paths.{name} must be a local filename/directory name.")
         created = Path(config["paths"]["created_dir"])
-        schema = load_schema(settings["schema_path"])
+        schema = load_schema(settings["schema_path"], source=config["source"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ConfigurationError(f"Invalid quality settings: {exc}") from exc
     return settings, created, schema
@@ -225,7 +225,7 @@ def validate_dataset(config, *, progress=print):
     root = created / config["paths"]["validation_dir"]
     target = root / run_hash
     root.mkdir(parents=True, exist_ok=True)
-    counts = Counter()
+    counts = Counter(raw_records=0, accepted_records=0, quarantined_records=0)
     reasons = Counter()
     warnings = Counter()
     observed = set()

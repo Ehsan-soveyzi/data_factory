@@ -66,8 +66,8 @@ data-factory run --stage inspect
 It selects up to `validation.inspection_batches` approximately equally spaced
 batches, including the first and last available batches when selecting more than
 one. The report is written to `paths.created_dir / paths.inspection_file`
-(`data/created_data/raw_inspection.json` in the current configuration). The final
-four notebook cells explain this step and display the generated tables.
+(`data/created_data/raw_inspection.json` in the current configuration). Notebook
+cells beginning with `step-one-` explain this step and display the generated tables.
 
 The report labels both the available snapshot size and the inspected sample
 size. It distinguishes absent keys, explicit nulls and blank strings, computes
@@ -83,8 +83,7 @@ unparseable and negative closure intervals, without rejecting any source rows.
 
 This stage makes no HTTP requests and does not require the validation
 schema. It does not clean, filter or quarantine source records. The saved report
-is reproducible for the same committed snapshot and inspection settings. Later
-validation execution files are preliminary and are outside the completed first step.
+is reproducible for the same committed snapshot and inspection settings.
 
 Step two finalizes the version-1 contract in `config/schema.json`. Its 17 source
 fields and four derived fields have explicit types, nullability, missing-value
@@ -98,7 +97,62 @@ contradictory policies, invalid bounds/domains, duplicate JSON keys and relation
 types. `contract_rows(...)` provides table-ready metadata without depending on
 pandas. Settings-backed complaint categories are resolved from the source
 configuration. This is a custom project contract, not the JSON Schema standard.
-Dataset validation and quarantine execution remain the following step.
+Step three executes this contract using `validate_dataset(config)` or:
+
+```powershell
+data-factory run --stage validate
+```
+
+Run the CLI from the project directory. Notebook cells beginning with
+`step-three-` resolve project paths and run independently of acquisition cells.
+They execute validation, display reason counts, optional-field warnings and the
+accepted-column profile, then preview at most five records per output and verify
+row accounting, accepted-ID uniqueness and output SHA-256 hashes.
+
+Validation reads all committed batches without HTTP calls. It retains the first
+individually valid occurrence of each ID across batches; later identical full
+raw records receive `DUPLICATE_RECORD`, while changed raw content with the same
+ID receives `DUPLICATE_KEY_CONFLICT`. Each rejection preserves the original
+record, source filename, one-based source row and all field/reason errors.
+Optional repairs are visible in sorted `quality_flags`. Missing closure remains
+null, zero duration is valid, and a negative closure interval is quarantined.
+Keys and ZIPs remain strings, including any leading zeros.
+
+The following files are published together under
+`data/created_data/validation/<run-hash>/`:
+
+- `accepted.jsonl`: the 17 normalized source fields and four derived fields.
+- `quarantine.jsonl`: original rejected records and their diagnostic evidence.
+- `quality_profile.json`: exact column statistics of accepted records only.
+- `validation_report.json`: input scope/completeness, contract hash, counts,
+  reasons, warnings and output checksums.
+
+JSON has no native datetime: normalized timestamps are ISO strings with
+microsecond precision; convert them to datetime when loading analytical data.
+Neither raw records nor the entire accepted dataset are concatenated in RAM.
+Raw parsing is bounded by a batch; exact distinct values and accepted-ID lookup
+use a temporary SQLite database on disk with a bounded profile buffer/cache.
+
+The configured quarantine limit is 1% of raw records. This conservative
+operational gate requires investigation when critical violations exceed that
+share; it is not a statistical guarantee. Optional-field warnings are reported
+separately and do not inflate the quarantine rate. Equality with the limit passes.
+Above the limit, diagnostics are published with `status: failed`, the notebook
+raises `QuarantineThresholdError`, and the CLI exits with code 4. A structural
+schema change stops the stage without publishing incomplete outputs.
+
+`validation/latest.json` points to the last fully evaluated result, including its
+pass/fail status. Downstream stages must require `passed`. A passing result on an
+incomplete acquisition remains explicitly partial; 300,000 saved rows alone do
+not establish coverage of the selected 18-month interval. The report is a stage
+report, not the final factory manifest.
+
+The run hash includes the frozen raw snapshot, contract and semantic validation
+settings. Independent runs on identical inputs produce identical output bytes.
+Repeating a run verifies existing files and refuses to overwrite differing
+results; interrupted work is removed and can be rerun from the raw snapshot.
+Acquisition can resume independently; a later validation run includes newly
+committed batches. Temporary SQLite files are removed after success or failure.
 
 Install the package into the same environment as the notebook (`python -m pip
 install -e .`), then run:
@@ -110,7 +164,11 @@ python -m unittest discover -s tests -v
 Tests use temporary directories and simulated HTTP responses. They cover
 automatic pagination, timestamp ties, interruption and orphan-batch recovery,
 idempotent completion, changed scope, file corruption, retry exhaustion,
-malformed data and concurrent-run protection.
+malformed data and concurrent-run protection. Validation tests additionally cover
+cross-batch duplicates, first-valid retention, null/zero/negative closure,
+optional repairs, scope boundaries, structural drift, threshold failure with
+preserved evidence, deterministic independent runs, corruption, interruption
+cleanup, accounting and CLI exit codes.
 
 ## Shared HTTP client
 
@@ -162,5 +220,5 @@ HTTP tests use simulated responses, including a real Requests session with a
 mocked transport adapter to verify POST serialization without a network call.
 The ingestion tests still cover resume, checkpoint recovery and error handling.
 
-The remaining transformation, quarantine, population join, complete `--stage all`
-pipeline and reporting stages are separate from this acquisition implementation.
+The population join, final dataset/aggregation, complete `--stage all` pipeline,
+final manifest and EDA remain subsequent stages.

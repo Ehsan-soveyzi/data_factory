@@ -12,6 +12,7 @@ from .exceptions import (
     DownloadError,
 )
 from .ingestion import download_batches
+from .quality import inspect_raw_data, validate_dataset
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
     run_parser = commands.add_parser("run")
     run_parser.add_argument(
         "--stage",
-        choices=["ingest", "all"],
+        choices=["ingest", "inspect", "validate", "all"],
         required=True,
     )
     run_parser.add_argument(
@@ -36,10 +37,13 @@ def main():
 
     args = parser.parse_args()
 
+    if args.max_batches is not None and args.stage != "ingest":
+        parser.error("--max-batches applies only to --stage ingest.")
+
     # Enable the full pipeline after its remaining stages exist.
     if args.stage == "all":
         parser.error(
-            "The full pipeline is not implemented yet. Use --stage ingest."
+            "The full pipeline is not implemented yet. Choose ingest, inspect or validate."
         )
 
     try:
@@ -49,10 +53,15 @@ def main():
         return 2
 
     try:
-        summary = download_batches(
-            config,
-            max_batches=args.max_batches,
-        )
+        if args.stage == "ingest":
+            result = download_batches(config, max_batches=args.max_batches)
+            summary = {key: result[key] for key in ("downloaded_records", "last_batch", "completed")}
+        elif args.stage == "inspect":
+            result = inspect_raw_data(config)
+            summary = {key: result[key] for key in ("selected_records", "snapshot_records", "snapshot_completed", "selected_files")}
+        else:
+            result = validate_dataset(config)
+            summary = {key: result[key] for key in ("status", "raw_records", "accepted_records", "quarantined_records", "snapshot_completed", "report_path")}
     except ConfigurationError as error:
         print(f"Configuration error: {error}", file=sys.stderr)
         return 2
@@ -69,10 +78,6 @@ def main():
         print("Interrupted. Run the command again to resume.", file=sys.stderr)
         return 130
 
-    print(json.dumps({
-        "downloaded_records": summary["downloaded_records"],
-        "last_batch": summary["last_batch"],
-        "completed": summary["completed"],
-    }, indent=2))
+    print(json.dumps(summary, indent=2))
 
     return 0

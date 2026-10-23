@@ -19,3 +19,15 @@ class DataError(DataFactoryError):
 
 class CheckpointError(DataFactoryError):
     """Local acquisition state is inconsistent or belongs to another scope."""
+
+
+class SchemaDriftError(DataError):
+    """A source batch no longer satisfies the structural contract."""
+
+
+class QuarantineThresholdError(DataError):
+    """Too many records failed validation; diagnostics were saved."""
+
+    def __init__(self, message, *, report_path):
+        super().__init__(message)
+        self.report_path = str(report_path)

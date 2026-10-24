@@ -220,5 +220,32 @@ HTTP tests use simulated responses, including a real Requests session with a
 mocked transport adapter to verify POST serialization without a network call.
 The ingestion tests still cover resume, checkpoint recovery and error handling.
 
-The population join, final dataset/aggregation, complete `--stage all` pipeline,
-final manifest and EDA remain subsequent stages.
+## Population reference and join (step four)
+
+```powershell
+data-factory run --stage population
+```
+
+This stage joins saved, passed validation output to the pinned NYC Health
+population/geography reference. It preserves every case and the original borough,
+and reports missing/unmatched ZIPs and independent borough differences. The
+reference is historical (July 1, 2019), with population at MODZCTA level; grouped
+ZIP aliases share one area population. Do not sum population over case rows.
+Source links, actual retrieval time and transport are saved in reference
+provenance. Verified cached references require no network access on later runs.
+
+Output files are `enriched_cases.jsonl`, `join_issues.jsonl`,
+`population_areas.jsonl` and `population_join_report.json`, under
+`data/created_data/population_join/<run-hash>/`. Case data are streamed, reference
+size is explicitly bounded, and row counts/checksums are checked before atomic
+publication. Failed validation, ambiguous reference keys and changed input/output
+files stop the stage. Borough differences remain quality findings, with no
+automatic correction or removal of cases.
+
+Notebook cells beginning `step-four-` execute independently using saved inputs
+and display provenance, join counts, missing codes, borough findings and previews.
+See [the population join contract](docs/population_join.md) for all added columns,
+source methodology, rate eligibility, denominator handling and limitations.
+
+Final aggregation/delivery outputs, the complete `--stage all` pipeline, final
+manifest and EDA remain subsequent stages.

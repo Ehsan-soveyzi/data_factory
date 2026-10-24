@@ -7,4 +7,6 @@ venv/
 data/raw/
 data/raw_data/
 data/created_data/validation/
+data/reference_data/
+data/created_data/population_join/
 ~$*.docx

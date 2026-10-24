@@ -13,6 +13,7 @@ from .exceptions import (
 )
 from .ingestion import download_batches
 from .quality import inspect_raw_data, validate_dataset
+from .population import join_population
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
     run_parser = commands.add_parser("run")
     run_parser.add_argument(
         "--stage",
-        choices=["ingest", "inspect", "validate", "all"],
+        choices=["ingest", "inspect", "validate", "population", "all"],
         required=True,
     )
     run_parser.add_argument(
@@ -43,7 +44,7 @@ def main():
     # Enable the full pipeline after its remaining stages exist.
     if args.stage == "all":
         parser.error(
-            "The full pipeline is not implemented yet. Choose ingest, inspect or validate."
+            "The full pipeline is not implemented yet. Choose ingest, inspect, validate or population."
         )
 
     try:
@@ -59,9 +60,12 @@ def main():
         elif args.stage == "inspect":
             result = inspect_raw_data(config)
             summary = {key: result[key] for key in ("selected_records", "snapshot_records", "snapshot_completed", "selected_files")}
-        else:
+        elif args.stage == "validate":
             result = validate_dataset(config)
             summary = {key: result[key] for key in ("status", "raw_records", "accepted_records", "quarantined_records", "snapshot_completed", "report_path")}
+        else:
+            result = join_population(config)
+            summary = {key: result[key] for key in ("status", "input_records", "output_records", "join_status_counts", "borough_comparison_counts", "snapshot_completed", "report_path")}
     except ConfigurationError as error:
         print(f"Configuration error: {error}", file=sys.stderr)
         return 2

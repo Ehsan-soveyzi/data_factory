@@ -1,18 +1,18 @@
 {
   "source": {
-  "endpoint": "https://data.cityofnewyork.us/resource/erm2-nwe9.json",
-  "start_date": "2024-01-01T00:00:00",
-  "end_date_exclusive": "2025-07-01T00:00:00",
-  "boroughs": [],
-  "complaint_types": [
-    "Noise - Residential",
-    "Noise - Vehicle",
-    "Noise - Street/Sidewalk",
-    "Noise - Park",
-    "Noise - Commercial"
-  ],
-  "minimum_records": 300000,
-  "seed" : 42
+    "endpoint": "https://data.cityofnewyork.us/resource/erm2-nwe9.json",
+    "start_date": "2024-01-01T00:00:00",
+    "end_date_exclusive": "2025-07-01T00:00:00",
+    "boroughs": [],
+    "complaint_types": [
+      "Noise - Residential",
+      "Noise - Vehicle",
+      "Noise - Street/Sidewalk",
+      "Noise - Park",
+      "Noise - Commercial"
+    ],
+    "minimum_records": 300000,
+    "seed": 42
   },
   "http": {
     "batch_size": 5000,
@@ -24,8 +24,19 @@
   "validation": {
     "schema_path": "config/schema.json",
     "inspection_batches": 6,
-    "inspection_sentinel_tokens": ["N/A", "Unspecified", "UNKNOWN", "00000"],
-    "inspection_categorical_fields": ["complaint_type", "agency", "borough", "status", "open_data_channel_type"],
+    "inspection_sentinel_tokens": [
+      "N/A",
+      "Unspecified",
+      "UNKNOWN",
+      "00000"
+    ],
+    "inspection_categorical_fields": [
+      "complaint_type",
+      "agency",
+      "borough",
+      "status",
+      "open_data_channel_type"
+    ],
     "inspection_category_limit": 100,
     "max_quarantine_fraction": 0.01,
     "schema_drift_min_records": 100,
@@ -36,6 +47,33 @@
     "created_dir": "data/created_data",
     "checkpoint_file": "checkpoint.json",
     "inspection_file": "raw_inspection.json",
-    "validation_dir": "validation"
+    "validation_dir": "validation",
+    "reference_dir": "data/reference_data",
+    "population_dir": "population_join"
+  },
+  "population": {
+    "endpoint": "https://api.github.com/repos/nychealth/coronavirus-data/contents/totals/data-by-modzcta.csv",
+    "source_url": "https://github.com/nychealth/coronavirus-data/blob/6f61a888d76c596acbbd71c7092e7485f517ad74/totals/data-by-modzcta.csv",
+    "documentation_url": "https://github.com/nychealth/coronavirus-data/blob/6f61a888d76c596acbbd71c7092e7485f517ad74/README.md#rates-per-100000-people",
+    "commit": "6f61a888d76c596acbbd71c7092e7485f517ad74",
+    "expected_sha256": "a121cd0e60b42ab56d73fc06f865c40e4f5ef0e2b3455c4ab549e8128193c3ff",
+    "reference_date": "2019-07-01",
+    "geography": "MODZCTA",
+    "max_reference_bytes": 1000000,
+    "max_reference_rows": 1000,
+    "allowed_boroughs": [
+      "BRONX",
+      "BROOKLYN",
+      "MANHATTAN",
+      "QUEENS",
+      "STATEN ISLAND"
+    ],
+    "columns": {
+      "area": "MODIFIED_ZCTA",
+      "zip_codes": "label",
+      "population": "POP_DENOMINATOR",
+      "borough": "BOROUGH_GROUP",
+      "neighborhood": "NEIGHBORHOOD_NAME"
+    }
   }
 }

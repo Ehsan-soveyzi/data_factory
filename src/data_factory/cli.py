@@ -16,6 +16,8 @@ from .ingestion import download_batches
 from .quality import inspect_raw_data, validate_dataset
 from .population import join_population
 from .delivery import build_delivery
+from .pipeline import run_pipeline
+from .incremental import incremental_config
 
 
 def main():
@@ -37,11 +39,15 @@ def main():
         type=int,
         default=None,
     )
+    run_parser.add_argument("--since-last-run", action="store_true",
+                            help="Acquire a separate interval after the preceding completed scope.")
 
     args = parser.parse_args()
 
     if args.max_batches is not None and args.stage != "ingest":
         parser.error("--max-batches applies only to --stage ingest.")
+    if args.since_last_run and args.stage not in ("ingest", "all"):
+        parser.error("--since-last-run applies only to ingest or all.")
 
     try:
         config = load_config(args.config)
@@ -51,11 +57,12 @@ def main():
 
     try:
         started_at = datetime.now(timezone.utc).isoformat()
+        if args.since_last_run:
+            config = incremental_config(config)
         if args.stage == "all":
-            download_batches(config)
-            validate_dataset(config)
-            join_population(config)
-        if args.stage == "ingest":
+            result = run_pipeline(config)
+            summary = {key: result[key] for key in ("status", "delivery_complete", "analytical_records", "monthly_summary_rows", "output_dir", "manifest_path")}
+        elif args.stage == "ingest":
             result = download_batches(config, max_batches=args.max_batches)
             summary = {key: result[key] for key in ("downloaded_records", "last_batch", "completed")}
         elif args.stage == "inspect":

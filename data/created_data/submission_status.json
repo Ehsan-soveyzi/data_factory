@@ -1,0 +1,16 @@
+{
+  "offline_tests_passed": true,
+  "test_count": 148,
+  "raw_records": 330000,
+  "minimum_records": 300000,
+  "minimum_volume_met": true,
+  "full_18_month_scope_acquired": false,
+  "observed_created_min": "2024-01-01T00:00:20",
+  "observed_created_max": "2024-07-25T23:32:51",
+  "analytical_hashes_reproduced": true,
+  "git_commits": 18,
+  "remaining_external_requirements": [
+    "Complete source acquisition if scope is partial",
+    "Document a merged feature Pull Request"
+  ]
+}

@@ -261,7 +261,7 @@ def _summary(connection, path, months, coverage, settings, borough_filter):
     return count
 
 
-def build_delivery(config, *, progress=print, started_at=None, execution_stage="finalize"):
+def build_delivery(config, *, progress=print, started_at=None, execution_stage="finalize", request_budget=None):
     """Publish deterministic analytics and a separate manifest for this execution.
 
     Clock timestamps are deliberately excluded from analytical content hashes.
@@ -349,6 +349,7 @@ def build_delivery(config, *, progress=print, started_at=None, execution_stage="
     execution_id = uuid4().hex
     manifest_path = root / "executions" / execution_id / "run_manifest.json"
     manifest = {"manifest_version": 1, "execution_id": execution_id, "execution_stage": execution_stage,
+        "request_budget": request_budget or {"http_attempts": 0, "scope": "Offline finalization only; historical acquisition attempts are not reconstructed."},
         "started_at_utc": started_at, "finished_at_utc": datetime.now(timezone.utc).isoformat(),
         "status": "passed", "delivery_complete": report["delivery_complete"], "scope": joined["scope"],
         "scope_note": joined["scope_note"], "observed_created_min": report["observed_created_min"],

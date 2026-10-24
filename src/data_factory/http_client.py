@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 import requests
 
 from .exceptions import ConfigurationError, DataError, DownloadError
+from .pipeline import record_http_attempt
 
 
 def validate_http_settings(settings):
@@ -118,6 +119,7 @@ class HttpClient:
         for attempt in range(attempts):
             delay = backoff
             try:
+                record_http_attempt()
                 with self.session.request(method, url, **kwargs) as response:
                     status = response.status_code
                     if status == 429 or 500 <= status < 600:

@@ -257,17 +257,17 @@ class DeliveryTests(unittest.TestCase):
             self.assertEqual(main(), 0)
         with patch("sys.argv", ["data-factory", "run", "--stage", "all"]), \
                 patch("data_factory.cli.load_config", return_value=self.config), \
-                patch("data_factory.cli.download_batches") as download, \
-                patch("data_factory.cli.validate_dataset") as validate, \
-                patch("data_factory.cli.join_population") as population, redirect_stdout(StringIO()):
+                patch("data_factory.ingestion.download_batches", return_value={"downloaded_records": 1}) as download, \
+                patch("data_factory.quality.validate_dataset") as validate, \
+                patch("data_factory.population.join_population") as population, redirect_stdout(StringIO()):
             self.assertEqual(main(), 0)
             download.assert_called_once()
             validate.assert_called_once()
             population.assert_called_once()
         with patch("sys.argv", ["data-factory", "run", "--stage", "all"]), \
                 patch("data_factory.cli.load_config", return_value=self.config), \
-                patch("data_factory.cli.download_batches", side_effect=DataError("broken")), \
-                patch("data_factory.cli.build_delivery") as final, redirect_stderr(StringIO()):
+                patch("data_factory.ingestion.download_batches", side_effect=DataError("broken")), \
+                patch("data_factory.delivery.build_delivery") as final, redirect_stderr(StringIO()):
             self.assertEqual(main(), 4)
             final.assert_not_called()
 

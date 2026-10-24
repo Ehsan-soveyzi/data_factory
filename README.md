@@ -247,5 +247,39 @@ and display provenance, join counts, missing codes, borough findings and preview
 See [the population join contract](docs/population_join.md) for all added columns,
 source methodology, rate eligibility, denominator handling and limitations.
 
-Final aggregation/delivery outputs, the complete `--stage all` pipeline, final
-manifest and EDA remain subsequent stages.
+## Final delivery (section five)
+
+```powershell
+data-factory run --stage finalize
+```
+
+This offline stage publishes `analytical_cases.jsonl`,
+`monthly_summary_wide.csv` and `delivery_report.json` under
+`data/created_data/delivery/<artifact-run>/`. It retains all accepted cases,
+uses unique MODZCTA populations for rates, and keeps unacquired months blank.
+The wide table has one row per area, complaint type and metric, with months
+as columns. Metrics include counts, mean/median closure hours and rates per
+100,000 people (configurable). Incomplete months have counts so far but no rates.
+
+Each execution writes its own `run_manifest.json` under
+`delivery/executions/<execution-id>/`, with actual UTC timing, source scope,
+record/quarantine counts, code identity and output hashes. `delivery/latest.json`
+links both the analytical bundle and its latest execution manifest. Analytical
+files are byte-stable for identical frozen inputs/settings/code; per-execution
+manifests vary because actual clock times cannot have a fixed hash. This
+explicit exception is documented in the manifest and the delivery contract.
+
+```powershell
+data-factory run --stage all
+python -m unittest discover -s tests -v
+```
+
+`all` runs ingestion, validation, population join and finalization in order;
+it needs network access until acquisition completes. `finalize` uses only
+verified saved inputs. Notebook cells beginning `step-five-` demonstrate all
+three outputs and independent analytical hash reproduction without downloading.
+See [the final delivery contract](docs/final_delivery.md) for metrics, coverage,
+historical denominator limitations and the manifest determinism policy.
+
+The current acquisition may still be partial: inspect `delivery_complete`.
+EDA and remaining challenge requirements are separate from section five.

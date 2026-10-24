@@ -49,7 +49,13 @@
     "inspection_file": "raw_inspection.json",
     "validation_dir": "validation",
     "reference_dir": "data/reference_data",
-    "population_dir": "population_join"
+    "population_dir": "population_join",
+    "delivery_dir": "delivery"
+  },
+  "delivery": {
+    "population_scale": 100000,
+    "max_months": 120,
+    "decimal_places": 6
   },
   "population": {
     "endpoint": "https://api.github.com/repos/nychealth/coronavirus-data/contents/totals/data-by-modzcta.csv",

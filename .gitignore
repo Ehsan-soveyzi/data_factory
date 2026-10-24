@@ -9,4 +9,5 @@ data/raw_data/
 data/created_data/validation/
 data/reference_data/
 data/created_data/population_join/
+data/created_data/delivery/
 ~$*.docx

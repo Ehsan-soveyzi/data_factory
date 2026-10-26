@@ -30,7 +30,7 @@ class DatasetValidationTests(unittest.TestCase):
             "validation": {"schema_path": str(SCHEMA_PATH), "inspection_batches": 1,
                 "schema_drift_min_records": 2, "profile_buffer_size": 2,
                 "max_quarantine_fraction": 1.0},
-            "paths": {"raw_dir": str(self.raw), "created_dir": str(self.root / "created"),
+            "paths": {"raw_dir": str(self.raw), "curated_dir": str(self.root / "curated"),
                 "inspection_file": "inspection.json", "validation_dir": "validation"},
         }
         self.state = {"scope": deepcopy(SOURCE), "scope_fingerprint": "fixture",
@@ -130,7 +130,7 @@ class DatasetValidationTests(unittest.TestCase):
         again = self.run_validation()
         self.assertEqual(first, again)
         self.assertEqual(mtimes, {p.name: p.stat().st_mtime_ns for p in paths})
-        self.config["paths"]["created_dir"] = str(self.root / "independent")
+        self.config["paths"]["curated_dir"] = str(self.root / "independent")
         other = self.run_validation()
         self.assertEqual(contents, {p.name: p.read_bytes() for p in Path(other["output_dir"]).iterdir()})
         for name, metadata in other["files"].items():
@@ -169,7 +169,7 @@ class DatasetValidationTests(unittest.TestCase):
                     (self.raw / "batch_000001.json").write_text("[]")
                 with self.assertRaises(error):
                     self.run_validation()
-                root = Path(self.config["paths"]["created_dir"]) / "validation"
+                root = Path(self.config["paths"]["curated_dir"]) / "validation"
                 self.assertEqual(list(root.iterdir()), [])
 
     def test_interruption_cleans_temporary_files_and_rerun_can_finish(self):
@@ -178,7 +178,7 @@ class DatasetValidationTests(unittest.TestCase):
             raise KeyboardInterrupt()
         with self.assertRaises(KeyboardInterrupt):
             validate_dataset(self.config, progress=interrupt)
-        root = Path(self.config["paths"]["created_dir"]) / "validation"
+        root = Path(self.config["paths"]["curated_dir"]) / "validation"
         self.assertEqual(list(root.iterdir()), [])
         self.assertEqual(self.run_validation()["status"], "passed")
 
@@ -196,7 +196,7 @@ class DatasetValidationTests(unittest.TestCase):
         with self.assertRaises(ConfigurationError):
             validate_dataset(config, progress=None)
         self.prepare.assert_not_called()
-        self.assertFalse(Path(config["paths"]["created_dir"]).exists())
+        self.assertFalse(Path(config["paths"]["curated_dir"]).exists())
 
     def test_no_batches_is_an_actionable_data_error(self):
         with self.assertRaisesRegex(DataError, "ingest"):

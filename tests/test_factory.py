@@ -32,7 +32,7 @@ class FactoryTests(unittest.TestCase):
         self.root = Path(temporary.name)
         self.config = json.loads((PROJECT / "config/setting.json").read_text())
         self.config["validation"]["schema_path"] = str(PROJECT / "config/schema.json")
-        for name, folder in (("raw_dir", "raw"), ("created_dir", "created"), ("reference_dir", "reference")):
+        for name, folder in (("raw_dir", "raw"), ("curated_dir", "curated"), ("reference_dir", "reference")):
             self.config["paths"][name] = str(self.root / folder)
         self.config["population"]["expected_sha256"] = hashlib.sha256(CSV.encode()).hexdigest()
         self.config["http"].update(batch_size=2, max_retries=0)

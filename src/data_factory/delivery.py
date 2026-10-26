@@ -43,10 +43,10 @@ def _settings(config):
             raise ValueError("paths.delivery_dir must be a local directory name.")
         if name in (config["paths"]["validation_dir"], config["paths"]["population_dir"]):
             raise ValueError("Delivery, validation and population directories must differ.")
-        created = Path(config["paths"]["created_dir"])
+        curated = Path(config["paths"]["curated_dir"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ConfigurationError(f"Invalid delivery settings: {exc}") from exc
-    return settings, created
+    return settings, curated
 
 
 def _months(scope, limit):
@@ -70,9 +70,9 @@ def _months(scope, limit):
     return start, end, months
 
 
-def _input(config, created):
-    validation_path, validation = _validated_input(config, created)
-    root = created / config["paths"]["population_dir"]
+def _input(config, curated):
+    validation_path, validation = _validated_input(config, curated)
+    root = curated / config["paths"]["population_dir"]
     try:
         pointer = _read_json(root / "latest.json")
         run = pointer["run"]
@@ -268,14 +268,14 @@ def build_delivery(config, *, progress=print, started_at=None, execution_stage="
     Every attempt gets its own manifest rather than forging repeatable timings.
     """
     started_at = started_at or datetime.now(timezone.utc).isoformat()
-    settings, created = _settings(config)
-    join_path, joined, validation_path, validation = _input(config, created)
+    settings, curated = _settings(config)
+    join_path, joined, validation_path, validation = _input(config, curated)
     start, end, months = _months(joined["scope"], settings["max_months"])
     version = code_version()
     identity = {"delivery_version": DELIVERY_VERSION, "join_report_sha256": _digest(join_path),
                 "validation_report_sha256": _digest(validation_path), "settings": settings, "code_version": version}
     run = _hash_json(identity)
-    root = created / config["paths"]["delivery_dir"]
+    root = curated / config["paths"]["delivery_dir"]
     target = root / run
     root.mkdir(parents=True, exist_ok=True)
     counts = Counter(analytical_records=0, recorded_closure_records=0, rate_eligible_records=0)

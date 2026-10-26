@@ -1,0 +1,17 @@
+{
+  "connection_url_env": "DATABASE_URL",
+  "schemas": {
+    "olist": "olist",
+    "nyc311": "nyc311"
+  },
+  "paths": {
+    "olist_raw_dir": "data/stage_02/raw",
+    "curated_dir": "data/stage_02/curated",
+    "sql_dir": "sql",
+    "evidence_dir": "stages/stage_02/evidence"
+  },
+  "benchmark": {
+    "query_budget_ms": 200,
+    "seed": 42
+  }
+}

@@ -41,7 +41,7 @@ def _interval(config, base, root, now):
             expected["source"][key] = saved["source"][key]
         identifier = hashlib.sha256((saved["source"]["start_date"] + "/" + saved["source"]["end_date_exclusive"]).encode()).hexdigest()[:20]
         expected["paths"]["raw_dir"] = str(root / identifier)
-        expected["paths"]["created_dir"] = str(Path(config["paths"]["created_dir"]) / "incremental" / identifier)
+        expected["paths"]["curated_dir"] = str(Path(config["paths"]["curated_dir"]) / "incremental" / identifier)
         if expected != saved:
             raise ConfigurationError("Settings changed during incremental acquisition; finish the saved interval first.")
         state = prepare_checkpoint(saved)
@@ -56,7 +56,7 @@ def _interval(config, base, root, now):
     delta["source"]["end_date_exclusive"] = end.isoformat(timespec="microseconds")
     interval = hashlib.sha256((start + "/" + delta["source"]["end_date_exclusive"]).encode()).hexdigest()[:20]
     delta["paths"]["raw_dir"] = str(root / interval)
-    delta["paths"]["created_dir"] = str(Path(config["paths"]["created_dir"]) / "incremental" / interval)
+    delta["paths"]["curated_dir"] = str(Path(config["paths"]["curated_dir"]) / "incremental" / interval)
     _settings(delta)
     _atomic_write(pointer, {"base_scope_fingerprint": base["scope_fingerprint"], "config": delta})
     return delta

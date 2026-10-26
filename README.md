@@ -5,11 +5,27 @@ data and monthly population-normalized summaries. It supports resumable
 downloads, explicit data contracts, quarantine with rejection reasons, a pinned
 population reference, and reproducible analytical outputs.
 
-Use the CLI to build datasets and the [notebook](solution.ipynb) to review the
+Use the CLI to build datasets and the [notebook](stages/stage_01/solution.ipynb) to review the
 workflow, quality checks, tests, and exploratory analysis.
+
+## Stage deliverables
+
+This repository continues across the linked coursework stages. Shared package
+code, configuration, SQL definitions, dependencies, and tests live at the project
+root. Each stage has its own notebook and decision report.
+
+| Stage | Deliverables | Status |
+|---|---|---|
+| 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Existing implementation |
+| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [report template](stages/stage_02/report.md) | Structure prepared; implementation pending |
+
+The installation and pipeline commands below describe stage 01. The database
+configuration example and `.env.example` reserve stage 02 settings; database
+loading and bootstrap commands are not available yet.
 
 ## Contents
 
+- [Stage deliverables](#stage-deliverables)
 - [Quick start](#quick-start)
 - [Run the pipeline](#run-the-pipeline)
 - [Use the notebook](#use-the-notebook)
@@ -143,7 +159,7 @@ paths are resolved from your working directory, including when using `--config`.
 
 ## Use the notebook
 
-Open [`solution.ipynb`](solution.ipynb) in VS Code with Jupyter support or an
+Open [`stages/stage_01/solution.ipynb`](stages/stage_01/solution.ipynb) in VS Code with Jupyter support or an
 existing Jupyter interface. Select the project environment, then choose
 **Restart Kernel & Run All**. The notebook includes saved outputs, four EDA
 figures, findings, offline tests, and an independent comparison of output hashes.
@@ -185,7 +201,7 @@ requires a matching source pin and rerunning downstream stages.
 
 ## Outputs
 
-Start with `data/created_data/delivery/latest.json`. Its `report` and `manifest`
+Start with `data/curated_data/delivery/latest.json`. Its `report` and `manifest`
 values are paths relative to the delivery directory; `run` identifies the
 directory containing the latest analytical files.
 
@@ -193,7 +209,7 @@ directory containing the latest analytical files.
 |---|---|
 | `data/raw_data/batch_*.json` | Saved raw API responses |
 | `data/raw_data/checkpoint.json` | Source scope, cursor, batch checksums, counts, and completion state |
-| `data/created_data/raw_inspection.json` | Observational raw-data profile |
+| `data/curated_data/raw_inspection.json` | Observational raw-data profile |
 | `validation/<run>/accepted.jsonl` | Normalized records that passed validation |
 | `validation/<run>/quarantine.jsonl` | Rejected raw records, locations, and reason codes |
 | `validation/<run>/quality_profile.json` | Generated column-level quality statistics |
@@ -204,7 +220,7 @@ directory containing the latest analytical files.
 | `delivery/executions/<id>/run_manifest.json` | Execution times, code identity, counts, HTTP budget, and output hashes |
 
 Paths beginning with `validation/`, `population_join/`, or `delivery/` are
-relative to `data/created_data/` under the default configuration. Verified
+relative to `data/curated_data/` under the default configuration. Verified
 reference files are cached under `data/reference_data/`.
 
 **Check `delivery_complete` before using an output as a complete-period result.**
@@ -255,18 +271,27 @@ request counting, EDA calculations, and full-pipeline hash reproducibility.
 
 ```text
 .
-├── solution.ipynb                     # Executable workflow and EDA
-├── report.docx                        # Key decisions and limitations
-├── config/                           # Pipeline settings and record contract
-├── src/data_factory/                  # Pipeline implementation and CLI
-├── tests/                            # Offline unittest suite
-├── docs/                             # Contracts and delivery notes
-├── data/
-│   ├── raw_data/                      # Raw batches and checkpoint; ignored by Git
-│   ├── reference_data/                # Verified reference cache; ignored by Git
-│   └── created_data/                  # Generated reports and datasets
-├── pyproject.toml                     # Package metadata and CLI entry point
-└── requirements.txt                  # Locked execution dependencies
+|-- stages/
+|   |-- stage_01/                      # Existing notebook, report and data notes
+|   `-- stage_02/                      # Notebook outline, report and evidence
+|-- src/data_factory/                 # Shared factory implementation and CLI
+|   |-- sources/                      # Reserved for CSV source adapters
+|   |-- sinks/                        # Reserved for database destination adapters
+|   `-- database/                     # Reserved for SQLAlchemy and timing helpers
+|-- sql/                              # DDL, queries, indexes, views and routines
+|-- config/                           # Existing config plus database example
+|-- tests/                            # Existing offline suite
+|   `-- database/                     # Reserved for database tests
+|-- docs/                             # Existing contracts and delivery notes
+|-- challenge_details/                # Assignment documents
+|-- data/
+|   |-- raw_data/                     # Existing raw batches and checkpoint
+|   |-- reference_data/               # Existing reference cache
+|   |-- curated_data/                 # Existing generated artifacts
+|   `-- stage_02/                     # Ignored Olist raw/curated datasets
+|-- .env.example                      # Planned connection variable; no credentials
+|-- pyproject.toml                    # Shared package metadata and CLI
+`-- requirements.txt                  # Locked stage 01 execution dependencies
 ```
 
 ## Troubleshooting
@@ -292,7 +317,7 @@ CLI exit codes: `0` success, `2` configuration/argument error, `3` network error
 - [Population join](docs/population_join.md): reference provenance, geography, and denominator rules.
 - [Final delivery](docs/final_delivery.md): output metrics, coverage, and determinism policy.
 - [Testing and submission checklist](docs/submission_checklist.md): coverage and remaining delivery requirements.
-- [Decision report](report.docx): rationale, evidence, tradeoffs, and limitations.
-- [Data understanding notes](data_undrestandation_notes.docx): source fields and interpretation.
+- [Decision report](stages/stage_01/report.docx): rationale, evidence, tradeoffs, and limitations.
+- [Data understanding notes](stages/stage_01/data_undrestandation_notes.docx): source fields and interpretation.
 
 The notebook, decision report, and some companion documents are written in Persian.

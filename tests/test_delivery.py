@@ -29,7 +29,7 @@ class DeliveryTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         self.config = json.loads((PROJECT / "config/setting.json").read_text())
-        self.config["paths"]["created_dir"] = str(self.root / "created")
+        self.config["paths"]["curated_dir"] = str(self.root / "curated")
         self.config["paths"]["reference_dir"] = str(self.root / "reference")
         self.config["source"]["end_date_exclusive"] = "2024-04-01T00:00:00"
         self.config["source"]["complaint_types"] = ["Noise - Residential"]
@@ -49,7 +49,7 @@ class DeliveryTests(unittest.TestCase):
             normalized, errors = normalize_record(row, schema, self.config["source"])
             self.assertEqual(errors, [])
             clean.append(normalized)
-        directory = Path(self.config["paths"]["created_dir"]) / "validation" / ("a" * 64)
+        directory = Path(self.config["paths"]["curated_dir"]) / "validation" / ("a" * 64)
         directory.mkdir(parents=True, exist_ok=True)
         (directory / "accepted.jsonl").write_text("".join(canonical_json(r) + "\n" for r in clean), encoding="utf-8")
         (directory / "quarantine.jsonl").write_text("{}\n" * rejected, encoding="utf-8")
@@ -159,7 +159,7 @@ class DeliveryTests(unittest.TestCase):
         again = self.deliver()
         self.assertNotEqual(first["manifest_path"], again["manifest_path"])
         self.assertEqual(mtimes, {name: (Path(first["output_dir"]) / name).stat().st_mtime_ns for name in ARTIFACTS})
-        self.config["paths"]["created_dir"] = str(self.root / "independent")
+        self.config["paths"]["curated_dir"] = str(self.root / "independent")
         self.inputs()
         other = self.deliver()
         self.assertEqual(contents, {name: (Path(other["output_dir"]) / name).read_bytes() for name in ARTIFACTS})
@@ -176,7 +176,7 @@ class DeliveryTests(unittest.TestCase):
         report.write_text(report.read_text() + " ")
         with self.assertRaisesRegex(DataError, "stale"):
             self.deliver()
-        self.assertFalse((Path(self.config["paths"]["created_dir"]) / "delivery/latest.json").exists())
+        self.assertFalse((Path(self.config["paths"]["curated_dir"]) / "delivery/latest.json").exists())
 
     def test_changed_source_selection_and_reference_pin_require_new_upstream_outputs(self):
         self.inputs()
@@ -202,7 +202,7 @@ class DeliveryTests(unittest.TestCase):
         with patch("data_factory.delivery._summary", side_effect=KeyboardInterrupt()):
             with self.assertRaises(KeyboardInterrupt):
                 self.deliver()
-        directory = Path(self.config["paths"]["created_dir"]) / "delivery"
+        directory = Path(self.config["paths"]["curated_dir"]) / "delivery"
         self.assertEqual(list(directory.iterdir()), [])
         self.assertEqual(self.deliver()["analytical_records"], 1)
 
@@ -246,7 +246,7 @@ class DeliveryTests(unittest.TestCase):
         with patch("data_factory.delivery._summary", side_effect=change_after_summary):
             with self.assertRaisesRegex(DataError, "changed while processing"):
                 self.deliver()
-        root = Path(self.config["paths"]["created_dir"]) / "delivery"
+        root = Path(self.config["paths"]["curated_dir"]) / "delivery"
         self.assertFalse((root / "latest.json").exists())
         self.assertEqual(list(root.iterdir()), [])
 

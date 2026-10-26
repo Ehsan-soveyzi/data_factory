@@ -59,10 +59,10 @@ def _settings(config):
         if config["paths"]["validation_dir"] == config["paths"]["population_dir"]:
             raise ValueError("Validation and population output directories must differ.")
         reference_dir = Path(config["paths"]["reference_dir"])
-        created = Path(config["paths"]["created_dir"])
+        curated = Path(config["paths"]["curated_dir"])
     except (KeyError, TypeError, ValueError, AttributeError) as exc:
         raise ConfigurationError(f"Invalid population settings: {exc}") from exc
-    return settings, reference_dir, created
+    return settings, reference_dir, curated
 
 
 def parse_reference(csv_text, settings):
@@ -197,8 +197,8 @@ def prepare_population_reference(config, *, csv_text=None, acquired_via=None, se
     return {"areas": areas, "aliases": aliases, "provenance": metadata, "cache_dir": str(target)}
 
 
-def _validated_input(config, created):
-    root = created / config["paths"]["validation_dir"]
+def _validated_input(config, curated):
+    root = curated / config["paths"]["validation_dir"]
     try:
         latest = _read_json(root / "latest.json")
         run = latest["run"]
@@ -246,12 +246,12 @@ def enrich_case(record, areas, aliases, settings):
 
 def join_population(config, *, progress=print):
     """Left join all accepted cases, preserving order/counts and unmatched cases."""
-    settings, _, created = _settings(config)
-    report_path, validation = _validated_input(config, created)
+    settings, _, curated = _settings(config)
+    report_path, validation = _validated_input(config, curated)
     reference = prepare_population_reference(config)
     areas, aliases = reference["areas"], reference["aliases"]
     run_hash = _hash_json({"version": POPULATION_VERSION, "validation_report": _digest(report_path), "reference": settings})
-    root = created / config["paths"]["population_dir"]
+    root = curated / config["paths"]["population_dir"]
     target = root / run_hash
     root.mkdir(parents=True, exist_ok=True)
     counts = Counter(input_records=0, output_records=0, rate_eligible_records=0)

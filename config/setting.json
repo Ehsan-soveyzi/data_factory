@@ -44,7 +44,7 @@
   },
   "paths": {
     "raw_dir": "data/raw_data",
-    "created_dir": "data/created_data",
+    "curated_dir": "data/curated_data",
     "checkpoint_file": "checkpoint.json",
     "inspection_file": "raw_inspection.json",
     "validation_dir": "validation",

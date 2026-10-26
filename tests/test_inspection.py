@@ -67,7 +67,7 @@ class InspectionTests(unittest.TestCase):
                 # Inspection must not open this draft contract.
                 "schema_path": str(self.root / "does-not-exist.json"),
             },
-            "paths": {"raw_dir": str(self.raw), "created_dir": str(self.root / "created"), "inspection_file": "raw_inspection.json"},
+            "paths": {"raw_dir": str(self.raw), "curated_dir": str(self.root / "curated"), "inspection_file": "raw_inspection.json"},
         }
         self.state = {"scope_fingerprint": "test", "completed": False, "downloaded_records": 0, "batches": []}
         prepare = patch("data_factory.quality.prepare_checkpoint", return_value=self.state)
@@ -111,7 +111,7 @@ class InspectionTests(unittest.TestCase):
         self.assertEqual(channel["missing_count"], 1)
         self.assertEqual(channel["sentinel_counts"], {"unknown": 1})
         self.assertEqual((self.raw / "batch_000001.json").read_bytes(), original)
-        self.assertEqual(list((self.root / "created").iterdir()), [self.root / "created" / "raw_inspection.json"])
+        self.assertEqual(list((self.root / "curated").iterdir()), [self.root / "curated" / "raw_inspection.json"])
 
     def test_category_tracking_is_bounded_and_overflow_is_reported(self):
         self.batch([{"status": value} for value in ["A", "B", "C", "A", "C"]])
@@ -124,19 +124,19 @@ class InspectionTests(unittest.TestCase):
     def test_repeat_produces_identical_report_and_temporary_db_is_removed(self):
         self.batch([{"status": "Closed"}, {"status": "Unspecified"}])
         first = inspect_raw_data(self.config, progress=None)
-        path = self.root / "created" / "raw_inspection.json"
+        path = self.root / "curated" / "raw_inspection.json"
         original = path.read_bytes()
         second = inspect_raw_data(self.config, progress=None)
         self.assertEqual(first, second)
         self.assertEqual(path.read_bytes(), original)
-        self.assertFalse(list((self.root / "created").glob(".inspection-*")))
+        self.assertFalse(list((self.root / "curated").glob(".inspection-*")))
 
     def test_changed_raw_file_fails_before_report_is_published(self):
         self.batch([{"status": "Closed"}])
         (self.raw / "batch_000001.json").write_text("[]", encoding="utf-8")
         with self.assertRaises(DataError):
             inspect_raw_data(self.config, progress=None)
-        self.assertFalse((self.root / "created" / "raw_inspection.json").exists())
+        self.assertFalse((self.root / "curated" / "raw_inspection.json").exists())
 
     def test_empty_snapshot_and_invalid_settings_have_clear_errors(self):
         with self.assertRaises(DataError):

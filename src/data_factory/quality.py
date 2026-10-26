@@ -33,11 +33,11 @@ def _settings(config):
             value = config["paths"][name]
             if not isinstance(value, str) or not value or Path(value).name != value or value in (".", ".."):
                 raise ValueError(f"paths.{name} must be a local filename/directory name.")
-        created = Path(config["paths"]["created_dir"])
+        curated = Path(config["paths"]["curated_dir"])
         schema = load_schema(settings["schema_path"], source=config["source"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ConfigurationError(f"Invalid quality settings: {exc}") from exc
-    return settings, created, schema
+    return settings, curated, schema
 
 
 def _inspection_settings(config):
@@ -52,11 +52,11 @@ def _inspection_settings(config):
                 raise ValueError(f"validation.{name} must be a list of strings.")
         filename = config["paths"]["inspection_file"]
         if not isinstance(filename, str) or not filename or Path(filename).name != filename or filename in (".", ".."):
-            raise ValueError("paths.inspection_file must be a filename inside created_dir.")
-        created = Path(config["paths"]["created_dir"])
+            raise ValueError("paths.inspection_file must be a filename inside curated_dir.")
+        curated = Path(config["paths"]["curated_dir"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ConfigurationError(f"Invalid inspection settings: {exc}") from exc
-    return settings, created
+    return settings, curated
 
 
 def _digest(path):
@@ -128,13 +128,13 @@ def _connect(path):
 
 def inspect_raw_data(config, *, progress=print):
     """Profile equally spaced committed batches; label the sample explicitly."""
-    settings, created = _inspection_settings(config)
+    settings, curated = _inspection_settings(config)
     state, snapshot_hash = _snapshot(config)
     count = min(settings["inspection_batches"], len(state["batches"]))
     indices = [0] if count == 1 else [round(i * (len(state["batches"]) - 1) / (count - 1)) for i in range(count)]
     selected = [state["batches"][index] for index in indices]
-    created.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix=".inspection-", dir=created) as temporary:
+    curated.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".inspection-", dir=curated) as temporary:
         connection = _connect(Path(temporary) / "profile.sqlite")
         try:
             profiler = ColumnProfiler(
@@ -201,7 +201,7 @@ def inspect_raw_data(config, *, progress=print):
         "range_note": "Raw strings have lexicographic ranges; numeric-looking strings have not been converted to numbers.",
         "note": "This sample describes selected existing batches, not the complete 18-month population.",
     }
-    path = created / config["paths"]["inspection_file"]
+    path = curated / config["paths"]["inspection_file"]
     _atomic_json(path, report)
     if progress is not None:
         progress(f"Inspected {report['selected_records']:,} records from {count} batches; report: {path}")
@@ -215,14 +215,14 @@ def validate_dataset(config, *, progress=print):
     to interpret the result: passing validation of an incomplete acquisition is
     still a partial snapshot, not a completed 18-month delivery.
     """
-    settings, created, schema = _settings(config)
+    settings, curated, schema = _settings(config)
     state, snapshot_hash = _snapshot(config)
     run_hash = _hash_json({
         "version": QUALITY_VERSION, "snapshot": snapshot_hash,
         "schema": schema,
         "rules": {key: settings[key] for key in ("max_quarantine_fraction", "schema_drift_min_records")},
     })
-    root = created / config["paths"]["validation_dir"]
+    root = curated / config["paths"]["validation_dir"]
     target = root / run_hash
     root.mkdir(parents=True, exist_ok=True)
     counts = Counter(raw_records=0, accepted_records=0, quarantined_records=0)

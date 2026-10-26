@@ -29,7 +29,7 @@ class PopulationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         self.config = json.loads((PROJECT / "config/setting.json").read_text())
-        self.config["paths"]["created_dir"] = str(self.root / "created")
+        self.config["paths"]["curated_dir"] = str(self.root / "curated")
         self.config["paths"]["reference_dir"] = str(self.root / "reference")
         self.settings = self.config["population"]
         self.settings["expected_sha256"] = hashlib.sha256(CSV.encode()).hexdigest()
@@ -42,7 +42,7 @@ class PopulationTests(unittest.TestCase):
 
     def validated_input(self, records, *, status="passed"):
         run = "a" * 64
-        root = Path(self.config["paths"]["created_dir"]) / "validation"
+        root = Path(self.config["paths"]["curated_dir"]) / "validation"
         directory = root / run
         directory.mkdir(parents=True, exist_ok=True)
         (directory / "accepted.jsonl").write_text("".join(canonical_json(r) + "\n" for r in records), encoding="utf-8")
@@ -193,7 +193,7 @@ class PopulationTests(unittest.TestCase):
         (directory / "validation_report.json").write_text(json.dumps(report))
         with self.assertRaisesRegex(DataError, "accounting"):
             join_population(self.config, progress=None)
-        self.assertFalse((Path(self.config["paths"]["created_dir"]) / "population_join/latest.json").exists())
+        self.assertFalse((Path(self.config["paths"]["curated_dir"]) / "population_join/latest.json").exists())
 
     def test_repeated_and_independent_runs_produce_identical_output_bytes(self):
         self.reference()
@@ -206,7 +206,7 @@ class PopulationTests(unittest.TestCase):
         second = join_population(self.config, progress=None)
         self.assertEqual(first, second)
         self.assertEqual(mtimes, {p.name: p.stat().st_mtime_ns for p in target.iterdir()})
-        self.config["paths"]["created_dir"] = str(self.root / "independent")
+        self.config["paths"]["curated_dir"] = str(self.root / "independent")
         self.validated_input(rows)
         other = join_population(self.config, progress=None)
         self.assertEqual(contents, {p.name: p.read_bytes() for p in Path(other["output_dir"]).iterdir()})
@@ -227,7 +227,7 @@ class PopulationTests(unittest.TestCase):
         with patch("data_factory.population.enrich_case", side_effect=KeyboardInterrupt()):
             with self.assertRaises(KeyboardInterrupt):
                 join_population(self.config, progress=None)
-        root = Path(self.config["paths"]["created_dir"]) / "population_join"
+        root = Path(self.config["paths"]["curated_dir"]) / "population_join"
         self.assertEqual(list(root.iterdir()), [])
         self.assertEqual(join_population(self.config, progress=None)["output_records"], 1)
 

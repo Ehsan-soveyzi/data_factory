@@ -66,7 +66,7 @@ based only on this coarse comparison. Address-level spatial reconciliation is
 outside this stage. Rate eligibility does not remove the limitations of the
 historical baseline or the approximate geographic mapping.
 
-Published together under `data/created_data/population_join/<run-hash>/`:
+Published together under `data/curated_data/population_join/<run-hash>/`:
 
 - `enriched_cases.jsonl`: every accepted case plus the nine added fields.
 - `join_issues.jsonl`: identifiers, accepted-row positions and join findings.

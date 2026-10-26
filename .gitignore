@@ -6,8 +6,12 @@ __pycache__/
 venv/
 data/raw/
 data/raw_data/
-data/created_data/validation/
+data/curated_data/validation/
 data/reference_data/
-data/created_data/population_join/
-data/created_data/delivery/
+data/curated_data/population_join/
+data/curated_data/delivery/
 ~$*.docx
+.env
+.env.*
+!.env.example
+config/database.local.json

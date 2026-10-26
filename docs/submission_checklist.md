@@ -9,7 +9,7 @@ python -m data_factory.testing
 این فرمان Test Discovery استاندارد را با منع DNS و اتصال socket اجرا می‌کند.
 فرمان عادی `python -m unittest discover -s tests -v` هم پشتیبانی می‌شود.
 پاسخ‌های HTTP شبیه‌سازی و فایل‌ها در پوشهٔ موقت ساخته می‌شوند.
-نتیجهٔ واقعی اجرا و تعداد تست‌ها در بخش شش `solution.ipynb` ذخیره شده است.
+نتیجهٔ واقعی اجرا و تعداد تست‌ها در بخش شش `stages/stage_01/solution.ipynb` ذخیره شده است.
 
 | موضوع | شواهد اصلی |
 |---|---|

@@ -17,9 +17,11 @@ root. Each stage has its own notebook and decision report.
 | Stage | Deliverables | Status |
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Existing implementation |
-| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [report template](stages/stage_02/report.md) | Structure prepared; implementation pending |
+| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Olist prepared and saved NYC reviewed; database work pending |
 
-The installation and pipeline commands below describe stage 01. The database
+The installation and pipeline commands below describe stage 01. For offline Olist
+preparation, run `python -m data_factory clean-olist`; see the stage 02 guide for
+curated outputs and cleaning evidence. The database
 configuration example and `.env.example` reserve stage 02 settings; database
 loading and bootstrap commands are not available yet.
 

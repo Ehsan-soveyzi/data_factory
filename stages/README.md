@@ -7,7 +7,7 @@ at the repository root. Run CLI commands from the repository root.
 | Stage | Notebook | Decision report | Status |
 |---|---|---|---|
 | 01 - Data Factory | [Notebook](stage_01/solution.ipynb) | [Report](stage_01/report.docx) | Existing implementation; see its delivery status |
-| 02 - Database Performance | [Notebook](stage_02/solution.ipynb) | [Report](stage_02/report.md) | Structure only; database work is pending |
+| 02 - Database Performance | [Notebook](stage_02/solution.ipynb) | [Report](stage_02/report.md) | Olist prepared and saved NYC reviewed; database work pending |
 
 Open either notebook from its stage directory or from the repository root.
 The setup cell locates the shared project root before resolving data paths.

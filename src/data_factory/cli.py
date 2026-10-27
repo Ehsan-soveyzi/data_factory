@@ -42,7 +42,31 @@ def main():
     run_parser.add_argument("--since-last-run", action="store_true",
                             help="Acquire a separate interval after the preceding completed scope.")
 
+    clean_parser = commands.add_parser("clean-olist", help="Prepare local Olist CSVs without a database connection.")
+    clean_parser.add_argument("--project-root", default=".")
+
     args = parser.parse_args()
+
+    if args.command == "clean-olist":
+        from .olist_cleaning import run_olist_cleaning
+        try:
+            result = run_olist_cleaning(args.project_root)
+        except DataError as error:
+            print(f"Data/state error: {error}", file=sys.stderr)
+            return 4
+        except (ValueError, KeyError) as error:
+            print(f"Configuration error: {error}", file=sys.stderr)
+            return 2
+        except OSError as error:
+            print(f"File-system error: {error}", file=sys.stderr)
+            return 5
+        except KeyboardInterrupt:
+            return 130
+        print(json.dumps({"status": result["report"]["status"],
+                          "deduplicated_rows": result["report"]["deduplicated_rows"],
+                          "quarantined_rows": result["report"]["quarantined_rows"],
+                          "output_dir": result["output_dir"], "manifest_path": result["manifest_path"]}, sort_keys=True))
+        return 0
 
     if args.max_batches is not None and args.stage != "ingest":
         parser.error("--max-batches applies only to --stage ingest.")

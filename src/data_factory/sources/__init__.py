@@ -1,1 +1,1 @@
-"""Source adapters; reserved for Olist CSV ingestion in stage 02."""
+"""Source adapters, including immutable Olist CSV snapshots."""

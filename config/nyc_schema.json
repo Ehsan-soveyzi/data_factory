@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "status": "schema_proposal_not_database_ddl",
+  "schema": "nyc311",
+  "stage01_contract": "config/schema.json",
+  "case_columns": [
+    {
+      "source": "agency",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "agency_name",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "analysis_area_key",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "borough",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "borough_comparison",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "city",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "closed_date",
+      "kind": "datetime",
+      "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "closure_days",
+      "kind": "float",
+      "sql_type": "DOUBLE PRECISION",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "closure_hours",
+      "kind": "float",
+      "sql_type": "DOUBLE PRECISION",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "complaint_type",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "created_date",
+      "kind": "datetime",
+      "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "created_month",
+      "kind": "string",
+      "sql_type": "CHAR(7)",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "descriptor",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "has_recorded_closure",
+      "kind": "boolean",
+      "sql_type": "BOOLEAN",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "incident_zip",
+      "kind": "string",
+      "sql_type": "CHAR(5)",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "latitude",
+      "kind": "float",
+      "sql_type": "DOUBLE PRECISION",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "location_type",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "longitude",
+      "kind": "float",
+      "sql_type": "DOUBLE PRECISION",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "open_data_channel_type",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "population_area",
+      "kind": "string",
+      "sql_type": "CHAR(5)",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "population_geography",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "population_areas",
+      "primary_key": false
+    },
+    {
+      "source": "population_join_status",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "population_rate_eligible",
+      "kind": "boolean",
+      "sql_type": "BOOLEAN",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "population_reference_date",
+      "kind": "date",
+      "sql_type": "DATE",
+      "nullable": true,
+      "target_table": "population_areas",
+      "primary_key": false
+    },
+    {
+      "source": "quality_flags",
+      "kind": "array",
+      "sql_type": "JSONB",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "reference_borough",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "population_areas",
+      "primary_key": false
+    },
+    {
+      "source": "reference_neighborhood",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "population_areas",
+      "primary_key": false
+    },
+    {
+      "source": "reference_population",
+      "kind": "float",
+      "sql_type": "NUMERIC(14,2)",
+      "nullable": true,
+      "target_table": "population_areas",
+      "primary_key": false
+    },
+    {
+      "source": "resolution_action_updated_date",
+      "kind": "datetime",
+      "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "resolution_description",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "status",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": true,
+      "target_table": "cases",
+      "primary_key": false
+    },
+    {
+      "source": "unique_key",
+      "kind": "string",
+      "sql_type": "TEXT",
+      "nullable": false,
+      "target_table": "cases",
+      "primary_key": true
+    }
+  ],
+  "tables": {
+    "cases": {
+      "primary_key": [
+        "unique_key"
+      ],
+      "source_columns": [
+        "agency",
+        "agency_name",
+        "analysis_area_key",
+        "borough",
+        "borough_comparison",
+        "city",
+        "closed_date",
+        "closure_days",
+        "closure_hours",
+        "complaint_type",
+        "created_date",
+        "created_month",
+        "descriptor",
+        "has_recorded_closure",
+        "incident_zip",
+        "latitude",
+        "location_type",
+        "longitude",
+        "open_data_channel_type",
+        "population_area",
+        "population_join_status",
+        "population_rate_eligible",
+        "quality_flags",
+        "resolution_action_updated_date",
+        "resolution_description",
+        "status",
+        "unique_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "population_area",
+          "parent": "population_areas",
+          "parent_column": "population_area",
+          "nullable": true
+        }
+      ]
+    },
+    "population_areas": {
+      "primary_key": [
+        "population_area"
+      ],
+      "columns": {
+        "population_area": {
+          "sql_type": "CHAR(5)",
+          "nullable": false
+        },
+        "population_geography": {
+          "sql_type": "TEXT",
+          "nullable": false
+        },
+        "population_reference_date": {
+          "sql_type": "DATE",
+          "nullable": false
+        },
+        "reference_population": {
+          "sql_type": "NUMERIC(14,2)",
+          "nullable": false
+        },
+        "reference_borough": {
+          "sql_type": "TEXT",
+          "nullable": false
+        },
+        "reference_neighborhood": {
+          "sql_type": "TEXT",
+          "nullable": true
+        }
+      }
+    },
+    "population_zip_aliases": {
+      "primary_key": [
+        "incident_zip"
+      ],
+      "columns": {
+        "incident_zip": {
+          "sql_type": "CHAR(5)",
+          "nullable": false
+        },
+        "population_area": {
+          "sql_type": "CHAR(5)",
+          "nullable": false
+        }
+      },
+      "foreign_keys": [
+        {
+          "column": "population_area",
+          "parent": "population_areas",
+          "parent_column": "population_area"
+        }
+      ]
+    }
+  },
+  "policies": {
+    "read": "Resolve latest.json; verify manifest hashes; read JSONL with lines=True in batches and preserve text identifiers.",
+    "scope": "Inspect the complete saved artifact; retain its acquisition-completion status separately.",
+    "population": "Store reference attributes once per MODZCTA and alias, not once per service request; retain unmatched case rows.",
+    "quality": "Reuse stage 01 normalized values and quality flags without redownload, imputation or a second cleaning pass.",
+    "derived_reference_count": "matched_case_count is a snapshot diagnostic, not a permanent population attribute."
+  }
+}

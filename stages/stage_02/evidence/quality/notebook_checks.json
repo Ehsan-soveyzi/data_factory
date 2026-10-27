@@ -1,0 +1,995 @@
+{
+  "chronology": [
+    {
+      "comparable_rows": 99281,
+      "end": "order_approved_at",
+      "negative_duration_rows": 0,
+      "start": "order_purchase_timestamp"
+    },
+    {
+      "comparable_rows": 97644,
+      "end": "order_delivered_carrier_date",
+      "negative_duration_rows": 1359,
+      "start": "order_approved_at"
+    },
+    {
+      "comparable_rows": 96475,
+      "end": "order_delivered_customer_date",
+      "negative_duration_rows": 23,
+      "start": "order_delivered_carrier_date"
+    },
+    {
+      "comparable_rows": 96476,
+      "end": "order_delivered_customer_date",
+      "negative_duration_rows": 0,
+      "start": "order_purchase_timestamp"
+    }
+  ],
+  "contract_sha256": "2d75074f2022fd86ca65b46648b01e81df603c5f2d8563d6c133bfb8b32dd0b5",
+  "database_writes": 0,
+  "dates": [
+    {
+      "column": "order_purchase_timestamp",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-10-17T17:30:18",
+      "min": "2016-09-04T21:15:19",
+      "missing_rows": 0,
+      "non_midnight_rows": null,
+      "table": "orders"
+    },
+    {
+      "column": "order_approved_at",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-09-03T17:40:06",
+      "min": "2016-09-15T12:16:38",
+      "missing_rows": 160,
+      "non_midnight_rows": null,
+      "table": "orders"
+    },
+    {
+      "column": "order_delivered_carrier_date",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-09-11T19:48:28",
+      "min": "2016-10-08T10:34:01",
+      "missing_rows": 1783,
+      "non_midnight_rows": null,
+      "table": "orders"
+    },
+    {
+      "column": "order_delivered_customer_date",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-10-17T13:22:46",
+      "min": "2016-10-11T13:46:32",
+      "missing_rows": 2965,
+      "non_midnight_rows": null,
+      "table": "orders"
+    },
+    {
+      "column": "order_estimated_delivery_date",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-11-12T00:00:00",
+      "min": "2016-09-30T00:00:00",
+      "missing_rows": 0,
+      "non_midnight_rows": 0.0,
+      "table": "orders"
+    },
+    {
+      "column": "shipping_limit_date",
+      "invalid_nonblank_rows": 0,
+      "max": "2020-04-09T22:35:08",
+      "min": "2016-09-19T00:15:34",
+      "missing_rows": 0,
+      "non_midnight_rows": null,
+      "table": "order_items"
+    },
+    {
+      "column": "review_creation_date",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-08-31T00:00:00",
+      "min": "2016-10-02T00:00:00",
+      "missing_rows": 0,
+      "non_midnight_rows": null,
+      "table": "order_reviews"
+    },
+    {
+      "column": "review_answer_timestamp",
+      "invalid_nonblank_rows": 0,
+      "max": "2018-10-29T12:27:35",
+      "min": "2016-10-07T18:32:28",
+      "missing_rows": 0,
+      "non_midnight_rows": null,
+      "table": "order_reviews"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "child": "orders",
+      "column": "customer_id",
+      "missing_child_rows": 0,
+      "parent": "customers",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "order_items",
+      "column": "order_id",
+      "missing_child_rows": 0,
+      "parent": "orders",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "order_items",
+      "column": "product_id",
+      "missing_child_rows": 0,
+      "parent": "products",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "order_items",
+      "column": "seller_id",
+      "missing_child_rows": 0,
+      "parent": "sellers",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "order_payments",
+      "column": "order_id",
+      "missing_child_rows": 0,
+      "parent": "orders",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "order_reviews",
+      "column": "order_id",
+      "missing_child_rows": 0,
+      "parent": "orders",
+      "unmatched_distinct": 0,
+      "unmatched_rows": 0,
+      "unmatched_values": []
+    },
+    {
+      "child": "products",
+      "column": "product_category_name",
+      "missing_child_rows": 610,
+      "parent": "category_translation",
+      "unmatched_distinct": 2,
+      "unmatched_rows": 13,
+      "unmatched_values": [
+        "pc_gamer",
+        "portateis_cozinha_e_preparadores_de_alimentos"
+      ]
+    }
+  ],
+  "implementation": {
+    "file": "src/data_factory/database/source_inspection.py",
+    "sha256": "c11b0a156518216f2aaacbd162fa9eb6775c775b39ec04b57fe49db451ccecfd"
+  },
+  "inputs": {
+    "category_translation": {
+      "file": "data/stage_02/raw/product_category_name_translation.csv",
+      "sha256": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+    },
+    "customers": {
+      "file": "data/stage_02/raw/olist_customers_dataset.csv",
+      "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2"
+    },
+    "geolocation": {
+      "file": "data/stage_02/raw/olist_geolocation_dataset.csv",
+      "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6"
+    },
+    "order_items": {
+      "file": "data/stage_02/raw/olist_order_items_dataset.csv",
+      "sha256": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279"
+    },
+    "order_payments": {
+      "file": "data/stage_02/raw/olist_order_payments_dataset.csv",
+      "sha256": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0"
+    },
+    "order_reviews": {
+      "file": "data/stage_02/raw/olist_order_reviews_dataset.csv",
+      "sha256": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+    },
+    "orders": {
+      "file": "data/stage_02/raw/olist_orders_dataset.csv",
+      "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf"
+    },
+    "products": {
+      "file": "data/stage_02/raw/olist_products_dataset.csv",
+      "sha256": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc"
+    },
+    "sellers": {
+      "file": "data/stage_02/raw/olist_sellers_dataset.csv",
+      "sha256": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e"
+    }
+  },
+  "keys": [
+    {
+      "duplicate_extra_rows": 0,
+      "key": "order_id",
+      "missing_rows": 0,
+      "table": "orders",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "customer_id",
+      "missing_rows": 0,
+      "table": "customers",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 3345,
+      "key": "customer_unique_id",
+      "missing_rows": 0,
+      "table": "customers",
+      "valid_candidate": false
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "order_id + order_item_id",
+      "missing_rows": 0,
+      "table": "order_items",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "order_id + payment_sequential",
+      "missing_rows": 0,
+      "table": "order_payments",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 814,
+      "key": "review_id",
+      "missing_rows": 0,
+      "table": "order_reviews",
+      "valid_candidate": false
+    },
+    {
+      "duplicate_extra_rows": 551,
+      "key": "order_id",
+      "missing_rows": 0,
+      "table": "order_reviews",
+      "valid_candidate": false
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "review_id + order_id",
+      "missing_rows": 0,
+      "table": "order_reviews",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "product_id",
+      "missing_rows": 0,
+      "table": "products",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "seller_id",
+      "missing_rows": 0,
+      "table": "sellers",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 0,
+      "key": "product_category_name",
+      "missing_rows": 0,
+      "table": "category_translation",
+      "valid_candidate": true
+    },
+    {
+      "duplicate_extra_rows": 981148,
+      "key": "geolocation_zip_code_prefix",
+      "missing_rows": 0,
+      "table": "geolocation",
+      "valid_candidate": false
+    }
+  ],
+  "kind": "module_schema_checks",
+  "missing": [
+    {
+      "blank_rows": 0,
+      "column": "order_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_status",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_purchase_timestamp",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_approved_at",
+      "effective_missing_rows": 160,
+      "null_rows": 160,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_delivered_carrier_date",
+      "effective_missing_rows": 1783,
+      "null_rows": 1783,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_delivered_customer_date",
+      "effective_missing_rows": 2965,
+      "null_rows": 2965,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_estimated_delivery_date",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "orders"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "customers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_unique_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "customers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_zip_code_prefix",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "customers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_city",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "customers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "customer_state",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "customers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "geolocation_zip_code_prefix",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "geolocation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "geolocation_lat",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "geolocation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "geolocation_lng",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "geolocation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "geolocation_city",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "geolocation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "geolocation_state",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "geolocation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_item_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "seller_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "shipping_limit_date",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "price",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "freight_value",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_items"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_payments"
+    },
+    {
+      "blank_rows": 0,
+      "column": "payment_sequential",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_payments"
+    },
+    {
+      "blank_rows": 0,
+      "column": "payment_type",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_payments"
+    },
+    {
+      "blank_rows": 0,
+      "column": "payment_installments",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_payments"
+    },
+    {
+      "blank_rows": 0,
+      "column": "payment_value",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_payments"
+    },
+    {
+      "blank_rows": 0,
+      "column": "review_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 0,
+      "column": "order_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 0,
+      "column": "review_score",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 2,
+      "column": "review_comment_title",
+      "effective_missing_rows": 87658,
+      "null_rows": 87656,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 27,
+      "column": "review_comment_message",
+      "effective_missing_rows": 58274,
+      "null_rows": 58247,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 0,
+      "column": "review_creation_date",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 0,
+      "column": "review_answer_timestamp",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "order_reviews"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_category_name",
+      "effective_missing_rows": 610,
+      "null_rows": 610,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_name_lenght",
+      "effective_missing_rows": 610,
+      "null_rows": 610,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_description_lenght",
+      "effective_missing_rows": 610,
+      "null_rows": 610,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_photos_qty",
+      "effective_missing_rows": 610,
+      "null_rows": 610,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_weight_g",
+      "effective_missing_rows": 2,
+      "null_rows": 2,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_length_cm",
+      "effective_missing_rows": 2,
+      "null_rows": 2,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_height_cm",
+      "effective_missing_rows": 2,
+      "null_rows": 2,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_width_cm",
+      "effective_missing_rows": 2,
+      "null_rows": 2,
+      "table": "products"
+    },
+    {
+      "blank_rows": 0,
+      "column": "seller_id",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "sellers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "seller_zip_code_prefix",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "sellers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "seller_city",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "sellers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "seller_state",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "sellers"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_category_name",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "category_translation"
+    },
+    {
+      "blank_rows": 0,
+      "column": "product_category_name_english",
+      "effective_missing_rows": 0,
+      "null_rows": 0,
+      "table": "category_translation"
+    }
+  ],
+  "numeric": [
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "order_item_id",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 21.0,
+      "min": 1.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_items",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "price",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 6735.0,
+      "min": 0.85,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_items",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "freight_value",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 409.68,
+      "min": 0.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_items",
+      "zero_rows": 383,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "payment_sequential",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 29.0,
+      "min": 1.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_payments",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "payment_installments",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 24.0,
+      "min": 0.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_payments",
+      "zero_rows": 2,
+      "zero_to_null_rows": 2
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "payment_value",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 13664.08,
+      "min": 0.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_payments",
+      "zero_rows": 9,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "review_score",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 5.0,
+      "min": 1.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "order_reviews",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_name_lenght",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 76.0,
+      "min": 5.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_description_lenght",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 3992.0,
+      "min": 4.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_photos_qty",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 20.0,
+      "min": 1.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_weight_g",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 40425.0,
+      "min": 0.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 4,
+      "zero_to_null_rows": 4
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_length_cm",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 105.0,
+      "min": 7.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_height_cm",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 105.0,
+      "min": 2.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "product_width_cm",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 118.0,
+      "min": 6.0,
+      "money_precision_errors": 0,
+      "negative_rows": 0,
+      "table": "products",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "geolocation_lat",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 45.0659331827,
+      "min": -36.6053744107,
+      "money_precision_errors": 0,
+      "negative_rows": 998827,
+      "table": "geolocation",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    },
+    {
+      "above_rule_max_rows": 0,
+      "below_rule_min_rows": 0,
+      "column": "geolocation_lng",
+      "fractional_integer_rows": 0,
+      "integer_storage_overflow_rows": 0,
+      "invalid_or_nonfinite_rows": 0,
+      "max": 121.1053938106,
+      "min": -101.4667664493,
+      "money_precision_errors": 0,
+      "negative_rows": 1000160,
+      "table": "geolocation",
+      "zero_rows": 0,
+      "zero_to_null_rows": 0
+    }
+  ],
+  "postal": [
+    {
+      "invalid_nonblank_rows": 0,
+      "missing_geolocation_rows": 278,
+      "missing_rows": 0,
+      "needs_zero_padding_rows": 0,
+      "table": "customers"
+    },
+    {
+      "invalid_nonblank_rows": 0,
+      "missing_geolocation_rows": 7,
+      "missing_rows": 0,
+      "needs_zero_padding_rows": 0,
+      "table": "sellers"
+    },
+    {
+      "invalid_nonblank_rows": 0,
+      "missing_geolocation_rows": 0,
+      "missing_rows": 0,
+      "needs_zero_padding_rows": 0,
+      "table": "geolocation"
+    }
+  ],
+  "proposed_category_rows": 73,
+  "proposed_postal_area_rows": 19177,
+  "quarantine_executed": false,
+  "sources": [
+    {
+      "columns": 8,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 99441,
+      "table": "orders"
+    },
+    {
+      "columns": 5,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 99441,
+      "table": "customers"
+    },
+    {
+      "columns": 5,
+      "exact_duplicate_extra_rows": 261831,
+      "rows": 1000163,
+      "table": "geolocation"
+    },
+    {
+      "columns": 7,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 112650,
+      "table": "order_items"
+    },
+    {
+      "columns": 5,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 103886,
+      "table": "order_payments"
+    },
+    {
+      "columns": 7,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 99224,
+      "table": "order_reviews"
+    },
+    {
+      "columns": 9,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 32951,
+      "table": "products"
+    },
+    {
+      "columns": 4,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 3095,
+      "table": "sellers"
+    },
+    {
+      "columns": 2,
+      "exact_duplicate_extra_rows": 0,
+      "rows": 71,
+      "table": "category_translation"
+    }
+  ],
+  "special_counts": {
+    "delivered_without_actual_date": 8,
+    "orders_without_payment": 1
+  }
+}

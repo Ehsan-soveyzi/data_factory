@@ -1,0 +1,1515 @@
+{
+  "nyc311": {
+    "artifact": "data/curated_data/delivery/02fc160e6673cfd7f52b2ded9cb48057eec9f46af139add0bd0cba015bdbccef/analytical_cases.jsonl",
+    "columns": 32,
+    "date_ranges": {
+      "closed_date": {
+        "max": "2024-07-26T22:13:46.000000",
+        "min": "2024-01-01T00:12:42.000000"
+      },
+      "created_date": {
+        "max": "2024-07-25T23:32:51.000000",
+        "min": "2024-01-01T00:00:20.000000"
+      }
+    },
+    "delivery_complete": false,
+    "duplicate_primary_key_extra_rows": 0,
+    "fields": [
+      {
+        "field": "agency",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "agency_name",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "analysis_area_key",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "borough",
+        "missing_rows": 13,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "borough_comparison",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "city",
+        "missing_rows": 14418,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "closed_date",
+        "missing_rows": 1,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "closure_days",
+        "missing_rows": 1,
+        "observed_types": [
+          "NoneType",
+          "float"
+        ]
+      },
+      {
+        "field": "closure_hours",
+        "missing_rows": 1,
+        "observed_types": [
+          "NoneType",
+          "float"
+        ]
+      },
+      {
+        "field": "complaint_type",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "created_date",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "created_month",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "descriptor",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "has_recorded_closure",
+        "missing_rows": 0,
+        "observed_types": [
+          "bool"
+        ]
+      },
+      {
+        "field": "incident_zip",
+        "missing_rows": 67,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "latitude",
+        "missing_rows": 1633,
+        "observed_types": [
+          "NoneType",
+          "float"
+        ]
+      },
+      {
+        "field": "location_type",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "longitude",
+        "missing_rows": 1633,
+        "observed_types": [
+          "NoneType",
+          "float"
+        ]
+      },
+      {
+        "field": "open_data_channel_type",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "population_area",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "population_geography",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "population_join_status",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      },
+      {
+        "field": "population_rate_eligible",
+        "missing_rows": 0,
+        "observed_types": [
+          "bool"
+        ]
+      },
+      {
+        "field": "population_reference_date",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "quality_flags",
+        "missing_rows": 0,
+        "observed_types": [
+          "list"
+        ]
+      },
+      {
+        "field": "reference_borough",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "reference_neighborhood",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "reference_population",
+        "missing_rows": 328,
+        "observed_types": [
+          "NoneType",
+          "float"
+        ]
+      },
+      {
+        "field": "resolution_action_updated_date",
+        "missing_rows": 1,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "resolution_description",
+        "missing_rows": 13,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "status",
+        "missing_rows": 13,
+        "observed_types": [
+          "NoneType",
+          "str"
+        ]
+      },
+      {
+        "field": "unique_key",
+        "missing_rows": 0,
+        "observed_types": [
+          "str"
+        ]
+      }
+    ],
+    "manifest": "data/curated_data/delivery/executions/9a24545ac2784f9a96d664bd7e122866/run_manifest.json",
+    "manifest_sha256": "c34cea73e10dc19763138a814dddf3a09239153c15d38046bb9e16db8213e90f",
+    "missing_primary_keys": 0,
+    "rows": 330000,
+    "scope": {
+      "boroughs": [],
+      "complaint_types": [
+        "Noise - Commercial",
+        "Noise - Park",
+        "Noise - Residential",
+        "Noise - Street/Sidewalk",
+        "Noise - Vehicle"
+      ],
+      "end_date_exclusive": "2025-07-01T00:00:00.000000",
+      "endpoint": "https://data.cityofnewyork.us/resource/erm2-nwe9.json",
+      "order": "created_date ASC, unique_key ASC",
+      "start_date": "2024-01-01T00:00:00.000000"
+    },
+    "scope_note": "Partial acquisition; the full selected 18-month scope is not yet available.",
+    "sha256": "ec8e554dd4e801eee75969f3a634f502b732a76322242f660e1b0f752bcd614a"
+  },
+  "olist": {
+    "candidate_keys": [
+      {
+        "columns": [
+          "customer_id"
+        ],
+        "distinct_complete_keys": 99441,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "customers",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "customer_unique_id"
+        ],
+        "distinct_complete_keys": 96096,
+        "duplicate_extra_rows": 3345,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 6342,
+        "table": "customers",
+        "valid_candidate": false
+      },
+      {
+        "columns": [
+          "order_id"
+        ],
+        "distinct_complete_keys": 99441,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "orders",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "order_id",
+          "order_item_id"
+        ],
+        "distinct_complete_keys": 112650,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "order_items",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "order_id",
+          "payment_sequential"
+        ],
+        "distinct_complete_keys": 103886,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "order_payments",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "review_id",
+          "order_id"
+        ],
+        "distinct_complete_keys": 99224,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "order_reviews",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "review_id"
+        ],
+        "distinct_complete_keys": 98410,
+        "duplicate_extra_rows": 814,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 1603,
+        "table": "order_reviews",
+        "valid_candidate": false
+      },
+      {
+        "columns": [
+          "order_id"
+        ],
+        "distinct_complete_keys": 98673,
+        "duplicate_extra_rows": 551,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 1098,
+        "table": "order_reviews",
+        "valid_candidate": false
+      },
+      {
+        "columns": [
+          "product_id"
+        ],
+        "distinct_complete_keys": 32951,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "products",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "seller_id"
+        ],
+        "distinct_complete_keys": 3095,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "sellers",
+        "valid_candidate": true
+      },
+      {
+        "columns": [
+          "geolocation_zip_code_prefix"
+        ],
+        "distinct_complete_keys": 19015,
+        "duplicate_extra_rows": 981148,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 999120,
+        "table": "geolocation",
+        "valid_candidate": false
+      },
+      {
+        "columns": [
+          "product_category_name"
+        ],
+        "distinct_complete_keys": 71,
+        "duplicate_extra_rows": 0,
+        "missing_rows": 0,
+        "rows_in_duplicate_groups": 0,
+        "table": "category_translation",
+        "valid_candidate": true
+      }
+    ],
+    "chronology": [
+      {
+        "comparable_rows": 99281,
+        "end": "order_approved_at",
+        "negative_duration_rows": 0,
+        "start": "order_purchase_timestamp"
+      },
+      {
+        "comparable_rows": 97644,
+        "end": "order_delivered_carrier_date",
+        "negative_duration_rows": 1359,
+        "start": "order_approved_at"
+      },
+      {
+        "comparable_rows": 96475,
+        "end": "order_delivered_customer_date",
+        "negative_duration_rows": 23,
+        "start": "order_delivered_carrier_date"
+      },
+      {
+        "comparable_rows": 96476,
+        "end": "order_delivered_customer_date",
+        "negative_duration_rows": 0,
+        "start": "order_purchase_timestamp"
+      }
+    ],
+    "columns": [
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_id",
+        "sql_type": "TEXT",
+        "table": "customers",
+        "target": "customer_id",
+        "unique_nonblank": 99441,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_unique_id",
+        "sql_type": "TEXT",
+        "table": "customers",
+        "target": "customer_unique_id",
+        "unique_nonblank": 96096,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 5,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "needs_zero_padding_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_zip_code_prefix",
+        "sql_type": "CHAR(5)",
+        "table": "customers",
+        "target": "customer_zip_code_prefix",
+        "unique_nonblank": 14994,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_city",
+        "sql_type": "TEXT",
+        "table": "customers",
+        "target": "customer_city",
+        "unique_nonblank": 4119,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 2,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_state",
+        "sql_type": "CHAR(2)",
+        "table": "customers",
+        "target": "customer_state",
+        "unique_nonblank": 27,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "order_id",
+        "sql_type": "TEXT",
+        "table": "orders",
+        "target": "order_id",
+        "unique_nonblank": 99441,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "customer_id",
+        "sql_type": "TEXT",
+        "table": "orders",
+        "target": "customer_id",
+        "unique_nonblank": 99441,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 11,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "order_status",
+        "sql_type": "TEXT",
+        "table": "orders",
+        "target": "order_status",
+        "unique_nonblank": 8,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-10-17T17:30:18",
+        "maximum_text_length": 19,
+        "min": "2016-09-04T21:15:19",
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "order_purchase_timestamp",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "orders",
+        "target": "order_purchase_timestamp",
+        "unique_nonblank": 98875,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-09-03T17:40:06",
+        "maximum_text_length": 19,
+        "min": "2016-09-15T12:16:38",
+        "missing_percent": 0.1609,
+        "missing_rows": 160,
+        "nullable": true,
+        "rows": 99441,
+        "source": "order_approved_at",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "orders",
+        "target": "order_approved_at",
+        "unique_nonblank": 90733,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-09-11T19:48:28",
+        "maximum_text_length": 19,
+        "min": "2016-10-08T10:34:01",
+        "missing_percent": 1.793,
+        "missing_rows": 1783,
+        "nullable": true,
+        "rows": 99441,
+        "source": "order_delivered_carrier_date",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "orders",
+        "target": "order_delivered_carrier_date",
+        "unique_nonblank": 81018,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-10-17T13:22:46",
+        "maximum_text_length": 19,
+        "min": "2016-10-11T13:46:32",
+        "missing_percent": 2.9817,
+        "missing_rows": 2965,
+        "nullable": true,
+        "rows": 99441,
+        "source": "order_delivered_customer_date",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "orders",
+        "target": "order_delivered_customer_date",
+        "unique_nonblank": 95664,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-11-12T00:00:00",
+        "maximum_text_length": 19,
+        "min": "2016-09-30T00:00:00",
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "non_midnight_rows": 0,
+        "nullable": false,
+        "rows": 99441,
+        "source": "order_estimated_delivery_date",
+        "sql_type": "DATE",
+        "table": "orders",
+        "target": "order_estimated_delivery_date",
+        "unique_nonblank": 459,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "order_id",
+        "sql_type": "TEXT",
+        "table": "order_items",
+        "target": "order_id",
+        "unique_nonblank": 98666,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 21.0,
+        "maximum_text_length": 2,
+        "min": 1.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "order_item_id",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "order_items",
+        "target": "order_item_id",
+        "unique_nonblank": 21,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "product_id",
+        "sql_type": "TEXT",
+        "table": "order_items",
+        "target": "product_id",
+        "unique_nonblank": 32951,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "seller_id",
+        "sql_type": "TEXT",
+        "table": "order_items",
+        "target": "seller_id",
+        "unique_nonblank": 3095,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2020-04-09T22:35:08",
+        "maximum_text_length": 19,
+        "min": "2016-09-19T00:15:34",
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "shipping_limit_date",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "order_items",
+        "target": "shipping_limit_date",
+        "unique_nonblank": 93318,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "decimal_precision_violation_rows": 0,
+        "invalid_rows": 0,
+        "max": 6735.0,
+        "maximum_text_length": 7,
+        "min": 0.85,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "price",
+        "sql_type": "NUMERIC(12,2)",
+        "table": "order_items",
+        "target": "price",
+        "unique_nonblank": 5968,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "decimal_precision_violation_rows": 0,
+        "invalid_rows": 0,
+        "max": 409.68,
+        "maximum_text_length": 6,
+        "min": 0.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 112650,
+        "source": "freight_value",
+        "sql_type": "NUMERIC(12,2)",
+        "table": "order_items",
+        "target": "freight_value",
+        "unique_nonblank": 6999,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 383
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 103886,
+        "source": "order_id",
+        "sql_type": "TEXT",
+        "table": "order_payments",
+        "target": "order_id",
+        "unique_nonblank": 99440,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 29.0,
+        "maximum_text_length": 2,
+        "min": 1.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 103886,
+        "source": "payment_sequential",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "order_payments",
+        "target": "payment_sequential",
+        "unique_nonblank": 29,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 11,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 103886,
+        "source": "payment_type",
+        "sql_type": "TEXT",
+        "table": "order_payments",
+        "target": "payment_type",
+        "unique_nonblank": 5,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 24.0,
+        "maximum_text_length": 2,
+        "min": 0.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 103886,
+        "source": "payment_installments",
+        "sql_type": "SMALLINT",
+        "storage_overflow_rows": 0,
+        "table": "order_payments",
+        "target": "payment_installments",
+        "unique_nonblank": 24,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 2,
+        "zero_to_null_rows": 2
+      },
+      {
+        "below_minimum_rows": 0,
+        "decimal_precision_violation_rows": 0,
+        "invalid_rows": 0,
+        "max": 13664.08,
+        "maximum_text_length": 8,
+        "min": 0.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 103886,
+        "source": "payment_value",
+        "sql_type": "NUMERIC(12,2)",
+        "table": "order_payments",
+        "target": "payment_value",
+        "unique_nonblank": 29077,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 9
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99224,
+        "source": "review_id",
+        "sql_type": "TEXT",
+        "table": "order_reviews",
+        "target": "review_id",
+        "unique_nonblank": 98410,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99224,
+        "source": "order_id",
+        "sql_type": "TEXT",
+        "table": "order_reviews",
+        "target": "order_id",
+        "unique_nonblank": 98673,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "above_maximum_rows": 0,
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 5.0,
+        "maximum_text_length": 1,
+        "min": 1.0,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 0,
+        "nullable": false,
+        "rows": 99224,
+        "source": "review_score",
+        "sql_type": "SMALLINT",
+        "storage_overflow_rows": 0,
+        "table": "order_reviews",
+        "target": "review_score",
+        "unique_nonblank": 5,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 26,
+        "missing_percent": 88.3435,
+        "missing_rows": 87658,
+        "nullable": true,
+        "rows": 99224,
+        "source": "review_comment_title",
+        "sql_type": "TEXT",
+        "table": "order_reviews",
+        "target": "review_comment_title",
+        "unique_nonblank": 4178,
+        "whitespace_changed_rows": 1998
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 208,
+        "missing_percent": 58.7297,
+        "missing_rows": 58274,
+        "nullable": true,
+        "rows": 99224,
+        "source": "review_comment_message",
+        "sql_type": "TEXT",
+        "table": "order_reviews",
+        "target": "review_comment_message",
+        "unique_nonblank": 35616,
+        "whitespace_changed_rows": 9451
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-08-31T00:00:00",
+        "maximum_text_length": 19,
+        "min": "2016-10-02T00:00:00",
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99224,
+        "source": "review_creation_date",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "order_reviews",
+        "target": "review_creation_date",
+        "unique_nonblank": 636,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "max": "2018-10-29T12:27:35",
+        "maximum_text_length": 19,
+        "min": "2016-10-07T18:32:28",
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 99224,
+        "source": "review_answer_timestamp",
+        "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+        "table": "order_reviews",
+        "target": "review_answer_timestamp",
+        "unique_nonblank": 98248,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 32951,
+        "source": "product_id",
+        "sql_type": "TEXT",
+        "table": "products",
+        "target": "product_id",
+        "unique_nonblank": 32951,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 46,
+        "missing_percent": 1.8512,
+        "missing_rows": 610,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_category_name",
+        "sql_type": "TEXT",
+        "table": "products",
+        "target": "product_category_name",
+        "unique_nonblank": 73,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 76.0,
+        "maximum_text_length": 2,
+        "min": 5.0,
+        "missing_percent": 1.8512,
+        "missing_rows": 610,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_name_lenght",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_name_length",
+        "unique_nonblank": 66,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 3992.0,
+        "maximum_text_length": 4,
+        "min": 4.0,
+        "missing_percent": 1.8512,
+        "missing_rows": 610,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_description_lenght",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_description_length",
+        "unique_nonblank": 2960,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 20.0,
+        "maximum_text_length": 2,
+        "min": 1.0,
+        "missing_percent": 1.8512,
+        "missing_rows": 610,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_photos_qty",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_photos_qty",
+        "unique_nonblank": 19,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 40425.0,
+        "maximum_text_length": 5,
+        "min": 0.0,
+        "missing_percent": 0.0061,
+        "missing_rows": 2,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_weight_g",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_weight_g",
+        "unique_nonblank": 2204,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 4,
+        "zero_to_null_rows": 4
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 105.0,
+        "maximum_text_length": 3,
+        "min": 7.0,
+        "missing_percent": 0.0061,
+        "missing_rows": 2,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_length_cm",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_length_cm",
+        "unique_nonblank": 99,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 105.0,
+        "maximum_text_length": 3,
+        "min": 2.0,
+        "missing_percent": 0.0061,
+        "missing_rows": 2,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_height_cm",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_height_cm",
+        "unique_nonblank": 102,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "below_minimum_rows": 0,
+        "fractional_rows": 0,
+        "invalid_rows": 0,
+        "max": 118.0,
+        "maximum_text_length": 3,
+        "min": 6.0,
+        "missing_percent": 0.0061,
+        "missing_rows": 2,
+        "negative_rows": 0,
+        "nullable": true,
+        "rows": 32951,
+        "source": "product_width_cm",
+        "sql_type": "INTEGER",
+        "storage_overflow_rows": 0,
+        "table": "products",
+        "target": "product_width_cm",
+        "unique_nonblank": 95,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 32,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 3095,
+        "source": "seller_id",
+        "sql_type": "TEXT",
+        "table": "sellers",
+        "target": "seller_id",
+        "unique_nonblank": 3095,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 5,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "needs_zero_padding_rows": 0,
+        "nullable": false,
+        "rows": 3095,
+        "source": "seller_zip_code_prefix",
+        "sql_type": "CHAR(5)",
+        "table": "sellers",
+        "target": "seller_zip_code_prefix",
+        "unique_nonblank": 2246,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 40,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 3095,
+        "source": "seller_city",
+        "sql_type": "TEXT",
+        "table": "sellers",
+        "target": "seller_city",
+        "unique_nonblank": 611,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 2,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 3095,
+        "source": "seller_state",
+        "sql_type": "CHAR(2)",
+        "table": "sellers",
+        "target": "seller_state",
+        "unique_nonblank": 23,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 5,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "needs_zero_padding_rows": 0,
+        "nullable": false,
+        "rows": 1000163,
+        "source": "geolocation_zip_code_prefix",
+        "sql_type": "CHAR(5)",
+        "table": "geolocation",
+        "target": "geolocation_zip_code_prefix",
+        "unique_nonblank": 19015,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "above_maximum_rows": 0,
+        "below_minimum_rows": 0,
+        "invalid_rows": 0,
+        "max": 45.06593318269697,
+        "maximum_text_length": 23,
+        "min": -36.6053744107061,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 998827,
+        "nullable": false,
+        "rows": 1000163,
+        "source": "geolocation_lat",
+        "sql_type": "DOUBLE PRECISION",
+        "table": "geolocation",
+        "target": "geolocation_lat",
+        "unique_nonblank": 717372,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "above_maximum_rows": 0,
+        "below_minimum_rows": 0,
+        "invalid_rows": 0,
+        "max": 121.10539381057764,
+        "maximum_text_length": 19,
+        "min": -101.46676644931476,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "negative_rows": 1000160,
+        "nullable": false,
+        "rows": 1000163,
+        "source": "geolocation_lng",
+        "sql_type": "DOUBLE PRECISION",
+        "table": "geolocation",
+        "target": "geolocation_lng",
+        "unique_nonblank": 717615,
+        "whitespace_changed_rows": 0,
+        "zero_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 38,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 1000163,
+        "source": "geolocation_city",
+        "sql_type": "TEXT",
+        "table": "geolocation",
+        "target": "geolocation_city",
+        "unique_nonblank": 8010,
+        "whitespace_changed_rows": 1
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 2,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 1000163,
+        "source": "geolocation_state",
+        "sql_type": "CHAR(2)",
+        "table": "geolocation",
+        "target": "geolocation_state",
+        "unique_nonblank": 27,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 46,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": false,
+        "rows": 71,
+        "source": "product_category_name",
+        "sql_type": "TEXT",
+        "table": "category_translation",
+        "target": "product_category_name",
+        "unique_nonblank": 71,
+        "whitespace_changed_rows": 0
+      },
+      {
+        "invalid_rows": 0,
+        "maximum_text_length": 39,
+        "missing_percent": 0.0,
+        "missing_rows": 0,
+        "nullable": true,
+        "rows": 71,
+        "source": "product_category_name_english",
+        "sql_type": "TEXT",
+        "table": "category_translation",
+        "target": "product_category_name_english",
+        "unique_nonblank": 71,
+        "whitespace_changed_rows": 0
+      }
+    ],
+    "contract_sha256": "aa0565a92d64a0019880e8d1f79e58c8da8c5aedfdbab632d28c2bb55bfb117a",
+    "database_writes": 0,
+    "findings": {
+      "customer_repeat_extra_rows": 3345,
+      "delivered_missing_actual_date_rows": 8,
+      "derived_category_rows": 73,
+      "derived_postal_area_rows": 19177,
+      "order_status_counts": {
+        "approved": 2,
+        "canceled": 625,
+        "created": 5,
+        "delivered": 96478,
+        "invoiced": 314,
+        "processing": 301,
+        "shipped": 1107,
+        "unavailable": 609
+      },
+      "orders_without_payment_rows": 1,
+      "payment_type_counts": {
+        "boleto": 19784,
+        "credit_card": 76795,
+        "debit_card": 1529,
+        "not_defined": 3,
+        "voucher": 5775
+      },
+      "postal_coverage": [
+        {
+          "invalid_rows": 0,
+          "missing_geolocation_rows": 278,
+          "table": "customers"
+        },
+        {
+          "invalid_rows": 0,
+          "missing_geolocation_rows": 7,
+          "table": "sellers"
+        },
+        {
+          "invalid_rows": 0,
+          "missing_geolocation_rows": 0,
+          "table": "geolocation"
+        }
+      ]
+    },
+    "implementation_sha256": "857f545f2b92d2766a7009bf0b7264ff70d3a8c8b8cc2b7ae01628b5763124f3",
+    "kind": "read_only_source_inspection",
+    "quarantine_executed": false,
+    "relationships": [
+      {
+        "child": "orders",
+        "child_rows": 99441,
+        "column": "customer_id",
+        "missing_child_rows": 0,
+        "parent": "customers",
+        "parent_column": "customer_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "order_items",
+        "child_rows": 112650,
+        "column": "order_id",
+        "missing_child_rows": 0,
+        "parent": "orders",
+        "parent_column": "order_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "order_items",
+        "child_rows": 112650,
+        "column": "product_id",
+        "missing_child_rows": 0,
+        "parent": "products",
+        "parent_column": "product_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "order_items",
+        "child_rows": 112650,
+        "column": "seller_id",
+        "missing_child_rows": 0,
+        "parent": "sellers",
+        "parent_column": "seller_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "order_payments",
+        "child_rows": 103886,
+        "column": "order_id",
+        "missing_child_rows": 0,
+        "parent": "orders",
+        "parent_column": "order_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "order_reviews",
+        "child_rows": 99224,
+        "column": "order_id",
+        "missing_child_rows": 0,
+        "parent": "orders",
+        "parent_column": "order_id",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 0,
+        "unmatched_rows": 0,
+        "unmatched_values": []
+      },
+      {
+        "child": "products",
+        "child_rows": 32951,
+        "column": "product_category_name",
+        "missing_child_rows": 610,
+        "parent": "category_translation",
+        "parent_column": "product_category_name",
+        "parent_duplicate_extra_rows": 0,
+        "unmatched_distinct": 2,
+        "unmatched_rows": 13,
+        "unmatched_values": [
+          "pc_gamer",
+          "portateis_cozinha_e_preparadores_de_alimentos"
+        ]
+      }
+    ],
+    "sources": {
+      "category_translation": {
+        "columns": 2,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/product_category_name_translation.csv",
+        "grain": "one supplied category translation",
+        "rows": 71,
+        "sha256": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+      },
+      "customers": {
+        "columns": 5,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_customers_dataset.csv",
+        "grain": "one order-specific customer record",
+        "rows": 99441,
+        "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2"
+      },
+      "geolocation": {
+        "columns": 5,
+        "exact_duplicate_extra_rows": 261831,
+        "file": "data/stage_02/raw/olist_geolocation_dataset.csv",
+        "grain": "one source geolocation observation, duplicates retained",
+        "rows": 1000163,
+        "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6"
+      },
+      "order_items": {
+        "columns": 7,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_order_items_dataset.csv",
+        "grain": "one purchased item, not a product total",
+        "rows": 112650,
+        "sha256": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279"
+      },
+      "order_payments": {
+        "columns": 5,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_order_payments_dataset.csv",
+        "grain": "one payment component, not one installment",
+        "rows": 103886,
+        "sha256": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0"
+      },
+      "order_reviews": {
+        "columns": 7,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_order_reviews_dataset.csv",
+        "grain": "one review associated with one order",
+        "rows": 99224,
+        "sha256": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+      },
+      "orders": {
+        "columns": 8,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_orders_dataset.csv",
+        "grain": "one order",
+        "rows": 99441,
+        "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf"
+      },
+      "products": {
+        "columns": 9,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_products_dataset.csv",
+        "grain": "one product",
+        "rows": 32951,
+        "sha256": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc"
+      },
+      "sellers": {
+        "columns": 4,
+        "exact_duplicate_extra_rows": 0,
+        "file": "data/stage_02/raw/olist_sellers_dataset.csv",
+        "grain": "one seller",
+        "rows": 3095,
+        "sha256": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e"
+      }
+    }
+  }
+}

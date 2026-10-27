@@ -1,0 +1,606 @@
+{
+  "version": 2,
+  "status": "schema_proposal_not_database_ddl",
+  "schema": "olist",
+  "tables": {
+    "customers": {
+      "file": "olist_customers_dataset.csv",
+      "grain": "one order-specific customer record",
+      "primary_key": [
+        "customer_id"
+      ],
+      "alternate_key_checks": [
+        [
+          "customer_unique_id"
+        ]
+      ],
+      "columns": [
+        {
+          "source": "customer_id",
+          "target": "customer_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "customer_unique_id",
+          "target": "customer_unique_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "customer_zip_code_prefix",
+          "target": "customer_zip_code_prefix",
+          "sql_type": "CHAR(5)",
+          "kind": "postal",
+          "nullable": false,
+          "normalize": "strip_and_zfill_5"
+        },
+        {
+          "source": "customer_city",
+          "target": "customer_city",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "customer_state",
+          "target": "customer_state",
+          "sql_type": "CHAR(2)",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[A-Z]{2}"
+        }
+      ]
+    },
+    "orders": {
+      "file": "olist_orders_dataset.csv",
+      "grain": "one order",
+      "primary_key": [
+        "order_id"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "order_id",
+          "target": "order_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "customer_id",
+          "target": "customer_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "order_status",
+          "target": "order_status",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "order_purchase_timestamp",
+          "target": "order_purchase_timestamp",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": false
+        },
+        {
+          "source": "order_approved_at",
+          "target": "order_approved_at",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": true
+        },
+        {
+          "source": "order_delivered_carrier_date",
+          "target": "order_delivered_carrier_date",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": true
+        },
+        {
+          "source": "order_delivered_customer_date",
+          "target": "order_delivered_customer_date",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": true
+        },
+        {
+          "source": "order_estimated_delivery_date",
+          "target": "order_estimated_delivery_date",
+          "sql_type": "DATE",
+          "kind": "date",
+          "nullable": false
+        }
+      ]
+    },
+    "order_items": {
+      "file": "olist_order_items_dataset.csv",
+      "grain": "one purchased item, not a product total",
+      "primary_key": [
+        "order_id",
+        "order_item_id"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "order_id",
+          "target": "order_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "order_item_id",
+          "target": "order_item_id",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": false,
+          "minimum": 1
+        },
+        {
+          "source": "product_id",
+          "target": "product_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "seller_id",
+          "target": "seller_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "shipping_limit_date",
+          "target": "shipping_limit_date",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": false
+        },
+        {
+          "source": "price",
+          "target": "price",
+          "sql_type": "NUMERIC(12,2)",
+          "kind": "money",
+          "nullable": false,
+          "minimum": 0,
+          "precision": 12,
+          "scale": 2
+        },
+        {
+          "source": "freight_value",
+          "target": "freight_value",
+          "sql_type": "NUMERIC(12,2)",
+          "kind": "money",
+          "nullable": false,
+          "minimum": 0,
+          "precision": 12,
+          "scale": 2
+        }
+      ]
+    },
+    "order_payments": {
+      "file": "olist_order_payments_dataset.csv",
+      "grain": "one payment component, not one installment",
+      "primary_key": [
+        "order_id",
+        "payment_sequential"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "order_id",
+          "target": "order_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "payment_sequential",
+          "target": "payment_sequential",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": false,
+          "minimum": 1
+        },
+        {
+          "source": "payment_type",
+          "target": "payment_type",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "payment_installments",
+          "target": "payment_installments",
+          "sql_type": "SMALLINT",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 1,
+          "zero_policy": "null_with_quality_flag"
+        },
+        {
+          "source": "payment_value",
+          "target": "payment_value",
+          "sql_type": "NUMERIC(12,2)",
+          "kind": "money",
+          "nullable": false,
+          "minimum": 0,
+          "precision": 12,
+          "scale": 2
+        }
+      ]
+    },
+    "order_reviews": {
+      "file": "olist_order_reviews_dataset.csv",
+      "grain": "one review associated with one order",
+      "primary_key": [
+        "review_id",
+        "order_id"
+      ],
+      "alternate_key_checks": [
+        [
+          "review_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "columns": [
+        {
+          "source": "review_id",
+          "target": "review_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "order_id",
+          "target": "order_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "review_score",
+          "target": "review_score",
+          "sql_type": "SMALLINT",
+          "kind": "integer",
+          "nullable": false,
+          "minimum": 1,
+          "maximum": 5
+        },
+        {
+          "source": "review_comment_title",
+          "target": "review_comment_title",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": true
+        },
+        {
+          "source": "review_comment_message",
+          "target": "review_comment_message",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": true
+        },
+        {
+          "source": "review_creation_date",
+          "target": "review_creation_date",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": false
+        },
+        {
+          "source": "review_answer_timestamp",
+          "target": "review_answer_timestamp",
+          "sql_type": "TIMESTAMP WITHOUT TIME ZONE",
+          "kind": "timestamp",
+          "nullable": false
+        }
+      ]
+    },
+    "products": {
+      "file": "olist_products_dataset.csv",
+      "grain": "one product",
+      "primary_key": [
+        "product_id"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "product_id",
+          "target": "product_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "product_category_name",
+          "target": "product_category_name",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": true
+        },
+        {
+          "source": "product_name_lenght",
+          "target": "product_name_length",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 0
+        },
+        {
+          "source": "product_description_lenght",
+          "target": "product_description_length",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 0
+        },
+        {
+          "source": "product_photos_qty",
+          "target": "product_photos_qty",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 0
+        },
+        {
+          "source": "product_weight_g",
+          "target": "product_weight_g",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 1,
+          "zero_policy": "null_with_quality_flag"
+        },
+        {
+          "source": "product_length_cm",
+          "target": "product_length_cm",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 1
+        },
+        {
+          "source": "product_height_cm",
+          "target": "product_height_cm",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 1
+        },
+        {
+          "source": "product_width_cm",
+          "target": "product_width_cm",
+          "sql_type": "INTEGER",
+          "kind": "integer",
+          "nullable": true,
+          "minimum": 1
+        }
+      ]
+    },
+    "sellers": {
+      "file": "olist_sellers_dataset.csv",
+      "grain": "one seller",
+      "primary_key": [
+        "seller_id"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "seller_id",
+          "target": "seller_id",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[0-9a-f]{32}"
+        },
+        {
+          "source": "seller_zip_code_prefix",
+          "target": "seller_zip_code_prefix",
+          "sql_type": "CHAR(5)",
+          "kind": "postal",
+          "nullable": false,
+          "normalize": "strip_and_zfill_5"
+        },
+        {
+          "source": "seller_city",
+          "target": "seller_city",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "seller_state",
+          "target": "seller_state",
+          "sql_type": "CHAR(2)",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[A-Z]{2}"
+        }
+      ]
+    },
+    "geolocation": {
+      "file": "olist_geolocation_dataset.csv",
+      "grain": "one distinct canonical geolocation point; same-prefix distinct points retained",
+      "primary_key": [
+        "geo_point_id"
+      ],
+      "alternate_key_checks": [
+        [
+          "geolocation_zip_code_prefix"
+        ]
+      ],
+      "columns": [
+        {
+          "source": "geolocation_zip_code_prefix",
+          "target": "geolocation_zip_code_prefix",
+          "sql_type": "CHAR(5)",
+          "kind": "postal",
+          "nullable": false,
+          "normalize": "strip_and_zfill_5"
+        },
+        {
+          "source": "geolocation_lat",
+          "target": "geolocation_lat",
+          "sql_type": "DOUBLE PRECISION",
+          "kind": "real",
+          "nullable": false,
+          "minimum": -90,
+          "maximum": 90
+        },
+        {
+          "source": "geolocation_lng",
+          "target": "geolocation_lng",
+          "sql_type": "DOUBLE PRECISION",
+          "kind": "real",
+          "nullable": false,
+          "minimum": -180,
+          "maximum": 180
+        },
+        {
+          "source": "geolocation_city",
+          "target": "geolocation_city",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "geolocation_state",
+          "target": "geolocation_state",
+          "sql_type": "CHAR(2)",
+          "kind": "text",
+          "nullable": false,
+          "pattern": "[A-Z]{2}"
+        }
+      ],
+      "generated_columns": [
+        {
+          "target": "geo_point_id",
+          "sql_type": "BIGINT GENERATED ALWAYS AS IDENTITY",
+          "nullable": false
+        },
+        {
+          "target": "source_row",
+          "sql_type": "INTEGER",
+          "nullable": false
+        }
+      ]
+    },
+    "category_translation": {
+      "file": "product_category_name_translation.csv",
+      "grain": "one supplied category translation",
+      "primary_key": [
+        "product_category_name"
+      ],
+      "alternate_key_checks": [],
+      "columns": [
+        {
+          "source": "product_category_name",
+          "target": "product_category_name",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": false
+        },
+        {
+          "source": "product_category_name_english",
+          "target": "product_category_name_english",
+          "sql_type": "TEXT",
+          "kind": "text",
+          "nullable": true
+        }
+      ],
+      "target_table": "product_categories"
+    }
+  },
+  "relationships": [
+    {
+      "child": "orders",
+      "column": "customer_id",
+      "parent": "customers",
+      "parent_column": "customer_id"
+    },
+    {
+      "child": "order_items",
+      "column": "order_id",
+      "parent": "orders",
+      "parent_column": "order_id"
+    },
+    {
+      "child": "order_items",
+      "column": "product_id",
+      "parent": "products",
+      "parent_column": "product_id"
+    },
+    {
+      "child": "order_items",
+      "column": "seller_id",
+      "parent": "sellers",
+      "parent_column": "seller_id"
+    },
+    {
+      "child": "order_payments",
+      "column": "order_id",
+      "parent": "orders",
+      "parent_column": "order_id"
+    },
+    {
+      "child": "order_reviews",
+      "column": "order_id",
+      "parent": "orders",
+      "parent_column": "order_id"
+    },
+    {
+      "child": "products",
+      "column": "product_category_name",
+      "parent": "category_translation",
+      "parent_column": "product_category_name"
+    }
+  ],
+  "derived_dimensions": {
+    "product_categories": {
+      "primary_key": [
+        "product_category_name"
+      ],
+      "rule": "Union nonblank categories from products and translation; English name nullable; never invent a translation."
+    },
+    "postal_areas": {
+      "primary_key": [
+        "zip_code_prefix"
+      ],
+      "sql_type": "CHAR(5)",
+      "rule": "Union normalized valid prefixes from customers, sellers and geolocation; no direct foreign key to nonunique geolocation points."
+    }
+  },
+  "policy": {
+    "blank_optional": "null_without_imputation",
+    "invalid_identifier_or_required_value": "quarantine_before_load",
+    "invalid_optional_measurement": "null_with_quality_flag_and_raw_provenance",
+    "duplicate_primary_key": "quarantine_conflicts_without_silent_first_row_selection",
+    "missing_parent": "quarantine_before_load_after_derived_dimensions_are_built",
+    "chronology": "Retain source timestamps; flag reversals and exclude invalid durations from metrics, without a universal approval-before-shipping CHECK.",
+    "geolocation_exact_duplicates": "deduplicate all five canonical source columns before publication; preserve first source row and audit discarded rows; raw immutable",
+    "execution": "cleaning and quarantine before database loading; database writes pending"
+  }
+}

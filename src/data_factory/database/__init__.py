@@ -1,1 +1,1 @@
-"""Read-only source checks and future SQLAlchemy integration helpers."""
+"""Source inspection, SQLAlchemy connections and initial DDL, imported explicitly."""

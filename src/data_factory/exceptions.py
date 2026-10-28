@@ -1,4 +1,4 @@
-"""Errors raised by the data acquisition stage."""
+"""Errors raised by the data factory and its configuration helpers."""
 
 
 class DataFactoryError(Exception):
@@ -6,7 +6,7 @@ class DataFactoryError(Exception):
 
 
 class ConfigurationError(DataFactoryError):
-    """The acquisition settings are invalid."""
+    """The project settings are missing or invalid."""
 
 
 class DownloadError(DataFactoryError):

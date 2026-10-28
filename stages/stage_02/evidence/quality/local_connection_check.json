@@ -1,0 +1,22 @@
+{
+  "target": "postgresql+psycopg://localhost:5432/ds_learning",
+  "username": "postgres",
+  "configured_port": 5432,
+  "status": "passed",
+  "database_connection_attempted": true,
+  "ddl_executed": false,
+  "data_loaded": false,
+  "result": {
+    "connection_ok": 1,
+    "database_name": "ds_learning",
+    "database_user": "postgres"
+  },
+  "server_version": "18.6",
+  "settings_file": ".env",
+  "configuration_resolution": {
+    "initial_port_5423": "No listening service found; connection timed out.",
+    "selected_port_5432": "Active PostgreSQL listener; explicitly selected by user.",
+    "initial_database_ml_challenges": "Does not exist on the local server.",
+    "selected_database_ds_learning": "Existing database; explicitly selected by user."
+  }
+}

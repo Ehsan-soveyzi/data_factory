@@ -1,0 +1,86 @@
+{
+  "step": 2,
+  "status": "complete",
+  "scope": "PostgreSQL settings from the real project .env, offline unit validation, and a verified read-only local connection.",
+  "versions": {
+    "SQLAlchemy": "2.0.49",
+    "psycopg": "3.3.6",
+    "psycopg-binary": "3.3.6",
+    "python-dotenv": "1.1.1"
+  },
+  "apis": [
+    "DatabaseSettings",
+    "load_database_settings",
+    "create_database_engine"
+  ],
+  "unit_tests": {
+    "command": "python -m unittest discover -s tests/database -p test_connection.py -v",
+    "tests_run": 17,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "transport": "Socket operations and psycopg.connect guarded against access in every test.",
+    "scope": "Configuration validation, safe errors/display, encoded credentials, real .env parsing, environment precedence/isolation, literal password preservation, lazy engine creation/disposal."
+  },
+  "notebook": {
+    "method": "Fresh IPython process; project setup, real connection check and final pool cleanup only; not a full notebook or Jupyter kernel run.",
+    "network_and_psycopg_connections_guarded": false,
+    "real_database_connection": true,
+    "previous_cell_contents_preserved": 50,
+    "data_inspection_and_cleaning_cells_and_outputs_preserved": true,
+    "connection_section": "1.1 - immediately after project setup, before source/schema and SQL execution sections",
+    "engine_variable": "engine",
+    "cleanup_cell": "database-engine-cleanup",
+    "cleanup_is_last": true,
+    "connection_precedes_schema_and_loading": true,
+    "executed_cells": [
+      {
+        "cell_id": "stage02-setup",
+        "stdout": "Status: project setup ready; database DDL and loading pending.\nShared package: data_factory\nSeed: 42\nQuery budget (ms): 200\nDatabase connections opened: 0\n"
+      },
+      {
+        "cell_id": "database-step02-engine",
+        "stdout": "Target: postgresql+psycopg://localhost:5432/ds_learning\nSELECT 1: 1\nDatabase: ds_learning\nUser: postgres\nPostgreSQL version: 18.6\n"
+      },
+      {
+        "cell_id": "database-engine-cleanup",
+        "stdout": "Database engine pool disposed.\n"
+      }
+    ]
+  },
+  "engine_defaults": {
+    "echo": false,
+    "hide_parameters": true,
+    "pool_pre_ping": true,
+    "connect_timeout_seconds_per_target": 10
+  },
+  "validation": {
+    "driver": "postgresql+psycopg",
+    "database_name_required": true,
+    "explicit_port_range": [
+      1,
+      65535
+    ]
+  },
+  "safe_target_example": "postgresql+psycopg://localhost:5432/ds_learning",
+  "secrets_handling": "Settings repr omits URL; safe_url omits username, password, query. Parser exceptions are suppressed in public configuration errors.",
+  "source_sha256": {
+    "src/data_factory/database/connection.py": "55cde19aeb441ab3a705f043df733a3cdb810b236ab7acc93808aaf3293fa8da",
+    "tests/database/test_connection.py": "1ae4e7f7c9307fd45d1500bce82cc69333df247d037b90f4d69f3e19336bce59",
+    ".env.example": "8ff593d7afa434cc66b1340b50aad0c46dd59982c16b53b6f7b0a1760a4d2067",
+    "stages/stage_02/solution.ipynb": "90f7afc99b0b74da5d6243d6a33503eadd1d1e9f3cf7851bb74bb1a0ad9b1772"
+  },
+  "database_connection_attempted": true,
+  "ddl_executed": false,
+  "data_loaded": false,
+  "next_step": "Initial DDL is applied; await user instruction before loading data.",
+  "settings_source": {
+    "file": ".env",
+    "git_ignored": true,
+    "git_tracked": false,
+    "precedence": "process environment overrides .env; explicit environ mapping bypasses file loading",
+    "interpolation": false,
+    "mutates_process_environment": false
+  },
+  "ddl_evidence": "stages/stage_02/evidence/quality/ddl_execution.json"
+}

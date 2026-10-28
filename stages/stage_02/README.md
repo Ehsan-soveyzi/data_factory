@@ -1,8 +1,9 @@
 # Stage 02 - Database Performance
 
-Status: Olist inspection, cleaning and a logical schema proposal are complete,
-with saved notebook results and audited curated CSVs. All 330,000 saved NYC cases have also been inspected. PostgreSQL loading,
-analytical queries, performance measurements, and database integration tests remain pending.
+Status: Olist inspection/cleaning, saved NYC inspection, the real PostgreSQL
+connection, and initial DDL execution are complete. The two schemas contain 12
+empty tables. PostgreSQL loading, analytical queries, performance measurements,
+and tests for later data operations remain pending.
 
 - [solution.ipynb](solution.ipynb): source checks in sections 2.1-2.7 and executed cleaning in 2.8-2.10 and saved NYC inspection in 2.11-2.15.
 - [report.md](report.md): schema decisions, alternatives, measured evidence and limitations.
@@ -66,8 +67,144 @@ python -c "import sqlalchemy, psycopg; from psycopg import pq; print('SQLAlchemy
 Use `../venv/Scripts/python.exe` in place of `python` for the existing parent-folder
 Windows environment if it is not activated. The final check prints both
 selected versions and the Psycopg implementation `binary`.
-These checks do not connect to PostgreSQL. Connection helpers,
-server checks, DDL execution and data loading belong to later approved steps.
+These dependency checks do not connect to PostgreSQL. Connection helpers and the
+real local server check are described below; DDL execution and data loading remain
+later steps.
+
+## Database setup - step 2: settings and engine
+
+[connection.py](../../src/data_factory/database/connection.py) provides three APIs:
+
+| API | Responsibility |
+|---|---|
+| `load_database_settings()` | Read and validate `DATABASE_URL` from the environment or the project's `.env` |
+| `DatabaseSettings` | Hold the parsed URL; expose a credential-free `safe_url` |
+| `create_database_engine(settings=None)` | Build a reusable SQLAlchemy Core Engine; read the environment if settings are omitted |
+
+The selected driver prefix is `postgresql+psycopg://`. A database name is required,
+and an explicit port must be numeric and between 1 and 65535. Username/password
+may be omitted for libpq authentication. Host may be omitted for local libpq
+defaults. Invalid configuration raises the shared `ConfigurationError` without
+including the connection string or chaining a parser exception containing it.
+
+The module reads the repository-root `.env` regardless of the working directory.
+`python-dotenv==1.1.1` is installed and pinned for this purpose. Existing process
+environment variables override file values. Loading does not change `os.environ`
+and variable interpolation is disabled to preserve literal password characters.
+An explicit `environ={...}` bypasses file loading for isolated callers; an optional
+`env_file=...` selects a different file when using the real process environment.
+
+Local settings are in the Git-ignored `.env`, with host `localhost`, port `5432`,
+user `postgres` and database `ds_learning`, as selected by the user after checking
+the listening port and available databases. The password stays only in `.env`.
+`.env.example` contains placeholders and can be copied for a fresh checkout.
+For a process-only override in PowerShell:
+
+```powershell
+$env:DATABASE_URL = 'postgresql+psycopg://USER:PASSWORD@localhost:5432/ds_learning'
+```
+
+Percent-encode special characters in username/password in a URL string, such as
+`@` as `%40` and `/` as `%2F`. The module retains connection options such as
+`?sslmode=require`. For a programmatically assembled URL, use SQLAlchemy
+`URL.create()` with `DatabaseSettings(url=...)` and an unescaped password instead.
+
+```python
+from data_factory.database.connection import load_database_settings, create_database_engine
+
+settings = load_database_settings()
+print(settings.safe_url)  # No username, password or query parameters.
+engine = create_database_engine(settings)
+try:
+    print(engine.dialect.name, engine.dialect.driver)  # postgresql psycopg
+finally:
+    engine.dispose()
+```
+
+The engine is lazy: construction and disposal do not open a server connection.
+Reuse the same engine for work targeting the same database and dispose it when
+finished. SQL echo is off and SQL parameter values are hidden. The connection
+timeout is 10 seconds per libpq connection target, and `pool_pre_ping=True` checks
+connection health when a connection is checked out. It does not prove the server
+is reachable at engine construction time. See [SQLAlchemy engine configuration](https://docs.sqlalchemy.org/en/20/core/engines.html)
+and [pool health checks](https://docs.sqlalchemy.org/en/20/core/pooling.html#disconnect-handling-pessimistic).
+
+The notebook now builds its engine from the real local settings and runs a read-only
+query that verifies `SELECT 1`, the database, user and server version, without embedding
+credentials in its source or outputs. Notebook section **1.1** now places this setup
+immediately after project initialization, before source/schema work and SQL execution.
+The shared `engine` stays available to all later SQL cells; each operation uses a
+scoped Connection (`engine.connect()` for reads or `engine.begin()` for writes).
+Pool disposal is the final notebook cell. Definitions remain in versioned `.sql`
+files and will be executed through SQLAlchemy; writing the definitions does not
+require an open database connection. The [step 2 evidence](evidence/quality/connection_setup.json)
+records the configuration tests and notebook execution scope. A separate
+[read-only connection check](evidence/quality/local_connection_check.json) records
+the actual server connection attempt with these settings. No DDL or data load is
+performed. Run the configuration tests
+from the repository root:
+
+```powershell
+python -m unittest discover -s tests/database -p test_connection.py -v
+```
+
+**Step 2 scope:** the settings and engine APIs are ready and use `.env` by default.
+The user's requested real target has been checked with a read-only connection
+attempt; consult the separate connection evidence for its actual status.
+Initial DDL execution is described below; data loading remains pending.
+
+## Database setup - initial DDL execution
+
+Notebook section **3.1** calls the shared
+[DDL module](../../src/data_factory/database/ddl.py), after section 2 source/schema
+inspection and before section 3.2 loading. It reuses the Engine from section 1.1.
+
+```python
+from data_factory.database.ddl import run_initial_ddl, inspect_initial_schema
+
+ddl_report = run_initial_ddl(engine, PROJECT_ROOT / "sql/ddl")
+committed_schema = inspect_initial_schema(engine)
+```
+
+Both initial `.sql` files run in order inside a single transaction. The execution
+was committed in `ds_learning`; a separate post-commit Connection verified:
+
+| Item | Measured result |
+|---|---:|
+| `olist` tables | 9 |
+| `nyc311` tables | 3 |
+| Primary keys | 12 |
+| Foreign keys | 9 |
+| CHECK constraints | 75 |
+| UNIQUE constraints | 1 |
+| Total data rows | 0 |
+
+NOT NULL is recorded through column nullability rather than the constraint-count
+table. Column types/defaults/identity details, all keys/checks, raw file hashes and
+the execution scope are in [ddl_execution.json](evidence/quality/ddl_execution.json).
+The notebook retains source inspection and cleaning results; only setup,
+connection, DDL, committed-schema inspection and cleanup were executed in a
+fresh IPython process. A full notebook/Jupyter-kernel run was not performed.
+
+On rerun, a complete existing table set returns `already_present` and is not
+recreated. Revised SQL is not automatically applied to existing tables, and the
+runner does not claim to compare existing definitions with the files. A partial
+or conflicting table set raises a configuration error without executing DDL.
+No existing objects are dropped and no data is loaded by the application runner.
+
+The [test evidence](evidence/quality/ddl_tests.json) records 25 passing database-layer
+tests: 20 offline and 5 live PostgreSQL tests covering commit visibility, retained
+data on rerun, rollback of both files, partial-object preservation and literal
+semicolon/percent handling. The live fixtures used a unique temporary database
+which was removed after the run. Reproduce with the configured local credentials:
+
+```powershell
+python tests/database/run_ddl_tests.py
+```
+
+This test runner needs permission to create a temporary database on the configured
+server. It uses `postgres` for administrative commands and never uses `ds_learning`
+for test fixture resets. Data loading is the next separately authorized stage.
 
 ## Shared implementation locations
 
@@ -76,9 +213,9 @@ server checks, DDL execution and data loading belong to later approved steps.
 | `src/data_factory/sources/` | Olist CSV source adapter |
 | `src/data_factory/olist_cleaning.py` | Local preparation and audited publication before database loading |
 | `src/data_factory/sinks/` | Database destination integrated with the factory |
-| `src/data_factory/database/` | Source inspection; future SQLAlchemy and benchmarking helpers |
+| `src/data_factory/database/` | Source inspection, SQLAlchemy settings/engine and initial DDL; future benchmarking helpers |
 | `sql/` | DDL, queries, indexes, views, functions and procedures |
-| `tests/database/` | Controlled fixtures and database integration tests |
+| `tests/database/` | Offline settings and live isolated PostgreSQL DDL tests |
 | `data/stage_02/raw/` | Local Olist source CSVs; excluded from Git |
 | `data/stage_02/curated/` | Local generated datasets; excluded from Git |
 | `evidence/` | Measured plans, timings, and load-quality summaries |

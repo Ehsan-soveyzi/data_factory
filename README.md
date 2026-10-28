@@ -17,13 +17,18 @@ root. Each stage has its own notebook and decision report.
 | Stage | Deliverables | Status |
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Existing implementation |
-| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Olist prepared and saved NYC reviewed; database work pending |
+| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Sources prepared; real connection and initial DDL complete; loading pending |
 
 The installation and pipeline commands below describe stage 01. For offline Olist
 preparation, run `python -m data_factory clean-olist`; see the stage 02 guide for
 curated outputs and cleaning evidence. The database
-configuration example and `.env.example` reserve stage 02 settings; database
-loading and bootstrap commands are not available yet.
+configuration example and `.env.example` document stage 02 settings.
+SQLAlchemy settings and lazy engine creation are available through
+`data_factory.database.connection`, which reads the local project `.env`;
+see the stage 02 guide. A real read-only connection to the selected local
+PostgreSQL database has been verified. Initial DDL runs through the shared Engine
+in notebook section 3.1; 12 empty tables have been created and verified. Data
+loading and database CLI bootstrap commands are not available yet.
 
 ## Contents
 
@@ -279,11 +284,11 @@ request counting, EDA calculations, and full-pipeline hash reproducibility.
 |-- src/data_factory/                 # Shared factory implementation and CLI
 |   |-- sources/                      # Reserved for CSV source adapters
 |   |-- sinks/                        # Reserved for database destination adapters
-|   `-- database/                     # Reserved for SQLAlchemy and timing helpers
+|   `-- database/                     # Source inspection, SQLAlchemy settings/engine and initial DDL
 |-- sql/                              # DDL, queries, indexes, views and routines
 |-- config/                           # Existing config plus database example
 |-- tests/                            # Existing offline suite
-|   `-- database/                     # Reserved for database tests
+|   `-- database/                     # Offline settings and isolated PostgreSQL DDL tests
 |-- docs/                             # Existing contracts and delivery notes
 |-- challenge_details/                # Assignment documents
 |-- data/
@@ -291,7 +296,7 @@ request counting, EDA calculations, and full-pipeline hash reproducibility.
 |   |-- reference_data/               # Existing reference cache
 |   |-- curated_data/                 # Existing generated artifacts
 |   `-- stage_02/                     # Ignored Olist raw/curated datasets
-|-- .env.example                      # Planned connection variable; no credentials
+|-- .env.example                      # Local connection format; placeholder credentials
 |-- pyproject.toml                    # Shared package metadata and CLI
 `-- requirements.txt                  # Stage 01 pins and stage 02 dependency additions
 ```

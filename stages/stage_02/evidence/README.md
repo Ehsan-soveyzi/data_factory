@@ -20,3 +20,12 @@ types and hashes. Curated CSVs and full row-level ledgers stay under the ignored
 NYC case inspection, population reference checks, input hashes, and partial
 acquisition status. The 5,000-row notebook preview is separate from the 330,000
 rows inspected. No source records are included in this evidence.
+
+[quality/ddl_execution.json](quality/ddl_execution.json) records the actual initial
+DDL execution in `ds_learning`: raw SQL hashes, commit status, schemas/tables,
+columns and constraint details, exact row counts and post-commit verification.
+The first execution created 12 tables and inserted zero data rows.
+
+[quality/ddl_tests.json](quality/ddl_tests.json) records the database-layer checks,
+including five live DDL tests in a unique temporary database. The test database
+was removed; the configured analysis database was not used for fixtures.

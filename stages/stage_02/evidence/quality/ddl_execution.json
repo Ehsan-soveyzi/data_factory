@@ -1,0 +1,2012 @@
+{
+  "identity": {
+    "database_name": "ds_learning",
+    "database_user": "postgres",
+    "server_version": "18.6"
+  },
+  "schemas": [
+    "olist",
+    "nyc311"
+  ],
+  "table_count": 12,
+  "tables": [
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "column_count": 4,
+      "primary_key": [
+        "product_category_name"
+      ],
+      "foreign_key_count": 0,
+      "unique_count": 0,
+      "check_count": 3,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column_count": 7,
+      "primary_key": [
+        "customer_id"
+      ],
+      "foreign_key_count": 0,
+      "unique_count": 0,
+      "check_count": 7,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column_count": 6,
+      "primary_key": [
+        "seller_id"
+      ],
+      "foreign_key_count": 0,
+      "unique_count": 0,
+      "check_count": 6,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column_count": 11,
+      "primary_key": [
+        "product_id"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 10,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column_count": 8,
+      "primary_key": [
+        "geo_point_id"
+      ],
+      "foreign_key_count": 0,
+      "unique_count": 1,
+      "check_count": 7,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column_count": 15,
+      "primary_key": [
+        "order_id"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 4,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column_count": 9,
+      "primary_key": [
+        "order_id",
+        "order_item_id"
+      ],
+      "foreign_key_count": 3,
+      "unique_count": 0,
+      "check_count": 5,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column_count": 7,
+      "primary_key": [
+        "order_id",
+        "payment_sequential"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 6,
+      "row_count": 0
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column_count": 9,
+      "primary_key": [
+        "review_id",
+        "order_id"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 4,
+      "row_count": 0
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column_count": 6,
+      "primary_key": [
+        "population_area"
+      ],
+      "foreign_key_count": 0,
+      "unique_count": 0,
+      "check_count": 4,
+      "row_count": 0
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "column_count": 2,
+      "primary_key": [
+        "incident_zip"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 1,
+      "row_count": 0
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column_count": 27,
+      "primary_key": [
+        "unique_key"
+      ],
+      "foreign_key_count": 1,
+      "unique_count": 0,
+      "check_count": 18,
+      "row_count": 0
+    }
+  ],
+  "columns": [
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "column": "product_category_name",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "column": "product_category_name_english",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "customer_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "customer_unique_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "customer_zip_code_prefix",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "customer_city",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "customer_state",
+      "type": "CHAR(2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "seller_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "seller_zip_code_prefix",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "seller_city",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "seller_state",
+      "type": "CHAR(2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_category_name",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_name_length",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_description_length",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_photos_qty",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_weight_g",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_length_cm",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_height_cm",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "product_width_cm",
+      "type": "INTEGER",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geolocation_zip_code_prefix",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geolocation_lat",
+      "type": "DOUBLE PRECISION",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geolocation_lng",
+      "type": "DOUBLE PRECISION",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geolocation_city",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geolocation_state",
+      "type": "CHAR(2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "column": "geo_point_id",
+      "type": "BIGINT",
+      "nullable": false,
+      "default": null,
+      "identity": {
+        "always": true,
+        "start": 1,
+        "increment": 1,
+        "minvalue": 1,
+        "maxvalue": 9223372036854775807,
+        "cache": 1,
+        "cycle": false
+      }
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "customer_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_status",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_purchase_timestamp",
+      "type": "TIMESTAMP",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_approved_at",
+      "type": "TIMESTAMP",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_delivered_carrier_date",
+      "type": "TIMESTAMP",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_delivered_customer_date",
+      "type": "TIMESTAMP",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "order_estimated_delivery_date",
+      "type": "DATE",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "purchase_to_approval_duration_valid",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "approval_to_carrier_duration_valid",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "carrier_to_customer_duration_valid",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "purchase_to_customer_duration_valid",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "delivery_delay_eligible",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "order_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "order_item_id",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "product_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "seller_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "shipping_limit_date",
+      "type": "TIMESTAMP",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "price",
+      "type": "NUMERIC(12, 2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "freight_value",
+      "type": "NUMERIC(12, 2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "order_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "payment_sequential",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "payment_type",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "payment_installments",
+      "type": "SMALLINT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "payment_value",
+      "type": "NUMERIC(12, 2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "order_id",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_score",
+      "type": "SMALLINT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_comment_title",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_comment_message",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_creation_date",
+      "type": "TIMESTAMP",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "review_answer_timestamp",
+      "type": "TIMESTAMP",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "source_row",
+      "type": "INTEGER",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "population_area",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "population_geography",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "population_reference_date",
+      "type": "DATE",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "reference_population",
+      "type": "NUMERIC(14, 2)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "reference_borough",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "column": "reference_neighborhood",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "column": "incident_zip",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "column": "population_area",
+      "type": "CHAR(5)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "agency",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "agency_name",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "analysis_area_key",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "borough",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "borough_comparison",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "city",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "closed_date",
+      "type": "TIMESTAMP",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "closure_days",
+      "type": "DOUBLE PRECISION",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "closure_hours",
+      "type": "DOUBLE PRECISION",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "complaint_type",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "created_date",
+      "type": "TIMESTAMP",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "created_month",
+      "type": "CHAR(7)",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "descriptor",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "has_recorded_closure",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "incident_zip",
+      "type": "CHAR(5)",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "latitude",
+      "type": "DOUBLE PRECISION",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "location_type",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "longitude",
+      "type": "DOUBLE PRECISION",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "open_data_channel_type",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "population_area",
+      "type": "CHAR(5)",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "population_join_status",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "population_rate_eligible",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "quality_flags",
+      "type": "JSONB",
+      "nullable": false,
+      "default": "'[]'::jsonb",
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "resolution_action_updated_date",
+      "type": "TIMESTAMP",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "resolution_description",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "status",
+      "type": "TEXT",
+      "nullable": true,
+      "default": null,
+      "identity": null
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "column": "unique_key",
+      "type": "TEXT",
+      "nullable": false,
+      "default": null,
+      "identity": null
+    }
+  ],
+  "constraint_counts": {
+    "PRIMARY KEY": 12,
+    "CHECK": 75,
+    "FOREIGN KEY": 9,
+    "UNIQUE": 1
+  },
+  "constraints": [
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "type": "PRIMARY KEY",
+      "name": "product_categories_pkey",
+      "columns": [
+        "product_category_name"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "type": "CHECK",
+      "name": "product_categories_name_check",
+      "expression": "btrim(product_category_name) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "type": "CHECK",
+      "name": "product_categories_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "product_categories",
+      "type": "CHECK",
+      "name": "product_categories_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "PRIMARY KEY",
+      "name": "customers_pkey",
+      "columns": [
+        "customer_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_city_check",
+      "expression": "btrim(customer_city) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_id_check",
+      "expression": "customer_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_state_check",
+      "expression": "customer_state ~ '^[A-Z]{2}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_unique_id_format_check",
+      "expression": "customer_unique_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "customers",
+      "type": "CHECK",
+      "name": "customers_zip_check",
+      "expression": "customer_zip_code_prefix ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "PRIMARY KEY",
+      "name": "sellers_pkey",
+      "columns": [
+        "seller_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_city_check",
+      "expression": "btrim(seller_city) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_id_check",
+      "expression": "seller_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_state_check",
+      "expression": "seller_state ~ '^[A-Z]{2}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "sellers",
+      "type": "CHECK",
+      "name": "sellers_zip_check",
+      "expression": "seller_zip_code_prefix ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "PRIMARY KEY",
+      "name": "products_pkey",
+      "columns": [
+        "product_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "FOREIGN KEY",
+      "name": "products_category_fk",
+      "columns": [
+        "product_category_name"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "product_categories",
+      "referred_columns": [
+        "product_category_name"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_id_check",
+      "expression": "product_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_description_length_check",
+      "expression": "product_description_length >= 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_height_cm_check",
+      "expression": "product_height_cm > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_length_cm_check",
+      "expression": "product_length_cm > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_name_length_check",
+      "expression": "product_name_length >= 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_photos_qty_check",
+      "expression": "product_photos_qty >= 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_weight_g_check",
+      "expression": "product_weight_g > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_product_width_cm_check",
+      "expression": "product_width_cm > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "products",
+      "type": "CHECK",
+      "name": "products_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "PRIMARY KEY",
+      "name": "geolocation_pkey",
+      "columns": [
+        "geo_point_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "UNIQUE",
+      "name": "geolocation_point_unique",
+      "columns": [
+        "geolocation_zip_code_prefix",
+        "geolocation_lat",
+        "geolocation_lng",
+        "geolocation_city",
+        "geolocation_state"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_city_check",
+      "expression": "btrim(geolocation_city) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_lat_check",
+      "expression": "geolocation_lat >= '-90'::integer::double precision AND geolocation_lat <= 90::double precision"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_lng_check",
+      "expression": "geolocation_lng >= '-180'::integer::double precision AND geolocation_lng <= 180::double precision"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_state_check",
+      "expression": "geolocation_state ~ '^[A-Z]{2}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "geolocation",
+      "type": "CHECK",
+      "name": "geolocation_zip_check",
+      "expression": "geolocation_zip_code_prefix ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "PRIMARY KEY",
+      "name": "orders_pkey",
+      "columns": [
+        "order_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "FOREIGN KEY",
+      "name": "orders_customer_fk",
+      "columns": [
+        "customer_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "customers",
+      "referred_columns": [
+        "customer_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "CHECK",
+      "name": "orders_id_check",
+      "expression": "order_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "CHECK",
+      "name": "orders_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "CHECK",
+      "name": "orders_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "orders",
+      "type": "CHECK",
+      "name": "orders_status_check",
+      "expression": "btrim(order_status) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "PRIMARY KEY",
+      "name": "order_items_pk",
+      "columns": [
+        "order_id",
+        "order_item_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "FOREIGN KEY",
+      "name": "order_items_order_fk",
+      "columns": [
+        "order_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "orders",
+      "referred_columns": [
+        "order_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "FOREIGN KEY",
+      "name": "order_items_product_fk",
+      "columns": [
+        "product_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "products",
+      "referred_columns": [
+        "product_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "FOREIGN KEY",
+      "name": "order_items_seller_fk",
+      "columns": [
+        "seller_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "sellers",
+      "referred_columns": [
+        "seller_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "CHECK",
+      "name": "order_items_freight_check",
+      "expression": "freight_value >= 0::numeric AND freight_value <> 'NaN'::numeric"
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "CHECK",
+      "name": "order_items_order_item_id_check",
+      "expression": "order_item_id > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "CHECK",
+      "name": "order_items_price_check",
+      "expression": "price >= 0::numeric AND price <> 'NaN'::numeric"
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "CHECK",
+      "name": "order_items_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_items",
+      "type": "CHECK",
+      "name": "order_items_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "PRIMARY KEY",
+      "name": "order_payments_pk",
+      "columns": [
+        "order_id",
+        "payment_sequential"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "FOREIGN KEY",
+      "name": "order_payments_order_fk",
+      "columns": [
+        "order_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "orders",
+      "referred_columns": [
+        "order_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_payment_installments_check",
+      "expression": "payment_installments > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_payment_sequential_check",
+      "expression": "payment_sequential > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_type_check",
+      "expression": "btrim(payment_type) <> ''::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_payments",
+      "type": "CHECK",
+      "name": "order_payments_value_check",
+      "expression": "payment_value >= 0::numeric AND payment_value <> 'NaN'::numeric"
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "PRIMARY KEY",
+      "name": "order_reviews_pk",
+      "columns": [
+        "review_id",
+        "order_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "FOREIGN KEY",
+      "name": "order_reviews_order_fk",
+      "columns": [
+        "order_id"
+      ],
+      "referred_schema": "olist",
+      "referred_table": "orders",
+      "referred_columns": [
+        "order_id"
+      ]
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "CHECK",
+      "name": "order_reviews_id_check",
+      "expression": "review_id ~ '^[0-9a-f]{32}$'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "CHECK",
+      "name": "order_reviews_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "CHECK",
+      "name": "order_reviews_review_score_check",
+      "expression": "review_score >= 1 AND review_score <= 5"
+    },
+    {
+      "schema": "olist",
+      "table": "order_reviews",
+      "type": "CHECK",
+      "name": "order_reviews_source_row_check",
+      "expression": "source_row > 0"
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "type": "PRIMARY KEY",
+      "name": "population_areas_pkey",
+      "columns": [
+        "population_area"
+      ]
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "type": "CHECK",
+      "name": "population_areas_borough_check",
+      "expression": "btrim(reference_borough) <> ''::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "type": "CHECK",
+      "name": "population_areas_geography_check",
+      "expression": "btrim(population_geography) <> ''::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "type": "CHECK",
+      "name": "population_areas_key_check",
+      "expression": "population_area ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_areas",
+      "type": "CHECK",
+      "name": "population_areas_population_check",
+      "expression": "reference_population > 0::numeric AND reference_population <> 'NaN'::numeric"
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "type": "PRIMARY KEY",
+      "name": "population_zip_aliases_pkey",
+      "columns": [
+        "incident_zip"
+      ]
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "type": "FOREIGN KEY",
+      "name": "population_zip_aliases_area_fk",
+      "columns": [
+        "population_area"
+      ],
+      "referred_schema": "nyc311",
+      "referred_table": "population_areas",
+      "referred_columns": [
+        "population_area"
+      ]
+    },
+    {
+      "schema": "nyc311",
+      "table": "population_zip_aliases",
+      "type": "CHECK",
+      "name": "population_zip_aliases_zip_check",
+      "expression": "incident_zip ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "PRIMARY KEY",
+      "name": "cases_pkey",
+      "columns": [
+        "unique_key"
+      ]
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "FOREIGN KEY",
+      "name": "cases_population_area_fk",
+      "columns": [
+        "population_area"
+      ],
+      "referred_schema": "nyc311",
+      "referred_table": "population_areas",
+      "referred_columns": [
+        "population_area"
+      ]
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_agency_check",
+      "expression": "btrim(agency) <> ''::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_analysis_area_key_check",
+      "expression": "btrim(analysis_area_key) <> ''::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_borough_comparison_check",
+      "expression": "borough_comparison = ANY (ARRAY['match'::text, 'mismatch'::text, 'unavailable'::text])"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_closure_days_check",
+      "expression": "closure_days >= 0::double precision AND closure_days < 'Infinity'::double precision"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_closure_flag_check",
+      "expression": "has_recorded_closure = (closed_date IS NOT NULL)"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_closure_hours_check",
+      "expression": "closure_hours >= 0::double precision AND closure_hours < 'Infinity'::double precision"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_closure_nulls_check",
+      "expression": "closure_hours IS NULL) = (closed_date IS NULL) AND (closure_days IS NULL) = (closed_date IS NULL"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_closure_order_check",
+      "expression": "closed_date >= created_date"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_complaint_type_check",
+      "expression": "btrim(complaint_type) <> ''::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_created_month_check",
+      "expression": "created_month::text = to_char(created_date, 'YYYY-MM'::text)"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_incident_zip_check",
+      "expression": "incident_zip ~ '^[0-9]{5}$'::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_latitude_check",
+      "expression": "latitude >= '-90'::integer::double precision AND latitude <= 90::double precision"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_longitude_check",
+      "expression": "longitude >= '-180'::integer::double precision AND longitude <= 180::double precision"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_population_join_consistency_check",
+      "expression": "population_join_status = 'matched'::text AND population_area IS NOT NULL AND incident_zip IS NOT NULL OR population_join_status = 'missing_zip'::text AND population_area IS NULL AND incident_zip IS NULL OR population_join_status = 'unmatched_zip'::text AND population_area IS NULL AND incident_zip IS NOT NULL"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_population_join_status_check",
+      "expression": "population_join_status = ANY (ARRAY['matched'::text, 'missing_zip'::text, 'unmatched_zip'::text])"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_population_rate_eligible_check",
+      "expression": "population_rate_eligible = (population_area IS NOT NULL AND borough_comparison <> 'mismatch'::text)"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_quality_flags_check",
+      "expression": "jsonb_typeof(quality_flags) = 'array'::text"
+    },
+    {
+      "schema": "nyc311",
+      "table": "cases",
+      "type": "CHECK",
+      "name": "cases_unique_key_check",
+      "expression": "unique_key ~ '^[0-9]+$'::text"
+    }
+  ],
+  "status": "created",
+  "target": "postgresql+psycopg://localhost:5432/ds_learning",
+  "transaction_committed": true,
+  "ddl_executed": true,
+  "data_loaded": false,
+  "existing_definitions_compared_to_sql": false,
+  "files": [
+    {
+      "file": "001_olist.sql",
+      "sha256": "7a4c93580bca8af66ac849c5bffc273f767bde21eddac2eaecf094d24975baa4",
+      "executed": true
+    },
+    {
+      "file": "002_nyc311.sql",
+      "sha256": "6576d83ba6c9c0d61ec8ab6527594a47bc46d9e3bd7bafe7ebc78a81994a80ea",
+      "executed": true
+    }
+  ],
+  "implementation": {
+    "file": "src/data_factory/database/ddl.py",
+    "sha256": "b3a8bbb4202d0d3aec7779dedac637a78d5740cfb66cb94293ab4a4c03011e07"
+  },
+  "post_commit_verified": true,
+  "post_commit_table_count": 12,
+  "notebook_execution": {
+    "method": "Fresh IPython process; setup, real connection, DDL, post-commit inspection and cleanup only; not a full notebook or Jupyter kernel run.",
+    "executed_cells": [
+      {
+        "cell_id": "stage02-setup",
+        "stdout": "Status: project setup ready.\nShared package: data_factory\nSeed: 42\nQuery budget (ms): 200\nDatabase connections opened: 0\n",
+        "rich_output_count": 0
+      },
+      {
+        "cell_id": "database-step02-engine",
+        "stdout": "Target: postgresql+psycopg://localhost:5432/ds_learning\nSELECT 1: 1\nDatabase: ds_learning\nUser: postgres\nPostgreSQL version: 18.6\n",
+        "rich_output_count": 0
+      },
+      {
+        "cell_id": "database-ddl-execute",
+        "stdout": "DDL status: created\nDatabase: ds_learning\nTransaction committed: True\nEvidence: stages/stage_02/evidence/quality/ddl_execution.json\n",
+        "rich_output_count": 1
+      },
+      {
+        "cell_id": "database-ddl-inspect",
+        "stdout": "Committed tables: 12\nTotal data rows: 0\n",
+        "rich_output_count": 2
+      },
+      {
+        "cell_id": "database-engine-cleanup",
+        "stdout": "Database engine pool disposed.\n",
+        "rich_output_count": 0
+      }
+    ],
+    "prior_cells_unchanged": 49,
+    "data_inspection_and_cleaning_cells_and_outputs_preserved": true,
+    "ddl_before_loading": true
+  },
+  "notebook_sha256": "90f7afc99b0b74da5d6243d6a33503eadd1d1e9f3cf7851bb74bb1a0ad9b1772",
+  "test_evidence": "stages/stage_02/evidence/quality/ddl_tests.json"
+}

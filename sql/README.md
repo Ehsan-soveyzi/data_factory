@@ -7,7 +7,8 @@ same query with an instrumentation prefix. Q2 is implemented in
 `queries/02_monthly_state_delivery.sql` with a single SQL file and a compiled
 SQLAlchemy EXPLAIN wrapper. Q3 uses `queries/03_delivery_review_satisfaction.sql`
 with the same wrapper. Q4 uses `queries/04_top_seller_performance.sql`.
-Q5 and dependent views/routines remain pending.
+Q5 uses `queries/05_payment_methods_installments.sql`. All five initial analytical
+queries are present; performance optimization and dependent views/routines remain pending.
 
 | Folder | Intended contents |
 |---|---|
@@ -128,3 +129,31 @@ single-SQL EXPLAIN wrapper. Its independent Python control accumulates item
 prices, seller/order sets and latest reviews from 5,000-row batches. All 20 rows
 match. The saved median is 1,033.66 ms, maximum 1,324.07 ms, above 200 ms;
 optimization remains pending. Prior Q1-Q3 SQL and evidence are unchanged.
+
+## Q5: payment methods/installments and merchandise order values
+
+`queries/05_payment_methods_installments.sql` produces two labelled result levels
+from one file. `order_profile` assigns every delivered order to exactly one
+method/plan profile, retaining mixed methods, mixed plans, unknown/partly unknown
+installments and no-payment orders. Its order counts and merchandise totals are
+additive. `payment_plan` describes actual method/installment records; counts and
+amounts of payments are additive, but order memberships and full merchandise
+values overlap across plans. Never sum the two levels together.
+
+Item prices and payments are aggregated separately to avoid multiplication.
+Payment sequence is a payment allocation, not an installment number. Each
+`payment_value` is counted once and is never multiplied by installments. Order
+value is merchandise price without freight; recorded payment totals are a
+different measure. Repeated same-plan payments are collapsed per order before
+averaging full order values within a plan. Missing payments do not become paid
+zero, and missing items do not become a zero-valued basket. Coverage includes
+`valued_order_count`; unknown installments are never imputed as one.
+
+`payment_analysis.run_payment_baseline` uses the common read-only benchmark and
+single-file EXPLAIN wrapper. The independent streamed Python control rebuilds
+all 31 exclusive profiles and 27 overlapping plans. The notebook also compares
+single-method credit-card orders with homogeneous known plans: mean merchandise
+value is BRL 82.27 for one installment versus 171.23 for two or more. This is a
+descriptive association with sparse groups identified, not a causal inference.
+The saved warm median is 1,190.08 ms, maximum 1,209.05 ms, above 200 ms;
+optimization remains pending. Prior Q1-Q4 SQL and evidence are unchanged.

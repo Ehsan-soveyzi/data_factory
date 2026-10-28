@@ -1,9 +1,9 @@
 # Stage 02 - Database Performance
 
 Status: source preparation, connection and initial DDL are complete. The saved
-notebook includes Olist/NYC loading outputs. Q1-Q4 run against the populated
+notebook includes Olist/NYC loading outputs. All five initial queries run against the populated
 database with saved results, correctness tests and measured baselines.
-Q1/Q3/Q4 exceed 200 ms; all seven saved Q2 runs are below 200 ms. Q5 and the remaining
+Q1/Q3/Q4/Q5 exceed 200 ms; all seven saved Q2 runs are below 200 ms. Performance
 optimization, views and routines remain pending. Older setup sections below
 describe their original execution snapshots, including the initial empty tables.
 
@@ -409,6 +409,51 @@ temporary database:
 python tests/database/run_ddl_tests.py --pattern test_seller_analysis.py
 ```
 
-The full database suite now passes 62 tests: 5 live DDL, 35 live analytical and
+At Q4 delivery, the full database suite passed 62 tests: 5 live DDL, 35 live analytical and
 22 offline. All temporary test databases were removed. See the
 [Q4 tests](evidence/quality/q4_tests.json) and [full suite](evidence/quality/ddl_tests.json).
+
+## Q5: payment methods, installment plans and order values
+
+Section 4.5 uses [one SQL file](../../sql/queries/05_payment_methods_installments.sql)
+with two clearly separated result levels. Exclusive `order_profile` rows cover
+every order exactly once, including mixed-method/plan and no-payment groups.
+Recorded `payment_plan` rows describe actual payment methods and installments;
+one order can appear in several plans. Order counts and full merchandise values
+must not be summed across plan groups or across the two levels. Repeated
+same-plan payment rows count once per order when averaging basket values.
+
+Merchandise value is item price without freight. Payment values are counted once
+per row, never multiplied by installment count. Missing payment amounts and
+missing basket values stay NULL rather than imputed zeros; observed zero values
+remain valid. Unknown/partly unknown installments are retained, not replaced by
+one. Comparison of one installment with two or more uses only single-method
+credit-card orders with homogeneous, known installment counts, and weights
+group means by valued-order counts. It is descriptive rather than causal.
+
+Actual coverage: 96,478 orders and 100,756 payment rows, with 31 exclusive profile
+groups and 27 plan groups. Merchandise total is BRL 13,221,498.11; recorded payment
+total is BRL 15,422,461.77. There are 2,875 orders with multiple payment rows,
+2,182 with mixed methods, one without payment and two with unknown installments.
+All orders have item values in this snapshot. Pure credit-card orders are
+74.75% (72,122); boleto 19.89% (19,191). Within homogeneous known credit-card
+plans, one installment has mean basket BRL 82.27 (23,161 orders), versus 171.23
+for two or more (48,815 orders). Rare plan groups are highlighted in the chart.
+
+All 58 rows match an independent Python reconstruction of separately streamed
+orders/items/payments. Seven warm runs measured 1,138.45-1,209.05 ms, median
+1,190.08 ms; Q5 does not meet the 200 ms budget yet. No new index, view, snapshot
+or persistent setting changed. Only setup/connection and Q5 cells were executed
+in fresh IPython; previous cells/outputs and Q1-Q4 evidence were preserved and
+the Engine pool was disposed. A full notebook/Jupyter-kernel run was not performed.
+
+Run the thirteen PostgreSQL fixture tests in an automatically created and
+verified temporary database:
+
+```powershell
+python tests/database/run_ddl_tests.py --pattern test_payment_analysis.py
+```
+
+The full database suite now passes 75 tests: 5 live DDL, 48 live analytical and
+22 offline. All temporary test databases were removed. See the
+[Q5 tests](evidence/quality/q5_tests.json) and [full suite](evidence/quality/ddl_tests.json).

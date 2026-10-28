@@ -18,7 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pattern", default="test_*.py",
                         choices=("test_*.py", "test_delivery_analysis.py", "test_satisfaction_analysis.py",
-                                 "test_seller_analysis.py"))
+                                 "test_seller_analysis.py", "test_payment_analysis.py"))
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[2]
     settings = load_database_settings()
@@ -66,7 +66,7 @@ def main():
     match = re.search(r"Ran (\d+) tests?", output)
     live_count = len(re.findall(r"^test_\w+ \(test_ddl\.PostgreSQLDDLTests\.", output, re.MULTILINE))
     live_query_count = len(re.findall(
-        r"^test_\w+ \(test_(?:sales|delivery_analysis|satisfaction_analysis|seller_analysis)\.PostgreSQL(?:Sales|DeliveryAnalysis|SatisfactionAnalysis|SellerAnalysis)Tests\.",
+        r"^test_\w+ \(test_(?:sales|delivery_analysis|satisfaction_analysis|seller_analysis|payment_analysis)\.PostgreSQL(?:Sales|DeliveryAnalysis|SatisfactionAnalysis|SellerAnalysis|PaymentAnalysis)Tests\.",
         output, re.MULTILINE))
     total_count = int(match.group(1)) if match else None
     report = {
@@ -83,7 +83,8 @@ def main():
     }
     evidence_name = {"test_delivery_analysis.py": "q2_tests.json",
                      "test_satisfaction_analysis.py": "q3_tests.json",
-                     "test_seller_analysis.py": "q4_tests.json"}.get(args.pattern, "ddl_tests.json")
+                     "test_seller_analysis.py": "q4_tests.json",
+                     "test_payment_analysis.py": "q5_tests.json"}.get(args.pattern, "ddl_tests.json")
     path = project / "stages/stage_02/evidence/quality" / evidence_name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

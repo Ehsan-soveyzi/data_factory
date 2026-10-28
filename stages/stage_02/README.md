@@ -1,11 +1,15 @@
 # Stage 02 - Database Performance
 
-Status: source preparation, connection and initial DDL are complete. The saved
-notebook includes Olist/NYC loading outputs. All five initial queries run against the populated
-database with saved results, correctness tests and measured baselines.
-Q1/Q3/Q4/Q5 exceed 200 ms; all seven saved Q2 runs are below 200 ms. Performance
-optimization, views and routines remain pending. Older setup sections below
-describe their original execution snapshots, including the initial empty tables.
+Status: source preparation, initial DDL and saved Olist/NYC loading outputs are
+available. All five analyses have validated results and original baselines. The
+bounded index-only attempt is complete; the original Q1/Q3/Q4/Q5 budget remains
+unmet and all seven original Q2 runs were below 200 ms. Sections 6 and 7 now
+include executed views, the Q5 cache comparison, and a monthly Function/Procedure
+demonstration. The full database suite passed 94 tests. Current notebook sections
+are numbered 1-9. A full notebook/kernel rerun and empty-database end-to-end
+acceptance have not been performed. Older setup notes describe their original
+execution snapshots, including the initially empty tables; measured results and
+limitations are summarized in the [Persian decision report](report.md).
 
 - [solution.ipynb](solution.ipynb): source checks in sections 2.1-2.7 and executed cleaning in 2.8-2.10 and saved NYC inspection in 2.11-2.15.
 - [report.md](report.md): schema decisions, alternatives, measured evidence and limitations.

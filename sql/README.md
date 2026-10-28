@@ -6,7 +6,8 @@ in `queries/01_monthly_category_sales.sql`; its static EXPLAIN companion has the
 same query with an instrumentation prefix. Q2 is implemented in
 `queries/02_monthly_state_delivery.sql` with a single SQL file and a compiled
 SQLAlchemy EXPLAIN wrapper. Q3 uses `queries/03_delivery_review_satisfaction.sql`
-with the same wrapper. Q4-Q5 and dependent views/routines remain pending.
+with the same wrapper. Q4 uses `queries/04_top_seller_performance.sql`.
+Q5 and dependent views/routines remain pending.
 
 | Folder | Intended contents |
 |---|---|
@@ -104,3 +105,26 @@ recomputes every bucket and statistic outside timing. The six result rows are
 saved in section 4.3 with exact numeric values and a two-panel chart. Q3's warm
 baseline has median 414.49 ms and maximum 435.07 ms, above the 200 ms target;
 optimization remains pending. Existing Q1/Q2 SQL and evidence are unchanged.
+
+## Q4: top sellers and order-level preparation/review proxies
+
+`queries/04_top_seller_performance.sql` ranks sellers by their own item-price
+shares on delivered orders, excluding freight, in the purchase-date interval.
+Revenue ties use seller ID ascending; bound `top_n=20` returns exactly at most
+20 rows. Seller/order shares are aggregated before averaging, so multiple items
+or reviews cannot multiply revenue or overweight an order. The selected review
+uses Q3's latest-answer/creation/ID policy. Only reviews for the selected sellers'
+distinct order IDs are ranked.
+
+Preparation is the approval-to-carrier interval in fractional days, using its
+own validity flag, known timestamps and a nonnegative interval. Zero is valid.
+Invalid/missing preparation and missing reviews are excluded only from their
+respective averages, with coverage counts; seller revenue is retained. These
+timestamps and reviews describe the whole order, so multi-seller attribution is
+a proxy and cannot isolate a seller's own preparation or customer satisfaction.
+
+`seller_analysis.run_seller_baseline` uses the shared read-only benchmark and
+single-SQL EXPLAIN wrapper. Its independent Python control accumulates item
+prices, seller/order sets and latest reviews from 5,000-row batches. All 20 rows
+match. The saved median is 1,033.66 ms, maximum 1,324.07 ms, above 200 ms;
+optimization remains pending. Prior Q1-Q3 SQL and evidence are unchanged.

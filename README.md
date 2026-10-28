@@ -17,7 +17,7 @@ root. Each stage has its own notebook and decision report.
 | Stage | Deliverables | Status |
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Existing implementation |
-| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Q1-Q3 implemented; Q2 below 200 ms; Q1/Q3 optimization and Q4-Q5 pending |
+| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Q1-Q4 implemented; Q2 below 200 ms; Q1/Q3/Q4 optimization and Q5 pending |
 
 The installation and pipeline commands below describe stage 01. For offline Olist
 preparation, run `python -m data_factory clean-olist`; see the stage 02 guide for
@@ -33,7 +33,9 @@ monthly category sales against the populated database. Its measured baseline
 exceeds 200 ms. Section 4.2 adds Q2 delivery timeliness by purchase month and
 customer state; all seven measured warm runs were below 200 ms. A database CLI
 bootstrap command is not available yet. Section 4.3 adds Q3 review satisfaction
-by delivery delay; its initial measured baseline exceeds 200 ms.
+by delivery delay; its initial measured baseline exceeds 200 ms. Section 4.4
+adds the top 20 sellers by merchandise revenue with order-level preparation and
+review proxies; its initial baseline also exceeds 200 ms.
 
 ## Contents
 

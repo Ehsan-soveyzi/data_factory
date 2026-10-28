@@ -1,10 +1,9 @@
 # Stage 02 - Database Performance
 
 Status: source preparation, connection and initial DDL are complete. The saved
-notebook includes Olist/NYC loading outputs. Q1 sales, Q2 delivery timeliness and
-Q3 review satisfaction run against the populated database with saved results,
-correctness tests and measured baselines. Q1/Q3 exceed 200 ms; all seven saved
-Q2 runs are below 200 ms. Q4-Q5 and the remaining
+notebook includes Olist/NYC loading outputs. Q1-Q4 run against the populated
+database with saved results, correctness tests and measured baselines.
+Q1/Q3/Q4 exceed 200 ms; all seven saved Q2 runs are below 200 ms. Q5 and the remaining
 optimization, views and routines remain pending. Older setup sections below
 describe their original execution snapshots, including the initial empty tables.
 
@@ -369,6 +368,47 @@ temporary database:
 python tests/database/run_ddl_tests.py --pattern test_satisfaction_analysis.py
 ```
 
-The full database suite now passes 51 tests: 5 live DDL, 24 live analytical and
+At Q3 delivery, the full database suite passed 51 tests: 5 live DDL, 24 live analytical and
 22 offline checks. All temporary test databases were removed. See the
 [Q3 tests](evidence/quality/q3_tests.json) and [full suite](evidence/quality/ddl_tests.json).
+
+## Q4: top 20 sellers with preparation and review proxies
+
+Section 4.4 uses [one SQL file](../../sql/queries/04_top_seller_performance.sql)
+and the same dark SQL display, read-only benchmark and EXPLAIN wrapper. It ranks
+completed merchandise sales by seller's own item-price share, excluding freight.
+Revenue ties use seller ID ascending. The default `top_n=20` is bound, as are
+the purchase-date interval and delivered status.
+
+One seller/order pair contributes once to averages, regardless of item/review
+counts. Preparation is fractional days from approval to carrier, only with its
+validity flag, known timestamps and a nonnegative interval; zero stays valid.
+Latest reviews follow Q3. Missing or invalid metric values retain revenue and
+are reported in coverage counts. Order-level timestamps and review scores are
+proxies for sellers on multi-seller orders, not individual seller measurements.
+
+Actual coverage: 2,970 sellers, 110,197 items and 96,478 distinct delivered
+orders. Across all sellers, item shares reconcile to BRL 13,221,498.11. There
+are 1,275 multi-seller orders and 97,819 seller/order assignments. Top-20 revenue
+is BRL 2,813,946.82 (21.28% of the total). The first seller,
+`4869f7a5dfa277a7dca6462dcf3b52b2` in Guariba/SP, has BRL 226,987.93 from
+1,124 orders, mean preparation 2.38 days and mean selected score 4.15.
+
+The independent streamed Python control verifies all ranks, revenue and averages.
+Seven warm runs measured 801.11-1,324.07 ms, median 1,033.66 ms; Q4 does not meet
+200 ms yet. The actual plan is saved for optimization. No new index, view,
+snapshot or persistent setting changed. Only setup/connection and Q4 cells were
+executed in fresh IPython; earlier notebook cells, outputs and Q1-Q3 evidence
+were preserved, and the Engine pool was disposed. A complete notebook/Jupyter
+kernel run was not performed.
+
+Run the eleven PostgreSQL fixture tests in an automatically created and verified
+temporary database:
+
+```powershell
+python tests/database/run_ddl_tests.py --pattern test_seller_analysis.py
+```
+
+The full database suite now passes 62 tests: 5 live DDL, 35 live analytical and
+22 offline. All temporary test databases were removed. See the
+[Q4 tests](evidence/quality/q4_tests.json) and [full suite](evidence/quality/ddl_tests.json).

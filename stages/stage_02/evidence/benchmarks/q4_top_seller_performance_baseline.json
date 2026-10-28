@@ -1,0 +1,105 @@
+{
+  "measured_at_utc": "2026-10-28T16:27:04.681090+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered",
+    "top_n": 20
+  },
+  "query_file": "04_top_seller_performance.sql",
+  "query_sha256": "f18a2fd646e61cedd6ed89ef7e9945ae31b2511cfc8853550d71c6c08acd6a9f",
+  "results_sha256": "f446852258c9a9a6ba6252a597c9e558810f2381059b75ae8e7158072f105e8a",
+  "result_row_count": 20,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "order_reviews_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_reviews_pk ON olist.order_reviews USING btree (review_id, order_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    },
+    {
+      "tablename": "sellers",
+      "indexname": "sellers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX sellers_pkey ON olist.sellers USING btree (seller_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "method": "Independent Python item-price accumulation, seller/order sets and review selection",
+    "fetch_batch_size": 5000,
+    "all_ranked_rows_verified": 20,
+    "all_seller_count": 2970,
+    "all_product_sales_brl": "13221498.11",
+    "all_item_count": 110197,
+    "distinct_scoped_order_count": 96478,
+    "seller_order_assignments": 97819,
+    "multi_seller_order_count": 1275,
+    "top_totals": {
+      "gross_product_sales_brl": "2813946.82",
+      "sold_order_count": 18646,
+      "sold_item_count": 21261,
+      "preparation_eligible_count": 18416,
+      "preparation_excluded_count": 230,
+      "reviewed_order_count": 18521,
+      "missing_review_count": 125
+    },
+    "top_distinct_order_count": 18611,
+    "top_distinct_reviewed_order_count": 18486,
+    "top_raw_review_rows": 18593,
+    "top_review_rows_not_selected": 107
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      1071.6801000526175,
+      801.1109999497421,
+      1009.2137000174262,
+      1218.734800000675,
+      1033.6592000094242,
+      1324.0715999854729,
+      840.9707000246271
+    ],
+    "min_ms": 801.1109999497421,
+    "median_ms": 1033.6592000094242,
+    "max_ms": 1324.0715999854729,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 926.14,
+    "explain_planning_ms": 1.883
+  },
+  "question": "Q4 top sellers by completed merchandise sales with preparation and review proxies",
+  "semantics": {
+    "scope": "delivered orders by purchase timestamp, start inclusive/end exclusive",
+    "revenue": "seller's own SUM(item price), nominal BRL, excluding freight/payments",
+    "ranking": "revenue descending, seller_id ascending for ties; exact top_n cap",
+    "averaging_grain": "one seller/order pair, irrespective of item/review count",
+    "preparation": "(carrier handoff timestamp - approval timestamp) in fractional days",
+    "preparation_validity": "own validity flag, both dates and nonnegative interval; zero is valid",
+    "missing_preparation": "seller revenue retained, duration excluded from average with count",
+    "review_selection": "latest answer, then creation, then review_id descending, same as Q3",
+    "missing_review": "seller revenue retained, score average excludes NULL with coverage count",
+    "multi_seller_limit": "preparation timestamp and review score describe the whole order, not individual seller performance"
+  },
+  "scope": "Q4 initial measurement only; no new indexes, views or other questions"
+}

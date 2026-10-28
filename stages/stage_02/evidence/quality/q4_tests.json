@@ -1,0 +1,13 @@
+{
+  "test_command": "python tests/database/run_ddl_tests.py --pattern test_seller_analysis.py",
+  "status": "passed",
+  "tests_run": 11,
+  "live_ddl_tests": 0,
+  "live_query_tests": 11,
+  "offline_tests": 0,
+  "isolated_test_database": "df_ddl_test_cec0c9f99e014486",
+  "test_database_removed": true,
+  "fixture_resets_confined_to_test_database": true,
+  "analysis_database_not_used_for_fixtures": "ds_learning",
+  "output": "test_averages_weight_seller_orders_once_not_items (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_averages_weight_seller_orders_once_not_items) ... ok\ntest_empty_interval_does_not_invent_sellers_or_scores (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_empty_interval_does_not_invent_sellers_or_scores) ... ok\ntest_independent_control_rejects_wrong_ranking_metrics (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_independent_control_rejects_wrong_ranking_metrics) ... ok\ntest_invalid_missing_or_false_flag_durations_do_not_remove_revenue (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_invalid_missing_or_false_flag_durations_do_not_remove_revenue) ... ok\ntest_missing_reviews_remain_null_and_latest_review_has_one_weight (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_missing_reviews_remain_null_and_latest_review_has_one_weight) ... ok\ntest_multi_seller_order_gets_each_share_and_same_order_level_proxy (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_multi_seller_order_gets_each_share_and_same_order_level_proxy) ... ok\ntest_revenue_is_own_item_share_without_freight_or_review_multiplication (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_revenue_is_own_item_share_without_freight_or_review_multiplication) ... ok\ntest_scope_boundaries_and_independent_control_match_hand_counts (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_scope_boundaries_and_independent_control_match_hand_counts) ... ok\ntest_subday_duration_is_not_truncated_to_calendar_days (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_subday_duration_is_not_truncated_to_calendar_days) ... ok\ntest_top_limit_and_revenue_ties_are_deterministic (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_top_limit_and_revenue_ties_are_deterministic) ... ok\ntest_zero_duration_and_zero_revenue_are_retained (test_seller_analysis.PostgreSQLSellerAnalysisTests.test_zero_duration_and_zero_revenue_are_retained) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.664s\n\nOK\n"
+}

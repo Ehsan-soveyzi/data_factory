@@ -1,0 +1,56 @@
+{
+  "measured_at_utc": "2026-10-28T18:31:55.306993+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {},
+  "query_file": "07_payment_live_view.sql",
+  "query_sha256": "aabe2e54e27ce08581cabfdc5bfef5781e6bb03e5c65cab0c5b7ea5e2ca41e77",
+  "results_sha256": "c32ae033cbae4437245d391dd1ceb679c67bce75ab45f484d89db5bc9c9472bc",
+  "result_row_count": 58,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "order_payments_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_payments_pk ON olist.order_payments USING btree (order_id, payment_sequential)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "all_rows_and_columns_match_original_q5": true
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 1,
+    "repetitions": 3,
+    "elapsed_ms": [
+      1737.3450000304729,
+      1704.000299971085,
+      1608.3058000076562
+    ],
+    "min_ms": 1608.3058000076562,
+    "median_ms": 1704.000299971085,
+    "max_ms": 1737.3450000304729,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 1777.515,
+    "explain_planning_ms": 1.005
+  }
+}

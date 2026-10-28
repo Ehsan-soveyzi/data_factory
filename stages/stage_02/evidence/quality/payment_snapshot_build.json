@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "snapshot_name": "payment_analysis_snapshot",
+    "source_snapshot_at": "2026-10-28T22:01:43.196656+03:30",
+    "source_snapshot_id": "1196:1196:",
+    "refreshed_at": "2026-10-28T22:01:44.944749+03:30",
+    "row_count": 58,
+    "view_definition_sha256": "c893008adc76e85377cc428b0d1ef17eb8da7bf2e2e5c7ae169e0c6ae1117772"
+  },
+  "refresh_and_analyze_ms": 1762.974600016605,
+  "validated_refresh_transaction_ms": 3457.407800015062,
+  "validation_included_in_transaction_total": true,
+  "all_rows_match_original_q5": true,
+  "storage": [
+    {
+      "object_name": "analysis_snapshot_metadata",
+      "object_kind": "r",
+      "relation_bytes": 8192,
+      "total_bytes": 32768
+    },
+    {
+      "object_name": "payment_analysis_snapshot",
+      "object_kind": "r",
+      "relation_bytes": 16384,
+      "total_bytes": 49152
+    },
+    {
+      "object_name": "v_orders",
+      "object_kind": "v",
+      "relation_bytes": 0,
+      "total_bytes": 0
+    },
+    {
+      "object_name": "v_payment_analysis",
+      "object_kind": "v",
+      "relation_bytes": 0,
+      "total_bytes": 0
+    }
+  ],
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "automatic_refresh": false
+}

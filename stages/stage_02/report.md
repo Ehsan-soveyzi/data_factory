@@ -259,3 +259,73 @@ The notebook section 5 loads the saved measurements without repeating speed
 experiments. Its apply cell idempotently checks/applies the retained index.
 Earlier Q1-Q5 cells and outputs are preserved. The 75-test database suite passed;
 a full notebook/kernel rerun and an index write-overhead benchmark were not done.
+
+
+## Section 7 completed: views and Q5 result snapshot
+
+Section 6 (further query optimization) was removed at the user's request. Section
+numbers 7 onward remain stable. Section 7 creates `olist.v_orders` (one-table
+projection) and `olist.v_payment_analysis` (original Q5 analysis via orders,
+items and payments). The analysis scope is explicitly fixed to delivered
+purchases in [2016-01-01, 2019-01-01); these are ordinary nonparameterized views.
+The original Q5 SQL and prior evidence are unchanged. The versioned view body
+is checked against Q5 with only fixed binds and its order-view source substituted.
+
+| Path | Warmups / measured runs | Median ms | Maximum ms | All runs <200 ms |
+| --- | --- | ---: | ---: | --- |
+| Live View | 1 / 3 | 1704.00 | 1737.35 | No |
+| Snapshot table | 1 / 3 | 1.22 | 1.50 | Yes |
+
+All 58 rows and every field match the original validated Q5 output (31 exclusive
+order profiles and 27 overlapping payment plans). Timings include execute and
+full fetch, use warm caches, and are not a concurrency/load guarantee. One bounded
+comparison was performed; the existing SQL and optimizer settings were retained.
+Saved plans show the live view reads orders/items/payments and retains grouping,
+joins, CTEs and one disk sort; the cache plan scans/sorts only the result table.
+
+The logged `olist.payment_analysis_snapshot` table is installed WITH NO DATA,
+then replaced explicitly from the view. This is a regular table, not a PostgreSQL
+materialized view. Refresh plus ANALYZE took 1762.97 ms
+(before commit); the transaction including independent execution of original Q5
+for full-result validation and commit took 3457.41 ms.
+Snapshot storage including auxiliary relations was 49,152 bytes; metadata plus
+its primary-key index was 32,768 bytes in this measurement. Size can grow with
+updates/dead tuples and subsequent vacuum is normal maintenance. Views store
+definitions instead of result rows; zero data-relation bytes is not zero catalog
+space or zero query execution cost.
+
+Refresh is manual and atomic (REPEATABLE READ in the notebook wrapper); a lock
+serializes rebuilds and can block readers. Only derived rows are replaced, with
+normal MVCC DELETE/INSERT and transaction rollback, never source-table mutation.
+Metadata records the source snapshot timestamp/ID, fill completion, row count
+and view definition hash. Timestamp age does not detect source changes. No
+trigger, scheduler, Function or Procedure was installed. Source updates or a
+scope change require rebuilding before using the cache for a current answer.
+For repeated fixed-scope reports, prefer the cache if freshness at its last
+refresh is acceptable; use the live view when a current result is required.
+The faster cached read moves computation to refresh, rather than accelerating
+the original Q5 execution.
+
+Files: `sql/views/001_payment_analysis.sql`, `sql/ddl/003_payment_snapshot.sql`,
+`sql/queries/07_payment_{live_view,snapshot}.sql`, and
+`src/data_factory/database/views.py`. With an existing `engine` and `PROJECT_ROOT`:
+
+```python
+from data_factory.database.views import prepare_payment_snapshot, compare_payment_view_snapshot
+build = prepare_payment_snapshot(engine, PROJECT_ROOT)  # explicit refresh
+comparison = compare_payment_view_snapshot(engine, PROJECT_ROOT)  # one warmup + 3 runs per path
+```
+
+Rebuilding and remeasuring are separate explicit operations; the comparison
+does not silently refresh stale data. Rerunning them updates only section 7
+evidence. Notebook section 7 includes executable SQL displays (dark background),
+build/timing/storage/freshness output, all Q5 results and a saved-plan summary.
+Earlier cells and outputs were preserved. Only setup/connection and the five new
+code cells were executed in fresh IPython sessions; no full notebook/kernel run
+was performed. Eight section-specific checks passed (7 PostgreSQL, 1 offline),
+then all 83 database tests passed in a disposable verified database, which was
+removed. Tests prove live updates vs stale cache, explicit refresh, repeatability,
+empty-source handling, and atomic rollback of both rows and metadata on failure.
+
+PostgreSQL references: [CREATE VIEW](https://www.postgresql.org/docs/18/sql-createview.html)
+and [CREATE TABLE AS](https://www.postgresql.org/docs/18/sql-createtableas.html).

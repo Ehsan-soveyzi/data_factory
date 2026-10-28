@@ -1,0 +1,14 @@
+{
+  "test_command": "python tests/database/run_ddl_tests.py --pattern test_views.py",
+  "status": "passed",
+  "tests_run": 8,
+  "live_ddl_tests": 0,
+  "live_query_tests": 0,
+  "live_view_tests": 7,
+  "offline_tests": 1,
+  "isolated_test_database": "df_ddl_test_702ed2449d0e40f7",
+  "test_database_removed": true,
+  "fixture_resets_confined_to_test_database": true,
+  "analysis_database_not_used_for_fixtures": "ds_learning",
+  "output": "test_empty_source_refresh_removes_obsolete_cached_rows (test_views.PostgreSQLViewSnapshotTests.test_empty_source_refresh_removes_obsolete_cached_rows) ... ok\ntest_failed_refresh_rolls_back_rows_and_metadata_together (test_views.PostgreSQLViewSnapshotTests.test_failed_refresh_rolls_back_rows_and_metadata_together) ... ok\ntest_live_view_updates_while_snapshot_stays_stale_until_refresh (test_views.PostgreSQLViewSnapshotTests.test_live_view_updates_while_snapshot_stays_stale_until_refresh) ... ok\ntest_multitable_view_equals_original_q5_with_mixed_and_unknown_plans (test_views.PostgreSQLViewSnapshotTests.test_multitable_view_equals_original_q5_with_mixed_and_unknown_plans) ... ok\ntest_repeat_install_and_refresh_preserve_results_without_duplicates (test_views.PostgreSQLViewSnapshotTests.test_repeat_install_and_refresh_preserve_results_without_duplicates) ... ok\ntest_simple_view_preserves_all_order_rows_and_statuses (test_views.PostgreSQLViewSnapshotTests.test_simple_view_preserves_all_order_rows_and_statuses) ... ok\ntest_snapshot_is_empty_until_explicit_refresh (test_views.PostgreSQLViewSnapshotTests.test_snapshot_is_empty_until_explicit_refresh) ... ok\ntest_view_body_is_original_q5_with_only_fixed_scope_and_order_view_substituted (test_views.ViewDefinitionTests.test_view_body_is_original_q5_with_only_fixed_scope_and_order_view_substituted) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.855s\n\nOK\n"
+}

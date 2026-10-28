@@ -1,0 +1,62 @@
+{
+  "timings": [
+    {
+      "path": "live_view",
+      "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+      "cache": "warm; no cache flush; no concurrency load",
+      "warmups": 1,
+      "repetitions": 3,
+      "elapsed_ms": [
+        1737.3450000304729,
+        1704.000299971085,
+        1608.3058000076562
+      ],
+      "min_ms": 1608.3058000076562,
+      "median_ms": 1704.000299971085,
+      "max_ms": 1737.3450000304729,
+      "budget_ms": 200,
+      "all_measured_runs_within_budget": false,
+      "explain_execution_ms": 1777.515,
+      "explain_planning_ms": 1.005
+    },
+    {
+      "path": "snapshot",
+      "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+      "cache": "warm; no cache flush; no concurrency load",
+      "warmups": 1,
+      "repetitions": 3,
+      "elapsed_ms": [
+        1.215800002682954,
+        1.4962000423111022,
+        0.9506999631412327
+      ],
+      "min_ms": 0.9506999631412327,
+      "median_ms": 1.215800002682954,
+      "max_ms": 1.4962000423111022,
+      "budget_ms": 200,
+      "all_measured_runs_within_budget": true,
+      "explain_execution_ms": 0.053,
+      "explain_planning_ms": 0.037
+    }
+  ],
+  "median_speedup": 1401.5465505928607,
+  "same_results": true,
+  "freshness": {
+    "snapshot_name": "payment_analysis_snapshot",
+    "source_snapshot_at": "2026-10-28T22:01:43.196656+03:30",
+    "source_snapshot_id": "1196:1196:",
+    "refreshed_at": "2026-10-28T22:01:44.944749+03:30",
+    "row_count": 58,
+    "view_definition_sha256": "c893008adc76e85377cc428b0d1ef17eb8da7bf2e2e5c7ae169e0c6ae1117772",
+    "checked_at": "2026-10-28T22:01:55.326234+03:30",
+    "age_seconds": "12.129578"
+  },
+  "scope": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "runs_per_path": 3,
+  "automatic_refresh": false,
+  "freshness_limit": "Age describes build time only; equality was checked at measurement, not continuously."
+}

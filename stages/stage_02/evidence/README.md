@@ -101,3 +101,15 @@ DDL, 48 live analytical and 22 offline. The verified temporary database was remo
 - `quality/indexing_decision.json`: retained/removed definitions and explicit stop decision.
 - `quality/indexing_cleanup.json`: removal of canceled schema/index experiments and preserved business row counts.
 - All trial results equal the frozen original outputs; no query reached the 200 ms budget in this trial. Original Q1-Q5 evidence is preserved.
+
+
+## Section 7 views / result snapshot
+
+- `quality/payment_snapshot_build.json`: source snapshot metadata, validated refresh timing and storage inventory.
+- `quality/views/{live_view,snapshot}_results.json`: full identical Q5 results, 58 rows each.
+- `benchmarks/views/{live_view,snapshot}.json`: one warmup and three execute/full-fetch measurements per path.
+- `benchmarks/views/comparison.json`: speed ratio, scope, freshness timestamp/age and limitations.
+- `plans/views/{live_view,snapshot}.json`: actual EXPLAIN ANALYZE/BUFFERS plans.
+- `quality/view_tests.json`: 8 isolated section-specific tests; `quality/ddl_tests.json`: all 83 tests passed, disposable test database removed.
+
+This is a new section 7 comparison; it does not replace earlier original-query or index-only evidence.

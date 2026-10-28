@@ -223,3 +223,39 @@ review_id به‌تنهایی یکتا نیست، اما ترکیب آن با or
 [۱۳ تست واقعی PostgreSQL](evidence/quality/q5_tests.json) با دادهٔ کوچک موفق‌اند: پرداخت شکستهٔ هم‌برنامه، چند آیتم، عدم ضرب مبلغ در اقساط، روش و برنامهٔ ترکیبی، اقساط کاملاً و بخشی نامعلوم، نبود پرداخت یا آیتم، صفر واقعی، هم‌پوشانی برنامه‌ها، جواب دستی کنترل مستقل، مرز بازه، نبود هرگونه پرداخت، کشف میانگین غلط و بازهٔ خالی. فرمان مستقل: `python tests/database/run_ddl_tests.py --pattern test_payment_analysis.py`. مجموعهٔ کامل **۷۵ تست موفق** دارد: ۵ DDL واقعی، ۴۸ تحلیلی واقعی و ۲۲ آفلاین. دیتابیس‌های موقت پس از کنترل هویت حذف شدند و دادهٔ تحلیلی fixture نبوده است.
 
 فقط آماده‌سازی، اتصال و چهار سلول جدید سؤال پنجم در فرایند تازهٔ IPython اجرا شدند و pool آزاد شد؛ اجرای کامل نوت‌بوک یا Jupyter kernel انجام نشده است. سلول‌ها، خروجی‌ها و شواهد چهار سؤال قبلی حفظ شدند. هر پنج تحلیل اولیه اکنون پیاده شده‌اند؛ بهینه‌سازی و رسیدن همهٔ کوئری‌ها به بودجه و سایر بخش‌های مرحله هنوز باقی‌اند. هیچ ایندکس جدید، View، snapshot یا تغییر پایدار تنظیمات ایجاد نشد.
+
+
+## Completed bounded index-only attempt
+
+The original query SQL, business schema and benchmark settings were restored;
+experimental generated UUID columns and replacement query variants were removed.
+Only Q1, Q3, Q4 and Q5 entered one fixed four-index trial. Q2 was excluded because
+its original measurement met the budget; Q2 was not measured again.
+
+| Query | Before median (ms) | Trial median (ms) | Trial maximum (ms) | All measured runs within 200 ms |
+| --- | ---: | ---: | ---: | --- |
+| Q1 | 528.57 | 901.51 | 907.32 | No |
+| Q3 | 744.75 | 287.40 | 413.85 | No |
+| Q4 | 1233.09 | 1316.47 | 1393.67 | No |
+| Q5 | 2208.33 | 5649.79 | 5707.39 | No |
+
+These are the saved measurements of the four-index trial. Only
+`idx_qbudget_reviews_latest` was used by its plans (Q3 and Q4); the three unused
+item/payment candidates were removed. The final SQL contains only this retained
+review index. No additional timing trial was run after removal, so these timings
+must not be represented as a fresh benchmark of the final single-index state.
+All result rows and fields matched the original results. A larger measured time
+with unused indexes does not establish that those indexes caused the slowdown.
+
+Q1 still scans and aggregates item/category data and sorts 110,197 rows with a
+disk sort. Q3 benefits from ordered latest-review access but still scans orders,
+groups results and sorts 96,470 rows on disk. Q4 retains seller/order aggregation,
+CTE work and a disk sort of 110,197 rows. Q5 retains broad order/payment/item
+processing, CTE work and a disk sort of 100,756 rows; its candidate indexes were
+not chosen. Indexing alone did not remove these operations. No further tuning
+was attempted, as requested. The 200 ms target remains unmet for these queries.
+
+The notebook section 5 loads the saved measurements without repeating speed
+experiments. Its apply cell idempotently checks/applies the retained index.
+Earlier Q1-Q5 cells and outputs are preserved. The 75-test database suite passed;
+a full notebook/kernel rerun and an index write-overhead benchmark were not done.

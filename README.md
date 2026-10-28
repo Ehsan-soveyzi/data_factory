@@ -337,3 +337,6 @@ CLI exit codes: `0` success, `2` configuration/argument error, `3` network error
 - [Data understanding notes](stages/stage_01/data_undrestandation_notes.docx): source fields and interpretation.
 
 The notebook, decision report, and some companion documents are written in Persian.
+
+
+Stage 02: the bounded index-only attempt is complete; the 200 ms target remains unmet for Q1/Q3/Q4/Q5. See [measured results and limitations](stages/stage_02/report.md#completed-bounded-index-only-attempt).

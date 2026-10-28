@@ -1,0 +1,122 @@
+{
+  "measured_at_utc": "2026-10-28T18:03:00.324323+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "query_file": "05_payment_methods_installments.sql",
+  "query_sha256": "e620aeb7adebdc62244be402deb0a7eb1772bffc803a47e4277da28108eee133",
+  "results_sha256": "c32ae033cbae4437245d391dd1ceb679c67bce75ab45f484d89db5bc9c9472bc",
+  "result_row_count": 58,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "idx_qbudget_items_order",
+      "indexdef": "CREATE INDEX idx_qbudget_items_order ON olist.order_items USING btree (order_id) INCLUDE (price, product_id)"
+    },
+    {
+      "tablename": "order_items",
+      "indexname": "idx_qbudget_items_seller",
+      "indexdef": "CREATE INDEX idx_qbudget_items_seller ON olist.order_items USING btree (seller_id, order_id) INCLUDE (price)"
+    },
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "idx_qbudget_payments_plan",
+      "indexdef": "CREATE INDEX idx_qbudget_payments_plan ON olist.order_payments USING btree (order_id, payment_type, payment_installments) INCLUDE (payment_value)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "order_payments_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_payments_pk ON olist.order_payments USING btree (order_id, payment_sequential)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "idx_qbudget_reviews_latest",
+      "indexdef": "CREATE INDEX idx_qbudget_reviews_latest ON olist.order_reviews USING btree (order_id, review_answer_timestamp DESC, review_creation_date DESC, review_id DESC) INCLUDE (review_score)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "order_reviews_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_reviews_pk ON olist.order_reviews USING btree (review_id, order_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    },
+    {
+      "tablename": "products",
+      "indexname": "products_pkey",
+      "indexdef": "CREATE UNIQUE INDEX products_pkey ON olist.products USING btree (product_id)"
+    },
+    {
+      "tablename": "sellers",
+      "indexname": "sellers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX sellers_pkey ON olist.sellers USING btree (seller_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "all_columns_and_rows_match_validated_result": true
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      5441.902799997479,
+      5121.51729996549,
+      5649.791300005745,
+      5261.932399997022,
+      5697.6879999856465,
+      5707.389299990609,
+      5704.678600013722
+    ],
+    "min_ms": 5121.51729996549,
+    "median_ms": 5649.791300005745,
+    "max_ms": 5707.389299990609,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 1832.691,
+    "explain_planning_ms": 1.594
+  },
+  "query_number": 5,
+  "phase": "after",
+  "query_sql_unchanged": true,
+  "optimizer_settings_unchanged": true,
+  "plan_summary": {
+    "new_indexes_used": [],
+    "disk_sorts": [
+      {
+        "rows": 100756.0,
+        "space_kb": 6272
+      }
+    ],
+    "cte_scans": [
+      "order_facts",
+      "order_values",
+      "scoped_orders"
+    ],
+    "sequential_scans": [
+      "order_items",
+      "order_payments",
+      "orders"
+    ]
+  }
+}

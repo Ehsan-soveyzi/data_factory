@@ -1,0 +1,24 @@
+{
+  "trial": "one four-index structure; unchanged SQL/settings",
+  "retained": [
+    "idx_qbudget_reviews_latest"
+  ],
+  "removed": [
+    {
+      "indexname": "idx_qbudget_items_order",
+      "indexdef": "CREATE INDEX idx_qbudget_items_order ON olist.order_items USING btree (order_id) INCLUDE (price, product_id)"
+    },
+    {
+      "indexname": "idx_qbudget_items_seller",
+      "indexdef": "CREATE INDEX idx_qbudget_items_seller ON olist.order_items USING btree (seller_id, order_id) INCLUDE (price)"
+    },
+    {
+      "indexname": "idx_qbudget_payments_plan",
+      "indexdef": "CREATE INDEX idx_qbudget_payments_plan ON olist.order_payments USING btree (order_id, payment_type, payment_installments) INCLUDE (payment_value)"
+    }
+  ],
+  "reason": "Only Q3 median improved. The other candidate indexes were not retained after regressions.",
+  "budget_met": false,
+  "further_tuning_stopped_at_user_request": true,
+  "no_second_speed_trial_after_removal": true
+}

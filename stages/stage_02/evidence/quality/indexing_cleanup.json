@@ -1,0 +1,167 @@
+{
+  "status": "restored",
+  "business_row_counts_before": {
+    "orders": 99441,
+    "customers": 99441,
+    "order_items": 112650,
+    "products": 32951,
+    "order_payments": 103886,
+    "order_reviews": 99224,
+    "sellers": 3095
+  },
+  "business_row_counts_after": {
+    "orders": 99441,
+    "customers": 99441,
+    "order_items": 112650,
+    "products": 32951,
+    "order_payments": 103886,
+    "order_reviews": 99224,
+    "sellers": 3095
+  },
+  "removed_generated_columns": [
+    {
+      "table_name": "orders",
+      "column_name": "analytics_customer_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(customer_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "analytics_order_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(order_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "customers",
+      "column_name": "analytics_customer_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(customer_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "products",
+      "column_name": "analytics_product_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(product_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "analytics_order_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(order_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "analytics_product_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(product_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "analytics_seller_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(seller_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_payments",
+      "column_name": "analytics_order_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(order_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_reviews",
+      "column_name": "analytics_order_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(order_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "order_reviews",
+      "column_name": "analytics_review_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(review_id)::uuid",
+      "data_type": "uuid"
+    },
+    {
+      "table_name": "sellers",
+      "column_name": "analytics_seller_key",
+      "is_generated": "ALWAYS",
+      "generation_expression": "(seller_id)::uuid",
+      "data_type": "uuid"
+    }
+  ],
+  "removed_experimental_indexes": [
+    {
+      "index_oid": 31009,
+      "index_name": "idx_dfopt_customers_native_state",
+      "table_name": "customers",
+      "definition": "CREATE INDEX idx_dfopt_customers_native_state ON olist.customers USING btree (analytics_customer_key) INCLUDE (customer_state)",
+      "index_bytes": 4055040,
+      "table_bytes": 14950400,
+      "is_valid": true
+    },
+    {
+      "index_oid": 31025,
+      "index_name": "idx_dfopt_items_native_order",
+      "table_name": "order_items",
+      "definition": "CREATE INDEX idx_dfopt_items_native_order ON olist.order_items USING btree (analytics_order_key) INCLUDE (price, analytics_product_key)",
+      "index_bytes": 6651904,
+      "table_bytes": 26861568,
+      "is_valid": true
+    },
+    {
+      "index_oid": 31027,
+      "index_name": "idx_dfopt_items_native_seller",
+      "table_name": "order_items",
+      "definition": "CREATE INDEX idx_dfopt_items_native_seller ON olist.order_items USING btree (analytics_seller_key, analytics_order_key) INCLUDE (price)",
+      "index_bytes": 6668288,
+      "table_bytes": 26861568,
+      "is_valid": true
+    },
+    {
+      "index_oid": 31007,
+      "index_name": "idx_dfopt_orders_native_scope",
+      "table_name": "orders",
+      "definition": "CREATE INDEX idx_dfopt_orders_native_scope ON olist.orders USING btree (analytics_order_key) INCLUDE (order_status, order_purchase_timestamp, analytics_customer_key, order_delivered_customer_date, order_estimated_delivery_date, delivery_delay_eligible, approval_to_carrier_duration_valid, order_approved_at, order_delivered_carrier_date)",
+      "index_bytes": 11239424,
+      "table_bytes": 19922944,
+      "is_valid": true
+    },
+    {
+      "index_oid": 31026,
+      "index_name": "idx_dfopt_payments_native_order",
+      "table_name": "order_payments",
+      "definition": "CREATE INDEX idx_dfopt_payments_native_order ON olist.order_payments USING btree (analytics_order_key) INCLUDE (payment_type, payment_installments, payment_value)",
+      "index_bytes": 6094848,
+      "table_bytes": 13664256,
+      "is_valid": true
+    },
+    {
+      "index_oid": 30948,
+      "index_name": "idx_dfopt_products_native_category",
+      "table_name": "products",
+      "definition": "CREATE INDEX idx_dfopt_products_native_category ON olist.products USING btree (analytics_product_key) INCLUDE (product_category_name)",
+      "index_bytes": 1785856,
+      "table_bytes": 4718592,
+      "is_valid": true
+    },
+    {
+      "index_oid": 30943,
+      "index_name": "idx_dfopt_reviews_native_latest",
+      "table_name": "order_reviews",
+      "definition": "CREATE INDEX idx_dfopt_reviews_native_latest ON olist.order_reviews USING btree (analytics_order_key, review_answer_timestamp DESC, review_creation_date DESC, analytics_review_key DESC) INCLUDE (review_score)",
+      "index_bytes": 7659520,
+      "table_bytes": 20455424,
+      "is_valid": true
+    }
+  ],
+  "storage_compacted": true,
+  "original_queries_and_business_columns_preserved": true
+}

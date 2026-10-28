@@ -157,3 +157,8 @@ value is BRL 82.27 for one installment versus 171.23 for two or more. This is a
 descriptive association with sparse groups identified, not a causal inference.
 The saved warm median is 1,190.08 ms, maximum 1,209.05 ms, above 200 ms;
 optimization remains pending. Prior Q1-Q4 SQL and evidence are unchanged.
+
+
+## Retained analytical index
+
+`indexes/001_query_budget_indexes.sql` contains only `idx_qbudget_reviews_latest` for selecting the latest review in Q3/Q4. Original analytical SQL is unchanged. One fixed four-index trial did not meet the 200 ms budget; three unused candidates were removed and no further speed trial was run. See the stage 02 report for historical trial timings and remaining work in the plans.

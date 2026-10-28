@@ -1,0 +1,99 @@
+{
+  "measured_at_utc": "2026-10-28T18:01:02.911665+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "query_file": "01_monthly_category_sales.sql",
+  "query_sha256": "553f36a81bc7e64cf7cacc76748b33301281f8ab0e055137df3b826fcfc5e286",
+  "results_sha256": "4b38df0d6467dea4250841610d27040bc664054908556d94d51042b3523545c5",
+  "result_row_count": 1273,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "order_payments_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_payments_pk ON olist.order_payments USING btree (order_id, payment_sequential)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "order_reviews_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_reviews_pk ON olist.order_reviews USING btree (review_id, order_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    },
+    {
+      "tablename": "products",
+      "indexname": "products_pkey",
+      "indexdef": "CREATE UNIQUE INDEX products_pkey ON olist.products USING btree (product_id)"
+    },
+    {
+      "tablename": "sellers",
+      "indexname": "sellers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX sellers_pkey ON olist.sellers USING btree (seller_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "all_columns_and_rows_match_validated_result": true
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      589.5444999914616,
+      542.2706000390463,
+      528.565599990543,
+      539.2895999830216,
+      493.3807000052184,
+      523.4948000288568,
+      469.52619997318834
+    ],
+    "min_ms": 469.52619997318834,
+    "median_ms": 528.565599990543,
+    "max_ms": 589.5444999914616,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 567.237,
+    "explain_planning_ms": 0.503
+  },
+  "query_number": 1,
+  "phase": "before",
+  "query_sql_unchanged": true,
+  "optimizer_settings_unchanged": true,
+  "plan_summary": {
+    "new_indexes_used": [],
+    "disk_sorts": [
+      {
+        "rows": 110197.0,
+        "space_kb": 7456
+      }
+    ],
+    "cte_scans": [],
+    "sequential_scans": [
+      "order_items",
+      "orders",
+      "product_categories",
+      "products"
+    ]
+  }
+}

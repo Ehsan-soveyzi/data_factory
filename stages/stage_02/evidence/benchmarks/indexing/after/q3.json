@@ -1,0 +1,118 @@
+{
+  "measured_at_utc": "2026-10-28T18:01:58.576119+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "query_file": "03_delivery_review_satisfaction.sql",
+  "query_sha256": "8cfe93e4cadec6005709005b3014e52b0ab901efd545dc65bd631c2915996335",
+  "results_sha256": "55313a5254e2164651e8bff886fabffb7a3cb70c9249188afaa0f1cc6e27adcb",
+  "result_row_count": 6,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "idx_qbudget_items_order",
+      "indexdef": "CREATE INDEX idx_qbudget_items_order ON olist.order_items USING btree (order_id) INCLUDE (price, product_id)"
+    },
+    {
+      "tablename": "order_items",
+      "indexname": "idx_qbudget_items_seller",
+      "indexdef": "CREATE INDEX idx_qbudget_items_seller ON olist.order_items USING btree (seller_id, order_id) INCLUDE (price)"
+    },
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "idx_qbudget_payments_plan",
+      "indexdef": "CREATE INDEX idx_qbudget_payments_plan ON olist.order_payments USING btree (order_id, payment_type, payment_installments) INCLUDE (payment_value)"
+    },
+    {
+      "tablename": "order_payments",
+      "indexname": "order_payments_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_payments_pk ON olist.order_payments USING btree (order_id, payment_sequential)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "idx_qbudget_reviews_latest",
+      "indexdef": "CREATE INDEX idx_qbudget_reviews_latest ON olist.order_reviews USING btree (order_id, review_answer_timestamp DESC, review_creation_date DESC, review_id DESC) INCLUDE (review_score)"
+    },
+    {
+      "tablename": "order_reviews",
+      "indexname": "order_reviews_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_reviews_pk ON olist.order_reviews USING btree (review_id, order_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    },
+    {
+      "tablename": "products",
+      "indexname": "products_pkey",
+      "indexdef": "CREATE UNIQUE INDEX products_pkey ON olist.products USING btree (product_id)"
+    },
+    {
+      "tablename": "sellers",
+      "indexname": "sellers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX sellers_pkey ON olist.sellers USING btree (seller_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "all_columns_and_rows_match_validated_result": true
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      413.47119997953996,
+      287.4039000016637,
+      239.55800000112504,
+      209.44839995354414,
+      381.0823000385426,
+      413.84580003796145,
+      286.852799996268
+    ],
+    "min_ms": 209.44839995354414,
+    "median_ms": 287.4039000016637,
+    "max_ms": 413.84580003796145,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 387.236,
+    "explain_planning_ms": 0.467
+  },
+  "query_number": 3,
+  "phase": "after",
+  "query_sql_unchanged": true,
+  "optimizer_settings_unchanged": true,
+  "plan_summary": {
+    "new_indexes_used": [
+      "idx_qbudget_reviews_latest"
+    ],
+    "disk_sorts": [
+      {
+        "rows": 96470.0,
+        "space_kb": 3960
+      }
+    ],
+    "cte_scans": [],
+    "sequential_scans": [
+      "orders"
+    ]
+  }
+}

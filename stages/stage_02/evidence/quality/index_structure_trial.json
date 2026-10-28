@@ -1,0 +1,38 @@
+{
+  "status": "created",
+  "indexes": [
+    {
+      "index_name": "idx_qbudget_items_order",
+      "table_name": "order_items",
+      "definition": "CREATE INDEX idx_qbudget_items_order ON olist.order_items USING btree (order_id) INCLUDE (price, product_id)",
+      "index_bytes": 11493376,
+      "table_bytes": 21184512,
+      "is_valid": true
+    },
+    {
+      "index_name": "idx_qbudget_items_seller",
+      "table_name": "order_items",
+      "definition": "CREATE INDEX idx_qbudget_items_seller ON olist.order_items USING btree (seller_id, order_id) INCLUDE (price)",
+      "index_bytes": 11558912,
+      "table_bytes": 21184512,
+      "is_valid": true
+    },
+    {
+      "index_name": "idx_qbudget_payments_plan",
+      "table_name": "order_payments",
+      "definition": "CREATE INDEX idx_qbudget_payments_plan ON olist.order_payments USING btree (order_id, payment_type, payment_installments) INCLUDE (payment_value)",
+      "index_bytes": 8044544,
+      "table_bytes": 11960320,
+      "is_valid": true
+    },
+    {
+      "index_name": "idx_qbudget_reviews_latest",
+      "table_name": "order_reviews",
+      "definition": "CREATE INDEX idx_qbudget_reviews_latest ON olist.order_reviews USING btree (order_id, review_answer_timestamp DESC, review_creation_date DESC, review_id DESC) INCLUDE (review_score)",
+      "index_bytes": 12263424,
+      "table_bytes": 17195008,
+      "is_valid": true
+    }
+  ],
+  "total_index_bytes": 43360256
+}

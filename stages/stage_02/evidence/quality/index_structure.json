@@ -1,0 +1,14 @@
+{
+  "status": "already_present",
+  "indexes": [
+    {
+      "index_name": "idx_qbudget_reviews_latest",
+      "table_name": "order_reviews",
+      "definition": "CREATE INDEX idx_qbudget_reviews_latest ON olist.order_reviews USING btree (order_id, review_answer_timestamp DESC, review_creation_date DESC, review_id DESC) INCLUDE (review_score)",
+      "index_bytes": 12263424,
+      "table_bytes": 17195008,
+      "is_valid": true
+    }
+  ],
+  "total_index_bytes": 12263424
+}

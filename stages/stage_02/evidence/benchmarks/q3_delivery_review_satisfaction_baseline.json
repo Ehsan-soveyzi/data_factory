@@ -1,0 +1,92 @@
+{
+  "measured_at_utc": "2026-10-28T15:41:53.611597+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "query_file": "03_delivery_review_satisfaction.sql",
+  "query_sha256": "8cfe93e4cadec6005709005b3014e52b0ab901efd545dc65bd631c2915996335",
+  "results_sha256": "55313a5254e2164651e8bff886fabffb7a3cb70c9249188afaa0f1cc6e27adcb",
+  "result_row_count": 6,
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_reviews",
+      "indexname": "order_reviews_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_reviews_pk ON olist.order_reviews USING btree (review_id, order_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "method": "Independent Python latest-review selection and delay classification",
+    "all_delay_groups_verified": 6,
+    "fetch_batch_size": 5000,
+    "delivered_orders_in_scope": 96478,
+    "totals": {
+      "eligible_order_count": 96470,
+      "reviewed_order_count": 95824,
+      "missing_review_count": 646,
+      "low_review_count": 12272,
+      "high_review_count": 75636,
+      "selected_review_before_delivery_count": 4653,
+      "avg_review_score": "4.16"
+    },
+    "exclusion_reasons": {
+      "excluded_missing_dates": 8,
+      "excluded_other_ineligible": 0
+    },
+    "raw_review_rows_for_eligible_orders": 96353,
+    "eligible_orders_with_multiple_reviews": 525,
+    "review_rows_not_selected": 529
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      414.48949999175966,
+      413.4218999533914,
+      419.57720002392307,
+      407.4809000012465,
+      413.4166999720037,
+      424.4726999895647,
+      435.0698000052944
+    ],
+    "min_ms": 407.4809000012465,
+    "median_ms": 414.48949999175966,
+    "max_ms": 435.0698000052944,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 485.059,
+    "explain_planning_ms": 0.299
+  },
+  "question": "Q3 latest review satisfaction versus calendar-day delivery delay",
+  "semantics": {
+    "scope": "delivered orders with eligible flag, known dates and delivery at/after purchase",
+    "delay_days": "actual delivery DATE minus estimated DATE; same date is zero",
+    "review_selection": "latest answer timestamp, then creation timestamp, then review_id DESC",
+    "weight": "one selected review per order; all other review rows retained in source",
+    "missing_review": "order retained in coverage, score statistics exclude NULL",
+    "low_score": "selected score 1-2; denominator reviewed orders",
+    "high_score": "selected score 4-5; denominator reviewed orders",
+    "review_timing": "pre-delivery responses retained and counted separately",
+    "interpretation": "descriptive association; no causal or significance claim",
+    "absent_buckets": "no invented zero rows; all-unreviewed buckets have NULL score statistics"
+  },
+  "scope": "Q3 initial measurement only; no new indexes, views or other questions"
+}

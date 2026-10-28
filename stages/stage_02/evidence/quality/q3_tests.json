@@ -1,0 +1,13 @@
+{
+  "test_command": "python tests/database/run_ddl_tests.py --pattern test_satisfaction_analysis.py",
+  "status": "passed",
+  "tests_run": 10,
+  "live_ddl_tests": 0,
+  "live_query_tests": 10,
+  "offline_tests": 0,
+  "isolated_test_database": "df_ddl_test_75cd21aee96040e4",
+  "test_database_removed": true,
+  "fixture_resets_confined_to_test_database": true,
+  "analysis_database_not_used_for_fixtures": "ds_learning",
+  "output": "test_all_delay_boundaries_and_calendar_day_semantics (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_all_delay_boundaries_and_calendar_day_semantics) ... ok\ntest_creation_timestamp_breaks_equal_answer_ties (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_creation_timestamp_breaks_equal_answer_ties) ... ok\ntest_empty_interval_has_no_synthetic_zero_score (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_empty_interval_has_no_synthetic_zero_score) ... ok\ntest_independent_control_rejects_wrong_average (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_independent_control_rejects_wrong_average) ... ok\ntest_latest_answer_has_priority_and_each_order_has_one_weight (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_latest_answer_has_priority_and_each_order_has_one_weight) ... ok\ntest_pre_delivery_response_is_retained_and_flagged (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_pre_delivery_response_is_retained_and_flagged) ... ok\ntest_review_id_breaks_equal_timestamp_ties_deterministically (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_review_id_breaks_equal_timestamp_ties_deterministically) ... ok\ntest_scope_exclusions_and_independent_control_match_hand_counts (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_scope_exclusions_and_independent_control_match_hand_counts) ... ok\ntest_score_percentages_use_reviewed_orders_and_preserve_neutral_scores (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_score_percentages_use_reviewed_orders_and_preserve_neutral_scores) ... ok\ntest_unreviewed_orders_retained_and_score_statistics_are_null (test_satisfaction_analysis.PostgreSQLSatisfactionAnalysisTests.test_unreviewed_orders_retained_and_score_statistics_are_null) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.416s\n\nOK\n"
+}

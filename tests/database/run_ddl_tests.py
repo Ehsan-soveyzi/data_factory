@@ -17,7 +17,7 @@ from data_factory.database.connection import DatabaseSettings, create_database_e
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pattern", default="test_*.py",
-                        choices=("test_*.py", "test_delivery_analysis.py"))
+                        choices=("test_*.py", "test_delivery_analysis.py", "test_satisfaction_analysis.py"))
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[2]
     settings = load_database_settings()
@@ -65,12 +65,12 @@ def main():
     match = re.search(r"Ran (\d+) tests?", output)
     live_count = len(re.findall(r"^test_\w+ \(test_ddl\.PostgreSQLDDLTests\.", output, re.MULTILINE))
     live_query_count = len(re.findall(
-        r"^test_\w+ \(test_(?:sales|delivery_analysis)\.PostgreSQL(?:Sales|DeliveryAnalysis)Tests\.",
+        r"^test_\w+ \(test_(?:sales|delivery_analysis|satisfaction_analysis)\.PostgreSQL(?:Sales|DeliveryAnalysis|SatisfactionAnalysis)Tests\.",
         output, re.MULTILINE))
     total_count = int(match.group(1)) if match else None
     report = {
         "test_command": "python tests/database/run_ddl_tests.py" + (
-            " --pattern test_delivery_analysis.py" if args.pattern == "test_delivery_analysis.py" else ""),
+            " --pattern " + args.pattern if args.pattern != "test_*.py" else ""),
         "status": "passed" if outcome.returncode == 0 else "failed",
         "tests_run": total_count, "live_ddl_tests": live_count,
         "live_query_tests": live_query_count,
@@ -80,7 +80,8 @@ def main():
         "analysis_database_not_used_for_fixtures": settings.url.database,
         "output": output,
     }
-    evidence_name = "q2_tests.json" if args.pattern == "test_delivery_analysis.py" else "ddl_tests.json"
+    evidence_name = {"test_delivery_analysis.py": "q2_tests.json",
+                     "test_satisfaction_analysis.py": "q3_tests.json"}.get(args.pattern, "ddl_tests.json")
     path = project / "stages/stage_02/evidence/quality" / evidence_name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

@@ -5,7 +5,8 @@ executed in the local `ds_learning` database. Q1 merchandise sales is implemente
 in `queries/01_monthly_category_sales.sql`; its static EXPLAIN companion has the
 same query with an instrumentation prefix. Q2 is implemented in
 `queries/02_monthly_state_delivery.sql` with a single SQL file and a compiled
-SQLAlchemy EXPLAIN wrapper. Q3-Q5 and dependent views/routines remain pending.
+SQLAlchemy EXPLAIN wrapper. Q3 uses `queries/03_delivery_review_satisfaction.sql`
+with the same wrapper. Q4-Q5 and dependent views/routines remain pending.
 
 | Folder | Intended contents |
 |---|---|
@@ -84,3 +85,22 @@ without executing Q1 or modifying database data/settings persistently.
 All seven Q2 warm samples were below 200 ms (median 146.25 ms, maximum 158.59 ms).
 This describes the saved local measurement, not cold-cache or concurrent load.
 The original Q1 SQL and measurement remain unchanged.
+
+## Q3: review satisfaction versus delivery delay
+
+`queries/03_delivery_review_satisfaction.sql` keeps the Q2 delivery eligibility
+and calendar-date definitions. It groups early, same-day, 1-3, 4-7, 8-14 and 15+
+days late. Each order contributes at most one review: latest answer timestamp,
+then creation timestamp, then review ID descending. Missing reviews remain in
+coverage counts; mean score and low/high percentages use reviewed orders only.
+Low scores are 1-2, high scores 4-5 and score 3 is neutral. An all-unreviewed
+group has NULL score statistics. Pre-delivery responses are retained and counted
+separately; the output describes association and does not establish causality.
+
+`satisfaction_analysis.run_satisfaction_baseline` reuses the common read-only
+benchmark and single-statement EXPLAIN wrapper. Its independent Python control
+streams all source reviews in batches of 5,000, picks the latest per order and
+recomputes every bucket and statistic outside timing. The six result rows are
+saved in section 4.3 with exact numeric values and a two-panel chart. Q3's warm
+baseline has median 414.49 ms and maximum 435.07 ms, above the 200 ms target;
+optimization remains pending. Existing Q1/Q2 SQL and evidence are unchanged.

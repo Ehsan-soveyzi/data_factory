@@ -1,10 +1,10 @@
 # Stage 02 - Database Performance
 
 Status: source preparation, connection and initial DDL are complete. The saved
-notebook includes Olist/NYC loading outputs. Q1 sales and Q2 delivery timeliness
-run against the populated database with saved results, correctness tests and
-measured baselines. Q1 exceeds 200 ms; all seven saved Q2 runs are below 200 ms.
-Q3-Q5 and the remaining
+notebook includes Olist/NYC loading outputs. Q1 sales, Q2 delivery timeliness and
+Q3 review satisfaction run against the populated database with saved results,
+correctness tests and measured baselines. Q1/Q3 exceed 200 ms; all seven saved
+Q2 runs are below 200 ms. Q4-Q5 and the remaining
 optimization, views and routines remain pending. Older setup sections below
 describe their original execution snapshots, including the initial empty tables.
 
@@ -331,8 +331,44 @@ python tests/database/run_ddl_tests.py --pattern test_delivery_analysis.py
 
 This needs permission to create a temporary database, as does the existing full
 database runner. Eight tests run on PostgreSQL and one checks EXPLAIN compilation
-and safe binds. The full database suite also passed all 41 tests: 5 live DDL,
+and safe binds. At Q2 delivery, the full database suite passed 41 tests: 5 live DDL,
 14 live analytical and 22 offline checks. The runner now reports live analytical
 tests separately and Q1/Q2 fixture schemas are isolated by rollback. All temporary
 test databases were removed. Evidence is in [Q2 tests](evidence/quality/q2_tests.json)
 and the [full database suite](evidence/quality/ddl_tests.json).
+
+## Q3: review satisfaction versus delivery delay
+
+Section 4.3 uses [one SQL file](../../sql/queries/03_delivery_review_satisfaction.sql),
+the same SQLAlchemy EXPLAIN wrapper and a dark SQL display. It preserves Q2's
+eligibility and date rules. Delay groups are early, on the promised date, 1-3,
+4-7, 8-14 and 15+ days late. One latest answered review per order is selected,
+with creation timestamp and review ID as deterministic tie-breakers. Orders
+without reviews remain in coverage. Review score statistics use only reviewed
+orders; low means 1-2, high means 4-5. The analysis is descriptive and counts
+selected responses recorded before delivery separately.
+
+Actual coverage: 96,470 eligible orders, 95,824 with a selected review and 646
+without. Among eligible orders, 525 have multiple reviews; 529 additional source
+review rows are not selected, but remain in the source. There are 4,653 selected
+responses recorded before delivery. All six groups and their statistics match
+an independent streamed Python calculation. Mean scores are 4.29 (early), 4.03
+(same date), 3.29 (1-3 days), 2.10 (4-7), 1.67 (8-14) and 1.72 (15+).
+
+Seven warm execute/fetch samples measured 407.48-435.07 ms, median 414.49 ms;
+the Q3 baseline does not meet 200 ms yet. The plan and conditions are saved for
+the optimization stage. No index, view, snapshot or persistent setting changed.
+Only setup/connection and Q3 cells were executed in fresh IPython; earlier
+notebook cells, outputs and Q1/Q2 evidence were preserved, and the Engine pool
+was disposed. A complete notebook/Jupyter-kernel run was not performed.
+
+Run the ten PostgreSQL fixture tests in an automatically created/verified
+temporary database:
+
+```powershell
+python tests/database/run_ddl_tests.py --pattern test_satisfaction_analysis.py
+```
+
+The full database suite now passes 51 tests: 5 live DDL, 24 live analytical and
+22 offline checks. All temporary test databases were removed. See the
+[Q3 tests](evidence/quality/q3_tests.json) and [full suite](evidence/quality/ddl_tests.json).

@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "command": "python -m unittest discover -s tests/database -p test_sales.py -v",
+  "fixture_database": "df_ddl_test_7c926237e0b4479a",
+  "fixture_database_removed": true,
+  "analysis_database_used_for_fixtures": false,
+  "output": "test_identical_display_labels_do_not_merge_distinct_category_keys (test_sales.PostgreSQLSalesTests.test_identical_display_labels_do_not_merge_distinct_category_keys) ... ok\ntest_missing_category_zero_price_and_missing_translation_are_retained (test_sales.PostgreSQLSalesTests.test_missing_category_zero_price_and_missing_translation_are_retained) ... ok\ntest_month_and_inclusive_exclusive_boundaries (test_sales.PostgreSQLSalesTests.test_month_and_inclusive_exclusive_boundaries) ... ok\ntest_multicategory_order_does_not_repeat_whole_basket_or_freight (test_sales.PostgreSQLSalesTests.test_multicategory_order_does_not_repeat_whole_basket_or_freight) ... ok\ntest_multiple_items_count_one_order_and_average_category_share (test_sales.PostgreSQLSalesTests.test_multiple_items_count_one_order_and_average_category_share) ... ok\ntest_other_statuses_excluded_and_empty_interval_returns_no_synthetic_zeros (test_sales.PostgreSQLSalesTests.test_other_statuses_excluded_and_empty_interval_returns_no_synthetic_zeros) ... ok\ntest_static_explain_matches_exact_query (test_sales.SalesSQLFileTests.test_static_explain_matches_exact_query) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.381s\n\nOK\n"
+}

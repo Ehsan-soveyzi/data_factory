@@ -1,0 +1,121 @@
+{
+  "question": "Q1 monthly category merchandise sales",
+  "measured_at_utc": "2026-10-28T14:38:48.723031+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "semantics": {
+    "month": "purchase month, source timestamp without timezone conversion",
+    "sales": "SUM(item price) in nominal BRL, delivered orders only, excluding freight",
+    "average": "category sales / unique orders containing that category, rounded to 2 decimals",
+    "missing_category": "NULL key retained; label Uncategorized",
+    "missing_translation": "original Portuguese category retained",
+    "absent_month_category": "no invented zero rows",
+    "order_count_additive_across_categories": false
+  },
+  "query_sha256": "553f36a81bc7e64cf7cacc76748b33301281f8ab0e055137df3b826fcfc5e286",
+  "results_sha256": "4b38df0d6467dea4250841610d27040bc664054908556d94d51042b3523545c5",
+  "result_row_count": 1273,
+  "coverage_by_status": [
+    {
+      "order_status": "approved",
+      "order_count": 2
+    },
+    {
+      "order_status": "canceled",
+      "order_count": 625
+    },
+    {
+      "order_status": "created",
+      "order_count": 5
+    },
+    {
+      "order_status": "delivered",
+      "order_count": 96478
+    },
+    {
+      "order_status": "invoiced",
+      "order_count": 314
+    },
+    {
+      "order_status": "processing",
+      "order_count": 301
+    },
+    {
+      "order_status": "shipped",
+      "order_count": 1107
+    },
+    {
+      "order_status": "unavailable",
+      "order_count": 609
+    }
+  ],
+  "independent_control": {
+    "eligible_item_count": 110197,
+    "eligible_order_count": 96478,
+    "gross_product_sales_brl": "13221498.11",
+    "first_purchase": "2016-09-15T12:16:38",
+    "last_purchase": "2018-08-29T15:00:37",
+    "uncategorized_item_count": 1537
+  },
+  "reconciliation": {
+    "passed": true,
+    "result_sales_brl": "13221498.11"
+  },
+  "indexes_at_measurement": [
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pk",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pk ON olist.order_items USING btree (order_id, order_item_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    },
+    {
+      "tablename": "product_categories",
+      "indexname": "product_categories_pkey",
+      "indexdef": "CREATE UNIQUE INDEX product_categories_pkey ON olist.product_categories USING btree (product_category_name)"
+    },
+    {
+      "tablename": "products",
+      "indexname": "products_pkey",
+      "indexdef": "CREATE UNIQUE INDEX products_pkey ON olist.products USING btree (product_id)"
+    }
+  ],
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      453.4280000370927,
+      476.09000001102686,
+      459.2703999951482,
+      464.5463000051677,
+      456.5621999790892,
+      470.0007999781519,
+      457.44600001489744
+    ],
+    "min_ms": 453.4280000370927,
+    "median_ms": 459.2703999951482,
+    "max_ms": 476.09000001102686,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": false,
+    "explain_execution_ms": 469.965,
+    "explain_planning_ms": 0.482
+  },
+  "scope": "Q1 only; no new indexes, views, snapshots or other questions"
+}

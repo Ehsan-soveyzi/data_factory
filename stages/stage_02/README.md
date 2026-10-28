@@ -1,15 +1,19 @@
 # Stage 02 - Database Performance
 
-Status: Olist inspection/cleaning, saved NYC inspection, the real PostgreSQL
-connection, and initial DDL execution are complete. The two schemas contain 12
-empty tables. PostgreSQL loading, analytical queries, performance measurements,
-and tests for later data operations remain pending.
+Status: source preparation, connection and initial DDL are complete. The saved
+notebook includes Olist/NYC loading outputs. Q1 monthly category sales now runs
+against the populated database with saved results, correctness tests and a
+measured baseline. This baseline exceeds 200 ms. Q2-Q5 and the remaining
+optimization, views and routines remain pending. Older setup sections below
+describe their original execution snapshots, including the initial empty tables.
 
 - [solution.ipynb](solution.ipynb): source checks in sections 2.1-2.7 and executed cleaning in 2.8-2.10 and saved NYC inspection in 2.11-2.15.
 - [report.md](report.md): schema decisions, alternatives, measured evidence and limitations.
 - [Olist schema proposal](../../config/olist_schema.json): column types, keys and planned data policies.
 - [Inspection module](../../src/data_factory/database/source_inspection.py): reusable key, relationship, numeric, date and postal checks.
 - [Notebook evidence](evidence/quality/notebook_checks.json): input hashes and results produced by the module called from this notebook.
+- [Q1 SQL](../../sql/queries/01_monthly_category_sales.sql): monthly category sales, unique category orders and category contribution per order.
+- [Q1 measurements](evidence/benchmarks/q1_baseline.json): seven actual execution/fetch samples, coverage, reconciliation and measurement conditions.
 - [Cleaning module](../../src/data_factory/olist_cleaning.py): normalization, exact-point deduplication, quarantine, reference completion and atomic publication.
 - [Cleaning evidence](evidence/quality/cleaning_report.json): actual before/after counts, changes, quality flags, output types and hashes.
 - [SQL layout](../../sql/README.md): versioned database definitions and queries.
@@ -265,3 +269,31 @@ a [logical schema proposal](../../config/nyc_schema.json) and
 proposed: cases, population areas, and ZIP aliases. This saved acquisition is
 partial; the full selected 18-month scope is not available. No database writes
 or network acquisition are performed by this inspection.
+
+## Q1: monthly category sales baseline
+
+Notebook section 4.1 defines completed merchandise sales as item prices from
+`delivered` orders, grouped by purchase month and original category key. It
+excludes freight and retains NULL categories. Its average is the category's
+contribution per distinct order containing the category. Multi-category order
+counts are not additive. Default dates cover 2016 inclusive through 2019
+exclusive; missing month/category combinations are not invented as zero rows.
+
+The real result has 1,273 groups, 96,478 eligible orders and 110,197 items;
+sales reconcile to BRL 13,221,498.11. The saved warm-cache baseline is above
+200 ms and is explicitly not query-budget acceptance. No new indexes or views
+were created. Only setup/connection and the new Q1 cells were executed in a
+fresh IPython process; loading and other previous cells were preserved, and the
+pool was disposed. A full notebook/Jupyter-kernel run was not performed.
+
+Seven Q1 checks passed, including six live fixture tests in a temporary database
+that was removed. [Test evidence](evidence/quality/q1_tests.json) records scope
+and output. To run the fixture tests, point `DATA_FACTORY_TEST_DATABASE_URL` at a
+dedicated `df_ddl_test_*` PostgreSQL database and run:
+
+```powershell
+python -m unittest discover -s tests/database -p test_sales.py -v
+```
+
+Without that variable, only the SQL-file consistency test runs and the six live
+tests are skipped. Never point fixture settings at the analysis database.

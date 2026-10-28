@@ -1,7 +1,9 @@
 # Versioned SQL
 
 This directory holds versioned stage 02 SQL. The initial DDL files have been
-executed in the local `ds_learning` database. Analytical queries and dependent
+executed in the local `ds_learning` database. Q1 merchandise sales is implemented
+in `queries/01_monthly_category_sales.sql`; its static EXPLAIN companion has the
+same query with an instrumentation prefix. Other queries and dependent
 views/routines remain pending.
 
 | Folder | Intended contents |
@@ -41,3 +43,22 @@ baseline setup.
 
 Keep definitions in `.sql` files. Execute notebook database interactions through
 SQLAlchemy and pass values as bound parameters. Never put credentials in SQL.
+
+## Q1: monthly category sales
+
+Notebook section 4.1 runs Q1 with bound `start_date` (inclusive), `end_date`
+(exclusive) and `order_status` (`delivered`). It sums item prices in BRL without
+freight. Orders are first aggregated by category, so several items from one
+category count as one order. The average is that category's sales per order
+containing the category, rather than the entire multi-category basket value.
+Missing categories remain a separate NULL-key group; missing translations fall
+back to the original category. Category order counts must not be summed to obtain
+global distinct orders.
+
+`data_factory.database.sales.run_sales_baseline` reuses the notebook Engine in a
+repeatable-read, read-only transaction. It performs two warmups and seven timed
+execute/fetch runs, then separately collects EXPLAIN ANALYZE. It creates no
+database objects and does not change persistent server configuration. Results,
+exact money values, SQL hash, existing indexes and measurement conditions are
+saved under `stages/stage_02/evidence/`. The baseline currently exceeds 200 ms;
+query-budget acceptance remains pending optimization.

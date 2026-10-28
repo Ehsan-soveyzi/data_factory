@@ -1,0 +1,5562 @@
+[
+  {
+    "purchase_month": "2016-09-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 0,
+    "late_delivery_pct": "100.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "AL",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "BA",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "CE",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "DF",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "ES",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "GO",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "MA",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "MG",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "MT",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "PA",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "PB",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "PE",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "PI",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "PR",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 40,
+    "eligible_order_count": 40,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 40,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "RN",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "RR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "RS",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "SC",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "SE",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2016-10-01",
+    "customer_state": "SP",
+    "delivered_order_count": 94,
+    "eligible_order_count": 94,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 92,
+    "late_delivery_pct": "2.13"
+  },
+  {
+    "purchase_month": "2016-12-01",
+    "customer_state": "PR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "AC",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "AL",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "BA",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "4.17"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "CE",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "DF",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "15.38"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "ES",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "11.11"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "GO",
+    "delivered_order_count": 18,
+    "eligible_order_count": 18,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "MA",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "16.67"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "MG",
+    "delivered_order_count": 102,
+    "eligible_order_count": 102,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 102,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "MS",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "MT",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "PA",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "PB",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "PE",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "11.11"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "PI",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "PR",
+    "delivered_order_count": 62,
+    "eligible_order_count": 62,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 60,
+    "late_delivery_pct": "3.23"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 91,
+    "eligible_order_count": 91,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 88,
+    "late_delivery_pct": "3.30"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "RN",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "RO",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "RS",
+    "delivered_order_count": 52,
+    "eligible_order_count": 52,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 51,
+    "late_delivery_pct": "1.92"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "SC",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 25,
+    "late_delivery_pct": "3.85"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "SE",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "SP",
+    "delivered_order_count": 283,
+    "eligible_order_count": 283,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 275,
+    "late_delivery_pct": "2.83"
+  },
+  {
+    "purchase_month": "2017-01-01",
+    "customer_state": "TO",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "AC",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "AL",
+    "delivered_order_count": 12,
+    "eligible_order_count": 12,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "8.33"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "AM",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "BA",
+    "delivered_order_count": 58,
+    "eligible_order_count": 58,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 53,
+    "late_delivery_pct": "8.62"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "CE",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "7.69"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "DF",
+    "delivered_order_count": 21,
+    "eligible_order_count": 21,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "ES",
+    "delivered_order_count": 31,
+    "eligible_order_count": 31,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 29,
+    "late_delivery_pct": "6.45"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "GO",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "4.17"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "MA",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "MG",
+    "delivered_order_count": 241,
+    "eligible_order_count": 241,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 239,
+    "late_delivery_pct": "0.83"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "MS",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "MT",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "PA",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "PB",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "9.09"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "PE",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "5.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "PI",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "PR",
+    "delivered_order_count": 110,
+    "eligible_order_count": 110,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 107,
+    "late_delivery_pct": "2.73"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 230,
+    "eligible_order_count": 230,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 222,
+    "late_delivery_pct": "3.48"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "RN",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "RO",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "RS",
+    "delivered_order_count": 100,
+    "eligible_order_count": 100,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 97,
+    "late_delivery_pct": "3.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "SC",
+    "delivered_order_count": 57,
+    "eligible_order_count": 57,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 54,
+    "late_delivery_pct": "5.26"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "SE",
+    "delivered_order_count": 12,
+    "eligible_order_count": 12,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "SP",
+    "delivered_order_count": 601,
+    "eligible_order_count": 601,
+    "excluded_order_count": 0,
+    "late_order_count": 18,
+    "on_time_order_count": 583,
+    "late_delivery_pct": "3.00"
+  },
+  {
+    "purchase_month": "2017-02-01",
+    "customer_state": "TO",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "AC",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "AL",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "20.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "AM",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "AP",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "66.67"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "BA",
+    "delivered_order_count": 87,
+    "eligible_order_count": 87,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 80,
+    "late_delivery_pct": "8.05"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "CE",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "30.77"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "DF",
+    "delivered_order_count": 54,
+    "eligible_order_count": 54,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 54,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "ES",
+    "delivered_order_count": 47,
+    "eligible_order_count": 47,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 47,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "GO",
+    "delivered_order_count": 47,
+    "eligible_order_count": 47,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 47,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "MA",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "18.18"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "MG",
+    "delivered_order_count": 343,
+    "eligible_order_count": 343,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 335,
+    "late_delivery_pct": "2.33"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "MS",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "MT",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "PA",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "8.57"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "PB",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 15,
+    "late_delivery_pct": "6.25"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "PE",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "2.78"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "PI",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "23.08"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "PR",
+    "delivered_order_count": 121,
+    "eligible_order_count": 121,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 116,
+    "late_delivery_pct": "4.13"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 370,
+    "eligible_order_count": 370,
+    "excluded_order_count": 0,
+    "late_order_count": 16,
+    "on_time_order_count": 354,
+    "late_delivery_pct": "4.32"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "RN",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "23.08"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "RO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "50.00"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "RS",
+    "delivered_order_count": 144,
+    "eligible_order_count": 144,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 142,
+    "late_delivery_pct": "1.39"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "SC",
+    "delivered_order_count": 104,
+    "eligible_order_count": 104,
+    "excluded_order_count": 0,
+    "late_order_count": 19,
+    "on_time_order_count": 85,
+    "late_delivery_pct": "18.27"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "SE",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "13.64"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "SP",
+    "delivered_order_count": 966,
+    "eligible_order_count": 966,
+    "excluded_order_count": 0,
+    "late_order_count": 22,
+    "on_time_order_count": 944,
+    "late_delivery_pct": "2.28"
+  },
+  {
+    "purchase_month": "2017-03-01",
+    "customer_state": "TO",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "AL",
+    "delivered_order_count": 21,
+    "eligible_order_count": 21,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "38.10"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "AM",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "BA",
+    "delivered_order_count": 84,
+    "eligible_order_count": 84,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 72,
+    "late_delivery_pct": "14.29"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "CE",
+    "delivered_order_count": 42,
+    "eligible_order_count": 42,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 37,
+    "late_delivery_pct": "11.90"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "DF",
+    "delivered_order_count": 34,
+    "eligible_order_count": 34,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 34,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "ES",
+    "delivered_order_count": 45,
+    "eligible_order_count": 45,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 43,
+    "late_delivery_pct": "4.44"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "GO",
+    "delivered_order_count": 38,
+    "eligible_order_count": 38,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "7.89"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "MA",
+    "delivered_order_count": 25,
+    "eligible_order_count": 25,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "4.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "MG",
+    "delivered_order_count": 266,
+    "eligible_order_count": 266,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 259,
+    "late_delivery_pct": "2.63"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "MS",
+    "delivered_order_count": 15,
+    "eligible_order_count": 15,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "6.67"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "MT",
+    "delivered_order_count": 25,
+    "eligible_order_count": 25,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "8.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "PA",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "PB",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "15.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "PE",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 33,
+    "late_delivery_pct": "8.33"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "PI",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "PR",
+    "delivered_order_count": 112,
+    "eligible_order_count": 112,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 109,
+    "late_delivery_pct": "2.68"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 325,
+    "eligible_order_count": 325,
+    "excluded_order_count": 0,
+    "late_order_count": 21,
+    "on_time_order_count": 304,
+    "late_delivery_pct": "6.46"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "RN",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "RO",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "14.29"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "RS",
+    "delivered_order_count": 132,
+    "eligible_order_count": 132,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 129,
+    "late_delivery_pct": "2.27"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "SC",
+    "delivered_order_count": 100,
+    "eligible_order_count": 100,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 91,
+    "late_delivery_pct": "9.00"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "SE",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "30.77"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "SP",
+    "delivered_order_count": 873,
+    "eligible_order_count": 873,
+    "excluded_order_count": 0,
+    "late_order_count": 61,
+    "on_time_order_count": 812,
+    "late_delivery_pct": "6.99"
+  },
+  {
+    "purchase_month": "2017-04-01",
+    "customer_state": "TO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "15.38"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "AC",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "AL",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "7.69"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "AM",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "AP",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "BA",
+    "delivered_order_count": 119,
+    "eligible_order_count": 119,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 115,
+    "late_delivery_pct": "3.36"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "CE",
+    "delivered_order_count": 62,
+    "eligible_order_count": 62,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 61,
+    "late_delivery_pct": "1.61"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "DF",
+    "delivered_order_count": 60,
+    "eligible_order_count": 60,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 60,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "ES",
+    "delivered_order_count": 90,
+    "eligible_order_count": 90,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 87,
+    "late_delivery_pct": "3.33"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "GO",
+    "delivered_order_count": 83,
+    "eligible_order_count": 83,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 80,
+    "late_delivery_pct": "3.61"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "MA",
+    "delivered_order_count": 31,
+    "eligible_order_count": 31,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 31,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "MG",
+    "delivered_order_count": 412,
+    "eligible_order_count": 412,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 405,
+    "late_delivery_pct": "1.70"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "MS",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 26,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "MT",
+    "delivered_order_count": 37,
+    "eligible_order_count": 37,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "2.70"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "PA",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 34,
+    "late_delivery_pct": "2.86"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "PB",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "5.88"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "PE",
+    "delivered_order_count": 63,
+    "eligible_order_count": 63,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 62,
+    "late_delivery_pct": "1.59"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "PI",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "PR",
+    "delivered_order_count": 206,
+    "eligible_order_count": 206,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 204,
+    "late_delivery_pct": "0.97"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 466,
+    "eligible_order_count": 466,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 453,
+    "late_delivery_pct": "2.79"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "RN",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "RO",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "RS",
+    "delivered_order_count": 206,
+    "eligible_order_count": 205,
+    "excluded_order_count": 1,
+    "late_order_count": 1,
+    "on_time_order_count": 204,
+    "late_delivery_pct": "0.49"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "SC",
+    "delivered_order_count": 146,
+    "eligible_order_count": 146,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 139,
+    "late_delivery_pct": "4.79"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "SE",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1363,
+    "eligible_order_count": 1363,
+    "excluded_order_count": 0,
+    "late_order_count": 58,
+    "on_time_order_count": 1305,
+    "late_delivery_pct": "4.26"
+  },
+  {
+    "purchase_month": "2017-05-01",
+    "customer_state": "TO",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "AC",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "AL",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "30.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "AM",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "BA",
+    "delivered_order_count": 103,
+    "eligible_order_count": 103,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 95,
+    "late_delivery_pct": "7.77"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "CE",
+    "delivered_order_count": 44,
+    "eligible_order_count": 44,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 44,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "DF",
+    "delivered_order_count": 69,
+    "eligible_order_count": 69,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 68,
+    "late_delivery_pct": "1.45"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "ES",
+    "delivered_order_count": 79,
+    "eligible_order_count": 79,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 74,
+    "late_delivery_pct": "6.33"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "GO",
+    "delivered_order_count": 73,
+    "eligible_order_count": 73,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 70,
+    "late_delivery_pct": "4.11"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "MA",
+    "delivered_order_count": 15,
+    "eligible_order_count": 15,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 15,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "MG",
+    "delivered_order_count": 356,
+    "eligible_order_count": 356,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 351,
+    "late_delivery_pct": "1.40"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "MS",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 27,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "MT",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "4.17"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "PA",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 34,
+    "late_delivery_pct": "5.56"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "PB",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "9.09"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "PE",
+    "delivered_order_count": 41,
+    "eligible_order_count": 41,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 39,
+    "late_delivery_pct": "4.88"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "PI",
+    "delivered_order_count": 14,
+    "eligible_order_count": 14,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "PR",
+    "delivered_order_count": 167,
+    "eligible_order_count": 167,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 165,
+    "late_delivery_pct": "1.20"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 399,
+    "eligible_order_count": 399,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 386,
+    "late_delivery_pct": "3.26"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "RN",
+    "delivered_order_count": 12,
+    "eligible_order_count": 12,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "8.33"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "RO",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "RR",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "RS",
+    "delivered_order_count": 215,
+    "eligible_order_count": 215,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 214,
+    "late_delivery_pct": "0.47"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "SC",
+    "delivered_order_count": 109,
+    "eligible_order_count": 109,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 105,
+    "late_delivery_pct": "3.67"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "SE",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1284,
+    "eligible_order_count": 1284,
+    "excluded_order_count": 0,
+    "late_order_count": 42,
+    "on_time_order_count": 1242,
+    "late_delivery_pct": "3.27"
+  },
+  {
+    "purchase_month": "2017-06-01",
+    "customer_state": "TO",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "AL",
+    "delivered_order_count": 15,
+    "eligible_order_count": 15,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "46.67"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "AM",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "AP",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "BA",
+    "delivered_order_count": 144,
+    "eligible_order_count": 144,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 137,
+    "late_delivery_pct": "4.86"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "CE",
+    "delivered_order_count": 53,
+    "eligible_order_count": 53,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 53,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "DF",
+    "delivered_order_count": 75,
+    "eligible_order_count": 75,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 75,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "ES",
+    "delivered_order_count": 81,
+    "eligible_order_count": 81,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 78,
+    "late_delivery_pct": "3.70"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "GO",
+    "delivered_order_count": 77,
+    "eligible_order_count": 77,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 74,
+    "late_delivery_pct": "3.90"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "MA",
+    "delivered_order_count": 37,
+    "eligible_order_count": 37,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 37,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "MG",
+    "delivered_order_count": 435,
+    "eligible_order_count": 435,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 431,
+    "late_delivery_pct": "0.92"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "MS",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "MT",
+    "delivered_order_count": 37,
+    "eligible_order_count": 37,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 37,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "PA",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 33,
+    "late_delivery_pct": "8.33"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "PB",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "19.23"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "PE",
+    "delivered_order_count": 70,
+    "eligible_order_count": 70,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 57,
+    "late_delivery_pct": "18.57"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "PI",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "5.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "PR",
+    "delivered_order_count": 195,
+    "eligible_order_count": 195,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 194,
+    "late_delivery_pct": "0.51"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 547,
+    "eligible_order_count": 547,
+    "excluded_order_count": 0,
+    "late_order_count": 17,
+    "on_time_order_count": 530,
+    "late_delivery_pct": "3.11"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "RN",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "11.11"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "RO",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "RR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "RS",
+    "delivered_order_count": 242,
+    "eligible_order_count": 242,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 236,
+    "late_delivery_pct": "2.48"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "SC",
+    "delivered_order_count": 152,
+    "eligible_order_count": 152,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 145,
+    "late_delivery_pct": "4.61"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "SE",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1543,
+    "eligible_order_count": 1543,
+    "excluded_order_count": 0,
+    "late_order_count": 28,
+    "on_time_order_count": 1515,
+    "late_delivery_pct": "1.81"
+  },
+  {
+    "purchase_month": "2017-07-01",
+    "customer_state": "TO",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "AC",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "AL",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "17.65"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "AM",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "AP",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "BA",
+    "delivered_order_count": 152,
+    "eligible_order_count": 152,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 147,
+    "late_delivery_pct": "3.29"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "CE",
+    "delivered_order_count": 73,
+    "eligible_order_count": 73,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 72,
+    "late_delivery_pct": "1.37"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "DF",
+    "delivered_order_count": 83,
+    "eligible_order_count": 83,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 82,
+    "late_delivery_pct": "1.20"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "ES",
+    "delivered_order_count": 94,
+    "eligible_order_count": 94,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 90,
+    "late_delivery_pct": "4.26"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "GO",
+    "delivered_order_count": 89,
+    "eligible_order_count": 89,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 87,
+    "late_delivery_pct": "2.25"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "MA",
+    "delivered_order_count": 38,
+    "eligible_order_count": 38,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "5.26"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "MG",
+    "delivered_order_count": 459,
+    "eligible_order_count": 459,
+    "excluded_order_count": 0,
+    "late_order_count": 11,
+    "on_time_order_count": 448,
+    "late_delivery_pct": "2.40"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "MS",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "MT",
+    "delivered_order_count": 38,
+    "eligible_order_count": 38,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 38,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "PA",
+    "delivered_order_count": 57,
+    "eligible_order_count": 57,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 57,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "PB",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 15,
+    "late_delivery_pct": "6.25"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "PE",
+    "delivered_order_count": 83,
+    "eligible_order_count": 83,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 71,
+    "late_delivery_pct": "14.46"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "PI",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "PR",
+    "delivered_order_count": 220,
+    "eligible_order_count": 220,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 220,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 537,
+    "eligible_order_count": 537,
+    "excluded_order_count": 0,
+    "late_order_count": 16,
+    "on_time_order_count": 521,
+    "late_delivery_pct": "2.98"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "RN",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "10.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "RO",
+    "delivered_order_count": 14,
+    "eligible_order_count": 14,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "RS",
+    "delivered_order_count": 296,
+    "eligible_order_count": 296,
+    "excluded_order_count": 0,
+    "late_order_count": 22,
+    "on_time_order_count": 274,
+    "late_delivery_pct": "7.43"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "SC",
+    "delivered_order_count": 152,
+    "eligible_order_count": 152,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 148,
+    "late_delivery_pct": "2.63"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "SE",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "10.53"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1665,
+    "eligible_order_count": 1665,
+    "excluded_order_count": 0,
+    "late_order_count": 34,
+    "on_time_order_count": 1631,
+    "late_delivery_pct": "2.04"
+  },
+  {
+    "purchase_month": "2017-08-01",
+    "customer_state": "TO",
+    "delivered_order_count": 15,
+    "eligible_order_count": 15,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 15,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "20.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "AL",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "42.11"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "AM",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "BA",
+    "delivered_order_count": 167,
+    "eligible_order_count": 167,
+    "excluded_order_count": 0,
+    "late_order_count": 28,
+    "on_time_order_count": 139,
+    "late_delivery_pct": "16.77"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "CE",
+    "delivered_order_count": 74,
+    "eligible_order_count": 74,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 72,
+    "late_delivery_pct": "2.70"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "DF",
+    "delivered_order_count": 94,
+    "eligible_order_count": 94,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 87,
+    "late_delivery_pct": "7.45"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "ES",
+    "delivered_order_count": 93,
+    "eligible_order_count": 93,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 89,
+    "late_delivery_pct": "4.30"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "GO",
+    "delivered_order_count": 84,
+    "eligible_order_count": 84,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 82,
+    "late_delivery_pct": "2.38"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "MA",
+    "delivered_order_count": 41,
+    "eligible_order_count": 41,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 38,
+    "late_delivery_pct": "7.32"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "MG",
+    "delivered_order_count": 493,
+    "eligible_order_count": 493,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 488,
+    "late_delivery_pct": "1.01"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "MS",
+    "delivered_order_count": 32,
+    "eligible_order_count": 32,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "MT",
+    "delivered_order_count": 34,
+    "eligible_order_count": 34,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "5.88"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "PA",
+    "delivered_order_count": 41,
+    "eligible_order_count": 41,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "12.20"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "PB",
+    "delivered_order_count": 25,
+    "eligible_order_count": 25,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "28.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "PE",
+    "delivered_order_count": 74,
+    "eligible_order_count": 74,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 68,
+    "late_delivery_pct": "8.11"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "PI",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "4.55"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "PR",
+    "delivered_order_count": 176,
+    "eligible_order_count": 176,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 175,
+    "late_delivery_pct": "0.57"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 591,
+    "eligible_order_count": 591,
+    "excluded_order_count": 0,
+    "late_order_count": 30,
+    "on_time_order_count": 561,
+    "late_delivery_pct": "5.08"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "RN",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "13.04"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "RO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "RR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "RS",
+    "delivered_order_count": 273,
+    "eligible_order_count": 273,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 268,
+    "late_delivery_pct": "1.83"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "SC",
+    "delivered_order_count": 153,
+    "eligible_order_count": 153,
+    "excluded_order_count": 0,
+    "late_order_count": 11,
+    "on_time_order_count": 142,
+    "late_delivery_pct": "7.19"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "SE",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1576,
+    "eligible_order_count": 1576,
+    "excluded_order_count": 0,
+    "late_order_count": 49,
+    "on_time_order_count": 1527,
+    "late_delivery_pct": "3.11"
+  },
+  {
+    "purchase_month": "2017-09-01",
+    "customer_state": "TO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "AL",
+    "delivered_order_count": 28,
+    "eligible_order_count": 28,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 26,
+    "late_delivery_pct": "7.14"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "AM",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "AP",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "BA",
+    "delivered_order_count": 158,
+    "eligible_order_count": 158,
+    "excluded_order_count": 0,
+    "late_order_count": 16,
+    "on_time_order_count": 142,
+    "late_delivery_pct": "10.13"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "CE",
+    "delivered_order_count": 63,
+    "eligible_order_count": 63,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 60,
+    "late_delivery_pct": "4.76"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "DF",
+    "delivered_order_count": 92,
+    "eligible_order_count": 92,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 89,
+    "late_delivery_pct": "3.26"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "ES",
+    "delivered_order_count": 100,
+    "eligible_order_count": 100,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 95,
+    "late_delivery_pct": "5.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "GO",
+    "delivered_order_count": 106,
+    "eligible_order_count": 106,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 104,
+    "late_delivery_pct": "1.89"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "MA",
+    "delivered_order_count": 48,
+    "eligible_order_count": 48,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "MG",
+    "delivered_order_count": 542,
+    "eligible_order_count": 542,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 537,
+    "late_delivery_pct": "0.92"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "MS",
+    "delivered_order_count": 33,
+    "eligible_order_count": 33,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 31,
+    "late_delivery_pct": "6.06"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "MT",
+    "delivered_order_count": 50,
+    "eligible_order_count": 50,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 49,
+    "late_delivery_pct": "2.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "PA",
+    "delivered_order_count": 52,
+    "eligible_order_count": 52,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 49,
+    "late_delivery_pct": "5.77"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "PB",
+    "delivered_order_count": 28,
+    "eligible_order_count": 28,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 28,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "PE",
+    "delivered_order_count": 77,
+    "eligible_order_count": 77,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 72,
+    "late_delivery_pct": "6.49"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "PI",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "PR",
+    "delivered_order_count": 198,
+    "eligible_order_count": 198,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 192,
+    "late_delivery_pct": "3.03"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 654,
+    "eligible_order_count": 654,
+    "excluded_order_count": 0,
+    "late_order_count": 45,
+    "on_time_order_count": 609,
+    "late_delivery_pct": "6.88"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "RN",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 22,
+    "late_delivery_pct": "4.35"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "RO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "RR",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "33.33"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "RS",
+    "delivered_order_count": 244,
+    "eligible_order_count": 244,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 239,
+    "late_delivery_pct": "2.05"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "SC",
+    "delivered_order_count": 174,
+    "eligible_order_count": 174,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 166,
+    "late_delivery_pct": "4.60"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "SE",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "27.27"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "SP",
+    "delivered_order_count": 1723,
+    "eligible_order_count": 1723,
+    "excluded_order_count": 0,
+    "late_order_count": 56,
+    "on_time_order_count": 1667,
+    "late_delivery_pct": "3.25"
+  },
+  {
+    "purchase_month": "2017-10-01",
+    "customer_state": "TO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "20.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "AL",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "19.23"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "AM",
+    "delivered_order_count": 10,
+    "eligible_order_count": 10,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "AP",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "BA",
+    "delivered_order_count": 243,
+    "eligible_order_count": 243,
+    "excluded_order_count": 0,
+    "late_order_count": 36,
+    "on_time_order_count": 207,
+    "late_delivery_pct": "14.81"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "CE",
+    "delivered_order_count": 103,
+    "eligible_order_count": 103,
+    "excluded_order_count": 0,
+    "late_order_count": 27,
+    "on_time_order_count": 76,
+    "late_delivery_pct": "26.21"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "DF",
+    "delivered_order_count": 157,
+    "eligible_order_count": 157,
+    "excluded_order_count": 0,
+    "late_order_count": 18,
+    "on_time_order_count": 139,
+    "late_delivery_pct": "11.46"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "ES",
+    "delivered_order_count": 168,
+    "eligible_order_count": 168,
+    "excluded_order_count": 0,
+    "late_order_count": 34,
+    "on_time_order_count": 134,
+    "late_delivery_pct": "20.24"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "GO",
+    "delivered_order_count": 153,
+    "eligible_order_count": 153,
+    "excluded_order_count": 0,
+    "late_order_count": 20,
+    "on_time_order_count": 133,
+    "late_delivery_pct": "13.07"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "MA",
+    "delivered_order_count": 53,
+    "eligible_order_count": 53,
+    "excluded_order_count": 0,
+    "late_order_count": 28,
+    "on_time_order_count": 25,
+    "late_delivery_pct": "52.83"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "MG",
+    "delivered_order_count": 922,
+    "eligible_order_count": 922,
+    "excluded_order_count": 0,
+    "late_order_count": 66,
+    "on_time_order_count": 856,
+    "late_delivery_pct": "7.16"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "MS",
+    "delivered_order_count": 44,
+    "eligible_order_count": 44,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 40,
+    "late_delivery_pct": "9.09"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "MT",
+    "delivered_order_count": 73,
+    "eligible_order_count": 73,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 64,
+    "late_delivery_pct": "12.33"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "PA",
+    "delivered_order_count": 69,
+    "eligible_order_count": 69,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 59,
+    "late_delivery_pct": "14.49"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "PB",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 22,
+    "late_delivery_pct": "18.52"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "PE",
+    "delivered_order_count": 125,
+    "eligible_order_count": 125,
+    "excluded_order_count": 0,
+    "late_order_count": 15,
+    "on_time_order_count": 110,
+    "late_delivery_pct": "12.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "PI",
+    "delivered_order_count": 31,
+    "eligible_order_count": 31,
+    "excluded_order_count": 0,
+    "late_order_count": 15,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "48.39"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "PR",
+    "delivered_order_count": 365,
+    "eligible_order_count": 365,
+    "excluded_order_count": 0,
+    "late_order_count": 32,
+    "on_time_order_count": 333,
+    "late_delivery_pct": "8.77"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 1012,
+    "eligible_order_count": 1012,
+    "excluded_order_count": 0,
+    "late_order_count": 263,
+    "on_time_order_count": 749,
+    "late_delivery_pct": "25.99"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "RN",
+    "delivered_order_count": 41,
+    "eligible_order_count": 41,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 33,
+    "late_delivery_pct": "19.51"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "RO",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "50.00"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "RS",
+    "delivered_order_count": 409,
+    "eligible_order_count": 409,
+    "excluded_order_count": 0,
+    "late_order_count": 52,
+    "on_time_order_count": 357,
+    "late_delivery_pct": "12.71"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "SC",
+    "delivered_order_count": 288,
+    "eligible_order_count": 288,
+    "excluded_order_count": 0,
+    "late_order_count": 43,
+    "on_time_order_count": 245,
+    "late_delivery_pct": "14.93"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "SE",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "26.92"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2899,
+    "eligible_order_count": 2898,
+    "excluded_order_count": 1,
+    "late_order_count": 202,
+    "on_time_order_count": 2696,
+    "late_delivery_pct": "6.97"
+  },
+  {
+    "purchase_month": "2017-11-01",
+    "customer_state": "TO",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "17.65"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "AC",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "AL",
+    "delivered_order_count": 12,
+    "eligible_order_count": 12,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "AM",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "AP",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "BA",
+    "delivered_order_count": 188,
+    "eligible_order_count": 188,
+    "excluded_order_count": 0,
+    "late_order_count": 24,
+    "on_time_order_count": 164,
+    "late_delivery_pct": "12.77"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "CE",
+    "delivered_order_count": 79,
+    "eligible_order_count": 79,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 73,
+    "late_delivery_pct": "7.59"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "DF",
+    "delivered_order_count": 129,
+    "eligible_order_count": 129,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 123,
+    "late_delivery_pct": "4.65"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "ES",
+    "delivered_order_count": 108,
+    "eligible_order_count": 108,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 101,
+    "late_delivery_pct": "6.48"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "GO",
+    "delivered_order_count": 125,
+    "eligible_order_count": 125,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 116,
+    "late_delivery_pct": "7.20"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "MA",
+    "delivered_order_count": 40,
+    "eligible_order_count": 40,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "MG",
+    "delivered_order_count": 669,
+    "eligible_order_count": 669,
+    "excluded_order_count": 0,
+    "late_order_count": 23,
+    "on_time_order_count": 646,
+    "late_delivery_pct": "3.44"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "MS",
+    "delivered_order_count": 34,
+    "eligible_order_count": 34,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "5.88"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "MT",
+    "delivered_order_count": 49,
+    "eligible_order_count": 49,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 44,
+    "late_delivery_pct": "10.20"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "PA",
+    "delivered_order_count": 58,
+    "eligible_order_count": 58,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 54,
+    "late_delivery_pct": "6.90"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "PB",
+    "delivered_order_count": 37,
+    "eligible_order_count": 37,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 33,
+    "late_delivery_pct": "10.81"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "PE",
+    "delivered_order_count": 101,
+    "eligible_order_count": 101,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 93,
+    "late_delivery_pct": "7.92"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "PI",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "13.04"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "PR",
+    "delivered_order_count": 260,
+    "eligible_order_count": 260,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 247,
+    "late_delivery_pct": "5.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 746,
+    "eligible_order_count": 746,
+    "excluded_order_count": 0,
+    "late_order_count": 179,
+    "on_time_order_count": 567,
+    "late_delivery_pct": "23.99"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "RN",
+    "delivered_order_count": 30,
+    "eligible_order_count": 30,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 28,
+    "late_delivery_pct": "6.67"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "RO",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "RS",
+    "delivered_order_count": 278,
+    "eligible_order_count": 278,
+    "excluded_order_count": 0,
+    "late_order_count": 28,
+    "on_time_order_count": 250,
+    "late_delivery_pct": "10.07"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "SC",
+    "delivered_order_count": 192,
+    "eligible_order_count": 192,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 184,
+    "late_delivery_pct": "4.17"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "SE",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "15.00"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2295,
+    "eligible_order_count": 2295,
+    "excluded_order_count": 0,
+    "late_order_count": 72,
+    "on_time_order_count": 2223,
+    "late_delivery_pct": "3.14"
+  },
+  {
+    "purchase_month": "2017-12-01",
+    "customer_state": "TO",
+    "delivered_order_count": 14,
+    "eligible_order_count": 14,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 14,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "AC",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "AL",
+    "delivered_order_count": 36,
+    "eligible_order_count": 36,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "33.33"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "AM",
+    "delivered_order_count": 12,
+    "eligible_order_count": 12,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "AP",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "BA",
+    "delivered_order_count": 228,
+    "eligible_order_count": 228,
+    "excluded_order_count": 0,
+    "late_order_count": 15,
+    "on_time_order_count": 213,
+    "late_delivery_pct": "6.58"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "CE",
+    "delivered_order_count": 77,
+    "eligible_order_count": 77,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 68,
+    "late_delivery_pct": "11.69"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "DF",
+    "delivered_order_count": 135,
+    "eligible_order_count": 135,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 131,
+    "late_delivery_pct": "2.96"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "ES",
+    "delivered_order_count": 145,
+    "eligible_order_count": 145,
+    "excluded_order_count": 0,
+    "late_order_count": 14,
+    "on_time_order_count": 131,
+    "late_delivery_pct": "9.66"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "GO",
+    "delivered_order_count": 144,
+    "eligible_order_count": 144,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 137,
+    "late_delivery_pct": "4.86"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "MA",
+    "delivered_order_count": 55,
+    "eligible_order_count": 55,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 51,
+    "late_delivery_pct": "7.27"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "MG",
+    "delivered_order_count": 846,
+    "eligible_order_count": 846,
+    "excluded_order_count": 0,
+    "late_order_count": 26,
+    "on_time_order_count": 820,
+    "late_delivery_pct": "3.07"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "MS",
+    "delivered_order_count": 70,
+    "eligible_order_count": 70,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 67,
+    "late_delivery_pct": "4.29"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "MT",
+    "delivered_order_count": 83,
+    "eligible_order_count": 83,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 80,
+    "late_delivery_pct": "3.61"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "PA",
+    "delivered_order_count": 69,
+    "eligible_order_count": 69,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 63,
+    "late_delivery_pct": "8.70"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "PB",
+    "delivered_order_count": 31,
+    "eligible_order_count": 31,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 27,
+    "late_delivery_pct": "12.90"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "PE",
+    "delivered_order_count": 102,
+    "eligible_order_count": 102,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 94,
+    "late_delivery_pct": "7.84"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "PI",
+    "delivered_order_count": 47,
+    "eligible_order_count": 47,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 42,
+    "late_delivery_pct": "10.64"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "PR",
+    "delivered_order_count": 371,
+    "eligible_order_count": 371,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 365,
+    "late_delivery_pct": "1.62"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 850,
+    "eligible_order_count": 850,
+    "excluded_order_count": 0,
+    "late_order_count": 111,
+    "on_time_order_count": 739,
+    "late_delivery_pct": "13.06"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "RN",
+    "delivered_order_count": 42,
+    "eligible_order_count": 42,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 41,
+    "late_delivery_pct": "2.38"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "RO",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 19,
+    "late_delivery_pct": "5.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "RR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "RS",
+    "delivered_order_count": 367,
+    "eligible_order_count": 367,
+    "excluded_order_count": 0,
+    "late_order_count": 30,
+    "on_time_order_count": 337,
+    "late_delivery_pct": "8.17"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "SC",
+    "delivered_order_count": 311,
+    "eligible_order_count": 311,
+    "excluded_order_count": 0,
+    "late_order_count": 31,
+    "on_time_order_count": 280,
+    "late_delivery_pct": "9.97"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "SE",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "5.26"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2975,
+    "eligible_order_count": 2975,
+    "excluded_order_count": 0,
+    "late_order_count": 102,
+    "on_time_order_count": 2873,
+    "late_delivery_pct": "3.43"
+  },
+  {
+    "purchase_month": "2018-01-01",
+    "customer_state": "TO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "AC",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "AL",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "37.04"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "AM",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "BA",
+    "delivered_order_count": 208,
+    "eligible_order_count": 208,
+    "excluded_order_count": 0,
+    "late_order_count": 40,
+    "on_time_order_count": 168,
+    "late_delivery_pct": "19.23"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "CE",
+    "delivered_order_count": 84,
+    "eligible_order_count": 84,
+    "excluded_order_count": 0,
+    "late_order_count": 33,
+    "on_time_order_count": 51,
+    "late_delivery_pct": "39.29"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "DF",
+    "delivered_order_count": 170,
+    "eligible_order_count": 170,
+    "excluded_order_count": 0,
+    "late_order_count": 20,
+    "on_time_order_count": 150,
+    "late_delivery_pct": "11.76"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "ES",
+    "delivered_order_count": 149,
+    "eligible_order_count": 149,
+    "excluded_order_count": 0,
+    "late_order_count": 18,
+    "on_time_order_count": 131,
+    "late_delivery_pct": "12.08"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "GO",
+    "delivered_order_count": 146,
+    "eligible_order_count": 146,
+    "excluded_order_count": 0,
+    "late_order_count": 23,
+    "on_time_order_count": 123,
+    "late_delivery_pct": "15.75"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "MA",
+    "delivered_order_count": 55,
+    "eligible_order_count": 55,
+    "excluded_order_count": 0,
+    "late_order_count": 18,
+    "on_time_order_count": 37,
+    "late_delivery_pct": "32.73"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "MG",
+    "delivered_order_count": 790,
+    "eligible_order_count": 790,
+    "excluded_order_count": 0,
+    "late_order_count": 66,
+    "on_time_order_count": 724,
+    "late_delivery_pct": "8.35"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "MS",
+    "delivered_order_count": 64,
+    "eligible_order_count": 64,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 51,
+    "late_delivery_pct": "20.31"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "MT",
+    "delivered_order_count": 67,
+    "eligible_order_count": 67,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 59,
+    "late_delivery_pct": "11.94"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "PA",
+    "delivered_order_count": 57,
+    "eligible_order_count": 57,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 50,
+    "late_delivery_pct": "12.28"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "PB",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "8.57"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "PE",
+    "delivered_order_count": 121,
+    "eligible_order_count": 121,
+    "excluded_order_count": 0,
+    "late_order_count": 14,
+    "on_time_order_count": 107,
+    "late_delivery_pct": "11.57"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "PI",
+    "delivered_order_count": 32,
+    "eligible_order_count": 32,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 25,
+    "late_delivery_pct": "21.88"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "PR",
+    "delivered_order_count": 335,
+    "eligible_order_count": 335,
+    "excluded_order_count": 0,
+    "late_order_count": 30,
+    "on_time_order_count": 305,
+    "late_delivery_pct": "8.96"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 879,
+    "eligible_order_count": 879,
+    "excluded_order_count": 0,
+    "late_order_count": 299,
+    "on_time_order_count": 580,
+    "late_delivery_pct": "34.02"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "RN",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "8.70"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "RO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "RR",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "33.33"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "RS",
+    "delivered_order_count": 363,
+    "eligible_order_count": 363,
+    "excluded_order_count": 0,
+    "late_order_count": 48,
+    "on_time_order_count": 315,
+    "late_delivery_pct": "13.22"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "SC",
+    "delivered_order_count": 254,
+    "eligible_order_count": 254,
+    "excluded_order_count": 0,
+    "late_order_count": 61,
+    "on_time_order_count": 193,
+    "late_delivery_pct": "24.02"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "SE",
+    "delivered_order_count": 15,
+    "eligible_order_count": 15,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 13,
+    "late_delivery_pct": "13.33"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2632,
+    "eligible_order_count": 2632,
+    "excluded_order_count": 0,
+    "late_order_count": 193,
+    "on_time_order_count": 2439,
+    "late_delivery_pct": "7.33"
+  },
+  {
+    "purchase_month": "2018-02-01",
+    "customer_state": "TO",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "45.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "AC",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "AL",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "33.33"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "AM",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "AP",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "BA",
+    "delivered_order_count": 235,
+    "eligible_order_count": 235,
+    "excluded_order_count": 0,
+    "late_order_count": 74,
+    "on_time_order_count": 161,
+    "late_delivery_pct": "31.49"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "CE",
+    "delivered_order_count": 93,
+    "eligible_order_count": 93,
+    "excluded_order_count": 0,
+    "late_order_count": 47,
+    "on_time_order_count": 46,
+    "late_delivery_pct": "50.54"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "DF",
+    "delivered_order_count": 147,
+    "eligible_order_count": 147,
+    "excluded_order_count": 0,
+    "late_order_count": 27,
+    "on_time_order_count": 120,
+    "late_delivery_pct": "18.37"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "ES",
+    "delivered_order_count": 133,
+    "eligible_order_count": 133,
+    "excluded_order_count": 0,
+    "late_order_count": 55,
+    "on_time_order_count": 78,
+    "late_delivery_pct": "41.35"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "GO",
+    "delivered_order_count": 141,
+    "eligible_order_count": 141,
+    "excluded_order_count": 0,
+    "late_order_count": 28,
+    "on_time_order_count": 113,
+    "late_delivery_pct": "19.86"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "MA",
+    "delivered_order_count": 49,
+    "eligible_order_count": 49,
+    "excluded_order_count": 0,
+    "late_order_count": 25,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "51.02"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "MG",
+    "delivered_order_count": 856,
+    "eligible_order_count": 856,
+    "excluded_order_count": 0,
+    "late_order_count": 175,
+    "on_time_order_count": 681,
+    "late_delivery_pct": "20.44"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "MS",
+    "delivered_order_count": 57,
+    "eligible_order_count": 57,
+    "excluded_order_count": 0,
+    "late_order_count": 23,
+    "on_time_order_count": 34,
+    "late_delivery_pct": "40.35"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "MT",
+    "delivered_order_count": 52,
+    "eligible_order_count": 52,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 39,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "PA",
+    "delivered_order_count": 67,
+    "eligible_order_count": 67,
+    "excluded_order_count": 0,
+    "late_order_count": 34,
+    "on_time_order_count": 33,
+    "late_delivery_pct": "50.75"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "PB",
+    "delivered_order_count": 39,
+    "eligible_order_count": 39,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 34,
+    "late_delivery_pct": "12.82"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "PE",
+    "delivered_order_count": 107,
+    "eligible_order_count": 107,
+    "excluded_order_count": 0,
+    "late_order_count": 22,
+    "on_time_order_count": 85,
+    "late_delivery_pct": "20.56"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "PI",
+    "delivered_order_count": 34,
+    "eligible_order_count": 34,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "29.41"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "PR",
+    "delivered_order_count": 369,
+    "eligible_order_count": 369,
+    "excluded_order_count": 0,
+    "late_order_count": 49,
+    "on_time_order_count": 320,
+    "late_delivery_pct": "13.28"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 864,
+    "eligible_order_count": 864,
+    "excluded_order_count": 0,
+    "late_order_count": 298,
+    "on_time_order_count": 566,
+    "late_delivery_pct": "34.49"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "RN",
+    "delivered_order_count": 38,
+    "eligible_order_count": 38,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 31,
+    "late_delivery_pct": "18.42"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "RO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 10,
+    "late_delivery_pct": "23.08"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "RR",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "RS",
+    "delivered_order_count": 407,
+    "eligible_order_count": 407,
+    "excluded_order_count": 0,
+    "late_order_count": 78,
+    "on_time_order_count": 329,
+    "late_delivery_pct": "19.16"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "SC",
+    "delivered_order_count": 247,
+    "eligible_order_count": 247,
+    "excluded_order_count": 0,
+    "late_order_count": 48,
+    "on_time_order_count": 199,
+    "late_delivery_pct": "19.43"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "SE",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 11,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "64.71"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2971,
+    "eligible_order_count": 2971,
+    "excluded_order_count": 0,
+    "late_order_count": 280,
+    "on_time_order_count": 2691,
+    "late_delivery_pct": "9.42"
+  },
+  {
+    "purchase_month": "2018-03-01",
+    "customer_state": "TO",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 15,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "AC",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "AL",
+    "delivered_order_count": 27,
+    "eligible_order_count": 27,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "25.93"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "AM",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "AP",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "BA",
+    "delivered_order_count": 216,
+    "eligible_order_count": 216,
+    "excluded_order_count": 0,
+    "late_order_count": 40,
+    "on_time_order_count": 176,
+    "late_delivery_pct": "18.52"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "CE",
+    "delivered_order_count": 96,
+    "eligible_order_count": 96,
+    "excluded_order_count": 0,
+    "late_order_count": 23,
+    "on_time_order_count": 73,
+    "late_delivery_pct": "23.96"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "DF",
+    "delivered_order_count": 146,
+    "eligible_order_count": 146,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 143,
+    "late_delivery_pct": "2.05"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "ES",
+    "delivered_order_count": 140,
+    "eligible_order_count": 140,
+    "excluded_order_count": 0,
+    "late_order_count": 22,
+    "on_time_order_count": 118,
+    "late_delivery_pct": "15.71"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "GO",
+    "delivered_order_count": 132,
+    "eligible_order_count": 132,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 126,
+    "late_delivery_pct": "4.55"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "MA",
+    "delivered_order_count": 46,
+    "eligible_order_count": 46,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 40,
+    "late_delivery_pct": "13.04"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "MG",
+    "delivered_order_count": 778,
+    "eligible_order_count": 778,
+    "excluded_order_count": 0,
+    "late_order_count": 19,
+    "on_time_order_count": 759,
+    "late_delivery_pct": "2.44"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "MS",
+    "delivered_order_count": 43,
+    "eligible_order_count": 43,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 40,
+    "late_delivery_pct": "6.98"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "MT",
+    "delivered_order_count": 64,
+    "eligible_order_count": 64,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 63,
+    "late_delivery_pct": "1.56"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "PA",
+    "delivered_order_count": 66,
+    "eligible_order_count": 66,
+    "excluded_order_count": 0,
+    "late_order_count": 20,
+    "on_time_order_count": 46,
+    "late_delivery_pct": "30.30"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "PB",
+    "delivered_order_count": 28,
+    "eligible_order_count": 28,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 22,
+    "late_delivery_pct": "21.43"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "PE",
+    "delivered_order_count": 110,
+    "eligible_order_count": 110,
+    "excluded_order_count": 0,
+    "late_order_count": 15,
+    "on_time_order_count": 95,
+    "late_delivery_pct": "13.64"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "PI",
+    "delivered_order_count": 34,
+    "eligible_order_count": 34,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 30,
+    "late_delivery_pct": "11.76"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "PR",
+    "delivered_order_count": 381,
+    "eligible_order_count": 381,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 376,
+    "late_delivery_pct": "1.31"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 807,
+    "eligible_order_count": 807,
+    "excluded_order_count": 0,
+    "late_order_count": 39,
+    "on_time_order_count": 768,
+    "late_delivery_pct": "4.83"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "RN",
+    "delivered_order_count": 32,
+    "eligible_order_count": 32,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 22,
+    "late_delivery_pct": "31.25"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "RO",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "RR",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "50.00"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "RS",
+    "delivered_order_count": 345,
+    "eligible_order_count": 345,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 333,
+    "late_delivery_pct": "3.48"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "SC",
+    "delivered_order_count": 245,
+    "eligible_order_count": 245,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 240,
+    "late_delivery_pct": "2.04"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "SE",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "46.15"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "SP",
+    "delivered_order_count": 3002,
+    "eligible_order_count": 3002,
+    "excluded_order_count": 0,
+    "late_order_count": 51,
+    "on_time_order_count": 2951,
+    "late_delivery_pct": "1.70"
+  },
+  {
+    "purchase_month": "2018-04-01",
+    "customer_state": "TO",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "5.26"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "AC",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "AL",
+    "delivered_order_count": 19,
+    "eligible_order_count": 19,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "10.53"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "AM",
+    "delivered_order_count": 9,
+    "eligible_order_count": 9,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 9,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "AP",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "BA",
+    "delivered_order_count": 237,
+    "eligible_order_count": 237,
+    "excluded_order_count": 0,
+    "late_order_count": 47,
+    "on_time_order_count": 190,
+    "late_delivery_pct": "19.83"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "CE",
+    "delivered_order_count": 72,
+    "eligible_order_count": 72,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 64,
+    "late_delivery_pct": "11.11"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "DF",
+    "delivered_order_count": 140,
+    "eligible_order_count": 140,
+    "excluded_order_count": 0,
+    "late_order_count": 13,
+    "on_time_order_count": 127,
+    "late_delivery_pct": "9.29"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "ES",
+    "delivered_order_count": 132,
+    "eligible_order_count": 132,
+    "excluded_order_count": 0,
+    "late_order_count": 21,
+    "on_time_order_count": 111,
+    "late_delivery_pct": "15.91"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "GO",
+    "delivered_order_count": 136,
+    "eligible_order_count": 136,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 129,
+    "late_delivery_pct": "5.15"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "MA",
+    "delivered_order_count": 32,
+    "eligible_order_count": 32,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 30,
+    "late_delivery_pct": "6.25"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "MG",
+    "delivered_order_count": 751,
+    "eligible_order_count": 751,
+    "excluded_order_count": 0,
+    "late_order_count": 69,
+    "on_time_order_count": 682,
+    "late_delivery_pct": "9.19"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "MS",
+    "delivered_order_count": 44,
+    "eligible_order_count": 44,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 40,
+    "late_delivery_pct": "9.09"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "MT",
+    "delivered_order_count": 66,
+    "eligible_order_count": 66,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 64,
+    "late_delivery_pct": "3.03"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "PA",
+    "delivered_order_count": 40,
+    "eligible_order_count": 40,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "12.50"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "PB",
+    "delivered_order_count": 29,
+    "eligible_order_count": 29,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 28,
+    "late_delivery_pct": "3.45"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "PE",
+    "delivered_order_count": 102,
+    "eligible_order_count": 102,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 90,
+    "late_delivery_pct": "11.76"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "PI",
+    "delivered_order_count": 30,
+    "eligible_order_count": 30,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "20.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "PR",
+    "delivered_order_count": 308,
+    "eligible_order_count": 308,
+    "excluded_order_count": 0,
+    "late_order_count": 23,
+    "on_time_order_count": 285,
+    "late_delivery_pct": "7.47"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 816,
+    "eligible_order_count": 816,
+    "excluded_order_count": 0,
+    "late_order_count": 56,
+    "on_time_order_count": 760,
+    "late_delivery_pct": "6.86"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "RN",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "4.55"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "RO",
+    "delivered_order_count": 17,
+    "eligible_order_count": 17,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 17,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "RR",
+    "delivered_order_count": 1,
+    "eligible_order_count": 1,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 1,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "RS",
+    "delivered_order_count": 350,
+    "eligible_order_count": 350,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 340,
+    "late_delivery_pct": "2.86"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "SC",
+    "delivered_order_count": 226,
+    "eligible_order_count": 226,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 214,
+    "late_delivery_pct": "5.31"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "SE",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "SP",
+    "delivered_order_count": 3138,
+    "eligible_order_count": 3138,
+    "excluded_order_count": 0,
+    "late_order_count": 136,
+    "on_time_order_count": 3002,
+    "late_delivery_pct": "4.33"
+  },
+  {
+    "purchase_month": "2018-05-01",
+    "customer_state": "TO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 12,
+    "late_delivery_pct": "25.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "AC",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "AL",
+    "delivered_order_count": 24,
+    "eligible_order_count": 24,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "AM",
+    "delivered_order_count": 7,
+    "eligible_order_count": 7,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 7,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "BA",
+    "delivered_order_count": 198,
+    "eligible_order_count": 198,
+    "excluded_order_count": 0,
+    "late_order_count": 11,
+    "on_time_order_count": 187,
+    "late_delivery_pct": "5.56"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "CE",
+    "delivered_order_count": 72,
+    "eligible_order_count": 72,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 72,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "DF",
+    "delivered_order_count": 147,
+    "eligible_order_count": 147,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 146,
+    "late_delivery_pct": "0.68"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "ES",
+    "delivered_order_count": 123,
+    "eligible_order_count": 123,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 118,
+    "late_delivery_pct": "4.07"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "GO",
+    "delivered_order_count": 105,
+    "eligible_order_count": 105,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 104,
+    "late_delivery_pct": "0.95"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "MA",
+    "delivered_order_count": 41,
+    "eligible_order_count": 41,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 36,
+    "late_delivery_pct": "12.20"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "MG",
+    "delivered_order_count": 714,
+    "eligible_order_count": 714,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 713,
+    "late_delivery_pct": "0.14"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "MS",
+    "delivered_order_count": 49,
+    "eligible_order_count": 49,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 48,
+    "late_delivery_pct": "2.04"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "MT",
+    "delivered_order_count": 58,
+    "eligible_order_count": 58,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 57,
+    "late_delivery_pct": "1.72"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "PA",
+    "delivered_order_count": 54,
+    "eligible_order_count": 54,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 54,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "PB",
+    "delivered_order_count": 28,
+    "eligible_order_count": 28,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 27,
+    "late_delivery_pct": "3.57"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "PE",
+    "delivered_order_count": 91,
+    "eligible_order_count": 91,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 89,
+    "late_delivery_pct": "2.20"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "PI",
+    "delivered_order_count": 29,
+    "eligible_order_count": 29,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "31.03"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "PR",
+    "delivered_order_count": 306,
+    "eligible_order_count": 306,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 306,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 707,
+    "eligible_order_count": 707,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 698,
+    "late_delivery_pct": "1.27"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "RN",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 35,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "RO",
+    "delivered_order_count": 11,
+    "eligible_order_count": 11,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "RR",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "RS",
+    "delivered_order_count": 304,
+    "eligible_order_count": 304,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 300,
+    "late_delivery_pct": "1.32"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "SC",
+    "delivered_order_count": 205,
+    "eligible_order_count": 205,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 205,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "SE",
+    "delivered_order_count": 25,
+    "eligible_order_count": 25,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 25,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2738,
+    "eligible_order_count": 2735,
+    "excluded_order_count": 3,
+    "late_order_count": 20,
+    "on_time_order_count": 2715,
+    "late_delivery_pct": "0.73"
+  },
+  {
+    "purchase_month": "2018-06-01",
+    "customer_state": "TO",
+    "delivered_order_count": 18,
+    "eligible_order_count": 18,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "AC",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "AL",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "18.18"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "AM",
+    "delivered_order_count": 18,
+    "eligible_order_count": 18,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 18,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "AP",
+    "delivered_order_count": 6,
+    "eligible_order_count": 6,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 6,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "BA",
+    "delivered_order_count": 245,
+    "eligible_order_count": 245,
+    "excluded_order_count": 0,
+    "late_order_count": 15,
+    "on_time_order_count": 230,
+    "late_delivery_pct": "6.12"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "CE",
+    "delivered_order_count": 84,
+    "eligible_order_count": 84,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 83,
+    "late_delivery_pct": "1.19"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "DF",
+    "delivered_order_count": 165,
+    "eligible_order_count": 165,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 158,
+    "late_delivery_pct": "4.24"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "ES",
+    "delivered_order_count": 122,
+    "eligible_order_count": 122,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 113,
+    "late_delivery_pct": "7.38"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "GO",
+    "delivered_order_count": 112,
+    "eligible_order_count": 112,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 107,
+    "late_delivery_pct": "4.46"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "MA",
+    "delivered_order_count": 39,
+    "eligible_order_count": 39,
+    "excluded_order_count": 0,
+    "late_order_count": 7,
+    "on_time_order_count": 32,
+    "late_delivery_pct": "17.95"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "MG",
+    "delivered_order_count": 644,
+    "eligible_order_count": 644,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 636,
+    "late_delivery_pct": "1.24"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "MS",
+    "delivered_order_count": 49,
+    "eligible_order_count": 49,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 47,
+    "late_delivery_pct": "4.08"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "MT",
+    "delivered_order_count": 47,
+    "eligible_order_count": 47,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 47,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "PA",
+    "delivered_order_count": 57,
+    "eligible_order_count": 57,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 54,
+    "late_delivery_pct": "5.26"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "PB",
+    "delivered_order_count": 51,
+    "eligible_order_count": 51,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 49,
+    "late_delivery_pct": "3.92"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "PE",
+    "delivered_order_count": 136,
+    "eligible_order_count": 136,
+    "excluded_order_count": 0,
+    "late_order_count": 8,
+    "on_time_order_count": 128,
+    "late_delivery_pct": "5.88"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "PI",
+    "delivered_order_count": 32,
+    "eligible_order_count": 32,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 30,
+    "late_delivery_pct": "6.25"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "PR",
+    "delivered_order_count": 314,
+    "eligible_order_count": 314,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 308,
+    "late_delivery_pct": "1.91"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 696,
+    "eligible_order_count": 696,
+    "excluded_order_count": 0,
+    "late_order_count": 17,
+    "on_time_order_count": 679,
+    "late_delivery_pct": "2.44"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "RN",
+    "delivered_order_count": 29,
+    "eligible_order_count": 29,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 29,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "RO",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "RR",
+    "delivered_order_count": 5,
+    "eligible_order_count": 5,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 5,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "RS",
+    "delivered_order_count": 308,
+    "eligible_order_count": 308,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 303,
+    "late_delivery_pct": "1.62"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "SC",
+    "delivered_order_count": 195,
+    "eligible_order_count": 195,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 191,
+    "late_delivery_pct": "2.05"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "SE",
+    "delivered_order_count": 26,
+    "eligible_order_count": 26,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 24,
+    "late_delivery_pct": "7.69"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "SP",
+    "delivered_order_count": 2715,
+    "eligible_order_count": 2712,
+    "excluded_order_count": 3,
+    "late_order_count": 100,
+    "on_time_order_count": 2612,
+    "late_delivery_pct": "3.69"
+  },
+  {
+    "purchase_month": "2018-07-01",
+    "customer_state": "TO",
+    "delivered_order_count": 22,
+    "eligible_order_count": 22,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 21,
+    "late_delivery_pct": "4.55"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "AC",
+    "delivered_order_count": 3,
+    "eligible_order_count": 3,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 3,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "AL",
+    "delivered_order_count": 16,
+    "eligible_order_count": 16,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 16,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "AM",
+    "delivered_order_count": 4,
+    "eligible_order_count": 4,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 4,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "AP",
+    "delivered_order_count": 2,
+    "eligible_order_count": 2,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 2,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "BA",
+    "delivered_order_count": 159,
+    "eligible_order_count": 159,
+    "excluded_order_count": 0,
+    "late_order_count": 1,
+    "on_time_order_count": 158,
+    "late_delivery_pct": "0.63"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "CE",
+    "delivered_order_count": 55,
+    "eligible_order_count": 55,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 55,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "DF",
+    "delivered_order_count": 143,
+    "eligible_order_count": 143,
+    "excluded_order_count": 0,
+    "late_order_count": 5,
+    "on_time_order_count": 138,
+    "late_delivery_pct": "3.50"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "ES",
+    "delivered_order_count": 103,
+    "eligible_order_count": 103,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 103,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "GO",
+    "delivered_order_count": 117,
+    "eligible_order_count": 117,
+    "excluded_order_count": 0,
+    "late_order_count": 3,
+    "on_time_order_count": 114,
+    "late_delivery_pct": "2.56"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "MA",
+    "delivered_order_count": 29,
+    "eligible_order_count": 29,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 27,
+    "late_delivery_pct": "6.90"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "MG",
+    "delivered_order_count": 700,
+    "eligible_order_count": 700,
+    "excluded_order_count": 0,
+    "late_order_count": 12,
+    "on_time_order_count": 688,
+    "late_delivery_pct": "1.71"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "MS",
+    "delivered_order_count": 35,
+    "eligible_order_count": 35,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 25,
+    "late_delivery_pct": "28.57"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "MT",
+    "delivered_order_count": 39,
+    "eligible_order_count": 39,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 39,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "PA",
+    "delivered_order_count": 43,
+    "eligible_order_count": 43,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 43,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "PB",
+    "delivered_order_count": 28,
+    "eligible_order_count": 28,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 26,
+    "late_delivery_pct": "7.14"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "PE",
+    "delivered_order_count": 83,
+    "eligible_order_count": 83,
+    "excluded_order_count": 0,
+    "late_order_count": 4,
+    "on_time_order_count": 79,
+    "late_delivery_pct": "4.82"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "PI",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "PR",
+    "delivered_order_count": 327,
+    "eligible_order_count": 327,
+    "excluded_order_count": 0,
+    "late_order_count": 10,
+    "on_time_order_count": 317,
+    "late_delivery_pct": "3.06"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "RJ",
+    "delivered_order_count": 723,
+    "eligible_order_count": 723,
+    "excluded_order_count": 0,
+    "late_order_count": 42,
+    "on_time_order_count": 681,
+    "late_delivery_pct": "5.81"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "RN",
+    "delivered_order_count": 20,
+    "eligible_order_count": 20,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 20,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "RO",
+    "delivered_order_count": 8,
+    "eligible_order_count": 8,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 8,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "RS",
+    "delivered_order_count": 293,
+    "eligible_order_count": 293,
+    "excluded_order_count": 0,
+    "late_order_count": 9,
+    "on_time_order_count": 284,
+    "late_delivery_pct": "3.07"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "SC",
+    "delivered_order_count": 201,
+    "eligible_order_count": 201,
+    "excluded_order_count": 0,
+    "late_order_count": 6,
+    "on_time_order_count": 195,
+    "late_delivery_pct": "2.99"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "SE",
+    "delivered_order_count": 23,
+    "eligible_order_count": 23,
+    "excluded_order_count": 0,
+    "late_order_count": 0,
+    "on_time_order_count": 23,
+    "late_delivery_pct": "0.00"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "SP",
+    "delivered_order_count": 3164,
+    "eligible_order_count": 3164,
+    "excluded_order_count": 0,
+    "late_order_count": 285,
+    "on_time_order_count": 2879,
+    "late_delivery_pct": "9.01"
+  },
+  {
+    "purchase_month": "2018-08-01",
+    "customer_state": "TO",
+    "delivered_order_count": 13,
+    "eligible_order_count": 13,
+    "excluded_order_count": 0,
+    "late_order_count": 2,
+    "on_time_order_count": 11,
+    "late_delivery_pct": "15.38"
+  }
+]

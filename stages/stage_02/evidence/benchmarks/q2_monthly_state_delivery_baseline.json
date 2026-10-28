@@ -1,0 +1,88 @@
+{
+  "measured_at_utc": "2026-10-28T15:24:32.546045+00:00",
+  "environment": {
+    "database_name": "ds_learning",
+    "server_version": "18.6",
+    "work_mem": "4MB",
+    "shared_buffers": "128MB",
+    "max_parallel_workers_per_gather": "2",
+    "jit": "on",
+    "session_timezone": "Asia/Tehran"
+  },
+  "parameters": {
+    "start_date": "2016-01-01",
+    "end_date": "2019-01-01",
+    "order_status": "delivered"
+  },
+  "query_file": "02_monthly_state_delivery.sql",
+  "query_sha256": "6398b093df92c76713f907b464ed2804c8225cb4a2ebce8e8c96cdb2ed9c0e92",
+  "results_sha256": "31df86550c48ed8af25a0a1a28135cc05c48eee2d57ce69e22a59e3b20f918aa",
+  "result_row_count": 556,
+  "indexes_at_measurement": [
+    {
+      "tablename": "customers",
+      "indexname": "customers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX customers_pkey ON olist.customers USING btree (customer_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON olist.orders USING btree (order_id)"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "method": "Independent Python classification of streamed order rows",
+    "all_month_state_groups_verified": 556,
+    "fetch_batch_size": 5000,
+    "totals": {
+      "delivered_order_count": 96478,
+      "eligible_order_count": 96470,
+      "excluded_order_count": 8,
+      "late_order_count": 6534,
+      "on_time_order_count": 89936,
+      "late_delivery_pct": "6.77"
+    },
+    "exclusion_reasons": {
+      "missing_dates": 8,
+      "other_ineligible": 0
+    },
+    "delivered_on_estimated_date": 1292,
+    "first_purchase": "2016-09-15T12:16:38",
+    "last_purchase": "2018-08-29T15:00:37"
+  },
+  "benchmark": {
+    "method": "perf_counter: SQLAlchemy execute and full result fetch on one connection",
+    "cache": "warm; no cache flush; no concurrency load",
+    "warmups": 2,
+    "repetitions": 7,
+    "elapsed_ms": [
+      158.58579997438937,
+      149.41120002185926,
+      146.25150000210851,
+      146.36489999247715,
+      133.4565000142902,
+      130.86089998250827,
+      124.94769995100796
+    ],
+    "min_ms": 124.94769995100796,
+    "median_ms": 146.25150000210851,
+    "max_ms": 158.58579997438937,
+    "budget_ms": 200,
+    "all_measured_runs_within_budget": true,
+    "explain_execution_ms": 138.623,
+    "explain_planning_ms": 0.245
+  },
+  "question": "Q2 late-delivery percentage by customer state and purchase month",
+  "semantics": {
+    "month": "purchase month, source timestamps without timezone conversion",
+    "state": "customer_state via the order's customer_id",
+    "late": "actual delivery calendar date strictly after estimated delivery DATE",
+    "denominator": "delivered orders with eligible flag, both dates, actual timestamp >= purchase",
+    "excluded": "retained in delivered count; excluded from the rate denominator",
+    "zero_denominator": "NULL percentage, never zero",
+    "overall_percentage": "100 * total late / total eligible; not average of group percentages",
+    "absent_month_state": "no synthetic zero rows"
+  },
+  "scope": "Q2 initial measurement only; no new indexes, views or other questions"
+}

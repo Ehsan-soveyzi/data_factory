@@ -17,7 +17,7 @@ root. Each stage has its own notebook and decision report.
 | Stage | Deliverables | Status |
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Existing implementation |
-| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Loading outputs saved; Q1 sales and measured baseline complete; 200 ms optimization and Q2-Q5 pending |
+| 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [decision report](stages/stage_02/report.md) | Q1/Q2 implemented; Q2 measured below 200 ms; Q1 optimization and Q3-Q5 pending |
 
 The installation and pipeline commands below describe stage 01. For offline Olist
 preparation, run `python -m data_factory clean-olist`; see the stage 02 guide for
@@ -30,7 +30,9 @@ PostgreSQL database has been verified. Initial DDL runs through the shared Engin
 in notebook section 3.1; 12 tables were initially created and verified empty.
 Section 3.2 now has saved Olist/NYC loading outputs, and section 4.1 executes Q1
 monthly category sales against the populated database. Its measured baseline
-exceeds 200 ms. A database CLI bootstrap command is not available yet.
+exceeds 200 ms. Section 4.2 adds Q2 delivery timeliness by purchase month and
+customer state; all seven measured warm runs were below 200 ms. A database CLI
+bootstrap command is not available yet.
 
 ## Contents
 

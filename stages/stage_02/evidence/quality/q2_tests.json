@@ -1,0 +1,13 @@
+{
+  "test_command": "python tests/database/run_ddl_tests.py --pattern test_delivery_analysis.py",
+  "status": "passed",
+  "tests_run": 9,
+  "live_ddl_tests": 0,
+  "live_query_tests": 8,
+  "offline_tests": 1,
+  "isolated_test_database": "df_ddl_test_8de115b50d954e92",
+  "test_database_removed": true,
+  "fixture_resets_confined_to_test_database": true,
+  "analysis_database_not_used_for_fixtures": "ds_learning",
+  "output": "test_explain_preserves_bound_values_without_interpolation (test_delivery_analysis.ExplainCompilationTests.test_explain_preserves_bound_values_without_interpolation) ... ok\ntest_empty_interval_has_no_synthetic_rows (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_empty_interval_has_no_synthetic_rows) ... ok\ntest_independent_control_detects_wrong_percentage (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_independent_control_detects_wrong_percentage) ... ok\ntest_non_delivered_orders_excluded_and_state_groups_do_not_overlap (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_non_delivered_orders_excluded_and_state_groups_do_not_overlap) ... ok\ntest_overall_percentage_is_weighted_and_python_checks_all_groups (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_overall_percentage_is_weighted_and_python_checks_all_groups) ... ok\ntest_purchase_month_and_start_inclusive_end_exclusive (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_purchase_month_and_start_inclusive_end_exclusive) ... ok\ntest_same_calendar_date_is_on_time_and_next_midnight_is_late (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_same_calendar_date_is_on_time_and_next_midnight_is_late) ... ok\ntest_unknown_invalid_and_false_flag_do_not_enter_denominator (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_unknown_invalid_and_false_flag_do_not_enter_denominator) ... ok\ntest_zero_denominator_retains_group_and_null_percentage (test_delivery_analysis.PostgreSQLDeliveryAnalysisTests.test_zero_denominator_retains_group_and_null_percentage) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.411s\n\nOK\n"
+}

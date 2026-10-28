@@ -1,5 +1,6 @@
 """Run database tests in a temporary database using the local server credentials."""
 
+import argparse
 import json
 import os
 from pathlib import Path
@@ -14,6 +15,10 @@ from data_factory.database.connection import DatabaseSettings, create_database_e
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--pattern", default="test_*.py",
+                        choices=("test_*.py", "test_delivery_analysis.py"))
+    args = parser.parse_args()
     project = Path(__file__).resolve().parents[2]
     settings = load_database_settings()
     test_name = "df_ddl_test_" + uuid.uuid4().hex[:16]
@@ -37,7 +42,7 @@ def main():
         environment = os.environ.copy()
         environment["DATA_FACTORY_TEST_DATABASE_URL"] = settings.url.set(database=test_name).render_as_string(hide_password=False)
         outcome = subprocess.run(
-            [sys.executable, "-m", "unittest", "discover", "-s", "tests/database", "-v"],
+            [sys.executable, "-m", "unittest", "discover", "-s", "tests/database", "-p", args.pattern, "-v"],
             cwd=project, env=environment, capture_output=True, text=True,
         )
     finally:
@@ -59,18 +64,24 @@ def main():
         output = output.replace(settings.url.password, "[REDACTED]")
     match = re.search(r"Ran (\d+) tests?", output)
     live_count = len(re.findall(r"^test_\w+ \(test_ddl\.PostgreSQLDDLTests\.", output, re.MULTILINE))
+    live_query_count = len(re.findall(
+        r"^test_\w+ \(test_(?:sales|delivery_analysis)\.PostgreSQL(?:Sales|DeliveryAnalysis)Tests\.",
+        output, re.MULTILINE))
     total_count = int(match.group(1)) if match else None
     report = {
-        "test_command": "python tests/database/run_ddl_tests.py",
+        "test_command": "python tests/database/run_ddl_tests.py" + (
+            " --pattern test_delivery_analysis.py" if args.pattern == "test_delivery_analysis.py" else ""),
         "status": "passed" if outcome.returncode == 0 else "failed",
         "tests_run": total_count, "live_ddl_tests": live_count,
-        "offline_tests": total_count - live_count if total_count is not None else None,
+        "live_query_tests": live_query_count,
+        "offline_tests": total_count - live_count - live_query_count if total_count is not None else None,
         "isolated_test_database": test_name, "test_database_removed": removed,
         "fixture_resets_confined_to_test_database": True,
         "analysis_database_not_used_for_fixtures": settings.url.database,
         "output": output,
     }
-    path = project / "stages/stage_02/evidence/quality/ddl_tests.json"
+    evidence_name = "q2_tests.json" if args.pattern == "test_delivery_analysis.py" else "ddl_tests.json"
+    path = project / "stages/stage_02/evidence/quality" / evidence_name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({key: value for key, value in report.items() if key != "output"}, indent=2))

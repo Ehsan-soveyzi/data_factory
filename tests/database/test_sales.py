@@ -46,6 +46,8 @@ class PostgreSQLSalesTests(unittest.TestCase):
         self.transaction = self.conn.begin()
         # This database is isolated; rollback removes every fixture object.
         self.conn.exec_driver_sql("""
+            -- Restore any prior test class's schema on transaction rollback.
+            DROP SCHEMA IF EXISTS olist CASCADE;
             CREATE SCHEMA olist;
             CREATE TABLE olist.orders (
                 order_id TEXT PRIMARY KEY, order_status TEXT NOT NULL,

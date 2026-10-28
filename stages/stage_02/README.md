@@ -1,9 +1,10 @@
 # Stage 02 - Database Performance
 
 Status: source preparation, connection and initial DDL are complete. The saved
-notebook includes Olist/NYC loading outputs. Q1 monthly category sales now runs
-against the populated database with saved results, correctness tests and a
-measured baseline. This baseline exceeds 200 ms. Q2-Q5 and the remaining
+notebook includes Olist/NYC loading outputs. Q1 sales and Q2 delivery timeliness
+run against the populated database with saved results, correctness tests and
+measured baselines. Q1 exceeds 200 ms; all seven saved Q2 runs are below 200 ms.
+Q3-Q5 and the remaining
 optimization, views and routines remain pending. Older setup sections below
 describe their original execution snapshots, including the initial empty tables.
 
@@ -297,3 +298,41 @@ python -m unittest discover -s tests/database -p test_sales.py -v
 
 Without that variable, only the SQL-file consistency test runs and the six live
 tests are skipped. Never point fixture settings at the analysis database.
+
+## Q2: delivery timeliness by purchase month and customer state
+
+Section 4.2 uses [one SQL file](../../sql/queries/02_monthly_state_delivery.sql).
+Late delivery means the actual calendar date is after the estimated DATE.
+Only delivered orders with valid dates and the eligibility flag enter the rate
+denominator; unknowns stay in coverage counts, and zero denominators yield NULL.
+The month is the purchase cohort, matching Q1. The order-to-customer join preserves
+one row per order; no item/payment/review joins are needed.
+
+Actual results: 556 month/state groups, 96,478 delivered orders, 96,470 eligible,
+8 missing actual delivery dates, 6,534 late and 89,936 on time. Overall late
+delivery is 6.77%, computed from totals rather than averaging group percentages.
+All groups match an independent streamed Python control. The notebook includes
+monthly/state summaries and a trend chart for the five highest-volume states;
+sparse extreme cohorts are labelled with their counts.
+
+Seven warm execute/full-fetch samples measured 124.95-158.59 ms (median 146.25 ms),
+all below the 200 ms budget in this local run. The plan still contains a disk
+sort; its presence alone does not imply budget failure. EXPLAIN is compiled from
+the same SQLAlchemy statement, preserving binds, with no second Q2 SQL file.
+Only setup/connection and Q2 cells were executed in fresh IPython; previous
+notebook cells/outputs and Q1 evidence were preserved, and the Engine pool was
+disposed. A complete notebook/Jupyter-kernel run was not performed.
+
+Run the nine Q2 tests in an automatically created/verified temporary database:
+
+```powershell
+python tests/database/run_ddl_tests.py --pattern test_delivery_analysis.py
+```
+
+This needs permission to create a temporary database, as does the existing full
+database runner. Eight tests run on PostgreSQL and one checks EXPLAIN compilation
+and safe binds. The full database suite also passed all 41 tests: 5 live DDL,
+14 live analytical and 22 offline checks. The runner now reports live analytical
+tests separately and Q1/Q2 fixture schemas are isolated by rollback. All temporary
+test databases were removed. Evidence is in [Q2 tests](evidence/quality/q2_tests.json)
+and the [full database suite](evidence/quality/ddl_tests.json).

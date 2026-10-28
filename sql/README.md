@@ -3,8 +3,9 @@
 This directory holds versioned stage 02 SQL. The initial DDL files have been
 executed in the local `ds_learning` database. Q1 merchandise sales is implemented
 in `queries/01_monthly_category_sales.sql`; its static EXPLAIN companion has the
-same query with an instrumentation prefix. Other queries and dependent
-views/routines remain pending.
+same query with an instrumentation prefix. Q2 is implemented in
+`queries/02_monthly_state_delivery.sql` with a single SQL file and a compiled
+SQLAlchemy EXPLAIN wrapper. Q3-Q5 and dependent views/routines remain pending.
 
 | Folder | Intended contents |
 |---|---|
@@ -62,3 +63,24 @@ database objects and does not change persistent server configuration. Results,
 exact money values, SQL hash, existing indexes and measurement conditions are
 saved under `stages/stage_02/evidence/`. The baseline currently exceeds 200 ms;
 query-budget acceptance remains pending optimization.
+
+## Q2: monthly delivery timeliness by customer state
+
+`queries/02_monthly_state_delivery.sql` counts delivered orders by purchase month
+and customer state. Delivery is late only when its calendar date is strictly
+after the estimated DATE; same-day evening delivery is on time. Eligible orders
+require the source eligibility flag, both dates and actual delivery at/after
+purchase. Unknown/invalid dates remain in coverage counts but not in the rate
+denominator. A zero denominator returns NULL. Aggregate rates must be recomputed
+from summed late/eligible counts, not averaged from group percentages.
+
+`data_factory.database.query_benchmark.Explain` compiles EXPLAIN around the same
+SQLAlchemy statement while preserving bind parameters; Q2 has no duplicate plan
+SQL file. `delivery_analysis.run_delivery_baseline` verifies every month/state
+group against an independent Python classification of order rows fetched in
+5,000-row batches. It performs the same two warmups/seven measurements as Q1,
+without executing Q1 or modifying database data/settings persistently.
+
+All seven Q2 warm samples were below 200 ms (median 146.25 ms, maximum 158.59 ms).
+This describes the saved local measurement, not cold-cache or concurrent load.
+The original Q1 SQL and measurement remain unchanged.

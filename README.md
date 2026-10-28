@@ -293,7 +293,7 @@ request counting, EDA calculations, and full-pipeline hash reproducibility.
 |   `-- stage_02/                     # Ignored Olist raw/curated datasets
 |-- .env.example                      # Planned connection variable; no credentials
 |-- pyproject.toml                    # Shared package metadata and CLI
-`-- requirements.txt                  # Locked stage 01 execution dependencies
+`-- requirements.txt                  # Stage 01 pins and stage 02 dependency additions
 ```
 
 ## Troubleshooting

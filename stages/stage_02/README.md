@@ -22,8 +22,52 @@ python -m data_factory clean-olist
 ```
 
 The existing `run --stage ...` commands remain available for stage 01. No database bootstrap command is available yet.
-The root `requirements.txt` currently locks stage 01 dependencies. SQLAlchemy and
-the PostgreSQL driver must be added and locked when database work is implemented.
+The root `requirements.txt` contains the stage 01 pins and stage 02 dependency
+additions. The installation status of the new dependencies is recorded below.
+
+## Database setup - step 1: dependencies
+
+`pyproject.toml` declares SQLAlchemy 2.x and Psycopg 3 with the `binary` extra.
+The [Psycopg binary installation](https://www.psycopg.org/psycopg3/docs/basic/install.html#binary-installation)
+bundles the client libraries and avoids a local compiler/libpq setup.
+`requirements.txt` pins the selected versions and the added transitive dependencies;
+the previous stage 01 pins are preserved.
+
+| Package | Selected version | Local Python 3.14 verification |
+|---|---|---|
+| SQLAlchemy | 2.0.49 | Installed from an existing cached Windows wheel; import passed |
+| greenlet | 3.5.1 | Installed from an existing cached Windows wheel; import passed |
+| typing_extensions | 4.16.0 | Already installed; import passed |
+| psycopg with binary extra | 3.3.6 | Installed; import passed |
+| psycopg-binary | 3.3.6 | Installed; import passed; `binary` implementation active |
+
+**Step 1 is complete:** all five added packages match the selected versions and
+import successfully in the project's existing virtual environment. SQLAlchemy's
+Psycopg dialect resolves the installed driver, and Psycopg reports `binary`.
+The editable project installation was refreshed offline and `pip check` passed.
+The missing build backend was restored using the already-pinned
+`setuptools==84.0.0` from local wheel cache. Earlier PyPI download failures were
+resolved by the user's driver installation; no new network download was needed
+for these verification checks.
+See the [actual environment checks](evidence/quality/dependency_setup.json).
+Verification covers the added database dependencies and build backend; the
+entire historical stage 01 requirements lock was not reinstalled or revalidated.
+
+To reproduce setup, use the intended virtual environment and run these commands
+from the repository root (a fresh environment needs package download access):
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pip install --no-build-isolation -e .
+python -m pip check
+python -c "import sqlalchemy, psycopg; from psycopg import pq; print('SQLAlchemy:', sqlalchemy.__version__); print('Psycopg:', psycopg.__version__); print('Psycopg implementation:', pq.__impl__)"
+```
+
+Use `../venv/Scripts/python.exe` in place of `python` for the existing parent-folder
+Windows environment if it is not activated. The final check prints both
+selected versions and the Psycopg implementation `binary`.
+These checks do not connect to PostgreSQL. Connection helpers,
+server checks, DDL execution and data loading belong to later approved steps.
 
 ## Shared implementation locations
 

@@ -1,4 +1,5 @@
-# Locked from the verified Python 3.14 environment.
+# Stage 01 pins from the verified Python 3.14 environment.
+# Stage 02 additions and their verification status are listed below.
 asttokens==3.0.0
 attrs==25.4.0
 certifi==2025.10.5
@@ -52,3 +53,10 @@ traitlets==5.14.3
 tzdata==2025.2
 urllib3==2.5.0
 wcwidth==0.2.14
+
+# Stage 02: installed and import-checked on Python 3.14 / Windows x86-64.
+SQLAlchemy==2.0.49
+greenlet==3.5.1
+typing_extensions==4.16.0
+psycopg[binary]==3.3.6
+psycopg-binary==3.3.6

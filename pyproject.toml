@@ -5,7 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nyc-data-factory"
 version = "0.1.0"
-dependencies = ["requests>=2.32,<3"]
+dependencies = [
+    "requests>=2.32,<3",
+    "SQLAlchemy>=2.0.44,<3",
+    "psycopg[binary]>=3.3,<4",
+]
 requires-python = ">=3.11"
 
 [project.scripts]

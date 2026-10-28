@@ -339,7 +339,10 @@ CLI exit codes: `0` success, `2` configuration/argument error, `3` network error
 The notebook, decision report, and some companion documents are written in Persian.
 
 
-Stage 02: the bounded index-only attempt is complete; the 200 ms target remains unmet for Q1/Q3/Q4/Q5. See [measured results and limitations](stages/stage_02/report.md#completed-bounded-index-only-attempt).
+Stage 02: the bounded index-only attempt is complete; the 200 ms target remains unmet for Q1/Q3/Q4/Q5. See [measured results and limitations](stages/stage_02/report.md#index-only-attempt).
 
 
-Stage 02 section 6 was removed on request. Section 7 (simple/multi-table views and the Q5 snapshot comparison) is complete: live median 1704.00 ms versus snapshot 1.22 ms, with identical results. See the [section 7 report](stages/stage_02/report.md#section-7-completed-views-and-q5-result-snapshot).
+Stage 02 section 6 (simple/multi-table views and the Q5 snapshot comparison) is complete: live median 1704.00 ms versus snapshot 1.22 ms, with identical results. See the [section 6 report](stages/stage_02/report.md#views-and-snapshot).
+
+
+Stage 02 section 7 (SQL Function and month-scoped snapshot Procedure) is complete: repeatable January 2017 output matches Q2, rollback is verified, and all 94 database tests passed. See the [section 7 guide](stages/stage_02/README.md#section-7-completed-function-and-monthly-refresh-procedure).

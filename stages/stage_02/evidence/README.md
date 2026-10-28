@@ -103,7 +103,7 @@ DDL, 48 live analytical and 22 offline. The verified temporary database was remo
 - All trial results equal the frozen original outputs; no query reached the 200 ms budget in this trial. Original Q1-Q5 evidence is preserved.
 
 
-## Section 7 views / result snapshot
+## Section 6 views / result snapshot
 
 - `quality/payment_snapshot_build.json`: source snapshot metadata, validated refresh timing and storage inventory.
 - `quality/views/{live_view,snapshot}_results.json`: full identical Q5 results, 58 rows each.
@@ -112,4 +112,14 @@ DDL, 48 live analytical and 22 offline. The verified temporary database was remo
 - `plans/views/{live_view,snapshot}.json`: actual EXPLAIN ANALYZE/BUFFERS plans.
 - `quality/view_tests.json`: 8 isolated section-specific tests; `quality/ddl_tests.json`: all 83 tests passed, disposable test database removed.
 
-This is a new section 7 comparison; it does not replace earlier original-query or index-only evidence.
+This is a new section 6 comparison; it does not replace earlier original-query or index-only evidence.
+
+
+## Section 7 Function / Procedure
+
+- `quality/routines/monthly_delivery_results.json`: January 2017 Q2 snapshot, 24 states, all fields validated.
+- `quality/routines/execution.json`: both real CALLs, independent Python verification, metadata, identical-result digest and versioned SQL hashes. CALL timings exclude commit/validation and are not a query-budget benchmark.
+- `quality/routine_tests.json`: 11 PostgreSQL tests in an isolated disposable database, including failures after DELETE and after INSERT plus caller rollback.
+- `quality/ddl_tests.json`: full suite, 94 tests passed, disposable database removed.
+
+These records belong to the monthly Q2 result; section 6's Q5 cache and historical performance evidence are preserved.

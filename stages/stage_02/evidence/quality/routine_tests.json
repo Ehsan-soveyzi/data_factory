@@ -1,0 +1,15 @@
+{
+  "test_command": "python tests/database/run_ddl_tests.py --pattern test_routines.py",
+  "status": "passed",
+  "tests_run": 11,
+  "live_ddl_tests": 0,
+  "live_query_tests": 0,
+  "live_view_tests": 0,
+  "live_routine_tests": 11,
+  "offline_tests": 0,
+  "isolated_test_database": "df_ddl_test_0620e8ac0ba14cb8",
+  "test_database_removed": true,
+  "fixture_resets_confined_to_test_database": true,
+  "analysis_database_not_used_for_fixtures": "ds_learning",
+  "output": "test_caller_can_roll_back_a_successful_call (test_routines.PostgreSQLRoutineTests.test_caller_can_roll_back_a_successful_call) ... ok\ntest_empty_month_removes_stale_rows_and_records_zero_coverage (test_routines.PostgreSQLRoutineTests.test_empty_month_removes_stale_rows_and_records_zero_coverage) ... ok\ntest_function_rounds_fractional_percentages_in_select (test_routines.PostgreSQLRoutineTests.test_function_rounds_fractional_percentages_in_select) ... ok\ntest_function_zero_denominator_and_null_inputs_are_undefined (test_routines.PostgreSQLRoutineTests.test_function_zero_denominator_and_null_inputs_are_undefined) ... ok\ntest_insert_failure_after_delete_restores_previous_snapshot (test_routines.PostgreSQLRoutineTests.test_insert_failure_after_delete_restores_previous_snapshot) ... ok\ntest_metadata_failure_after_insert_rolls_back_all_monthly_changes (test_routines.PostgreSQLRoutineTests.test_metadata_failure_after_insert_rolls_back_all_monthly_changes) ... ok\ntest_normalizes_input_date_to_purchase_month_and_excludes_end_boundary (test_routines.PostgreSQLRoutineTests.test_normalizes_input_date_to_purchase_month_and_excludes_end_boundary) ... ok\ntest_null_and_infinite_month_are_rejected_without_changing_cache (test_routines.PostgreSQLRoutineTests.test_null_and_infinite_month_are_rejected_without_changing_cache) ... ok\ntest_procedure_matches_q2_and_hand_checked_null_date_groups (test_routines.PostgreSQLRoutineTests.test_procedure_matches_q2_and_hand_checked_null_date_groups) ... ok\ntest_refresh_replaces_changed_month_and_preserves_other_month_rows_and_metadata (test_routines.PostgreSQLRoutineTests.test_refresh_replaces_changed_month_and_preserves_other_month_rows_and_metadata) ... ok\ntest_repeat_call_and_reinstallation_do_not_duplicate_results_or_metadata (test_routines.PostgreSQLRoutineTests.test_repeat_call_and_reinstallation_do_not_duplicate_results_or_metadata) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.780s\n\nOK\n"
+}

@@ -1,6 +1,6 @@
-# گزارش تصمیم‌های مرحلهٔ دوم: بررسی و پاک‌سازی داده
+# گزارش تصمیم‌های مرحلهٔ دوم: پایگاه داده و کارایی
 
-وضعیت: بررسی منبع Olist و پاک‌سازی پیش از بارگذاری اجرا شده‌اند و خروجی curated منتشر شده است. بررسی کامل خروجی ذخیره‌شدهٔ NYC 311 نیز انجام شده؛ DDL در دیتابیس واقعی اجرا شده است؛ بارگذاری PostgreSQL و ارزیابی کارایی باقی مانده‌اند.
+وضعیت فعلی: بررسی و پاک‌سازی منابع، ساخت ساختار PostgreSQL و بارگذاری داده‌های Olist انجام شده‌اند. پنج تحلیل اولیه، تلاش محدود ایندکس‌گذاری، نماها و مقایسه با جدول ذخیره‌شده، و تابع و رویهٔ ماهانه اجرا شده‌اند. آخرین مجموعهٔ تست دیتابیس ۹۴ آزمون موفق دارد؛ رسیدن همهٔ کوئری‌های اصلی به بودجهٔ ۲۰۰ میلی‌ثانیه تأیید نشده است. شماره‌های ارجاع در این گزارش با ساختار فعلی نوت‌بوک هماهنگ‌اند؛ توضیحات گام‌های اولیه، شواهد همان زمان را بیان می‌کنند.
 
 ## فهم مسئله و دامنهٔ شواهد
 
@@ -63,7 +63,7 @@ review_id به‌تنهایی یکتا نیست، اما ترکیب آن با or
 
 هش تمام ورودی‌ها قبل و بعد از پردازش کنترل می‌شود. انتشار فایل‌ها یکجا انجام می‌شود؛ خروجی متفاوت با همان شناسه بازنویسی نمی‌شود. اجرای دوباره با ورودی، قرارداد و کد یکسان همان فایل‌های داده را تولید می‌کند، اما manifest هر اجرا زمان واقعی و شناسهٔ جدا دارد. آزمون‌های کنترل‌شده، حفظ فایل خام، حذف فقط تکرار کامل، دقت مبلغ، خطای والد و تکرارپذیری انتشار را پوشش می‌دهند.
 
-این نتیجه مختص snapshot محلی است. ورودی جدید می‌تواند قالب، دقت عدد، کلید یا دامنهٔ دسته را عوض کند. بارگذاری PostgreSQL هنوز انجام نشده است؛ اولویت بعد تبدیل قراردادها به DDL و پیاده‌سازی مقصد دیتابیس است.
+این نتیجه مختص snapshot محلی است. ورودی جدید می‌تواند قالب، دقت عدد، کلید یا دامنهٔ دسته را عوض کند. در پایان گام بررسی، بارگذاری PostgreSQL هنوز انجام نشده بود و اولویت بعدی تبدیل قراردادها به DDL و پیاده‌سازی مقصد دیتابیس بود؛ تحلیل‌های پس از بارگذاری در ادامهٔ گزارش آمده‌اند.
 
 ## منبع دوم: خروجی NYC 311
 
@@ -71,9 +71,9 @@ review_id به‌تنهایی یکتا نیست، اما ترکیب آن با or
 
 [قرارداد NYC](../../config/nyc_schema.json) سه جدول پیشنهاد می‌کند: cases، population_areas و population_zip_aliases؛ مرجع شامل 177 ناحیه و 183 ZIP است. صفات مرجع تکراری جدا می‌شوند؛ کیفیت‌ها JSONB، شناسه‌ها متنی و تاریخ‌ها بدون منطقهٔ زمانی فرضی‌اند. گزینهٔ تک‌جدولی ساده‌تر، اما پر از تکرار صفات مرجع بود. هزینهٔ جداسازی، join در تحلیل است.
 
-329,672 اتصال موفق، 67 ZIP خالی، 261 ZIP ناموجود و 77 ناسازگاری borough حفظ شدند؛ ناسازگاری برای نرخ جمعیتی مجاز نیست. جمعیت، مرجع 2019 است. دریافت ناقص است: دادهٔ موجود ژانویه تا ژوئیهٔ 2024، نه کل 18 ماه. [شواهد](evidence/quality/nyc_source_checks.json) هش و دامنه را ثبت می‌کند؛ DDL هنوز اجرا نشده است.
+329,672 اتصال موفق، 67 ZIP خالی، 261 ZIP ناموجود و 77 ناسازگاری borough حفظ شدند؛ ناسازگاری برای نرخ جمعیتی مجاز نیست. جمعیت، مرجع 2019 است. دریافت ناقص است: دادهٔ موجود ژانویه تا ژوئیهٔ 2024، نه کل 18 ماه. [شواهد](evidence/quality/nyc_source_checks.json) هش و دامنه را ثبت می‌کند؛ در زمان این بررسی DDL هنوز اجرا نشده بود.
 
-## منابع و AI usage
+## منابع و نقش هوش مصنوعی
 
 نوع‌ها و محدودیت‌ها با مستندات رسمی PostgreSQL دربارهٔ [عدد دقیق](https://www.postgresql.org/docs/current/datatype-numeric.html)، [تاریخ و زمان](https://www.postgresql.org/docs/current/datatype-datetime.html) و [محدودیت‌ها](https://www.postgresql.org/docs/current/ddl-constraints.html) تطبیق داده شده‌اند. دادهٔ بیرونی برای پرکردن مقدارها استفاده نشده است.
 
@@ -98,7 +98,7 @@ review_id به‌تنهایی یکتا نیست، اما ترکیب آن با or
 
 مسیر اجرا برای ساخت اولیه طراحی شده است. اگر همهٔ جدول‌های مورد انتظار وجود داشته باشند، وضعیت `already_present` گزارش می‌شود و فایل‌ها دوباره اجرا نمی‌شوند. اگر ساختار ناقص یا برخورد نام وجود داشته باشد، اجرا پیش از اعمال DDL متوقف می‌شود. این رفتار، تعریف‌های موجود را با SQL جدید مقایسه یا مهاجرت نمی‌دهد و هیچ جدول موجودی را حذف یا بازسازی نمی‌کند.
 
-اجرای اولیه شامل ۲۵ تست موفق بود: ۲۰ تست آفلاین و ۵ تست واقعی PostgreSQL برای مشاهدهٔ ساختار پس از commit، حفظ داده در اجرای مجدد، rollback هر دو فایل هنگام خطای فایل دوم، حفظ ساختار ناقص موجود و اجرای کامل فایل شامل نویسه‌های خاص. [شواهد تست‌ها](evidence/quality/ddl_tests.json) اکنون اجرای تازهٔ مجموعهٔ کامل ۷۵ تست، شامل تست‌های هر پنج سؤال، را ثبت می‌کند؛ جزئیات در بخش سؤال پنجم آمده است. fixtureها در دیتابیس موقت مجزا اجرا و آن دیتابیس پس از بررسی هویت حذف شد؛ `ds_learning` برای fixtureها استفاده نشد.
+اجرای اولیه شامل ۲۵ تست موفق بود: ۲۰ تست آفلاین و ۵ تست واقعی PostgreSQL برای مشاهدهٔ ساختار پس از commit، حفظ داده در اجرای مجدد، rollback هر دو فایل هنگام خطای فایل دوم، حفظ ساختار ناقص موجود و اجرای کامل فایل شامل نویسه‌های خاص. [شواهد تست‌ها](evidence/quality/ddl_tests.json) آخرین اجرای مجموعهٔ کامل ۹۴ تست را ثبت می‌کند؛ جزئیات در بخش سؤال پنجم آمده است. fixtureها در دیتابیس موقت مجزا اجرا و آن دیتابیس پس از بررسی هویت حذف شد؛ `ds_learning` برای fixtureها استفاده نشد.
 
 تنها سلول‌های آماده‌سازی، اتصال، اجرای DDL، بررسی پس از commit و آزادسازی در یک فرایند تازهٔ IPython اجرا شدند؛ اجرای کامل نوت‌بوک یا Jupyter kernel انجام نشده است. سلول‌ها و خروجی‌های بررسی و پاک‌سازی داده‌ها حفظ شده‌اند. هیچ بارگذاری داده، View، تابع، رویه یا سنجش کارایی در این گام انجام نشده است.
 
@@ -220,112 +220,185 @@ review_id به‌تنهایی یکتا نیست، اما ترکیب آن با or
 
 [سنجش اولیه](evidence/benchmarks/q5_payment_methods_installments_baseline.json)، پس از دو گرم‌سازی و هفت اجرای کامل، کمینه **۱٬۱۳۸٫۴۵**، میانه **۱٬۱۹۰٫۰۸** و بیشینه **۱٬۲۰۹٫۰۵ میلی‌ثانیه** دارد؛ **هنوز شرط ۲۰۰ میلی‌ثانیه برقرار نیست**. [پلن واقعی](evidence/plans/q5_payment_methods_installments_baseline.json) مرتب‌سازی ۱۰۰٬۷۵۶ رکورد پرداخت با external merge و فضای موقت ۶٬۲۷۲ کیلوبایت، تجمیع و پیوندهای چندمرحله‌ای و خواندن نتایج میانی CTE را نشان می‌دهد. این، خط مبنا برای بهینه‌سازی است؛ زمان و بلوک‌های والد و فرزند با هم جمع نمی‌شوند. شرایط cache گرم و نبود بار هم‌زمان است و تضمین اجرای سرد نیست.
 
-[۱۳ تست واقعی PostgreSQL](evidence/quality/q5_tests.json) با دادهٔ کوچک موفق‌اند: پرداخت شکستهٔ هم‌برنامه، چند آیتم، عدم ضرب مبلغ در اقساط، روش و برنامهٔ ترکیبی، اقساط کاملاً و بخشی نامعلوم، نبود پرداخت یا آیتم، صفر واقعی، هم‌پوشانی برنامه‌ها، جواب دستی کنترل مستقل، مرز بازه، نبود هرگونه پرداخت، کشف میانگین غلط و بازهٔ خالی. فرمان مستقل: `python tests/database/run_ddl_tests.py --pattern test_payment_analysis.py`. مجموعهٔ کامل **۷۵ تست موفق** دارد: ۵ DDL واقعی، ۴۸ تحلیلی واقعی و ۲۲ آفلاین. دیتابیس‌های موقت پس از کنترل هویت حذف شدند و دادهٔ تحلیلی fixture نبوده است.
+[۱۳ تست واقعی PostgreSQL](evidence/quality/q5_tests.json) با دادهٔ کوچک موفق‌اند: پرداخت شکستهٔ هم‌برنامه، چند آیتم، عدم ضرب مبلغ در اقساط، روش و برنامهٔ ترکیبی، اقساط کاملاً و بخشی نامعلوم، نبود پرداخت یا آیتم، صفر واقعی، هم‌پوشانی برنامه‌ها، جواب دستی کنترل مستقل، مرز بازه، نبود هرگونه پرداخت، کشف میانگین غلط و بازهٔ خالی. فرمان مستقل: `python tests/database/run_ddl_tests.py --pattern test_payment_analysis.py`. در پایان گام سؤال پنجم، مجموعهٔ کامل **۷۵ تست موفق** داشت: ۵ DDL واقعی، ۴۸ تحلیلی واقعی و ۲۲ آفلاین. دیتابیس‌های موقت پس از کنترل هویت حذف شدند و دادهٔ تحلیلی fixture نبوده است.
 
 فقط آماده‌سازی، اتصال و چهار سلول جدید سؤال پنجم در فرایند تازهٔ IPython اجرا شدند و pool آزاد شد؛ اجرای کامل نوت‌بوک یا Jupyter kernel انجام نشده است. سلول‌ها، خروجی‌ها و شواهد چهار سؤال قبلی حفظ شدند. هر پنج تحلیل اولیه اکنون پیاده شده‌اند؛ بهینه‌سازی و رسیدن همهٔ کوئری‌ها به بودجه و سایر بخش‌های مرحله هنوز باقی‌اند. هیچ ایندکس جدید، View، snapshot یا تغییر پایدار تنظیمات ایجاد نشد.
 
 
-## Completed bounded index-only attempt
+<a id="index-only-attempt"></a>
+## ۵. نتیجهٔ ایندکس‌گذاری محدود
 
-The original query SQL, business schema and benchmark settings were restored;
-experimental generated UUID columns and replacement query variants were removed.
-Only Q1, Q3, Q4 and Q5 entered one fixed four-index trial. Q2 was excluded because
-its original measurement met the budget; Q2 was not measured again.
+کوئری‌های اصلی، ساختار داده‌های تجاری و تنظیمات سنجش به وضعیت قبلی بازگردانده
+شدند. ستون‌های تولیدشوندهٔ آزمایشی از نوع UUID و نسخه‌های بازنویسی‌شدهٔ کوئری‌ها
+جمع‌آوری شدند. فقط سؤال‌های ۱، ۳، ۴ و ۵ در یک آزمایش با مجموعهٔ ثابت چهار
+ایندکس شرکت کردند. سؤال ۲ در سنجش اولیه زیر بودجه بود و دوباره سنجیده نشد.
 
-| Query | Before median (ms) | Trial median (ms) | Trial maximum (ms) | All measured runs within 200 ms |
-| --- | ---: | ---: | ---: | --- |
-| Q1 | 528.57 | 901.51 | 907.32 | No |
-| Q3 | 744.75 | 287.40 | 413.85 | No |
-| Q4 | 1233.09 | 1316.47 | 1393.67 | No |
-| Q5 | 2208.33 | 5649.79 | 5707.39 | No |
+| سؤال | میانهٔ قبل، میلی‌ثانیه | میانهٔ آزمایش، میلی‌ثانیه | بیشینهٔ آزمایش، میلی‌ثانیه | تمام اجراها زیر ۲۰۰ میلی‌ثانیه |
+|---|---:|---:|---:|---|
+| ۱ | 528.57 | 901.51 | 907.32 | خیر |
+| ۳ | 744.75 | 287.40 | 413.85 | خیر |
+| ۴ | 1233.09 | 1316.47 | 1393.67 | خیر |
+| ۵ | 2208.33 | 5649.79 | 5707.39 | خیر |
 
-These are the saved measurements of the four-index trial. Only
-`idx_qbudget_reviews_latest` was used by its plans (Q3 and Q4); the three unused
-item/payment candidates were removed. The final SQL contains only this retained
-review index. No additional timing trial was run after removal, so these timings
-must not be represented as a fresh benchmark of the final single-index state.
-All result rows and fields matched the original results. A larger measured time
-with unused indexes does not establish that those indexes caused the slowdown.
+این اعداد، سنجش ذخیره‌شدهٔ آزمایش چهارایندکسی‌اند. در پلن‌ها فقط ایندکس
+`idx_qbudget_reviews_latest` برای سؤال‌های ۳ و ۴ استفاده شد؛ سه ایندکس
+استفاده‌نشدهٔ آیتم‌ها و پرداخت‌ها حذف شدند. فایل SQL نهایی فقط همین ایندکس
+نظرها را دارد. پس از حذف سه ایندکس، سنجش زمانی دیگری انجام نشد؛ بنابراین
+اعداد جدول، سنجش تازهٔ وضعیت نهایی تک‌ایندکسی نیستند. تمام سطرها و ستون‌های
+نتیجه با خروجی معتبر قبلی برابر بودند. افزایش زمان در حضور ایندکس‌های
+استفاده‌نشده به‌تنهایی اثبات نمی‌کند آن ایندکس‌ها علت کندی بوده‌اند.
 
-Q1 still scans and aggregates item/category data and sorts 110,197 rows with a
-disk sort. Q3 benefits from ordered latest-review access but still scans orders,
-groups results and sorts 96,470 rows on disk. Q4 retains seller/order aggregation,
-CTE work and a disk sort of 110,197 rows. Q5 retains broad order/payment/item
-processing, CTE work and a disk sort of 100,756 rows; its candidate indexes were
-not chosen. Indexing alone did not remove these operations. No further tuning
-was attempted, as requested. The 200 ms target remains unmet for these queries.
+در سؤال ۱، خواندن و تجمیع آیتم و دسته‌بندی و مرتب‌سازی ۱۱۰٬۱۹۷ سطر روی دیسک
+باقی ماند. سؤال ۳ از دسترسی مرتب به آخرین نظر بهره برد، اما خواندن سفارش‌ها،
+تجمیع و مرتب‌سازی ۹۶٬۴۷۰ سطر روی دیسک همچنان انجام شد. سؤال ۴ هنوز تجمیع
+فروشنده و سفارش، پردازش نتایج میانی CTE و مرتب‌سازی ۱۱۰٬۱۹۷ سطر روی دیسک
+داشت. در سؤال ۵، پردازش گستردهٔ سفارش، آیتم و پرداخت، نتایج میانی و مرتب‌سازی
+۱۰۰٬۷۵۶ سطر روی دیسک باقی ماند و ایندکس‌های پیشنهادی آن انتخاب نشدند.
+ایندکس به‌تنهایی این عملیات را حذف نکرد. این تلاش طبق درخواست خاتمه یافت
+و رسیدن این کوئری‌ها به بودجهٔ ۲۰۰ میلی‌ثانیه تأیید نشد.
 
-The notebook section 5 loads the saved measurements without repeating speed
-experiments. Its apply cell idempotently checks/applies the retained index.
-Earlier Q1-Q5 cells and outputs are preserved. The 75-test database suite passed;
-a full notebook/kernel rerun and an index write-overhead benchmark were not done.
+بخش ۵ نوت‌بوک شواهد ذخیره‌شده را بدون تکرار سنجش سرعت می‌خواند. سلول اعمال
+ایندکس، وجود تعریف نهایی را بررسی می‌کند و در صورت نبودن آن را می‌سازد؛
+اجرای دوباره ردیف دادهٔ تجاری را تغییر نمی‌دهد. سلول‌ها و خروجی‌های سؤال‌های
+۱ تا ۵ حفظ شدند. در پایان این گام، مجموعهٔ ۷۵تستی موفق بود. اجرای کامل
+نوت‌بوک و سنجش سربار نوشتن ناشی از ایندکس انجام نشد.
+
+شواهد در [سنجش‌های ایندکس‌گذاری](evidence/benchmarks/indexing/)،
+[پلن‌ها](evidence/plans/indexing/) و
+[تصمیم نهایی ایندکس](evidence/quality/indexing_decision.json) ثبت شده‌اند.
 
 
-## Section 7 completed: views and Q5 result snapshot
+<a id="views-and-snapshot"></a>
+## ۶. نماها و مقایسه با جدول نتیجهٔ ذخیره‌شده
 
-Section 6 (further query optimization) was removed at the user's request. Section
-numbers 7 onward remain stable. Section 7 creates `olist.v_orders` (one-table
-projection) and `olist.v_payment_analysis` (original Q5 analysis via orders,
-items and payments). The analysis scope is explicitly fixed to delivered
-purchases in [2016-01-01, 2019-01-01); these are ordinary nonparameterized views.
-The original Q5 SQL and prior evidence are unchanged. The versioned view body
-is checked against Q5 with only fixed binds and its order-view source substituted.
+نمای سادهٔ `olist.v_orders` یک تصویر سه‌ستونی از جدول سفارش‌هاست.
+نمای چندجدولی `olist.v_payment_analysis` همان تحلیل سؤال ۵ را با استفاده
+از سفارش‌ها، آیتم‌ها و پرداخت‌ها اجرا می‌کند. دامنهٔ آن صریح و ثابت است:
+خریدهای سفارش‌های delivered از ۲۰۱۶/۰۱/۰۱ شامل تا ۲۰۱۹/۰۱/۰۱ غیرشامل.
+این نماها معمولی‌اند و پارامتر ورودی ندارند. SQL اصلی سؤال ۵ و شواهد قبلی
+حفظ شده‌اند؛ بدنهٔ تعریف نما فقط در جایگزینی پارامترهای ثابت و منبع
+سفارش‌ها با نمای ساده تفاوت دارد و همین موضوع آزمون شده است.
 
-| Path | Warmups / measured runs | Median ms | Maximum ms | All runs <200 ms |
-| --- | --- | ---: | ---: | --- |
-| Live View | 1 / 3 | 1704.00 | 1737.35 | No |
-| Snapshot table | 1 / 3 | 1.22 | 1.50 | Yes |
+| مسیر خواندن | اجراهای گرم‌سازی / اندازه‌گیری | میانه، میلی‌ثانیه | بیشینه، میلی‌ثانیه | تمام اجراها زیر ۲۰۰ میلی‌ثانیه |
+|---|---|---:|---:|---|
+| نمای زنده | ۱ / ۳ | 1704.00 | 1737.35 | خیر |
+| جدول نتیجهٔ ذخیره‌شده | ۱ / ۳ | 1.22 | 1.50 | بله |
 
-All 58 rows and every field match the original validated Q5 output (31 exclusive
-order profiles and 27 overlapping payment plans). Timings include execute and
-full fetch, use warm caches, and are not a concurrency/load guarantee. One bounded
-comparison was performed; the existing SQL and optimizer settings were retained.
-Saved plans show the live view reads orders/items/payments and retains grouping,
-joins, CTEs and one disk sort; the cache plan scans/sorts only the result table.
+هر ۵۸ سطر و تمام ستون‌ها با نتیجهٔ معتبر سؤال ۵ برابر بودند: ۳۱ پروفایل
+انحصاری سفارش و ۲۷ گروه هم‌پوشان برنامهٔ پرداخت. زمان شامل اجرای SQL و
+دریافت کامل نتیجه بود؛ حافظهٔ نهان گرم بود و بار هم‌زمان شبیه‌سازی نشد.
+فقط همین مقایسهٔ محدود انجام شد و SQL اصلی و تنظیمات بهینه‌ساز تغییر
+نکردند. پلن ذخیره‌شده نشان می‌دهد نمای زنده هنوز سفارش‌ها، آیتم‌ها و
+پرداخت‌ها را می‌خواند و تجمیع، پیوند، نتایج میانی و یک مرتب‌سازی روی دیسک
+دارد؛ مسیر جدول ذخیره‌شده فقط نتیجهٔ کوچک را می‌خواند و مرتب می‌کند.
 
-The logged `olist.payment_analysis_snapshot` table is installed WITH NO DATA,
-then replaced explicitly from the view. This is a regular table, not a PostgreSQL
-materialized view. Refresh plus ANALYZE took 1762.97 ms
-(before commit); the transaction including independent execution of original Q5
-for full-result validation and commit took 3457.41 ms.
-Snapshot storage including auxiliary relations was 49,152 bytes; metadata plus
-its primary-key index was 32,768 bytes in this measurement. Size can grow with
-updates/dead tuples and subsequent vacuum is normal maintenance. Views store
-definitions instead of result rows; zero data-relation bytes is not zero catalog
-space or zero query execution cost.
+جدول `olist.payment_analysis_snapshot` ابتدا با `WITH NO DATA` بدون اجرای
+محاسبهٔ سنگین نصب و سپس صریحاً از روی نما پر می‌شود. این، جدول عادیِ ثبت‌شده
+در گزارش تراکنش است، نه نمای مادی‌شدهٔ PostgreSQL. زمان بازسازی و ANALYZE
+برابر **1762.97 میلی‌ثانیه** پیش از ثبت نهایی تراکنش بود. زمان کل تراکنش،
+با اجرای جداگانهٔ SQL اصلی سؤال ۵ برای کنترل تمام نتیجه و ثبت نهایی،
+**3457.41 میلی‌ثانیه** شد.
 
-Refresh is manual and atomic (REPEATABLE READ in the notebook wrapper); a lock
-serializes rebuilds and can block readers. Only derived rows are replaced, with
-normal MVCC DELETE/INSERT and transaction rollback, never source-table mutation.
-Metadata records the source snapshot timestamp/ID, fill completion, row count
-and view definition hash. Timestamp age does not detect source changes. No
-trigger, scheduler, Function or Procedure was installed. Source updates or a
-scope change require rebuilding before using the cache for a current answer.
-For repeated fixed-scope reports, prefer the cache if freshness at its last
-refresh is acceptable; use the live view when a current result is required.
-The faster cached read moves computation to refresh, rather than accelerating
-the original Q5 execution.
+فضای کل جدول نتیجه با اجزای ذخیره‌سازی وابسته **49,152 بایت** و فضای
+فراداده همراه ایندکس کلید اصلی آن **32,768 بایت** بود. تغییر داده‌ها و
+نسخه‌های قدیمی سطر می‌توانند فضا را افزایش دهند و پاک‌سازی دوره‌ای طبیعی
+است. نما تعریف کوئری را نگه می‌دارد، نه سطرهای نتیجه را؛ صفر بودن فضای
+رابطهٔ دادهٔ نما به معنی صفر بودن فضای کاتالوگ یا هزینهٔ اجرای کوئری نیست.
 
-Files: `sql/views/001_payment_analysis.sql`, `sql/ddl/003_payment_snapshot.sql`,
-`sql/queries/07_payment_{live_view,snapshot}.sql`, and
-`src/data_factory/database/views.py`. With an existing `engine` and `PROJECT_ROOT`:
+بازسازی دستی و اتمی است؛ تابع کمکی نوت‌بوک از سطح جداسازی REPEATABLE READ
+استفاده می‌کند. قفل، بازسازی‌ها را سری می‌کند و ممکن است خواننده‌ها را
+منتظر بگذارد. فقط سطرهای مشتق با DELETE و INSERT و امکان بازگشت تراکنش
+جایگزین می‌شوند؛ دادهٔ تجاری منبع تغییر نمی‌کند. فراداده، زمان و شناسهٔ
+تصویر منبع، پایان پرکردن، تعداد سطرها و هش تعریف نما را ثبت می‌کند.
+عمر زمانی بازسازی، نبود تغییر در منبع را ثابت نمی‌کند. در این گام، محرک
+یا زمان‌بند بازسازی خودکار و نیز تابع یا رویهٔ ذخیره‌شده نصب نشدند؛ تابع
+و رویه در بخش ۷ اضافه شدند. پس از تغییر منبع یا دامنهٔ تحلیل، بازسازی
+برای پاسخ به‌روز لازم است.
+
+برای گزارش تکراری با دامنهٔ ثابت، جدول ذخیره‌شده مناسب است، به شرط پذیرش
+تازگی مربوط به آخرین بازسازی. برای نتیجهٔ جاری، نمای زنده مرجع است.
+خواندن سریع‌تر جدول، هزینهٔ محاسبه را به زمان بازسازی منتقل می‌کند؛
+به معنای سریع‌تر شدن اجرای SQL اصلی سؤال ۵ نیست.
+
+تعریف‌ها در `sql/views/001_payment_analysis.sql` و
+`sql/ddl/003_payment_snapshot.sql` هستند. دو کوئری خواندن در
+`sql/queries/07_payment_live_view.sql` و
+`sql/queries/07_payment_snapshot.sql` قرار دارند؛ نام فایل‌ها مستقل از
+شمارهٔ جدید بخش نوت‌بوک حفظ شده است. منطق اجرا در
+`src/data_factory/database/views.py` است. با Engine و ریشهٔ پروژهٔ موجود:
 
 ```python
 from data_factory.database.views import prepare_payment_snapshot, compare_payment_view_snapshot
-build = prepare_payment_snapshot(engine, PROJECT_ROOT)  # explicit refresh
-comparison = compare_payment_view_snapshot(engine, PROJECT_ROOT)  # one warmup + 3 runs per path
+build = prepare_payment_snapshot(engine, PROJECT_ROOT)  # بازسازی صریح
+comparison = compare_payment_view_snapshot(engine, PROJECT_ROOT)  # یک گرم‌سازی و سه سنجش برای هر مسیر
 ```
 
-Rebuilding and remeasuring are separate explicit operations; the comparison
-does not silently refresh stale data. Rerunning them updates only section 7
-evidence. Notebook section 7 includes executable SQL displays (dark background),
-build/timing/storage/freshness output, all Q5 results and a saved-plan summary.
-Earlier cells and outputs were preserved. Only setup/connection and the five new
-code cells were executed in fresh IPython sessions; no full notebook/kernel run
-was performed. Eight section-specific checks passed (7 PostgreSQL, 1 offline),
-then all 83 database tests passed in a disposable verified database, which was
-removed. Tests prove live updates vs stale cache, explicit refresh, repeatability,
-empty-source handling, and atomic rollback of both rows and metadata on failure.
+بازسازی و سنجش دو عملیات صریح جدا هستند؛ مقایسه، دادهٔ قدیمی را پنهانی
+بازسازی نمی‌کند. اجرای دوباره فقط شواهد همین بخش را به‌روز می‌کند.
+بخش ۶ نوت‌بوک تعریف‌های SQL با زمینهٔ تیره، خروجی ساخت، زمان، فضا، تازگی،
+تمام نتایج سؤال ۵ و خلاصهٔ پلن ذخیره‌شده را نشان می‌دهد. سلول‌ها و
+خروجی‌های قبلی حفظ شدند. فقط آماده‌سازی، اتصال و پنج سلول جدید در
+نشست‌های تازهٔ IPython اجرا شدند؛ اجرای کامل نوت‌بوک یا هستهٔ Jupyter
+انجام نشد.
 
-PostgreSQL references: [CREATE VIEW](https://www.postgresql.org/docs/18/sql-createview.html)
-and [CREATE TABLE AS](https://www.postgresql.org/docs/18/sql-createtableas.html).
+هشت بررسی این گام موفق بودند: هفت آزمون PostgreSQL و یک کنترل آفلاین.
+سپس مجموعهٔ کاملِ آن مقطع، شامل ۸۳ تست، در دیتابیس موقت تأییدشده موفق
+شد و دیتابیس حذف شد. آزمون‌ها تغییر نمای زنده در برابر قدیمی‌ماندن جدول
+نتیجه، بازسازی صریح، اجرای تکراری، منبع خالی و بازگشت هم‌زمان سطرها و
+فراداده در صورت شکست را پوشش دادند. جزئیات در
+[گزارش تست نماها](evidence/quality/view_tests.json)،
+[شواهد ساخت جدول](evidence/quality/payment_snapshot_build.json)،
+[زمان‌های مقایسه](evidence/benchmarks/views/comparison.json) و
+[پلن‌های اجرا](evidence/plans/views/) ثبت شده‌اند.
+
+منابع رسمی PostgreSQL: [ساخت نما](https://www.postgresql.org/docs/18/sql-createview.html)
+و [ساخت جدول از نتیجهٔ کوئری](https://www.postgresql.org/docs/18/sql-createtableas.html).
+
+<a id="functions-and-procedures"></a>
+## ۷. تابع و رویهٔ بازسازی ماهانه
+
+
+در بخش ۷، تابع `olist.safe_percentage(numeric, numeric)` برای محاسبهٔ درصد
+در عبارت SELECT ساخته شد. خروجی دو رقم اعشار دارد و مخرج صفر یا ورودی
+NULL به خروجی NULL منجر می‌شود. تابع فقط محاسبه می‌کند و در جدول نمی‌نویسد.
+
+رویهٔ `olist.refresh_monthly_delivery_snapshot(date)` با CALL اجرا می‌شود و
+جدول نتیجهٔ ماهانهٔ نرخ تأخیر سؤال ۲ را بازسازی می‌کند. تاریخ ورودی به ابتدای
+ماه تبدیل می‌شود؛ سفارش‌های delivered از آن تاریخ شامل تا ابتدای ماه بعد
+غیرشامل انتخاب می‌شوند. قواعد واجد شرایط بودن، تحویل در روز موعد، تاریخ
+نامعلوم و پرچم رد همان قواعد معتبر سؤال ۲ هستند. درصد با همان تابع
+محاسبه می‌شود. سطح نتیجه یک سطر برای هر ماه و ایالت است و کلید اصلی این
+یکتایی را تضمین می‌کند. جدول نتیجهٔ سؤال ۵ در بخش ۶ کاربرد جداگانه‌ای دارد.
+
+حذف نتیجهٔ قدیمی ماه، درج نتیجهٔ جدید و به‌روزرسانی فراداده یک واحد
+تراکنشی‌اند؛ رویه ثبت نهایی میانی ندارد و خطا را پنهان نمی‌کند. قفل هماهنگی
+تراکنشی بر ماه، فراخوانی‌های هم‌ماه را سری می‌کند. فراخوانندهٔ Python از
+REPEATABLE READ استفاده می‌کند، خروجی را پیش از ثبت نهایی با SQL اصلی و کنترل
+مستقل Python تطبیق می‌دهد و سایر ماه‌ها را حفظ می‌کند. رقابت نویسنده‌ها ممکن
+است به خطای سری‌سازی منجر شود و تکرار کل تراکنش بخواهد؛ تلاش مجدد خودکار
+و زمان‌بندی نصب نشده‌اند. دادهٔ تجاری منبع فقط خوانده شده است.
+
+در اجرای واقعی ژانویهٔ ۲۰۱۷، ۲۴ گروه ایالت و ۷۵۰ سفارش واجد شرایط ثبت شد؛
+۲۲ سفارش دیر و ۷۲۸ سفارش به‌موقع تحویل شده بودند. نرخ کل با جمع صورت‌ها و
+مخرج‌ها محاسبه شد و ۲٫۹۳ درصد بود. اجرای دوم همهٔ سطرهای یکسان
+را بازساخت و ردیف تکراری ایجاد نکرد. این دو فراخوانی کنترل صحت‌اند و ادعای
+بهینه‌سازی یا سنجش بودجه نیستند. زمان ثبت‌شده فقط CALL را پوشش می‌دهد.
+
+فراداده، ماه، زمان و شناسهٔ تصویر منبع و شمارها را ثبت می‌کند. پس از
+تغییر دادهٔ منبع، بازسازی دستی همان ماه لازم است؛ برچسب زمانی قدیمی به‌تنهایی
+نبود تغییر در منبع را اثبات نمی‌کند. تابع این بخش یک مقدار در SELECT
+برمی‌گرداند؛ رویهٔ این بخش پارامتر OUT ندارد و اثرش با SELECT از جدول
+خوانده می‌شود. تراکنش رویه را فراخواننده مدیریت می‌کند.
+
+یازده تست واقعی این بخش موفق شدند. خطای درج پس از حذف و خطای ثبت فراداده
+پس از درج در دیتابیس موقت ایجاد شدند و در هر دو، سطرها و فرادادهٔ قبلی
+حفظ شدند. بازگشت تراکنش از طرف فراخواننده پس از CALL موفق، ماه خالی، حفظ ماه دیگر،
+ورودی نامعتبر، مرز ماه و NULL نیز پوشش داده شدند. مجموعهٔ کامل ۹۴ تست موفق
+داشت و دیتابیس موقت حذف شد. آماده‌سازی، اتصال و چهار سلول جدید بخش ۷ در
+IPython تازه اجرا شدند؛ اجرای کامل نوت‌بوک انجام نشد و خروجی‌های قبلی حفظ شدند.
+
+تعریف‌ها در `sql/functions/001_safe_percentage.sql`،
+`sql/ddl/004_monthly_delivery_snapshot.sql` و
+`sql/procedures/001_refresh_monthly_delivery.sql` هستند. شواهد واقعی در
+`evidence/quality/routines/` و گزارش تست در
+`evidence/quality/routine_tests.json` ثبت شده‌اند.

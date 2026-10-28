@@ -1,0 +1,71 @@
+{
+  "month": "2017-01-01",
+  "end_exclusive": "2017-02-01",
+  "order_status": "delivered",
+  "measurements": [
+    {
+      "run": 1,
+      "call_ms_excluding_commit_and_validation": 134.2712999903597,
+      "state_rows": 24,
+      "matches_original_q2": true,
+      "independent_python_check_passed": true,
+      "other_months_preserved": true
+    },
+    {
+      "run": 2,
+      "call_ms_excluding_commit_and_validation": 18.02359998691827,
+      "state_rows": 24,
+      "matches_original_q2": true,
+      "independent_python_check_passed": true,
+      "other_months_preserved": true
+    }
+  ],
+  "same_rows_after_second_call": true,
+  "results_sha256": "422e7816262375942e8b1137e30bad98d033de426e3425cd3051ea930c6f8585",
+  "monthly_weighted_late_pct": "2.93",
+  "independent_control": {
+    "passed": true,
+    "method": "Independent Python classification of streamed order rows",
+    "all_month_state_groups_verified": 24,
+    "fetch_batch_size": 5000,
+    "totals": {
+      "delivered_order_count": 750,
+      "eligible_order_count": 750,
+      "excluded_order_count": 0,
+      "late_order_count": 22,
+      "on_time_order_count": 728,
+      "late_delivery_pct": "2.93"
+    },
+    "exclusion_reasons": {
+      "missing_dates": 0,
+      "other_ineligible": 0
+    },
+    "delivered_on_estimated_date": 1,
+    "first_purchase": "2017-01-05T11:56:06",
+    "last_purchase": "2017-01-31T23:37:58"
+  },
+  "metadata": {
+    "purchase_month": "2017-01-01",
+    "source_snapshot_at": "2026-10-28T22:14:44.487895+03:30",
+    "source_snapshot_id": "1349:1349:",
+    "refreshed_at": "2026-10-28T22:14:44.505222+03:30",
+    "state_row_count": 24,
+    "delivered_order_count": 750
+  },
+  "source_files": [
+    {
+      "file": "sql/functions/001_safe_percentage.sql",
+      "sha256": "e3f45cafa3de0a946bbd0ec432555fd3fa1fa5fdd18e26e25613cddd32407e08"
+    },
+    {
+      "file": "sql/ddl/004_monthly_delivery_snapshot.sql",
+      "sha256": "5307f5f219c8e9cca090229138e7b7c8c5f3e7cfc91e58d1fc95210f00236a5f"
+    },
+    {
+      "file": "sql/procedures/001_refresh_monthly_delivery.sql",
+      "sha256": "d7bb7ff52f40ddc337b2cd70c6bfffbf6474ca596f1ef50086d8284b850d43fc"
+    }
+  ],
+  "transaction_isolation": "REPEATABLE READ",
+  "automatic_refresh": false
+}

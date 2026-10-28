@@ -495,10 +495,9 @@ Earlier Q1-Q5 cells and outputs are preserved. The 75-test database suite passed
 a full notebook/kernel rerun and an index write-overhead benchmark were not done.
 
 
-## Section 7 completed: views and Q5 result snapshot
+## Section 6 completed: views and Q5 result snapshot
 
-Section 6 (further query optimization) was removed at the user's request. Section
-numbers 7 onward remain stable. Section 7 creates `olist.v_orders` (one-table
+Section 6 creates `olist.v_orders` (one-table
 projection) and `olist.v_payment_analysis` (original Q5 analysis via orders,
 items and payments). The analysis scope is explicitly fixed to delivered
 purchases in [2016-01-01, 2019-01-01); these are ordinary nonparameterized views.
@@ -551,8 +550,8 @@ comparison = compare_payment_view_snapshot(engine, PROJECT_ROOT)  # one warmup +
 ```
 
 Rebuilding and remeasuring are separate explicit operations; the comparison
-does not silently refresh stale data. Rerunning them updates only section 7
-evidence. Notebook section 7 includes executable SQL displays (dark background),
+does not silently refresh stale data. Rerunning them updates only section 6
+evidence. Notebook section 6 includes executable SQL displays (dark background),
 build/timing/storage/freshness output, all Q5 results and a saved-plan summary.
 Earlier cells and outputs were preserved. Only setup/connection and the five new
 code cells were executed in fresh IPython sessions; no full notebook/kernel run
@@ -563,3 +562,79 @@ empty-source handling, and atomic rollback of both rows and metadata on failure.
 
 PostgreSQL references: [CREATE VIEW](https://www.postgresql.org/docs/18/sql-createview.html)
 and [CREATE TABLE AS](https://www.postgresql.org/docs/18/sql-createtableas.html).
+
+
+## Section 7 completed: Function and monthly refresh Procedure
+
+`olist.safe_percentage(numeric, numeric)` is an IMMUTABLE, STRICT, PARALLEL SAFE
+SQL Function used inside SELECT. It rounds the ratio times 100 to two places and
+returns NULL for a zero denominator or NULL input. The mathematical function is
+generic; snapshot constraints enforce valid nonnegative counts and a 0-100 rate.
+
+`olist.refresh_monthly_delivery_snapshot(date)` is a PL/pgSQL Procedure invoked
+with CALL. Any finite date in the requested month is normalized to its first day.
+It rebuilds only that purchase month in `olist.monthly_delivery_snapshot`, using
+the original Q2 eligibility/date rules for delivered orders. Its primary key is
+(purchase_month, customer_state). Month end is exclusive. The Procedure uses the
+Function for late-delivery percentages. It replaces that month's metadata in
+`olist.monthly_delivery_snapshot_runs` and preserves all other months. This is a
+monthly Q2 result, separate from the fixed Q5 cache demonstrated in section 6.
+
+The Procedure takes a transaction-scoped advisory lock keyed by month. It has no
+internal COMMIT or exception swallowing: DELETE, INSERT and metadata update belong
+to the caller's transaction. Same-month contention under REPEATABLE READ can
+require a serialization retry; automatic retries/scheduling are not implemented.
+The Python wrapper uses REPEATABLE READ, a 5 s lock timeout and 60 s statement
+timeout, compares every output field with original Q2, independently reconstructs
+the result in Python, and commits only after validation. It installs only derived
+objects and reads the business tables. Primary keys enforce the derived data
+grain rather than introducing another source-query indexing experiment.
+
+Real demonstration: January 2017 produced 24 state groups containing
+750 delivered/eligible orders, 22
+late and 728 on-time orders. The weighted overall rate
+was 2.93%. Both calls matched Q2 and independent
+Python, produced identical rows without duplicates, and preserved other months.
+The two calls demonstrate repeatability; they are not a speed optimization or
+budget benchmark. Reported CALL durations exclude validation and commit. Snapshot
+timestamps describe the source snapshot of the wrapper transaction, not ongoing
+freshness; changed source months require an explicit new CALL.
+
+Versioned SQL is in `sql/functions/001_safe_percentage.sql`,
+`sql/ddl/004_monthly_delivery_snapshot.sql`, and
+`sql/procedures/001_refresh_monthly_delivery.sql`; installation order is encoded
+in `src/data_factory/database/routines.py`. The initial schema installer still
+uses only its original two files. With an existing engine and project root:
+
+```python
+from datetime import date
+from data_factory.database.routines import run_monthly_routines
+rows, report = run_monthly_routines(engine, PROJECT_ROOT, date(2017, 1, 1))
+```
+
+For ordinary use after installation, one bound CALL in a transaction is enough;
+the demonstration wrapper intentionally calls twice to check repeatability:
+
+```python
+from sqlalchemy import text
+with engine.connect().execution_options(isolation_level="REPEATABLE READ") as conn:
+    with conn.begin():
+        conn.execute(text("CALL olist.refresh_monthly_delivery_snapshot(CAST(:month AS date))"),
+                     {"month": date(2017, 1, 1)})
+```
+
+Eleven PostgreSQL tests prove correct ratios/NULL handling, handwritten Q2
+equivalence, month boundaries, reruns, preservation of other months, empty inputs,
+invalid-month rejection, rollback after a failed result insert, rollback after
+a failed metadata insert, and caller rollback after a successful CALL. Failures
+are injected only in the verified disposable test database. The full suite passed
+94 tests (5 DDL, 48 analytical, 7 view, 11 routine, 23 offline); the test database
+was removed. Notebook setup/connection and four new code cells ran in fresh
+IPython; prior cells/outputs are preserved and a full notebook/kernel rerun was
+not performed. The notebook explains the actual Function versus Procedure
+behavior without asserting that all Functions are read-only or all Procedures
+commit themselves.
+
+Sources: [CREATE FUNCTION](https://www.postgresql.org/docs/18/sql-createfunction.html),
+[CREATE PROCEDURE](https://www.postgresql.org/docs/18/sql-createprocedure.html),
+[PL/pgSQL transaction management](https://www.postgresql.org/docs/18/plpgsql-transactions.html).

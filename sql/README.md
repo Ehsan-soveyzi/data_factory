@@ -164,6 +164,11 @@ optimization remains pending. Prior Q1-Q4 SQL and evidence are unchanged.
 `indexes/001_query_budget_indexes.sql` contains only `idx_qbudget_reviews_latest` for selecting the latest review in Q3/Q4. Original analytical SQL is unchanged. One fixed four-index trial did not meet the 200 ms budget; three unused candidates were removed and no further speed trial was run. See the stage 02 report for historical trial timings and remaining work in the plans.
 
 
-## Section 7 views and snapshot
+## Section 6 views and snapshot
 
-`views/001_payment_analysis.sql` defines the simple `olist.v_orders` projection and the multi-table `olist.v_payment_analysis` using the original Q5 logic. Scope is fixed to delivered purchases in [2016-01-01, 2019-01-01). `ddl/003_payment_snapshot.sql` creates the derived result and metadata tables; it is deliberately separate from the two initial schema scripts. Queries `07_payment_live_view.sql` and `07_payment_snapshot.sql` read identical outputs. Call `prepare_payment_snapshot` explicitly after source changes; no automatic freshness maintenance is installed. Section 7 records measured build, read and storage costs. Section 6 was removed; no additional query tuning was performed.
+`views/001_payment_analysis.sql` defines the simple `olist.v_orders` projection and the multi-table `olist.v_payment_analysis` using the original Q5 logic. Scope is fixed to delivered purchases in [2016-01-01, 2019-01-01). `ddl/003_payment_snapshot.sql` creates the derived result and metadata tables; it is deliberately separate from the two initial schema scripts. Queries `07_payment_live_view.sql` and `07_payment_snapshot.sql` read identical outputs. Call `prepare_payment_snapshot` explicitly after source changes; no automatic freshness maintenance is installed. Section 6 records measured build, read and storage costs. No additional query tuning was performed.
+
+
+## Section 7 Function and monthly Procedure
+
+Install `functions/001_safe_percentage.sql`, `ddl/004_monthly_delivery_snapshot.sql`, then `procedures/001_refresh_monthly_delivery.sql` in one transaction, or use `routines.install_routines`. `SELECT olist.safe_percentage(1, 3)` returns 33.33; a zero denominator/NULL input returns NULL. `CALL olist.refresh_monthly_delivery_snapshot(DATE '2017-01-01')` replaces only that month's Q2 delivery result and metadata. The caller owns the transaction; the notebook wrapper uses REPEATABLE READ and validates before commit. Finite dates are normalized to month start. Primary keys enforce month/state uniqueness; source data is read only. There is no internal commit, automatic refresh, or automatic concurrency retry. Python/SQL interaction patterns are demonstrated alongside the existing analyses.

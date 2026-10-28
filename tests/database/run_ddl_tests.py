@@ -18,7 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pattern", default="test_*.py",
                         choices=("test_*.py", "test_delivery_analysis.py", "test_satisfaction_analysis.py",
-                                 "test_seller_analysis.py", "test_payment_analysis.py", "test_views.py"))
+                                 "test_seller_analysis.py", "test_payment_analysis.py", "test_views.py", "test_routines.py"))
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[2]
     settings = load_database_settings()
@@ -71,6 +71,8 @@ def main():
     total_count = int(match.group(1)) if match else None
     live_view_count = len(re.findall(
         r"^test_\w+ \(test_views\.PostgreSQLViewSnapshotTests\.", output, re.MULTILINE))
+    live_routine_count = len(re.findall(
+        r"^test_\w+ \(test_routines\.PostgreSQLRoutineTests\.", output, re.MULTILINE))
     report = {
         "test_command": "python tests/database/run_ddl_tests.py" + (
             " --pattern " + args.pattern if args.pattern != "test_*.py" else ""),
@@ -78,7 +80,8 @@ def main():
         "tests_run": total_count, "live_ddl_tests": live_count,
         "live_query_tests": live_query_count,
         "live_view_tests": live_view_count,
-        "offline_tests": total_count - live_count - live_query_count - live_view_count if total_count is not None else None,
+        "live_routine_tests": live_routine_count,
+        "offline_tests": total_count - live_count - live_query_count - live_view_count - live_routine_count if total_count is not None else None,
         "isolated_test_database": test_name, "test_database_removed": removed,
         "fixture_resets_confined_to_test_database": True,
         "analysis_database_not_used_for_fixtures": settings.url.database,
@@ -88,7 +91,8 @@ def main():
                      "test_satisfaction_analysis.py": "q3_tests.json",
                      "test_seller_analysis.py": "q4_tests.json",
                      "test_payment_analysis.py": "q5_tests.json",
-                     "test_views.py": "view_tests.json"}.get(args.pattern, "ddl_tests.json")
+                     "test_views.py": "view_tests.json",
+                     "test_routines.py": "routine_tests.json"}.get(args.pattern, "ddl_tests.json")
     path = project / "stages/stage_02/evidence/quality" / evidence_name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

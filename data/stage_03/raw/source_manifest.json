@@ -1,0 +1,39 @@
+{
+  "dataset": "Give Me Some Credit",
+  "original_source": "https://www.kaggle.com/c/GiveMeSomeCredit/data",
+  "downloaded_at_utc": "2026-10-31T17:31:25.333278+00:00",
+  "source_type": "Public GitHub mirror; not a direct Kaggle download",
+  "files": [
+    {
+      "filename": "cs-training.csv",
+      "download_url": "https://raw.githubusercontent.com/JLZml/Credit-Scoring-Data-Sets/master/3.%20Kaggle/Give%20Me%20Some%20Credit/cs-training.csv",
+      "bytes": 7564965,
+      "sha256": "1bd46da486a5708c58c7b01a034fae2a13b327f6f7b62ea7ba4fe3b5824b24ac"
+    },
+    {
+      "filename": "Data Dictionary.xls",
+      "download_url": "https://raw.githubusercontent.com/JLZml/Credit-Scoring-Data-Sets/master/3.%20Kaggle/Give%20Me%20Some%20Credit/Data%20Dictionary.xls",
+      "bytes": 14848,
+      "sha256": "d388d6b11ed63fee95432048187c8c064b8ca38e40d7e8aab9edd36af240b092"
+    }
+  ],
+  "verification": {
+    "rows": 150000,
+    "columns_including_row_id": 12,
+    "input_features": 10,
+    "row_id_column_as_parsed": "Unnamed: 0",
+    "target": "SeriousDlqin2yrs",
+    "target_counts": {
+      "0": 139974,
+      "1": 10026
+    },
+    "missing_values": {
+      "MonthlyIncome": 29731,
+      "NumberOfDependents": 3924
+    },
+    "second_mirror_url": "https://raw.githubusercontent.com/BenardCharles/Give-me-some-credit/master/cs-training.csv",
+    "second_mirror_matches_all_values_and_feature_names": true,
+    "second_mirror_byte_identical": true
+  },
+  "processing": "Original downloaded bytes preserved. No cleaning, imputation, splitting or database loading performed."
+}

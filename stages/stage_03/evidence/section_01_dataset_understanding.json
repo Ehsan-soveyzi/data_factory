@@ -1,0 +1,429 @@
+{
+  "section": "Challenge 3, Section 1: dataset and target understanding",
+  "recorded_at_utc": "2026-11-02T11:30:37.390757+00:00",
+  "source": {
+    "database": "ds_learning",
+    "table": "credit.accepted",
+    "query": "SELECT * FROM credit.accepted ORDER BY row_id",
+    "dictionary": "data/stage_03/raw/Data Dictionary.xls",
+    "dictionary_sha256": "2397875e02d76c7e514e50c6ffc15d1b5ba01ad25a97e61ad030661883952c64"
+  },
+  "samples": 149999,
+  "stored_columns": 12,
+  "input_features": [
+    "RevolvingUtilizationOfUnsecuredLines",
+    "age",
+    "NumberOfTime30-59DaysPastDueNotWorse",
+    "DebtRatio",
+    "MonthlyIncome",
+    "NumberOfOpenCreditLinesAndLoans",
+    "NumberOfTimes90DaysLate",
+    "NumberRealEstateLoansOrLines",
+    "NumberOfTime60-89DaysPastDueNotWorse",
+    "NumberOfDependents"
+  ],
+  "target": "SeriousDlqin2yrs",
+  "duplicate_non_id_rows": 609,
+  "overview": [
+    {
+      "item": "Source",
+      "value": "ds_learning: credit.accepted"
+    },
+    {
+      "item": "Samples",
+      "value": 149999
+    },
+    {
+      "item": "Stored columns",
+      "value": 12
+    },
+    {
+      "item": "Model input features",
+      "value": 10
+    },
+    {
+      "item": "Unique row identifiers",
+      "value": 149999
+    },
+    {
+      "item": "Duplicate non-ID rows (not removed)",
+      "value": 609
+    }
+  ],
+  "dictionary": [
+    {
+      "column": "row_id",
+      "meaning_fa": "شناسه ردیف منبع؛ ویژگی توضیح‌دهنده وضعیت اعتباری نیست.",
+      "role": "identifier",
+      "semantic_type": "اسمی / شناسه",
+      "unit": "شناسه بدون واحد",
+      "dictionary_reference": "Source row identifier (not in dictionary)",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "SeriousDlqin2yrs",
+      "meaning_fa": "وقوع دیرکرد ۹۰ روزه یا شدیدتر؛ برچسب پیامد دوساله طبق صورت‌مسئله.",
+      "role": "target",
+      "semantic_type": "دسته‌ای دودویی",
+      "unit": "۰: بدون پیامد جدی؛ ۱: دارای پیامد جدی",
+      "dictionary_reference": "Sheet1!A2:C2",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "RevolvingUtilizationOfUnsecuredLines",
+      "meaning_fa": "مانده کارت‌ها و خطوط اعتبار شخصی، به‌جز املاک و بدهی اقساطی، تقسیم بر مجموع سقف اعتبار.",
+      "role": "feature",
+      "semantic_type": "عددی پیوسته / نسبت",
+      "unit": "بدون واحد؛ ۱ معادل ۱۰۰ درصد",
+      "dictionary_reference": "Sheet1!A3:C3",
+      "database_dtype": "Float64"
+    },
+    {
+      "column": "age",
+      "meaning_fa": "سن وام‌گیرنده بر حسب سال.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / سن ثبت‌شده",
+      "unit": "سال",
+      "dictionary_reference": "Sheet1!A4:C4",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "NumberOfTime30-59DaysPastDueNotWorse",
+      "meaning_fa": "تعداد دفعات دیرکرد ۳۰ تا ۵۹ روزه و نه شدیدتر در دو سال گذشته.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش با کد ویژه",
+      "unit": "تعداد رخداد",
+      "dictionary_reference": "Sheet1!A5:C5",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "DebtRatio",
+      "meaning_fa": "پرداخت ماهانه بدهی، نفقه و هزینه زندگی تقسیم بر درآمد ناخالص ماهانه؛ نسبت بدهی کل به دارایی نیست.",
+      "role": "feature",
+      "semantic_type": "عددی پیوسته / نسبت",
+      "unit": "بدون واحد؛ ۱ معادل ۱۰۰ درصد",
+      "dictionary_reference": "Sheet1!A6:C6",
+      "database_dtype": "Float64"
+    },
+    {
+      "column": "MonthlyIncome",
+      "meaning_fa": "درآمد ماهانه؛ دیکشنری واحد پول و تعدیل تورمی را مشخص نمی‌کند.",
+      "role": "feature",
+      "semantic_type": "عددی پیوسته / مبلغ",
+      "unit": "مبلغ ماهانه با واحد پول نامشخص",
+      "dictionary_reference": "Sheet1!A7:C7",
+      "database_dtype": "Float64"
+    },
+    {
+      "column": "NumberOfOpenCreditLinesAndLoans",
+      "meaning_fa": "تعداد وام‌های باز از جمله وام خودرو یا مسکن و خطوط اعتبار مانند کارت اعتباری.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش",
+      "unit": "تعداد تسهیلات یا خطوط اعتبار",
+      "dictionary_reference": "Sheet1!A8:C8",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "NumberOfTimes90DaysLate",
+      "meaning_fa": "تعداد دفعات دیرکرد ۹۰ روزه یا بیشتر؛ دیکشنری برای این ستون بازه تاریخی صریح تعیین نکرده است.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش با کد ویژه",
+      "unit": "تعداد رخداد",
+      "dictionary_reference": "Sheet1!A9:C9",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "NumberRealEstateLoansOrLines",
+      "meaning_fa": "تعداد وام‌های مسکن و املاک، شامل خطوط اعتباری مبتنی بر ارزش ملک.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش",
+      "unit": "تعداد تسهیلات مرتبط با ملک",
+      "dictionary_reference": "Sheet1!A10:C10",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "NumberOfTime60-89DaysPastDueNotWorse",
+      "meaning_fa": "تعداد دفعات دیرکرد ۶۰ تا ۸۹ روزه و نه شدیدتر در دو سال گذشته.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش با کد ویژه",
+      "unit": "تعداد رخداد",
+      "dictionary_reference": "Sheet1!A11:C11",
+      "database_dtype": "Int64"
+    },
+    {
+      "column": "NumberOfDependents",
+      "meaning_fa": "تعداد افراد تحت تکفل به‌جز خود وام‌گیرنده؛ همسر و فرزندان نیز می‌توانند در آن باشند.",
+      "role": "feature",
+      "semantic_type": "عددی گسسته / شمارش",
+      "unit": "تعداد افراد",
+      "dictionary_reference": "Sheet1!A12:C12",
+      "database_dtype": "Int64"
+    }
+  ],
+  "target_distribution": [
+    {
+      "target": 0,
+      "records": 139973,
+      "percent": 93.31595543970293
+    },
+    {
+      "target": 1,
+      "records": 10026,
+      "percent": 6.684044560297068
+    }
+  ],
+  "numeric_profile": [
+    {
+      "column": "RevolvingUtilizationOfUnsecuredLines",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 125728,
+      "min": 0.0,
+      "median": 0.154175793,
+      "p99": 1.092958013279998,
+      "max": 50708.0
+    },
+    {
+      "column": "age",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 85,
+      "min": 21.0,
+      "median": 52.0,
+      "p99": 87.0,
+      "max": 109.0
+    },
+    {
+      "column": "NumberOfTime30-59DaysPastDueNotWorse",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 16,
+      "min": 0.0,
+      "median": 0.0,
+      "p99": 4.0,
+      "max": 98.0
+    },
+    {
+      "column": "DebtRatio",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 114193,
+      "min": 0.0,
+      "median": 0.366503221,
+      "p99": 4979.079999999958,
+      "max": 329664.0
+    },
+    {
+      "column": "MonthlyIncome",
+      "missing": 29731,
+      "missing_percent": 19.820798805325367,
+      "distinct_nonmissing": 13594,
+      "min": 0.0,
+      "median": 5400.0,
+      "p99": 25000.0,
+      "max": 3008750.0
+    },
+    {
+      "column": "NumberOfOpenCreditLinesAndLoans",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 58,
+      "min": 0.0,
+      "median": 8.0,
+      "p99": 24.0,
+      "max": 58.0
+    },
+    {
+      "column": "NumberOfTimes90DaysLate",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 19,
+      "min": 0.0,
+      "median": 0.0,
+      "p99": 3.0,
+      "max": 98.0
+    },
+    {
+      "column": "NumberRealEstateLoansOrLines",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 28,
+      "min": 0.0,
+      "median": 1.0,
+      "p99": 4.0,
+      "max": 54.0
+    },
+    {
+      "column": "NumberOfTime60-89DaysPastDueNotWorse",
+      "missing": 0,
+      "missing_percent": 0.0,
+      "distinct_nonmissing": 13,
+      "min": 0.0,
+      "median": 0.0,
+      "p99": 2.0,
+      "max": 98.0
+    },
+    {
+      "column": "NumberOfDependents",
+      "missing": 3924,
+      "missing_percent": 2.616017440116267,
+      "distinct_nonmissing": 13,
+      "min": 0.0,
+      "median": 0.0,
+      "p99": 4.0,
+      "max": 20.0
+    }
+  ],
+  "sentinel_fields": [
+    {
+      "column": "NumberOfTime30-59DaysPastDueNotWorse",
+      "code_96_count": 5,
+      "code_98_count": 264,
+      "largest_noncode_count": 13,
+      "values_between_18_and_95": 0
+    },
+    {
+      "column": "NumberOfTime60-89DaysPastDueNotWorse",
+      "code_96_count": 5,
+      "code_98_count": 264,
+      "largest_noncode_count": 11,
+      "values_between_18_and_95": 0
+    },
+    {
+      "column": "NumberOfTimes90DaysLate",
+      "code_96_count": 5,
+      "code_98_count": 264,
+      "largest_noncode_count": 17,
+      "values_between_18_and_95": 0
+    }
+  ],
+  "sentinel_patterns": [
+    {
+      "NumberOfTime30-59DaysPastDueNotWorse": 98,
+      "NumberOfTime60-89DaysPastDueNotWorse": 98,
+      "NumberOfTimes90DaysLate": 98,
+      "records": 264
+    },
+    {
+      "NumberOfTime30-59DaysPastDueNotWorse": 96,
+      "NumberOfTime60-89DaysPastDueNotWorse": 96,
+      "NumberOfTimes90DaysLate": 96,
+      "records": 5
+    }
+  ],
+  "sentinel_records": 269,
+  "sentinel_cells": 807,
+  "sentinel_zero_open_lines": 267,
+  "correlation_comparison": [
+    {
+      "first": "NumberOfTime30-59DaysPastDueNotWorse",
+      "second": "NumberOfTime60-89DaysPastDueNotWorse",
+      "codes_as_numbers": 0.987005574484172,
+      "codes_as_missing": 0.305879024604958
+    },
+    {
+      "first": "NumberOfTime30-59DaysPastDueNotWorse",
+      "second": "NumberOfTimes90DaysLate",
+      "codes_as_numbers": 0.983602815870712,
+      "codes_as_missing": 0.218148773947924
+    },
+    {
+      "first": "NumberOfTime60-89DaysPastDueNotWorse",
+      "second": "NumberOfTimes90DaysLate",
+      "codes_as_numbers": 0.992796182531173,
+      "codes_as_missing": 0.294638017516658
+    }
+  ],
+  "domain_rules": [
+    {
+      "rule": "Target is missing or not 0/1",
+      "affected_records": 0
+    },
+    {
+      "rule": "Identifier is missing or nonpositive",
+      "affected_records": 0
+    },
+    {
+      "rule": "Nonpositive age",
+      "affected_records": 0
+    },
+    {
+      "rule": "Negative ratio, income or count",
+      "affected_records": 0
+    },
+    {
+      "rule": "Infinite numeric input",
+      "affected_records": 0
+    }
+  ],
+  "unusual_values": [
+    {
+      "condition": "Revolving utilization > 1",
+      "records": 3321,
+      "percent": 2.214014760098401
+    },
+    {
+      "condition": "Revolving utilization > 10 (descriptive only)",
+      "records": 241,
+      "percent": 0.160667737784919
+    },
+    {
+      "condition": "Debt ratio > 1",
+      "records": 35137,
+      "percent": 23.424822832152213
+    },
+    {
+      "condition": "Monthly income = 0",
+      "records": 1634,
+      "percent": 1.089340595603971
+    },
+    {
+      "condition": "Age >= 100 (not automatically invalid)",
+      "records": 13,
+      "percent": 0.00866672444483
+    },
+    {
+      "condition": "Dependents >= 10 (not automatically invalid)",
+      "records": 7,
+      "percent": 0.004666697777985
+    }
+  ],
+  "income_debt_groups": [
+    {
+      "income_status": "missing",
+      "records": 29731,
+      "debt_ratio_gt1": 27904,
+      "median_debt_ratio": 1159.0,
+      "max_debt_ratio": 329664.0
+    },
+    {
+      "income_status": "zero",
+      "records": 1634,
+      "debt_ratio_gt1": 1521,
+      "median_debt_ratio": 930.0,
+      "max_debt_ratio": 60212.0
+    },
+    {
+      "income_status": "positive",
+      "records": 118634,
+      "debt_ratio_gt1": 5712,
+      "median_debt_ratio": 0.2924402645,
+      "max_debt_ratio": 61106.5
+    }
+  ],
+  "semantic_copy_missing": {
+    "RevolvingUtilizationOfUnsecuredLines": 0,
+    "age": 0,
+    "NumberOfTime30-59DaysPastDueNotWorse": 269,
+    "DebtRatio": 0,
+    "MonthlyIncome": 29731,
+    "NumberOfOpenCreditLinesAndLoans": 0,
+    "NumberOfTimes90DaysLate": 269,
+    "NumberRealEstateLoansOrLines": 0,
+    "NumberOfTime60-89DaysPastDueNotWorse": 269,
+    "NumberOfDependents": 3924
+  },
+  "sentinel_policy": "Mask 96/98 only in the semantic analysis copy; retain original codes and flags separately. Exact code meanings are undocumented.",
+  "data_modifications": "No database/file changes; semantic DataFrame copy only. No imputation, clipping, scaling, splitting or training.",
+  "evaluation_scope": "Whole-table structural/descriptive analysis; no target-conditioned feature selection or preprocessing fit."
+}

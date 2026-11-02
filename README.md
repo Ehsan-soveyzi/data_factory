@@ -25,7 +25,7 @@ root. Each stage has its own notebook and decision report.
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Pipeline implemented; acquisition completeness is reported separately from processing success |
 | 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [Persian decision report](stages/stage_02/report.md) | Five analyses, bounded indexing trial, views/snapshots and monthly SQL routines executed; 94 database tests passed |
-| 03 - Machine Learning | [Stage guide](stages/stage_03/README.md), [notebook](stages/stage_03/solution.ipynb) | Contract-driven CSV validation implemented; credit database loading and modeling remain pending |
+| 03 - Machine Learning | [Stage guide](stages/stage_03/README.md), [notebook](stages/stage_03/solution.ipynb) | CSV validation and SQLAlchemy loading implemented; 149,999 accepted rows loaded into credit.accepted; modeling pending |
 
 The 200 ms target remains unmet for the original Q1/Q3/Q4/Q5 executions. The
 stored Q5 result has a separately measured fast read path. A complete fresh-kernel

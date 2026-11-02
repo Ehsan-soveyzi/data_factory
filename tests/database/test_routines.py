@@ -8,7 +8,10 @@ import unittest
 from sqlalchemy import text
 from sqlalchemy.exc import DBAPIError, IntegrityError
 
-import test_delivery_analysis as fixtures
+if __package__:
+    from . import test_delivery_analysis as fixtures
+else:
+    import test_delivery_analysis as fixtures
 from data_factory.database.routines import CALL_MONTH, install_routines, read_month
 
 

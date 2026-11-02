@@ -45,7 +45,29 @@ def main():
     clean_parser = commands.add_parser("clean-olist", help="Prepare local Olist CSVs without a database connection.")
     clean_parser.add_argument("--project-root", default=".")
 
+    csv_parser = commands.add_parser("validate-csv", help="Validate a local CSV using an independent data contract.")
+    csv_parser.add_argument("--config", required=True, help="CSV source/contract/output settings; paths resolve relative to this file.")
+
     args = parser.parse_args()
+
+    if args.command == "validate-csv":
+        from .csv_quality import validate_csv
+        try:
+            result = validate_csv(args.config)
+        except ConfigurationError as error:
+            print(f"Configuration error: {error}", file=sys.stderr)
+            return 2
+        except DataError as error:
+            print(f"Data/state error: {error}", file=sys.stderr)
+            return 4
+        except OSError as error:
+            print(f"File-system error: {error}", file=sys.stderr)
+            return 5
+        except KeyboardInterrupt:
+            return 130
+        print(json.dumps({key: result[key] for key in ("dataset", "status", "raw_records",
+            "accepted_records", "quarantined_records", "quarantine_fraction", "output_dir", "report_path")}, indent=2))
+        return 0
 
     if args.command == "clean-olist":
         from .olist_cleaning import run_olist_cleaning

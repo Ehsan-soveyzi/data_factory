@@ -1,0 +1,12 @@
+{
+  "command": "python -m data_factory.testing",
+  "status": "passed",
+  "tests_run": 288,
+  "passed": 217,
+  "skipped": 71,
+  "failures": 0,
+  "errors": 0,
+  "network": "DNS and outbound sockets disabled by data_factory.testing",
+  "database": "Live PostgreSQL tests skipped; no isolated test database supplied",
+  "new_csv_tests": 19
+}

@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "dataset": "Give Me Some Credit",
+  "description": "Initial data-quality contract for the supplied training CSV. Missing income/dependents stay null; unusual numeric values stay observable. No imputation, clipping, scaling, splitting or model fitting.",
+  "primary_key": ["row_id"],
+  "extra_columns": "reject",
+  "max_quarantine_fraction": 0.01,
+  "fields": [
+    {
+      "source": "",
+      "name": "row_id",
+      "type": "integer",
+      "nullable": false,
+      "min": 1,
+      "role": "identifier",
+      "description": "Original unnamed CSV row identifier; provenance/deduplication only, excluded from model features."
+    },
+    {
+      "source": "SeriousDlqin2yrs",
+      "name": "SeriousDlqin2yrs",
+      "type": "integer",
+      "nullable": false,
+      "allowed": [0, 1],
+      "role": "target",
+      "description": "Binary outcome; missing or nonbinary labels quarantine the record."
+    },
+    {
+      "source": "RevolvingUtilizationOfUnsecuredLines",
+      "name": "RevolvingUtilizationOfUnsecuredLines",
+      "type": "number",
+      "nullable": false,
+      "min": 0,
+      "warn_max": 1,
+      "description": "Nonnegative utilization ratio. Values above one are flagged and retained, never automatically clipped."
+    },
+    {
+      "source": "age",
+      "name": "age",
+      "type": "integer",
+      "nullable": false,
+      "min": 1,
+      "description": "Positive recorded age; zero is an explicit hard error in this initial contract. No arbitrary upper-age cutoff."
+    },
+    {
+      "source": "NumberOfTime30-59DaysPastDueNotWorse",
+      "name": "NumberOfTime30-59DaysPastDueNotWorse",
+      "type": "integer",
+      "nullable": false,
+      "min": 0,
+      "warn_values": [96, 98],
+      "description": "Nonnegative integer count. Observed 96/98 values are flagged for review without asserting that they are missing-value codes."
+    },
+    {
+      "source": "DebtRatio",
+      "name": "DebtRatio",
+      "type": "number",
+      "nullable": false,
+      "min": 0,
+      "description": "Nonnegative ratio with no arbitrary maximum; values above one remain valid."
+    },
+    {
+      "source": "MonthlyIncome",
+      "name": "MonthlyIncome",
+      "type": "number",
+      "nullable": true,
+      "min": 0,
+      "missing_tokens": ["", "NA", "N/A", "NaN", "null"],
+      "description": "Missing income remains null with a warning. Invalid nonmissing or negative values quarantine the record."
+    },
+    {
+      "source": "NumberOfOpenCreditLinesAndLoans",
+      "name": "NumberOfOpenCreditLinesAndLoans",
+      "type": "integer",
+      "nullable": false,
+      "min": 0,
+      "description": "Nonnegative integer count."
+    },
+    {
+      "source": "NumberOfTimes90DaysLate",
+      "name": "NumberOfTimes90DaysLate",
+      "type": "integer",
+      "nullable": false,
+      "min": 0,
+      "warn_values": [96, 98],
+      "description": "Nonnegative integer count; 96/98 are retained with review flags."
+    },
+    {
+      "source": "NumberRealEstateLoansOrLines",
+      "name": "NumberRealEstateLoansOrLines",
+      "type": "integer",
+      "nullable": false,
+      "min": 0,
+      "description": "Nonnegative integer count."
+    },
+    {
+      "source": "NumberOfTime60-89DaysPastDueNotWorse",
+      "name": "NumberOfTime60-89DaysPastDueNotWorse",
+      "type": "integer",
+      "nullable": false,
+      "min": 0,
+      "warn_values": [96, 98],
+      "description": "Nonnegative integer count; 96/98 are retained with review flags."
+    },
+    {
+      "source": "NumberOfDependents",
+      "name": "NumberOfDependents",
+      "type": "integer",
+      "nullable": true,
+      "min": 0,
+      "missing_tokens": ["", "NA", "N/A", "NaN", "null"],
+      "description": "Missing count remains null with a warning; nonmissing values must be nonnegative integers."
+    }
+  ]
+}

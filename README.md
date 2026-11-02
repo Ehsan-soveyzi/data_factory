@@ -1,12 +1,14 @@
 # Data Factory
 
-A Python data-engineering project with two connected workflows:
+A Python data-engineering project with three connected workflows:
 
 - **NYC 311 Data Factory:** resumable acquisition, validation, quarantine,
   population enrichment, and reproducible case-level and monthly outputs.
 - **Database Performance:** Olist/NYC source preparation and PostgreSQL loading,
   five validated SQL analyses, measured query plans, a bounded indexing trial,
   live views, result snapshots, a percentage Function, and a monthly refresh Procedure.
+- **Contract-driven CSV validation:** independent source contracts, typed records,
+  quarantine evidence, and quality profiles for local CSVs, including Stage 03 credit data.
 
 Use the CLI for the NYC pipeline and offline Olist cleaning. Use the stage
 notebooks to review and execute the PostgreSQL work, analytical controls, and
@@ -23,6 +25,7 @@ root. Each stage has its own notebook and decision report.
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Pipeline implemented; acquisition completeness is reported separately from processing success |
 | 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [Persian decision report](stages/stage_02/report.md) | Five analyses, bounded indexing trial, views/snapshots and monthly SQL routines executed; 94 database tests passed |
+| 03 - Machine Learning | [Stage guide](stages/stage_03/README.md), [notebook](stages/stage_03/solution.ipynb) | Contract-driven CSV validation implemented; credit database loading and modeling remain pending |
 
 The 200 ms target remains unmet for the original Q1/Q3/Q4/Q5 executions. The
 stored Q5 result has a separately measured fast read path. A complete fresh-kernel
@@ -35,6 +38,7 @@ See [database results and limits](#database-results-and-limits) for the exact sc
 - [Quick start](#quick-start)
 - [Run the pipeline](#run-the-pipeline)
 - [Use the notebook](#use-the-notebook)
+- [Validate a local CSV](#validate-a-local-csv)
 - [Database workflow (stage 02)](#database-workflow-stage-02)
 - [Configuration](#configuration)
 - [Outputs](#outputs)
@@ -185,6 +189,56 @@ reprocesses the snapshot offline by default. With no cases available, it starts
 initial acquisition. To continue a
 partial download, run the `ingest` command or set `DOWNLOAD_REMOTE = True` in the
 configuration cell. The notebook explicitly reports whether the scope is complete.
+
+## Validate a local CSV
+
+Run the credit-data contract from the repository root:
+
+```bash
+python -m data_factory validate-csv --config config/credit_validation.json
+```
+
+This offline command reads `data/stage_03/raw/cs-training.csv`, validates the
+independent [credit contract](config/credit_schema.json), and publishes
+`accepted.jsonl`, `accepted.csv`, `quarantine.jsonl`, `quality_profile.json`,
+the resolved `contract.json`, and `validation_report.json` under
+`data/stage_03/curated/validation/<run>/`. Start with
+`data/stage_03/curated/validation/latest.json` to locate the run and its status.
+JSONL retains typed values, nulls, warning flags and row provenance. CSV contains
+only the declared contract fields, with nulls represented as empty fields.
+
+For another dataset, supply another contract and a three-part configuration:
+
+```json
+{
+  "source": {"path": "../data/my_dataset.csv", "encoding": "utf-8-sig", "delimiter": ","},
+  "contract": "my_contract.json",
+  "output_dir": "../data/my_dataset/validation"
+}
+```
+
+**CSV configuration paths resolve relative to the configuration file**, including
+when invoked from a stage notebook. The older NYC `run --config` command retains
+its working-directory-relative paths. These are separate command families;
+`run --stage all` continues to execute only the NYC workflow.
+
+The credit policy retains missing income/dependents with warnings, quarantines
+age zero, and flags unusual utilization/delinquency values without deleting or
+clipping them. The supplied source checksum is pinned to the downloaded bytes.
+A quarantine fraction above the configured 1% saves diagnostics and exits with
+code 4; equality passes. Structural failures publish no run. A later structural
+failure leaves any previous `latest.json` intact, so check command success before
+using a saved result. Outputs are deterministic for the same input, contract,
+CSV options and implementation; changed contracts create separate runs.
+
+Supported rules cover scalar types, missing values, ranges, categories, patterns,
+warning values, header presence and single/composite primary keys. Additional
+rule families need an engine extension. See the
+[CSV contract guide](docs/csv_contract.md) for the full specification and
+[Stage 03 notes](stages/stage_03/README.md) for the Persian walkthrough.
+Validation does not perform imputation, scaling, Train/Test splitting, database
+loading or model fitting. Later ML analysis must read the loaded data through
+SQLAlchemy as required by the assignment.
 
 ## Database workflow (stage 02)
 
@@ -503,6 +557,7 @@ CLI exit codes: `0` success, `2` configuration/argument error, `3` network error
 ## Further documentation
 
 - [Data contract](docs/data_contract.md): field types, missing values, and rejection policies.
+- [CSV contracts](docs/csv_contract.md): generic CSV validation, configuration, outputs and rule limits.
 - [Population join](docs/population_join.md): reference provenance, geography, and denominator rules.
 - [Final delivery](docs/final_delivery.md): output metrics, coverage, and determinism policy.
 - [Testing and submission checklist](docs/submission_checklist.md): coverage and remaining delivery requirements.

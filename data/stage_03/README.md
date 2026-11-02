@@ -26,3 +26,17 @@ These files are the source inputs for the existing Data Factory package.
 Stage 03 requires loading them through that package into the Stage 02
 database, then reading from the database with SQLAlchemy in the notebook.
 Downloading the files does not perform that ingestion.
+
+## Local contract validation
+
+From the repository root, run:
+
+```bash
+python -m data_factory validate-csv --config config/credit_validation.json
+```
+
+The independent credit contract produces accepted/quarantined records and a
+quality report under `curated/validation/`, excluded from Git. Original raw
+bytes and their download manifest remain unchanged. This command validates
+local data; PostgreSQL loading is still pending. See the
+[stage guide](../../stages/stage_03/README.md) for policies and output details.

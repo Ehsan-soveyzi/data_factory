@@ -6,7 +6,10 @@ import unittest
 from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
 
-import test_payment_analysis as fixtures
+if __package__:
+    from . import test_payment_analysis as fixtures
+else:
+    import test_payment_analysis as fixtures
 from data_factory.database.views import (
     PARAMETERS, SNAPSHOT, VIEW, _rows, install_views, refresh_snapshot,
 )

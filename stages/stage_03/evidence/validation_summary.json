@@ -1,0 +1,33 @@
+{
+  "command": "python -m data_factory validate-csv --config config/credit_validation.json",
+  "status": "passed",
+  "run": "06517d1bc14d3f69915cfb2c42ef9fab754b9f12c0888f27f604076c5fd76134",
+  "raw_records": 150000,
+  "accepted_records": 149999,
+  "quarantined_records": 1,
+  "quarantine_reason": "age=0 violates the explicit age>=1 contract",
+  "quarantine_source_rows": [
+    65696
+  ],
+  "accepted_missing_values": {
+    "MonthlyIncome": 29731,
+    "NumberOfDependents": 3924
+  },
+  "accepted_target_counts": {
+    "1": 10026,
+    "0": 139973
+  },
+  "warning_counts": {
+    "MonthlyIncome:MISSING_VALUE": 29731,
+    "NumberOfDependents:MISSING_VALUE": 3924,
+    "NumberOfTime30-59DaysPastDueNotWorse:UNUSUAL_VALUE": 269,
+    "NumberOfTime60-89DaysPastDueNotWorse:UNUSUAL_VALUE": 269,
+    "NumberOfTimes90DaysLate:UNUSUAL_VALUE": 269,
+    "RevolvingUtilizationOfUnsecuredLines:UNUSUAL_VALUE": 3321
+  },
+  "raw_sha256_matches_download_manifest": true,
+  "all_artifact_hashes_verified": true,
+  "source_order_preserved": true,
+  "database_loading": "not performed",
+  "imputation_scaling_splitting_modeling": "not performed"
+}

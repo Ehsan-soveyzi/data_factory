@@ -1,0 +1,10 @@
+{
+  "source": {
+    "path": "../data/stage_03/raw/cs-training.csv",
+    "encoding": "utf-8-sig",
+    "delimiter": ",",
+    "expected_sha256": "1bd46da486a5708c58c7b01a034fae2a13b327f6f7b62ea7ba4fe3b5824b24ac"
+  },
+  "contract": "credit_schema.json",
+  "output_dir": "../data/stage_03/curated/validation"
+}

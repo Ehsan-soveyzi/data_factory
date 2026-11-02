@@ -1,0 +1,55 @@
+{
+  "selected_policy": "median_indicator",
+  "strategy": "median",
+  "add_indicator": true,
+  "feature_columns": [
+    "RevolvingUtilizationOfUnsecuredLines",
+    "age",
+    "NumberOfTime30-59DaysPastDueNotWorse",
+    "DebtRatio",
+    "MonthlyIncome",
+    "NumberOfOpenCreditLinesAndLoans",
+    "NumberOfTimes90DaysLate",
+    "NumberRealEstateLoansOrLines",
+    "NumberOfTime60-89DaysPastDueNotWorse",
+    "NumberOfDependents"
+  ],
+  "sentinel_values": [
+    96,
+    98
+  ],
+  "sentinel_columns": [
+    "NumberOfTime30-59DaysPastDueNotWorse",
+    "NumberOfTime60-89DaysPastDueNotWorse",
+    "NumberOfTimes90DaysLate"
+  ],
+  "selection_metric": "Pooled development OOF decision cost per 1000; lower is better",
+  "decision_threshold": 0.07692307692307693,
+  "threshold_note": "Fixed cost-derived reference threshold; no validation/test threshold tuning",
+  "common_transforms": [
+    "log1p",
+    "StandardScaler fitted within each training fold"
+  ],
+  "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+  "development_fit_statistics": {
+    "RevolvingUtilizationOfUnsecuredLines": 0.153898587,
+    "age": 52.0,
+    "NumberOfTime30-59DaysPastDueNotWorse": 0.0,
+    "DebtRatio": 0.367627053,
+    "MonthlyIncome": 5400.0,
+    "NumberOfOpenCreditLinesAndLoans": 8.0,
+    "NumberOfTimes90DaysLate": 0.0,
+    "NumberRealEstateLoansOrLines": 1.0,
+    "NumberOfTime60-89DaysPastDueNotWorse": 0.0,
+    "NumberOfDependents": 0.0
+  },
+  "development_fit_records": 120000,
+  "future_cv_rule": "Construct a fresh preprocessor and fit it inside every training fold; do not reuse the development-fitted object.",
+  "holdout_evaluations": 0,
+  "tie_break": "Prefer fewer output features, then the declared policy order; median precedes most_frequent at equal cost.",
+  "policy_priority": [
+    "median",
+    "median_indicator",
+    "most_frequent_indicator"
+  ]
+}

@@ -28,9 +28,9 @@ matplotlib-inline==0.2.1
 nbclient==0.10.2
 nbformat==5.10.4
 nest-asyncio==1.6.0
-numpy==2.3.4
+numpy==2.5.4
 packaging==25.0
-pandas==2.3.3
+pandas==3.0.6
 parso==0.8.5
 pillow==12.0.0
 platformdirs==4.5.0
@@ -61,3 +61,11 @@ typing_extensions==4.16.0
 psycopg[binary]==3.3.6
 psycopg-binary==3.3.6
 python-dotenv==1.1.1
+
+# Stage 03: missingness policy comparison, installed on Python 3.14 / Windows.
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+cloudpickle==3.1.2
+narwhals==2.28.0
+threadpoolctl==3.7.0

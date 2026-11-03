@@ -1,0 +1,67 @@
+{
+  "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+  "policy": "median_indicator",
+  "selected_features": {
+    "logistic": [
+      "SeverityWeightedDelinquency",
+      "UtilizationDebtInteraction"
+    ],
+    "hist_gradient_boosting": [
+      "TotalDelinquencyCount",
+      "SeverityWeightedDelinquency",
+      "RealEstateToOpenCreditRatio"
+    ]
+  },
+  "feature_definitions": [
+    {
+      "name": "TotalDelinquencyCount",
+      "label": "مجموع دیرکردها",
+      "sources": [
+        "NumberOfTime30-59DaysPastDueNotWorse",
+        "NumberOfTime60-89DaysPastDueNotWorse",
+        "NumberOfTimes90DaysLate"
+      ],
+      "formula": "late30 + late60 + late90",
+      "hypothesis": "تجمیع شمارش‌های دیرکرد، نشانه ریسک را بهتر از هر ستون به‌تنهایی نشان می‌دهد.",
+      "availability": "سابقه اعتباری موجود هنگام درخواست وام؛ بدون استفاده از پیامد دو سال بعد."
+    },
+    {
+      "name": "SeverityWeightedDelinquency",
+      "label": "دیرکرد با وزن شدت",
+      "sources": [
+        "NumberOfTime30-59DaysPastDueNotWorse",
+        "NumberOfTime60-89DaysPastDueNotWorse",
+        "NumberOfTimes90DaysLate"
+      ],
+      "formula": "late30 + 2*late60 + 3*late90",
+      "hypothesis": "تکرار دیرکردهای شدیدتر، نشانه ریسک بیشتری است؛ وزن‌های ۱، ۲ و ۳ از پیش ثابت‌اند.",
+      "availability": "همان سابقه پیش از تصمیم؛ وزن‌ها از برچسب یا داده ارزیابی آموخته نمی‌شوند."
+    },
+    {
+      "name": "RealEstateToOpenCreditRatio",
+      "label": "نسبت وام ملکی به خطوط اعتباری",
+      "sources": [
+        "NumberRealEstateLoansOrLines",
+        "NumberOfOpenCreditLinesAndLoans"
+      ],
+      "formula": "real_estate / open_credit if open_credit > 0 else 0",
+      "hypothesis": "ترکیب وام‌های ملکی و سایر خطوط اعتباری با ریسک ارتباط دارد؛ مخرج صفر، خروجی صفر دارد.",
+      "availability": "ترکیب تعهدات موجود هنگام درخواست؛ بدون استفاده از نتیجه وام جدید."
+    },
+    {
+      "name": "UtilizationDebtInteraction",
+      "label": "ترکیب استفاده از اعتبار و بدهی",
+      "sources": [
+        "RevolvingUtilizationOfUnsecuredLines",
+        "DebtRatio"
+      ],
+      "formula": "utilization * debt_ratio",
+      "hypothesis": "هم‌زمانی استفاده زیاد از اعتبار و بار بدهی بالا، ریسک مضاعفی را نشان می‌دهد.",
+      "availability": "نسبت‌های ثبت‌شده در پرونده هنگام تصمیم؛ بدون اطلاعات بازپرداخت آینده."
+    }
+  ],
+  "threshold_for_feature_study": 0.07692307692307693,
+  "holdout_evaluations": 0,
+  "usage": "make_feature_pipeline(family=family, features=selected_features[family], policy=policy); fit a fresh pipeline within each future training fold.",
+  "scope": "Exploratory development feature selection, not unbiased final model performance or model-family selection. Keep the reserved holdout for the final evaluation."
+}

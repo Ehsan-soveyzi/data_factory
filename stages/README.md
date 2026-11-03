@@ -8,7 +8,7 @@ at the repository root. Run CLI commands from the repository root.
 |---|---|---|---|
 | 01 - Data Factory | [Notebook](stage_01/solution.ipynb) | [Report](stage_01/report.docx) | Existing implementation; see its delivery status |
 | 02 - Database Performance | [Notebook](stage_02/solution.ipynb) | [Report](stage_02/report.md) | Olist prepared and saved NYC reviewed; database work pending |
-| 03 - Machine Learning | [Notebook](stage_03/solution.ipynb) | [Persian report](stage_03/report.md), [stage guide](stage_03/README.md) | Sections 1–4 completed: training-only preprocessing and four business features with five-fold subset comparison and leakage audit; final holdout unscored; final model selection pending |
+| 03 - Machine Learning | [Notebook](stage_03/solution.ipynb) | [Persian report](stage_03/report.md), [stage guide](stage_03/README.md) | Sections 1–5 completed: baseline and three-family model comparison on fixed development folds; development candidate selected; empirical threshold selection and final holdout evaluation pending |
 
 Open either notebook from its stage directory or from the repository root.
 The setup cell locates the shared project root before resolving data paths.

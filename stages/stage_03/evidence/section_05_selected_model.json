@@ -1,0 +1,47 @@
+{
+  "model": "hist_gradient_boosting",
+  "features": [
+    "TotalDelinquencyCount",
+    "SeverityWeightedDelinquency",
+    "RealEstateToOpenCreditRatio"
+  ],
+  "policy": "median_indicator",
+  "model_parameters": {
+    "categorical_features": null,
+    "class_weight": null,
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 1.0,
+    "learning_rate": 0.1,
+    "loss": "log_loss",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 100,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "random_state": 42,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+  "reference_threshold": 0.07692307692307693,
+  "baseline_cost_per_1000": 802.1,
+  "development_cost_per_1000": 369.3,
+  "reduction_vs_baseline_percent": 53.958359306819595,
+  "meets_25_percent": true,
+  "selection_rule": "Lowest pooled development OOF integer cost; exact ties use the declared model order.",
+  "model_order": [
+    "logistic",
+    "random_forest",
+    "hist_gradient_boosting"
+  ],
+  "holdout_evaluations": 0,
+  "usage": "Build a fresh make_model_pipeline with this model/features/policy for later fitting; no full-development fitted classifier is published here.",
+  "scope": "Development candidate selection at a fixed reference threshold. Feature recipes were selected on this development set, so this is not unbiased final performance. Empirical threshold selection and final holdout evaluation remain pending."
+}

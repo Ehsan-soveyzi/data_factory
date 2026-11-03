@@ -1,0 +1,516 @@
+{
+  "section": "Challenge 3 Section 7: full evaluation and stability",
+  "recorded_at_utc": "2026-11-03T14:11:14.776672+00:00",
+  "recipe_sha256": "b2d6722a770e3424fdf94f3a43aad3903ff34d05452f96adee271513f1c6915b",
+  "selection": {
+    "model": "hist_gradient_boosting",
+    "threshold": 0.07994084497831476,
+    "threshold_hex": "0x1.47700d2cbe54fp-4",
+    "comparison": ">=",
+    "positive_label": 1,
+    "fn_cost": 12,
+    "fp_cost": 1,
+    "features": [
+      "TotalDelinquencyCount",
+      "SeverityWeightedDelinquency",
+      "RealEstateToOpenCreditRatio"
+    ],
+    "policy": "median_indicator",
+    "model_parameters": {
+      "categorical_features": null,
+      "class_weight": null,
+      "early_stopping": false,
+      "interaction_cst": null,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.1,
+      "loss": "log_loss",
+      "max_bins": 255,
+      "max_depth": null,
+      "max_features": 1.0,
+      "max_iter": 100,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 20,
+      "monotonic_cst": null,
+      "n_iter_no_change": 10,
+      "random_state": 42,
+      "scoring": "loss",
+      "tol": 1e-07,
+      "validation_fraction": 0.1,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+    "oof_sha256": "cc02092d4ba3b67d240010e8fbfc30c6b37e2d2fe5d4b4863269ebae989c3cdf",
+    "development_cost_per_1000": 368.575,
+    "reduction_vs_baseline_percent": 54.048747039022565,
+    "holdout_evaluations": 0,
+    "decision_estimator": "sklearn.model_selection.FixedThresholdClassifier"
+  },
+  "source": {
+    "database": "ds_learning",
+    "table": "credit.accepted",
+    "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191"
+  },
+  "development_records": 120000,
+  "holdout_records": 29999,
+  "holdout_evaluations": 1,
+  "model_fits": 1,
+  "model_artifact": {
+    "file": "section_07_fitted_classifier.joblib",
+    "sha256": "4cdf027220029ff5385ca866161bc7286af0bdd8bdc645f35daf66a004b23f2f"
+  },
+  "prediction_artifact": {
+    "file": "section_07_holdout_predictions.npz",
+    "sha256": "db62c758532404737bc221679fbaab0d994d2aa91c8b9ecb118568d3538ccb5c"
+  },
+  "training_audit": {
+    "selection": {
+      "model": "hist_gradient_boosting",
+      "threshold": 0.07994084497831476,
+      "threshold_hex": "0x1.47700d2cbe54fp-4",
+      "comparison": ">=",
+      "positive_label": 1,
+      "fn_cost": 12,
+      "fp_cost": 1,
+      "features": [
+        "TotalDelinquencyCount",
+        "SeverityWeightedDelinquency",
+        "RealEstateToOpenCreditRatio"
+      ],
+      "policy": "median_indicator",
+      "model_parameters": {
+        "categorical_features": null,
+        "class_weight": null,
+        "early_stopping": false,
+        "interaction_cst": null,
+        "l2_regularization": 1.0,
+        "learning_rate": 0.1,
+        "loss": "log_loss",
+        "max_bins": 255,
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_iter": 100,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+      "oof_sha256": "cc02092d4ba3b67d240010e8fbfc30c6b37e2d2fe5d4b4863269ebae989c3cdf",
+      "development_cost_per_1000": 368.575,
+      "reduction_vs_baseline_percent": 54.048747039022565,
+      "holdout_evaluations": 0,
+      "decision_estimator": "sklearn.model_selection.FixedThresholdClassifier"
+    },
+    "recipe_sha256": "b2d6722a770e3424fdf94f3a43aad3903ff34d05452f96adee271513f1c6915b",
+    "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+    "database": "ds_learning",
+    "fit_records": 120000,
+    "fit_partition": "development_only",
+    "model_fit_count": 1,
+    "training_ids_sha256": "e1fe7e886458bb9a1fc10cd72d8eca275e399840e7e63fbcc5914c96fbf71a47",
+    "fit_seconds": 1.8435250000329688,
+    "fitted_preprocessing": {
+      "schema_fit_rows": 120000,
+      "input_features": [
+        "RevolvingUtilizationOfUnsecuredLines",
+        "age",
+        "NumberOfTime30-59DaysPastDueNotWorse",
+        "DebtRatio",
+        "MonthlyIncome",
+        "NumberOfOpenCreditLinesAndLoans",
+        "NumberOfTimes90DaysLate",
+        "NumberRealEstateLoansOrLines",
+        "NumberOfTime60-89DaysPastDueNotWorse",
+        "NumberOfDependents"
+      ],
+      "imputation_statistics": {
+        "RevolvingUtilizationOfUnsecuredLines": 0.153898587,
+        "age": 52.0,
+        "NumberOfTime30-59DaysPastDueNotWorse": 0.0,
+        "DebtRatio": 0.367627053,
+        "MonthlyIncome": 5400.0,
+        "NumberOfOpenCreditLinesAndLoans": 8.0,
+        "NumberOfTimes90DaysLate": 0.0,
+        "NumberRealEstateLoansOrLines": 1.0,
+        "NumberOfTime60-89DaysPastDueNotWorse": 0.0,
+        "NumberOfDependents": 0.0
+      },
+      "output_features": [
+        "RevolvingUtilizationOfUnsecuredLines",
+        "age",
+        "NumberOfTime30-59DaysPastDueNotWorse",
+        "DebtRatio",
+        "MonthlyIncome",
+        "NumberOfOpenCreditLinesAndLoans",
+        "NumberOfTimes90DaysLate",
+        "NumberRealEstateLoansOrLines",
+        "NumberOfTime60-89DaysPastDueNotWorse",
+        "NumberOfDependents",
+        "missingindicator_NumberOfTime30-59DaysPastDueNotWorse",
+        "missingindicator_MonthlyIncome",
+        "missingindicator_NumberOfTimes90DaysLate",
+        "missingindicator_NumberOfTime60-89DaysPastDueNotWorse",
+        "missingindicator_NumberOfDependents",
+        "TotalDelinquencyCount",
+        "SeverityWeightedDelinquency",
+        "RealEstateToOpenCreditRatio"
+      ],
+      "indicator_source_columns": [
+        "NumberOfTime30-59DaysPastDueNotWorse",
+        "MonthlyIncome",
+        "NumberOfTimes90DaysLate",
+        "NumberOfTime60-89DaysPastDueNotWorse",
+        "NumberOfDependents"
+      ],
+      "learned_categorical_vocabularies": {},
+      "scaler": null
+    },
+    "training_fill_max_error": 0.0,
+    "scaler_mean_max_error": null,
+    "scaler_variance_max_error": null,
+    "development_probe_threshold_rule_verified": true,
+    "threshold_hex": "0x1.47700d2cbe54fp-4",
+    "bootstrap_repetitions": 1000,
+    "bootstrap_seed": 42,
+    "versions": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    }
+  },
+  "development": {
+    "pooled": {
+      "records": 120000,
+      "positives": 8021,
+      "positive_rate": 0.06684166666666666,
+      "true_negative": 93382,
+      "false_positive": 18597,
+      "false_negative": 2136,
+      "true_positive": 5885,
+      "confusion_matrix": [
+        [
+          93382,
+          18597
+        ],
+        [
+          2136,
+          5885
+        ]
+      ],
+      "positive_label": 1,
+      "precision": 0.24038068785229966,
+      "recall": 0.7336990400199477,
+      "f1": 0.36212041965357045,
+      "roc_auc": 0.8634579638303088,
+      "accuracy": 0.827225,
+      "false_positive_rate": 0.1660757820662803,
+      "false_negative_rate": 0.2663009599800524,
+      "cost": 44229,
+      "cost_per_1000": 368.575
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "records": 23999,
+        "positives": 1603,
+        "positive_rate": 0.06679444976874037,
+        "true_negative": 18545,
+        "false_positive": 3851,
+        "false_negative": 397,
+        "true_positive": 1206,
+        "confusion_matrix": [
+          [
+            18545,
+            3851
+          ],
+          [
+            397,
+            1206
+          ]
+        ],
+        "positive_label": 1,
+        "precision": 0.23848131303144157,
+        "recall": 0.7523393636930755,
+        "f1": 0.3621621621621622,
+        "roc_auc": 0.8711528421047472,
+        "accuracy": 0.8229926246926955,
+        "false_positive_rate": 0.17195034827647795,
+        "false_negative_rate": 0.2476606363069245,
+        "cost": 8615,
+        "cost_per_1000": 358.9732905537731
+      },
+      {
+        "fold": 2,
+        "records": 24002,
+        "positives": 1605,
+        "positive_rate": 0.06686942754770436,
+        "true_negative": 18771,
+        "false_positive": 3626,
+        "false_negative": 457,
+        "true_positive": 1148,
+        "confusion_matrix": [
+          [
+            18771,
+            3626
+          ],
+          [
+            457,
+            1148
+          ]
+        ],
+        "positive_label": 1,
+        "precision": 0.2404692082111437,
+        "recall": 0.7152647975077882,
+        "f1": 0.3599310236714219,
+        "roc_auc": 0.8530030654695214,
+        "accuracy": 0.8298891759020082,
+        "false_positive_rate": 0.16189668259141848,
+        "false_negative_rate": 0.28473520249221185,
+        "cost": 9110,
+        "cost_per_1000": 379.5517040246646
+      },
+      {
+        "fold": 3,
+        "records": 23999,
+        "positives": 1604,
+        "positive_rate": 0.06683611817159048,
+        "true_negative": 18657,
+        "false_positive": 3738,
+        "false_negative": 447,
+        "true_positive": 1157,
+        "confusion_matrix": [
+          [
+            18657,
+            3738
+          ],
+          [
+            447,
+            1157
+          ]
+        ],
+        "positive_label": 1,
+        "precision": 0.23636363636363636,
+        "recall": 0.7213216957605985,
+        "f1": 0.35605477765810123,
+        "roc_auc": 0.8595680368179797,
+        "accuracy": 0.825617734072253,
+        "false_positive_rate": 0.16691225720026792,
+        "false_negative_rate": 0.2786783042394015,
+        "cost": 9102,
+        "cost_per_1000": 379.26580274178093
+      },
+      {
+        "fold": 4,
+        "records": 23999,
+        "positives": 1604,
+        "positive_rate": 0.06683611817159048,
+        "true_negative": 18699,
+        "false_positive": 3696,
+        "false_negative": 422,
+        "true_positive": 1182,
+        "confusion_matrix": [
+          [
+            18699,
+            3696
+          ],
+          [
+            422,
+            1182
+          ]
+        ],
+        "positive_label": 1,
+        "precision": 0.24231242312423124,
+        "recall": 0.7369077306733167,
+        "f1": 0.36470225239123727,
+        "roc_auc": 0.8674295785430374,
+        "accuracy": 0.828409517063211,
+        "false_positive_rate": 0.16503683858004017,
+        "false_negative_rate": 0.2630922693266833,
+        "cost": 8760,
+        "cost_per_1000": 365.0152089670403
+      },
+      {
+        "fold": 5,
+        "records": 24001,
+        "positives": 1605,
+        "positive_rate": 0.06687221365776426,
+        "true_negative": 18710,
+        "false_positive": 3686,
+        "false_negative": 413,
+        "true_positive": 1192,
+        "confusion_matrix": [
+          [
+            18710,
+            3686
+          ],
+          [
+            413,
+            1192
+          ]
+        ],
+        "positive_label": 1,
+        "precision": 0.24436244362443624,
+        "recall": 0.7426791277258566,
+        "f1": 0.36773098873978094,
+        "roc_auc": 0.8670846457339121,
+        "accuracy": 0.8292154493562768,
+        "false_positive_rate": 0.1645829612430791,
+        "false_negative_rate": 0.2573208722741433,
+        "cost": 8642,
+        "cost_per_1000": 360.06833048622974
+      }
+    ],
+    "stability": [
+      {
+        "metric": "precision",
+        "mean": 0.24039780487097784,
+        "std": 0.003135947960933702,
+        "min": 0.23636363636363636,
+        "max": 0.24436244362443624
+      },
+      {
+        "metric": "recall",
+        "mean": 0.7337025430721271,
+        "std": 0.015259580794606445,
+        "min": 0.7152647975077882,
+        "max": 0.7523393636930755
+      },
+      {
+        "metric": "f1",
+        "mean": 0.36211624092454076,
+        "std": 0.004464623961444544,
+        "min": 0.35605477765810123,
+        "max": 0.36773098873978094
+      },
+      {
+        "metric": "roc_auc",
+        "mean": 0.8636476337338396,
+        "std": 0.007286876135368728,
+        "min": 0.8530030654695214,
+        "max": 0.8711528421047472
+      },
+      {
+        "metric": "accuracy",
+        "mean": 0.827224900217289,
+        "std": 0.002870501132397257,
+        "min": 0.8229926246926955,
+        "max": 0.8298891759020082
+      },
+      {
+        "metric": "cost_per_1000",
+        "mean": 368.57486735469774,
+        "std": 10.149010507500188,
+        "min": 358.9732905537731,
+        "max": 379.5517040246646
+      }
+    ],
+    "scope": "Descriptive variation on selection development data: features/model/threshold were chosen using this population. Not an independent nested-CV estimate."
+  },
+  "final": {
+    "records": 29999,
+    "positives": 2005,
+    "positive_rate": 0.06683556118537284,
+    "true_negative": 23400,
+    "false_positive": 4594,
+    "false_negative": 522,
+    "true_positive": 1483,
+    "confusion_matrix": [
+      [
+        23400,
+        4594
+      ],
+      [
+        522,
+        1483
+      ]
+    ],
+    "positive_label": 1,
+    "precision": 0.24403488563435907,
+    "recall": 0.7396508728179552,
+    "f1": 0.36698836921554073,
+    "roc_auc": 0.8683457819693107,
+    "accuracy": 0.8294609820327344,
+    "false_positive_rate": 0.16410659427020075,
+    "false_negative_rate": 0.2603491271820449,
+    "cost": 10858,
+    "cost_per_1000": 361.94539817993933
+  },
+  "baseline_final": {
+    "rule": "always healthy (class 0)",
+    "false_negative": 2005,
+    "false_positive": 0,
+    "accuracy": 0.9331644388146272,
+    "recall": 0.0,
+    "cost": 24060,
+    "cost_per_1000": 802.0267342244741
+  },
+  "reduction_vs_final_baseline_percent": 54.87115544472153,
+  "meets_25_percent_on_final": true,
+  "uncertainty": {
+    "method": "Percentile bootstrap of identical-semantic-input groups, resampled with replacement",
+    "groups": 29876,
+    "repetitions": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "cost_per_1000_interval": [
+      344.8538472524005,
+      378.9042265544516
+    ],
+    "baseline_cost_per_1000_interval": [
+      767.3005684807259,
+      834.4999939189127
+    ],
+    "reduction_percent_interval": [
+      52.72837093259908,
+      56.86956659042198
+    ],
+    "scope": "Conditional on the single frozen fitted model and observed holdout groups; training/selection uncertainty is not included."
+  },
+  "gap_analysis": {
+    "cost_change_per_1000": -6.629601820060657,
+    "relative_cost_change_percent": -1.79871174660806,
+    "auc_change": 0.004887818139001854,
+    "prevalence_contribution": -0.018496773775441736,
+    "missed_default_contribution": -4.773529021636056,
+    "false_alarm_contribution": -1.8375760246491826,
+    "development_cost_inside_final_bootstrap_interval": true,
+    "scope": "Descriptive decomposition, not a causal explanation or an independent significance test. OOF used for selection; CV models trained on about 96k rows versus 120k in the final model."
+  },
+  "metric_notes": [
+    {
+      "metric": "precision",
+      "explanation": "سهم نکول واقعی بین افراد پرخطر اعلام‌شده؛ نکول‌های ازدست‌رفته را نشان نمی‌دهد."
+    },
+    {
+      "metric": "recall",
+      "explanation": "سهم نکول‌هایی که شناسایی شدند؛ رد اشتباهی افراد سالم را نشان نمی‌دهد."
+    },
+    {
+      "metric": "f1",
+      "explanation": "توازن Precision و Recall؛ نسبت هزینه ۱۲ به ۱ را لحاظ نمی‌کند."
+    },
+    {
+      "metric": "roc_auc",
+      "explanation": "توان رتبه‌بندی سالم و پرخطر در همه آستانه‌ها؛ هزینه تصمیم در آستانه منتخب را نشان نمی‌دهد."
+    },
+    {
+      "metric": "accuracy",
+      "explanation": "سهم کل تصمیم‌های درست؛ فراوانی افراد سالم می‌تواند ضعف تشخیص نکول را پنهان کند."
+    },
+    {
+      "metric": "cost_per_1000",
+      "explanation": "زیان موزون به ازای هزار متقاضی؛ به ماتریس هزینه و ترکیب متقاضی‌ها وابسته است."
+    }
+  ],
+  "policy": "Primary 12:1 policy frozen before holdout scoring; no alternative model/threshold was evaluated on holdout. Subsequent runs reload the same cached result without DB access, training or inference.",
+  "scope": "Development OOF metrics are descriptive selection metrics; final holdout metrics evaluate the one frozen fitted model. No post-holdout model/threshold adjustment is performed.",
+  "data_changes": "No database/CSV or earlier evidence changes; a fitted decision model and its one-time final predictions were saved."
+}

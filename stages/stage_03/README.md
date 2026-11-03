@@ -47,7 +47,14 @@ Random Forest و HistGradientBoosting روی پنج تقسیم ثابت توسع
 روی احتمال‌های OOF، آستانه هر سه مدل را برای هزینه‌های ۱۲:۱ و ۴:۱ انتخاب می‌کند؛ مدل دوباره آموزش نمی‌بیند.
 [شواهد](evidence/section_06_threshold_selection.json)، [سیاست تصمیم دقیق](evidence/section_06_selected_decision.json)
 و [نمودار هزینه](evidence/section_06_cost_curves.png) ذخیره شده‌اند. `section6_classifier` یک `FixedThresholdClassifier`
-تازه با Pipeline منتخب است؛ ارزیابی مجموعه نهایی به بخش بعد تعلق دارد.
+تازه با Pipeline منتخب است؛ ارزیابی نهایی ثبت‌شده در بخش هفت آمده است.
+
+بخش هفت («ارزیابی کامل و پایداری») در بخش ۱۰ نوت‌بوک اجرا شده است. مدل و آستانه ثابت بخش شش
+فقط یک بار روی ۲۹٬۹۹۹ رکورد نهایی ارزیابی شدند. [نتایج](evidence/section_07_evaluation.json) شامل معیارها،
+ماتریس درهم‌ریختگی، پایداری توسعه، عدم‌قطعیت هزینه و تحلیل فاصله توسعه/نهایی است.
+[مدل برازش‌شده](evidence/section_07_fitted_classifier.joblib) و [پیش‌بینی‌های نهایی](evidence/section_07_holdout_predictions.npz)
+ذخیره شده‌اند؛ اجرای مجدد از همین نتیجه استفاده می‌کند و سیاست متفاوت را روی این مجموعه ارزیابی نمی‌کند.
+`section7_classifier` برای پیش‌بینی آماده است؛ کد در [credit_final_evaluation.py](../../src/data_factory/credit_final_evaluation.py) قرار دارد.
 
 برای نصب وابستگی‌های یادگیری ماشین از ریشه پروژه:
 

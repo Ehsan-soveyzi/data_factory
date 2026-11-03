@@ -1,0 +1,2811 @@
+{
+  "section": "Challenge 3 Section 8: interpretation and model card",
+  "recorded_at_utc": "2026-11-03T16:12:51.802732+00:00",
+  "signature": {
+    "recipe_sha256": "b2d6722a770e3424fdf94f3a43aad3903ff34d05452f96adee271513f1c6915b",
+    "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+    "oof_sha256": "cc02092d4ba3b67d240010e8fbfc30c6b37e2d2fe5d4b4863269ebae989c3cdf",
+    "repeats": 5,
+    "module_sha256": "e225eedbdbe972553bdecdfb150fe668867be0ae09c6b6839ddbe95da72c7930",
+    "protected_section7_sha256": {
+      "section_07_evaluation.json": "69070daf141bae06f22e627e4de63cb081ed15186626390b3d81b7ddefd211ec",
+      "section_07_evaluation.png": "1926a363bc9e2404a69b074d2f19eb224a026ee4c819141a3d09682fc8a6f730",
+      "section_07_fitted_classifier.joblib": "4cdf027220029ff5385ca866161bc7286af0bdd8bdc645f35daf66a004b23f2f",
+      "section_07_holdout_predictions.npz": "db62c758532404737bc221679fbaab0d994d2aa91c8b9ecb118568d3538ccb5c"
+    }
+  },
+  "selection": {
+    "model": "hist_gradient_boosting",
+    "threshold": 0.07994084497831476,
+    "threshold_hex": "0x1.47700d2cbe54fp-4",
+    "comparison": ">=",
+    "positive_label": 1,
+    "fn_cost": 12,
+    "fp_cost": 1,
+    "features": [
+      "TotalDelinquencyCount",
+      "SeverityWeightedDelinquency",
+      "RealEstateToOpenCreditRatio"
+    ],
+    "policy": "median_indicator",
+    "model_parameters": {
+      "categorical_features": null,
+      "class_weight": null,
+      "early_stopping": false,
+      "interaction_cst": null,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.1,
+      "loss": "log_loss",
+      "max_bins": 255,
+      "max_depth": null,
+      "max_features": 1.0,
+      "max_iter": 100,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 20,
+      "monotonic_cst": null,
+      "n_iter_no_change": 10,
+      "random_state": 42,
+      "scoring": "loss",
+      "tol": 1e-07,
+      "validation_fraction": 0.1,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "source_fingerprint": "9b404c1674332b12ce1441655bd01987c8672002ae8c5ba09341c188d58b7191",
+    "oof_sha256": "cc02092d4ba3b67d240010e8fbfc30c6b37e2d2fe5d4b4863269ebae989c3cdf",
+    "development_cost_per_1000": 368.575,
+    "reduction_vs_baseline_percent": 54.048747039022565,
+    "holdout_evaluations": 0,
+    "decision_estimator": "sklearn.model_selection.FixedThresholdClassifier"
+  },
+  "database": "ds_learning",
+  "development_records": 120000,
+  "age_range": [
+    21,
+    109
+  ],
+  "auxiliary_cv_model_fits": 5,
+  "final_model_fits": 0,
+  "holdout_evaluations": 0,
+  "importance": [
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "label": "استفاده از اعتبار بدون وثیقه",
+      "cost_increase_per_1000": 90.90499999999999,
+      "fold_std": 4.859448960827906,
+      "mean_fold_auc_decrease": 0.07246304992895068,
+      "rank": 1
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "label": "دیرکرد ۳۰ تا ۵۹ روز",
+      "cost_increase_per_1000": 57.99833333333332,
+      "fold_std": 5.80613083927308,
+      "mean_fold_auc_decrease": 0.0326915639580736,
+      "rank": 2
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "label": "دیرکرد ۹۰ روز و بیشتر",
+      "cost_increase_per_1000": 57.81333333333333,
+      "fold_std": 6.853168096785965,
+      "mean_fold_auc_decrease": 0.034147514498345584,
+      "rank": 3
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "label": "دیرکرد ۶۰ تا ۸۹ روز",
+      "cost_increase_per_1000": 33.051666666666655,
+      "fold_std": 3.187028127154288,
+      "mean_fold_auc_decrease": 0.017579453221232645,
+      "rank": 4
+    },
+    {
+      "feature": "age",
+      "label": "سن",
+      "cost_increase_per_1000": 22.161666666666658,
+      "fold_std": 4.333087915324131,
+      "mean_fold_auc_decrease": 0.010214472488012155,
+      "rank": 5
+    },
+    {
+      "feature": "DebtRatio",
+      "label": "نسبت بدهی",
+      "cost_increase_per_1000": 13.119999999999992,
+      "fold_std": 2.4899017188150867,
+      "mean_fold_auc_decrease": 0.005880422327023678,
+      "rank": 6
+    },
+    {
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "label": "تعداد خطوط اعتباری باز",
+      "cost_increase_per_1000": 12.51166666666666,
+      "fold_std": 4.307027877518568,
+      "mean_fold_auc_decrease": 0.007114773727170462,
+      "rank": 7
+    },
+    {
+      "feature": "NumberRealEstateLoansOrLines",
+      "label": "تعداد وام‌های ملکی",
+      "cost_increase_per_1000": 9.011666666666667,
+      "fold_std": 2.1878457543798047,
+      "mean_fold_auc_decrease": 0.004479110956240556,
+      "rank": 8
+    },
+    {
+      "feature": "MonthlyIncome",
+      "label": "درآمد ماهانه",
+      "cost_increase_per_1000": 8.699999999999987,
+      "fold_std": 2.517656507605243,
+      "mean_fold_auc_decrease": 0.0030282596779459842,
+      "rank": 9
+    },
+    {
+      "feature": "NumberOfDependents",
+      "label": "تعداد افراد تحت تکفل",
+      "cost_increase_per_1000": 1.4049999999999945,
+      "fold_std": 2.138569973339886,
+      "mean_fold_auc_decrease": 0.000668261432976466,
+      "rank": 10
+    }
+  ],
+  "top_five": [
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "label": "استفاده از اعتبار بدون وثیقه",
+      "cost_increase_per_1000": 90.90499999999999,
+      "fold_std": 4.859448960827906,
+      "mean_fold_auc_decrease": 0.07246304992895068,
+      "rank": 1
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "label": "دیرکرد ۳۰ تا ۵۹ روز",
+      "cost_increase_per_1000": 57.99833333333332,
+      "fold_std": 5.80613083927308,
+      "mean_fold_auc_decrease": 0.0326915639580736,
+      "rank": 2
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "label": "دیرکرد ۹۰ روز و بیشتر",
+      "cost_increase_per_1000": 57.81333333333333,
+      "fold_std": 6.853168096785965,
+      "mean_fold_auc_decrease": 0.034147514498345584,
+      "rank": 3
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "label": "دیرکرد ۶۰ تا ۸۹ روز",
+      "cost_increase_per_1000": 33.051666666666655,
+      "fold_std": 3.187028127154288,
+      "mean_fold_auc_decrease": 0.017579453221232645,
+      "rank": 4
+    },
+    {
+      "feature": "age",
+      "label": "سن",
+      "cost_increase_per_1000": 22.161666666666658,
+      "fold_std": 4.333087915324131,
+      "mean_fold_auc_decrease": 0.010214472488012155,
+      "rank": 5
+    }
+  ],
+  "permutation_runs": [
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 85.96191507979495,
+      "auc_decrease": 0.07757485713126977
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 88.54535605650233,
+      "auc_decrease": 0.07400630036310074
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 74.91978832451349,
+      "auc_decrease": 0.06593728527630105
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 79.12829701237547,
+      "auc_decrease": 0.06822071704944199
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 88.33701404225172,
+      "auc_decrease": 0.07378055322908239
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 18.0007500312513,
+      "auc_decrease": 0.009973416182396999
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 20.12583857660735,
+      "auc_decrease": 0.010728552810595815
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 25.12604691862157,
+      "auc_decrease": 0.012630238088367385
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 20.08417017375723,
+      "auc_decrease": 0.011635106728019595
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 17.41739239134961,
+      "auc_decrease": 0.010274203452024677
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 53.210550439601604,
+      "auc_decrease": 0.03272387781571817
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 48.25201050043751,
+      "auc_decrease": 0.028696236416872023
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 58.002416767365276,
+      "auc_decrease": 0.03121875764955362
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 55.377307387807775,
+      "auc_decrease": 0.031095570938443062
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 52.377182382599244,
+      "auc_decrease": 0.030020580606754388
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 12.917204883536783,
+      "auc_decrease": 0.004447339707418285
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.833826409433698,
+      "auc_decrease": 0.0055384856733508014
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.667152798033214,
+      "auc_decrease": 0.005435702414108734
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 7.333638901620873,
+      "auc_decrease": 0.005090696059373512
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.91716321513394,
+      "auc_decrease": 0.004793627371076137
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.250468769532063,
+      "auc_decrease": 0.004293889036641962
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 5.833576399016579,
+      "auc_decrease": 0.004369931935755966
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 10.417100712529646,
+      "auc_decrease": 0.002944169359179516
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 2.750114588107806,
+      "auc_decrease": 0.0021683368064233655
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 3.2501354223092562,
+      "auc_decrease": 0.003454631692206944
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.167048627026077,
+      "auc_decrease": 0.007881776856820122
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 6.958623275969785,
+      "auc_decrease": 0.00480486667869251
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 8.875369807075288,
+      "auc_decrease": 0.006862732372336922
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 13.542230926288596,
+      "auc_decrease": 0.007715930914942604
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.875411475478131,
+      "auc_decrease": 0.00705939936471589
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 59.91916329847072,
+      "auc_decrease": 0.03617689394450074
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 55.50231259635814,
+      "auc_decrease": 0.03518564829273385
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 54.7106129422059,
+      "auc_decrease": 0.03374572168165224
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 55.793991416308984,
+      "auc_decrease": 0.034180071479211094
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 52.377182382599244,
+      "auc_decrease": 0.03432822978704542
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 4.0835034793116165,
+      "auc_decrease": 0.003282504551153642
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 5.708571190466273,
+      "auc_decrease": 0.004406393530972164
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.750406266927769,
+      "auc_decrease": 0.004189685195767789
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 5.416892370515427,
+      "auc_decrease": 0.004349723465680078
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 4.916871536313977,
+      "auc_decrease": 0.0034943104870011066
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 28.834534772282154,
+      "auc_decrease": 0.017167297274923388
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 29.542897620734152,
+      "auc_decrease": 0.017141573605571114
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 27.83449310387931,
+      "auc_decrease": 0.017278854714832592
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 27.917829909579552,
+      "auc_decrease": 0.017311082419695145
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 27.167798658277377,
+      "auc_decrease": 0.016408400283581703
+    },
+    {
+      "fold": 1,
+      "repeat": 1,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 2.6667777824075642,
+      "auc_decrease": 0.0012200707126541754
+    },
+    {
+      "fold": 1,
+      "repeat": 2,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 1.2917204883536328,
+      "auc_decrease": 0.0004035426743278503
+    },
+    {
+      "fold": 1,
+      "repeat": 3,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 3.625151047960287,
+      "auc_decrease": 0.0008728081400329879
+    },
+    {
+      "fold": 1,
+      "repeat": 4,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 3.958498270761254,
+      "auc_decrease": 0.0001729070682238154
+    },
+    {
+      "fold": 1,
+      "repeat": 5,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -0.33334722280096685,
+      "auc_decrease": 0.0005828423598949195
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 89.07591034080491,
+      "auc_decrease": 0.07439056771761132
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 97.36688609282561,
+      "auc_decrease": 0.07930253787605335
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 98.61678193483874,
+      "auc_decrease": 0.07396716877830622
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 100.44996250312471,
+      "auc_decrease": 0.07244531108625052
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 97.3252228980918,
+      "auc_decrease": 0.07031122186619065
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "age",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 28.83093075577034,
+      "auc_decrease": 0.011615485329379616
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "age",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 33.28889259228396,
+      "auc_decrease": 0.013787449559680365
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "age",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 26.20614948754269,
+      "auc_decrease": 0.01072780803281248
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "age",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 26.664444629614195,
+      "auc_decrease": 0.012482799418090718
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "age",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 26.247812682276447,
+      "auc_decrease": 0.01002031174346485
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 66.16115323723022,
+      "auc_decrease": 0.035061438051407934
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 61.32822264811267,
+      "auc_decrease": 0.032748280567727495
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 60.82826431130741,
+      "auc_decrease": 0.0358067258952266
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 53.828847596033654,
+      "auc_decrease": 0.03318599217157059
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 58.07849345887843,
+      "auc_decrease": 0.03246384939460489
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "DebtRatio",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 12.540621614865415,
+      "auc_decrease": 0.006141384923464721
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "DebtRatio",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 8.249312557286885,
+      "auc_decrease": 0.004356446826086602
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "DebtRatio",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 14.290475793683868,
+      "auc_decrease": 0.005588073169011554
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "DebtRatio",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 13.957170235813692,
+      "auc_decrease": 0.006550040010086966
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "DebtRatio",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 13.99883343054745,
+      "auc_decrease": 0.006306196159727051
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "MonthlyIncome",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 16.706941088242615,
+      "auc_decrease": 0.0031925309311423566
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "MonthlyIncome",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 13.540538288475943,
+      "auc_decrease": 0.0017097166301059952
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "MonthlyIncome",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 14.623781351554044,
+      "auc_decrease": 0.002820443381032489
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "MonthlyIncome",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 11.582368135988645,
+      "auc_decrease": 0.0022860204491672587
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "MonthlyIncome",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 8.415965336221973,
+      "auc_decrease": 0.0012192053425046367
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 7.249395883676357,
+      "auc_decrease": 0.005156300834126548
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 8.374302141488215,
+      "auc_decrease": 0.008556803543865787
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 3.7913507207732664,
+      "auc_decrease": 0.004182511092315044
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 5.83284726272808,
+      "auc_decrease": 0.0062583481849830536
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 8.45762853095573,
+      "auc_decrease": 0.007031357253704296
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 66.11949004249647,
+      "auc_decrease": 0.03683937977340923
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 68.24431297391885,
+      "auc_decrease": 0.03742290251656699
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 66.28614282143155,
+      "auc_decrease": 0.037974322606902255
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 70.36913590534124,
+      "auc_decrease": 0.03855324137342042
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 65.70285809515872,
+      "auc_decrease": 0.03638148578254452
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 16.415298725106254,
+      "auc_decrease": 0.007575961789497487
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 7.249395883676357,
+      "auc_decrease": 0.0051520863177464404
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 9.999166736105337,
+      "auc_decrease": 0.00472252556076358
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 18.54012165652864,
+      "auc_decrease": 0.006412685722122613
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 5.999500041663168,
+      "auc_decrease": 0.006121272082918239
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 37.99683359720024,
+      "auc_decrease": 0.017793326514996877
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 33.53887176068662,
+      "auc_decrease": 0.0156747461588439
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 34.37213565536206,
+      "auc_decrease": 0.017530607751344074
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 34.24714607116073,
+      "auc_decrease": 0.01680564138749674
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 34.455462044829574,
+      "auc_decrease": 0.016762147022082563
+    },
+    {
+      "fold": 2,
+      "repeat": 1,
+      "feature": "NumberOfDependents",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 6.249479210065829,
+      "auc_decrease": 0.0008647130505490264
+    },
+    {
+      "fold": 2,
+      "repeat": 2,
+      "feature": "NumberOfDependents",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 4.916256978585125,
+      "auc_decrease": 0.0008324713047765941
+    },
+    {
+      "fold": 2,
+      "repeat": 3,
+      "feature": "NumberOfDependents",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 4.7912673943837945,
+      "auc_decrease": 0.0009658892622607107
+    },
+    {
+      "fold": 2,
+      "repeat": 4,
+      "feature": "NumberOfDependents",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 4.916256978585125,
+      "auc_decrease": 0.0014620755422154463
+    },
+    {
+      "fold": 2,
+      "repeat": 5,
+      "feature": "NumberOfDependents",
+      "validation_records": 24002,
+      "cost_increase_per_1000": 1.7081909840846379,
+      "auc_decrease": 0.0005912702204636799
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 92.4205175215634,
+      "auc_decrease": 0.07147608763311641
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 94.9622900954206,
+      "auc_decrease": 0.07088754169499223
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 85.96191507979495,
+      "auc_decrease": 0.07333142083393884
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 89.71207133630566,
+      "auc_decrease": 0.06477117654624331
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 88.8787032793033,
+      "auc_decrease": 0.06601359127298978
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 23.334305596066486,
+      "auc_decrease": 0.0077883406019445545
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 27.167798658277377,
+      "auc_decrease": 0.010032200699412464
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.750406266927769,
+      "auc_decrease": 0.007027948102505621
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 20.792533022209227,
+      "auc_decrease": 0.009379515043603348
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 17.41739239134961,
+      "auc_decrease": 0.00899693164944304
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 55.418975790657896,
+      "auc_decrease": 0.03276531822932072
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 66.21109212883869,
+      "auc_decrease": 0.03466832472291037
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 54.79394974790614,
+      "auc_decrease": 0.03322981617178311
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 63.169298720780034,
+      "auc_decrease": 0.03524293753225782
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 68.00283345139377,
+      "auc_decrease": 0.03526703168401846
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 17.375723988499487,
+      "auc_decrease": 0.007046349297553212
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 14.54227259469144,
+      "auc_decrease": 0.006525631667649412
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 13.042210092087146,
+      "auc_decrease": 0.006766851569446564
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 18.584107671152935,
+      "auc_decrease": 0.007251059112655889
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.29205383557644,
+      "auc_decrease": 0.004587743634884678
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 12.542189257885695,
+      "auc_decrease": 0.00324161687765423
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 7.166965290220389,
+      "auc_decrease": 0.002609016641250239
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 5.958581607566941,
+      "auc_decrease": 0.0028279658077401404
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 7.916996541522565,
+      "auc_decrease": 0.0028221754165601576
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 8.125338555773112,
+      "auc_decrease": 0.0018633367463236628
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 16.20900870869616,
+      "auc_decrease": 0.009490172759661464
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 14.208925371890473,
+      "auc_decrease": 0.009407269947480201
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 15.583982665944404,
+      "auc_decrease": 0.010013841261993672
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 14.000583357639869,
+      "auc_decrease": 0.007814425200673325
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 14.58394099754156,
+      "auc_decrease": 0.009847590222924585
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 50.62710946289428,
+      "auc_decrease": 0.03209102996026347
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 53.710571273803055,
+      "auc_decrease": 0.03222668657670413
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 49.460394183090955,
+      "auc_decrease": 0.03254501889950279
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 52.21050877119876,
+      "auc_decrease": 0.03265400631041293
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 55.25230217925747,
+      "auc_decrease": 0.034518567947178336
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 10.167090295428977,
+      "auc_decrease": 0.004319492628108268
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 8.750364598524925,
+      "auc_decrease": 0.0036253277277893403
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 10.125421892578856,
+      "auc_decrease": 0.00473009539112712
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 12.500520855035631,
+      "auc_decrease": 0.004637671839601731
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 5.333555564815185,
+      "auc_decrease": 0.003598769875935437
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 26.95945664402683,
+      "auc_decrease": 0.01584302527895487
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 32.95970665444389,
+      "auc_decrease": 0.018362764110042007
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 32.293012208842015,
+      "auc_decrease": 0.019013361884416158
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 31.876328180340806,
+      "auc_decrease": 0.017489445063385345
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 32.83470144589353,
+      "auc_decrease": 0.01885671509994824
+    },
+    {
+      "fold": 3,
+      "repeat": 1,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 2.083420142505929,
+      "auc_decrease": 0.0005588562641175576
+    },
+    {
+      "fold": 3,
+      "repeat": 2,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 2.2084253510562917,
+      "auc_decrease": 0.0007960813527689847
+    },
+    {
+      "fold": 3,
+      "repeat": 3,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 2.2500937539064125,
+      "auc_decrease": 0.0013129572808323609
+    },
+    {
+      "fold": 3,
+      "repeat": 4,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 1.7917413225550831,
+      "auc_decrease": 0.0010012087441588768
+    },
+    {
+      "fold": 3,
+      "repeat": 5,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -1.8334097254052608,
+      "auc_decrease": 0.00035654055306033605
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 94.42060085836908,
+      "auc_decrease": 0.07982254678107148
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 92.54552273011376,
+      "auc_decrease": 0.08019136407696992
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 89.71207133630571,
+      "auc_decrease": 0.07290927904618905
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 91.67048627026128,
+      "auc_decrease": 0.07225296047668284
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 86.37859910829621,
+      "auc_decrease": 0.07669892304291748
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 25.251052127171988,
+      "auc_decrease": 0.008364999535098394
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 14.958956623192648,
+      "auc_decrease": 0.007422669047408292
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.792158006583634,
+      "auc_decrease": 0.008075633087408773
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 16.167340305846096,
+      "auc_decrease": 0.005716187873696099
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "age",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 20.375848993708075,
+      "auc_decrease": 0.007219907921644952
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 51.75215633984749,
+      "auc_decrease": 0.03190288400454544
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 48.668694528938715,
+      "auc_decrease": 0.02806388249069225
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 50.04375182299265,
+      "auc_decrease": 0.03010610891837162
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 54.50227092795535,
+      "auc_decrease": 0.03193076418130836
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 47.66865286053587,
+      "auc_decrease": 0.027865074420445946
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 11.375473978082425,
+      "auc_decrease": 0.004793998482249484
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 13.167215300637565,
+      "auc_decrease": 0.004354666470684165
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 8.333680570023773,
+      "auc_decrease": 0.003960321344439799
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 12.583857660735873,
+      "auc_decrease": 0.00565517997816356
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "DebtRatio",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 7.791991332972202,
+      "auc_decrease": 0.005189206599486962
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 8.417017375724015,
+      "auc_decrease": 0.003603210103787169
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 1.8334097254052608,
+      "auc_decrease": 0.0018480395350092271
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 6.750281261719238,
+      "auc_decrease": 0.003049002855665006
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 7.291970498770809,
+      "auc_decrease": 0.0044793408307765015
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "MonthlyIncome",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 10.667111129630428,
+      "auc_decrease": 0.004358438576476886
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 18.584107671152992,
+      "auc_decrease": 0.006922217786634155
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 17.70907121130051,
+      "auc_decrease": 0.006824365743377636
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 17.000708362848457,
+      "auc_decrease": 0.006560596722081868
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 15.333972248843736,
+      "auc_decrease": 0.00726051025595198
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 19.37580732530523,
+      "auc_decrease": 0.00829330168661857
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 49.00204175173968,
+      "auc_decrease": 0.03174637641217337
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 57.669069544564366,
+      "auc_decrease": 0.035207471386281
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 50.4604358514938,
+      "auc_decrease": 0.03085531037331879
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 49.83540980874204,
+      "auc_decrease": 0.030157665670607958
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 50.21042543439313,
+      "auc_decrease": 0.03122656353089137
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.958748281178373,
+      "auc_decrease": 0.003561355040619052
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.792074669777946,
+      "auc_decrease": 0.0031072547477031254
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.125380224176013,
+      "auc_decrease": 0.003484409650132192
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 9.667069461227584,
+      "auc_decrease": 0.0031734545084042276
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 12.625526063585994,
+      "auc_decrease": 0.0038824294477024512
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 31.459644151839655,
+      "auc_decrease": 0.017103743766281876
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 38.54327263635986,
+      "auc_decrease": 0.019220952975899208
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 33.91807991999667,
+      "auc_decrease": 0.017720295154055044
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 35.793158048251996,
+      "auc_decrease": 0.018226202744979436
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 40.29334555606482,
+      "auc_decrease": 0.017545957054227568
+    },
+    {
+      "fold": 4,
+      "repeat": 1,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -1.2500520855035688,
+      "auc_decrease": -0.00015629880422851627
+    },
+    {
+      "fold": 4,
+      "repeat": 2,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -1.833409725405204,
+      "auc_decrease": -0.0003927444171442085
+    },
+    {
+      "fold": 4,
+      "repeat": 3,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -3.375140630859619,
+      "auc_decrease": 7.06539077625079e-05
+    },
+    {
+      "fold": 4,
+      "repeat": 4,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": -0.37501562565103086,
+      "auc_decrease": -0.0005352771231109665
+    },
+    {
+      "fold": 4,
+      "repeat": 5,
+      "feature": "NumberOfDependents",
+      "validation_records": 23999,
+      "cost_increase_per_1000": 1.7084045168548982,
+      "auc_decrease": 0.0003051647505483146
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 92.53781092454483,
+      "auc_decrease": 0.0740124933301951
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 89.37127619682514,
+      "auc_decrease": 0.0676260753060598
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 93.24611474521896,
+      "auc_decrease": 0.06736815764274762
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 92.78780050831216,
+      "auc_decrease": 0.06829126140126252
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 98.28757135119372,
+      "auc_decrease": 0.07598658861534568
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "age",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 21.457439273363605,
+      "auc_decrease": 0.012191457197240796
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "age",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 30.748718803383213,
+      "auc_decrease": 0.012162468932202297
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "age",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 23.040706637223423,
+      "auc_decrease": 0.013963121474183882
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "age",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 18.499229198783382,
+      "auc_decrease": 0.010040970266719684
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "age",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 31.29036290154579,
+      "auc_decrease": 0.013102278499887765
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 61.91408691304531,
+      "auc_decrease": 0.032523456291427055
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 67.03887338027585,
+      "auc_decrease": 0.033567701508780634
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 68.99712511978669,
+      "auc_decrease": 0.03655838909818654
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 63.539019207533045,
+      "auc_decrease": 0.03504090071713961
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 60.789133786092236,
+      "auc_decrease": 0.035533659493044656
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "DebtRatio",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 16.99929169617934,
+      "auc_decrease": 0.0071280112881749735
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "DebtRatio",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 14.54106078913378,
+      "auc_decrease": 0.0057210928297719565
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "DebtRatio",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 16.457647598016763,
+      "auc_decrease": 0.007797231259030868
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "DebtRatio",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 17.874255239365027,
+      "auc_decrease": 0.006882320441066625
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "DebtRatio",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 17.33261114120245,
+      "auc_decrease": 0.009102356951814272
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "MonthlyIncome",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 5.54143577350942,
+      "auc_decrease": 0.0029487631024454064
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "MonthlyIncome",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 13.916086829715425,
+      "auc_decrease": 0.0034019342572856326
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "MonthlyIncome",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 2.1249114620223963,
+      "auc_decrease": 0.0038808665766415507
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "MonthlyIncome",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 12.08282988208822,
+      "auc_decrease": 0.0026429814180211064
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "MonthlyIncome",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 8.79130036248489,
+      "auc_decrease": 0.0036712997815029347
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 12.916128494646046,
+      "auc_decrease": 0.005656536909405707
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 13.49943752343654,
+      "auc_decrease": 0.00649882405569735
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 12.832798633390269,
+      "auc_decrease": 0.00612804133359357
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 16.874296904295647,
+      "auc_decrease": 0.005515573820202513
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 11.957835090204583,
+      "auc_decrease": 0.006127067639470463
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 58.91421190783717,
+      "auc_decrease": 0.032277570705494196
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 58.830882046581394,
+      "auc_decrease": 0.03243994115549109
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 69.12211991167032,
+      "auc_decrease": 0.036122118491341615
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 59.24753135286028,
+      "auc_decrease": 0.03266696489526644
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberOfTimes90DaysLate",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 65.74726053081122,
+      "auc_decrease": 0.036162707626361756
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 6.7080538310903535,
+      "auc_decrease": 0.004849414030876575
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 3.166534727719693,
+      "auc_decrease": 0.0038969881693381447
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 9.874588558810046,
+      "auc_decrease": 0.005015776626778323
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 11.957835090204583,
+      "auc_decrease": 0.005802465838637083
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberRealEstateLoansOrLines",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 7.4580225823924025,
+      "auc_decrease": 0.00458462486903799
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 33.79025873921921,
+      "auc_decrease": 0.01751408657197895
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 33.956918461730766,
+      "auc_decrease": 0.017740303536623814
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 36.956793466938905,
+      "auc_decrease": 0.018457109330270893
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 33.12361984917294,
+      "auc_decrease": 0.017948729718646805
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 35.62351568684636,
+      "auc_decrease": 0.018570183037803112
+    },
+    {
+      "fold": 5,
+      "repeat": 1,
+      "feature": "NumberOfDependents",
+      "validation_records": 24001,
+      "cost_increase_per_1000": 4.083163201533296,
+      "auc_decrease": 0.001527072313202149
+    },
+    {
+      "fold": 5,
+      "repeat": 2,
+      "feature": "NumberOfDependents",
+      "validation_records": 24001,
+      "cost_increase_per_1000": -1.666597225115595,
+      "auc_decrease": 0.0012006065836187574
+    },
+    {
+      "fold": 5,
+      "repeat": 3,
+      "feature": "NumberOfDependents",
+      "validation_records": 24001,
+      "cost_increase_per_1000": -0.5416440981625783,
+      "auc_decrease": 0.0007900554115415348
+    },
+    {
+      "fold": 5,
+      "repeat": 4,
+      "feature": "NumberOfDependents",
+      "validation_records": 24001,
+      "cost_increase_per_1000": -1.8332569476272056,
+      "auc_decrease": 0.0011742751125449757
+    },
+    {
+      "fold": 5,
+      "repeat": 5,
+      "feature": "NumberOfDependents",
+      "validation_records": 24001,
+      "cost_increase_per_1000": -0.0833298612557769,
+      "auc_decrease": 0.0007284483933768238
+    }
+  ],
+  "fit_audit": [
+    {
+      "fold": 1,
+      "train_records": 96001,
+      "validation_records": 23999,
+      "oof_probability_max_error": 0.0,
+      "row_overlap": 0,
+      "group_overlap": 0,
+      "parameters_unchanged": true,
+      "train_ids_sha256": "7a69a545237a51ad100f344ad6bd52349f3d6067200b277f7982e21902463568",
+      "validation_ids_sha256": "0f5860b2309a3e28014d5f5572377b5885fa4a8674c64026bf1e62b0dd7b842b"
+    },
+    {
+      "fold": 2,
+      "train_records": 95998,
+      "validation_records": 24002,
+      "oof_probability_max_error": 0.0,
+      "row_overlap": 0,
+      "group_overlap": 0,
+      "parameters_unchanged": true,
+      "train_ids_sha256": "d4b0e85f4bdf456dc6a74ab21c5c75590f850fa6530c67f0e7346c85cbc3fe02",
+      "validation_ids_sha256": "204911c4de36e1a827fe788a0306f51cfc3a8ec1f488fa615ff3f3b4f5e636e0"
+    },
+    {
+      "fold": 3,
+      "train_records": 96001,
+      "validation_records": 23999,
+      "oof_probability_max_error": 0.0,
+      "row_overlap": 0,
+      "group_overlap": 0,
+      "parameters_unchanged": true,
+      "train_ids_sha256": "3d3643c05f33fd17784f8d64640acfc8d3068863da7a9d5730a6e103bbd68e49",
+      "validation_ids_sha256": "917d30fdaa2cdf09729f0e7adff7e12db92d460b36133e4ff90caebe3b1057f5"
+    },
+    {
+      "fold": 4,
+      "train_records": 96001,
+      "validation_records": 23999,
+      "oof_probability_max_error": 0.0,
+      "row_overlap": 0,
+      "group_overlap": 0,
+      "parameters_unchanged": true,
+      "train_ids_sha256": "0845c9d68b2f0ef4aa3ad73b8f1528444ced2627c79c5da93d4469d2cb1a9094",
+      "validation_ids_sha256": "03f01ef1c3315982f77e9e56404b2fbf136597b28371f54f57388fea000477f7"
+    },
+    {
+      "fold": 5,
+      "train_records": 95999,
+      "validation_records": 24001,
+      "oof_probability_max_error": 0.0,
+      "row_overlap": 0,
+      "group_overlap": 0,
+      "parameters_unchanged": true,
+      "train_ids_sha256": "65bf40e6432e589ec6698c3e1f5fb5939698dd95414d2d2367c0ef69b0a5b346",
+      "validation_ids_sha256": "a5930991450841ee0dc6f15d7ba9733ddb98c801f2e56b8b56f8bc6cc10fdd87"
+    }
+  ],
+  "business_review": [
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "label": "استفاده از اعتبار بدون وثیقه",
+      "hypothesis": "استفاده بیشتر از اعتبار معمولاً با ریسک بیشتر سازگار است.",
+      "observed_comparison": "نرخ نکول مشاهده‌شده در بازه [-inf, 0.25) برابر 2.2٪ و در بازه [1.0, inf) برابر 36.9٪ است.",
+      "business_alignment": "مقایسه بازه کم و زیاد با شهود ریسک سازگار است؛ رابطه علّی نتیجه نمی‌شود.",
+      "contrast_first_default_rate": 0.021696055651380594,
+      "contrast_last_default_rate": 0.36917293233082704,
+      "interpretation": "اهمیت، اندازه وابستگی پیش‌بینی را می‌سنجد؛ جهت یا اثر علّی را اثبات نمی‌کند."
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "label": "دیرکرد ۳۰ تا ۵۹ روز",
+      "hypothesis": "تکرار دیرکرد با ریسک بیشتر سازگار است؛ شدت دیرکرد نیز اهمیت دارد.",
+      "observed_comparison": "نرخ نکول مشاهده‌شده در بازه 0 برابر 4.0٪ و در بازه 2+ برابر 31.4٪ است.",
+      "business_alignment": "مقایسه بازه کم و زیاد با شهود ریسک سازگار است؛ رابطه علّی نتیجه نمی‌شود.",
+      "contrast_first_default_rate": 0.04020314840347971,
+      "contrast_last_default_rate": 0.3144756038255795,
+      "interpretation": "اهمیت، اندازه وابستگی پیش‌بینی را می‌سنجد؛ جهت یا اثر علّی را اثبات نمی‌کند."
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "label": "دیرکرد ۹۰ روز و بیشتر",
+      "hypothesis": "تکرار دیرکرد با ریسک بیشتر سازگار است؛ شدت دیرکرد نیز اهمیت دارد.",
+      "observed_comparison": "نرخ نکول مشاهده‌شده در بازه 0 برابر 4.6٪ و در بازه 2+ برابر 54.9٪ است.",
+      "business_alignment": "مقایسه بازه کم و زیاد با شهود ریسک سازگار است؛ رابطه علّی نتیجه نمی‌شود.",
+      "contrast_first_default_rate": 0.04625976433205349,
+      "contrast_last_default_rate": 0.5490282685512368,
+      "interpretation": "اهمیت، اندازه وابستگی پیش‌بینی را می‌سنجد؛ جهت یا اثر علّی را اثبات نمی‌کند."
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "label": "دیرکرد ۶۰ تا ۸۹ روز",
+      "hypothesis": "تکرار دیرکرد با ریسک بیشتر سازگار است؛ شدت دیرکرد نیز اهمیت دارد.",
+      "observed_comparison": "نرخ نکول مشاهده‌شده در بازه 0 برابر 5.1٪ و در بازه 2+ برابر 52.4٪ است.",
+      "business_alignment": "مقایسه بازه کم و زیاد با شهود ریسک سازگار است؛ رابطه علّی نتیجه نمی‌شود.",
+      "contrast_first_default_rate": 0.051142995041902506,
+      "contrast_last_default_rate": 0.5238095238095238,
+      "interpretation": "اهمیت، اندازه وابستگی پیش‌بینی را می‌سنجد؛ جهت یا اثر علّی را اثبات نمی‌کند."
+    },
+    {
+      "feature": "age",
+      "label": "سن",
+      "hypothesis": "ریسک می‌تواند بین سنین متفاوت باشد؛ سن به‌تنهایی علت نکول نیست.",
+      "observed_comparison": "نرخ نکول مشاهده‌شده در بازه 65_plus برابر 2.5٪ و در بازه under_35 برابر 11.2٪ است.",
+      "business_alignment": "مقایسه بازه کم و زیاد با شهود ریسک سازگار است؛ رابطه علّی نتیجه نمی‌شود.",
+      "contrast_first_default_rate": 0.11170972348435675,
+      "contrast_last_default_rate": 0.02493875747961929,
+      "interpretation": "اهمیت، اندازه وابستگی پیش‌بینی را می‌سنجد؛ جهت یا اثر علّی را اثبات نمی‌کند."
+    }
+  ],
+  "observed_risk_profiles": [
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "bin": "[0.5, 1.0)",
+      "records": 30322,
+      "positives": 4629,
+      "default_rate": 0.1526614339423521
+    },
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "bin": "[-inf, 0.25)",
+      "records": 70151,
+      "positives": 1522,
+      "default_rate": 0.021696055651380594
+    },
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "bin": "[0.25, 0.5)",
+      "records": 16867,
+      "positives": 888,
+      "default_rate": 0.05264718088575324
+    },
+    {
+      "feature": "RevolvingUtilizationOfUnsecuredLines",
+      "bin": "[1.0, inf)",
+      "records": 2660,
+      "positives": 982,
+      "default_rate": 0.36917293233082704
+    },
+    {
+      "feature": "age",
+      "bin": "35_to_49",
+      "records": 37792,
+      "positives": 3295,
+      "default_rate": 0.08718776460626587
+    },
+    {
+      "feature": "age",
+      "bin": "under_35",
+      "records": 15406,
+      "positives": 1721,
+      "default_rate": 0.11170972348435675
+    },
+    {
+      "feature": "age",
+      "bin": "65_plus",
+      "records": 24901,
+      "positives": 621,
+      "default_rate": 0.02493875747961929
+    },
+    {
+      "feature": "age",
+      "bin": "50_to_64",
+      "records": 41901,
+      "positives": 2384,
+      "default_rate": 0.05689601680150832
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "bin": "2+",
+      "records": 6169,
+      "positives": 1940,
+      "default_rate": 0.3144756038255795
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "bin": "0",
+      "records": 100813,
+      "positives": 4053,
+      "default_rate": 0.04020314840347971
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "bin": "1",
+      "records": 12809,
+      "positives": 1919,
+      "default_rate": 0.1498165352486533
+    },
+    {
+      "feature": "NumberOfTime30-59DaysPastDueNotWorse",
+      "bin": "missing_or_special_code",
+      "records": 209,
+      "positives": 109,
+      "default_rate": 0.5215311004784688
+    },
+    {
+      "feature": "DebtRatio",
+      "bin": "[0.5, 1.0)",
+      "records": 16779,
+      "positives": 1653,
+      "default_rate": 0.09851600214553907
+    },
+    {
+      "feature": "DebtRatio",
+      "bin": "[-inf, 0.25)",
+      "records": 41737,
+      "positives": 2496,
+      "default_rate": 0.059803052447468676
+    },
+    {
+      "feature": "DebtRatio",
+      "bin": "[0.25, 0.5)",
+      "records": 33153,
+      "positives": 2057,
+      "default_rate": 0.06204566705878804
+    },
+    {
+      "feature": "DebtRatio",
+      "bin": "[10.0, inf)",
+      "records": 23242,
+      "positives": 1273,
+      "default_rate": 0.05477153429136907
+    },
+    {
+      "feature": "DebtRatio",
+      "bin": "[1.0, 10.0)",
+      "records": 5089,
+      "positives": 542,
+      "default_rate": 0.10650422479858518
+    },
+    {
+      "feature": "MonthlyIncome",
+      "bin": "(8249.0, 3008750.0]",
+      "records": 24038,
+      "positives": 1113,
+      "default_rate": 0.046301688992428654
+    },
+    {
+      "feature": "MonthlyIncome",
+      "bin": "(-0.001, 3400.0]",
+      "records": 24213,
+      "positives": 2251,
+      "default_rate": 0.09296658819642341
+    },
+    {
+      "feature": "MonthlyIncome",
+      "bin": "(3400.0, 5400.0]",
+      "records": 24019,
+      "positives": 1897,
+      "default_rate": 0.0789791415129689
+    },
+    {
+      "feature": "MonthlyIncome",
+      "bin": "missing_or_special_code",
+      "records": 23817,
+      "positives": 1314,
+      "default_rate": 0.05517067640760801
+    },
+    {
+      "feature": "MonthlyIncome",
+      "bin": "(5400.0, 8249.0]",
+      "records": 23913,
+      "positives": 1446,
+      "default_rate": 0.06046920085309246
+    },
+    {
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "bin": "(11.0, 57.0]",
+      "records": 27762,
+      "positives": 1832,
+      "default_rate": 0.06598948202579065
+    },
+    {
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "bin": "(-0.001, 5.0]",
+      "records": 37204,
+      "positives": 3133,
+      "default_rate": 0.08421137512095474
+    },
+    {
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "bin": "(5.0, 8.0]",
+      "records": 31546,
+      "positives": 1680,
+      "default_rate": 0.0532555633043809
+    },
+    {
+      "feature": "NumberOfOpenCreditLinesAndLoans",
+      "bin": "(8.0, 11.0]",
+      "records": 23488,
+      "positives": 1376,
+      "default_rate": 0.05858310626702997
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "bin": "0",
+      "records": 113295,
+      "positives": 5241,
+      "default_rate": 0.04625976433205349
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "bin": "1",
+      "records": 4232,
+      "positives": 1428,
+      "default_rate": 0.33742911153119093
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "bin": "2+",
+      "records": 2264,
+      "positives": 1243,
+      "default_rate": 0.5490282685512368
+    },
+    {
+      "feature": "NumberOfTimes90DaysLate",
+      "bin": "missing_or_special_code",
+      "records": 209,
+      "positives": 109,
+      "default_rate": 0.5215311004784688
+    },
+    {
+      "feature": "NumberRealEstateLoansOrLines",
+      "bin": "(2.0, 32.0]",
+      "records": 7994,
+      "positives": 678,
+      "default_rate": 0.08481361020765574
+    },
+    {
+      "feature": "NumberRealEstateLoansOrLines",
+      "bin": "(-0.001, 1.0]",
+      "records": 86815,
+      "positives": 5961,
+      "default_rate": 0.0686632494384611
+    },
+    {
+      "feature": "NumberRealEstateLoansOrLines",
+      "bin": "(1.0, 2.0]",
+      "records": 25191,
+      "positives": 1382,
+      "default_rate": 0.05486086300662935
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "bin": "0",
+      "records": 113955,
+      "positives": 5828,
+      "default_rate": 0.051142995041902506
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "bin": "1",
+      "records": 4576,
+      "positives": 1424,
+      "default_rate": 0.3111888111888112
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "bin": "2+",
+      "records": 1260,
+      "positives": 660,
+      "default_rate": 0.5238095238095238
+    },
+    {
+      "feature": "NumberOfTime60-89DaysPastDueNotWorse",
+      "bin": "missing_or_special_code",
+      "records": 209,
+      "positives": 109,
+      "default_rate": 0.5215311004784688
+    },
+    {
+      "feature": "NumberOfDependents",
+      "bin": "(1.0, 20.0]",
+      "records": 26304,
+      "positives": 2260,
+      "default_rate": 0.08591849148418491
+    },
+    {
+      "feature": "NumberOfDependents",
+      "bin": "(-0.001, 1.0]",
+      "records": 90555,
+      "positives": 5633,
+      "default_rate": 0.0622052896030037
+    },
+    {
+      "feature": "NumberOfDependents",
+      "bin": "missing_or_special_code",
+      "records": 3141,
+      "positives": 128,
+      "default_rate": 0.04075135307226998
+    }
+  ],
+  "debt_ratio_investigation": {
+    "high_ratio_definition": "DebtRatio >= 10",
+    "comparison_definition": "0.5 <= DebtRatio < 1",
+    "high_ratio_records": 23242,
+    "comparison_records": 16779,
+    "high_ratio_default_rate": 0.05477153429136907,
+    "comparison_default_rate": 0.09851600214553907,
+    "missing_or_zero_income_share_in_high_ratio": 0.9770243524653645,
+    "interpretation": "مقادیر بسیار بزرگ نسبت لزوماً ریسک بالاتر ندارند؛ همراهی با درآمد صفر/گمشده و ابهام معنای نسبت بررسی شد. این ارتباط علت قطعی یا مجوز تغییر داده نیست."
+  },
+  "age_fairness": [
+    {
+      "age_group": "under_35",
+      "records": 15406,
+      "threshold": 0.07994084497831476,
+      "false_negative": 308,
+      "false_positive": 4405,
+      "true_positive": 1413,
+      "true_negative": 9280,
+      "predicted_positive": 5818,
+      "cost": 8101,
+      "cost_per_1000": 525.8340906140464,
+      "positives": 1721,
+      "negatives": 13685,
+      "positive_rate": 0.11170972348435675,
+      "precision": 0.2428669645926435,
+      "recall": 0.821034282393957,
+      "false_negative_rate": 0.178965717606043,
+      "false_positive_rate": 0.32188527584947024,
+      "roc_auc": 0.8313127802721523,
+      "recall_ci95": [
+        0.8022151500374108,
+        0.8384234398742143
+      ],
+      "fpr_ci95": [
+        0.314108612707413,
+        0.32976190660094745
+      ]
+    },
+    {
+      "age_group": "35_to_49",
+      "records": 37792,
+      "threshold": 0.07994084497831476,
+      "false_negative": 752,
+      "false_positive": 7838,
+      "true_positive": 2543,
+      "true_negative": 26659,
+      "predicted_positive": 10381,
+      "cost": 16862,
+      "cost_per_1000": 446.1790855207451,
+      "positives": 3295,
+      "negatives": 34497,
+      "positive_rate": 0.08718776460626587,
+      "precision": 0.24496676620749447,
+      "recall": 0.7717754172989378,
+      "false_negative_rate": 0.22822458270106222,
+      "false_positive_rate": 0.22720816302866917,
+      "roc_auc": 0.8481795012589999,
+      "recall_ci95": [
+        0.7571337591632306,
+        0.7857841174176787
+      ],
+      "fpr_ci95": [
+        0.2228168627158334,
+        0.23166021076470023
+      ]
+    },
+    {
+      "age_group": "50_to_64",
+      "records": 41901,
+      "threshold": 0.07994084497831476,
+      "false_negative": 767,
+      "false_positive": 5245,
+      "true_positive": 1617,
+      "true_negative": 34272,
+      "predicted_positive": 6862,
+      "cost": 14449,
+      "cost_per_1000": 344.8366387437054,
+      "positives": 2384,
+      "negatives": 39517,
+      "positive_rate": 0.05689601680150832,
+      "precision": 0.23564558437773245,
+      "recall": 0.6782718120805369,
+      "false_negative_rate": 0.32172818791946306,
+      "false_positive_rate": 0.13272768681833136,
+      "roc_auc": 0.8591808854077415,
+      "recall_ci95": [
+        0.6592461778248553,
+        0.6967238539626812
+      ],
+      "fpr_ci95": [
+        0.129418215669343,
+        0.13610855631892302
+      ]
+    },
+    {
+      "age_group": "65_plus",
+      "records": 24901,
+      "threshold": 0.07994084497831476,
+      "false_negative": 309,
+      "false_positive": 1109,
+      "true_positive": 312,
+      "true_negative": 23171,
+      "predicted_positive": 1421,
+      "cost": 4817,
+      "cost_per_1000": 193.44604634352035,
+      "positives": 621,
+      "negatives": 24280,
+      "positive_rate": 0.02493875747961929,
+      "precision": 0.21956368754398312,
+      "recall": 0.5024154589371981,
+      "false_negative_rate": 0.4975845410628019,
+      "false_positive_rate": 0.04567545304777595,
+      "roc_auc": 0.8527412341788103,
+      "recall_ci95": [
+        0.4631968112157237,
+        0.5416044066894744
+      ],
+      "fpr_ci95": [
+        0.043120435089897116,
+        0.048374210128750844
+      ]
+    }
+  ],
+  "failure_scenarios": [
+    {
+      "scenario": "clean_history",
+      "label": "سابقه بدون دیرکرد ثبت‌شده",
+      "mechanism": "متقاضی بدون دیرکرد قبلی ممکن است پس از شوک درآمد یا اشتغال نکول کند؛ مدل این شوک آینده را مشاهده نمی‌کند.",
+      "records": 95655,
+      "threshold": 0.07994084497831476,
+      "false_negative": 1754,
+      "false_positive": 6265,
+      "true_positive": 871,
+      "true_negative": 86765,
+      "predicted_positive": 7136,
+      "cost": 27313,
+      "cost_per_1000": 285.53656369243635,
+      "positives": 2625,
+      "negatives": 93030,
+      "positive_rate": 0.027442371020856202,
+      "precision": 0.12205717488789238,
+      "recall": 0.33180952380952383,
+      "false_negative_rate": 0.6681904761904762,
+      "false_positive_rate": 0.0673438675696012,
+      "roc_auc": 0.7776928794091,
+      "recall_ci95": [
+        0.3140541177112693,
+        0.3500564747943296
+      ],
+      "fpr_ci95": [
+        0.0657512197288332,
+        0.068972245004895
+      ]
+    },
+    {
+      "scenario": "high_utilization",
+      "label": "استفاده حداقل ۱۰۰٪ از اعتبار",
+      "mechanism": "استفاده بالا همیشه به نکول منجر نمی‌شود؛ افراد سالم نیز ممکن است اشتباه پرخطر اعلام شوند.",
+      "records": 2660,
+      "threshold": 0.07994084497831476,
+      "false_negative": 20,
+      "false_positive": 1367,
+      "true_positive": 962,
+      "true_negative": 311,
+      "predicted_positive": 2329,
+      "cost": 1607,
+      "cost_per_1000": 604.1353383458646,
+      "positives": 982,
+      "negatives": 1678,
+      "positive_rate": 0.36917293233082704,
+      "precision": 0.41305281236582225,
+      "recall": 0.9796334012219959,
+      "false_negative_rate": 0.020366598778004074,
+      "false_positive_rate": 0.8146603098927294,
+      "roc_auc": 0.7600786141002891,
+      "recall_ci95": [
+        0.9687512483986933,
+        0.9867776468121663
+      ],
+      "fpr_ci95": [
+        0.7953570077990884,
+        0.8325261939507758
+      ]
+    },
+    {
+      "scenario": "incomplete_record",
+      "label": "پرونده دارای مقدار گمشده یا کد ویژه",
+      "mechanism": "میانه‌گذاری و نشانگر، درآمد واقعی یا معنای کد ویژه را بازیابی نمی‌کنند؛ پرونده ناقص همچنان خطا دارد.",
+      "records": 23931,
+      "threshold": 0.07994084497831476,
+      "false_negative": 311,
+      "false_positive": 2858,
+      "true_positive": 1064,
+      "true_negative": 19698,
+      "predicted_positive": 3922,
+      "cost": 6590,
+      "cost_per_1000": 275.37503656345325,
+      "positives": 1375,
+      "negatives": 22556,
+      "positive_rate": 0.05745685512515148,
+      "precision": 0.2712901580826109,
+      "recall": 0.7738181818181818,
+      "false_negative_rate": 0.22618181818181818,
+      "false_positive_rate": 0.12670686291895727,
+      "roc_auc": 0.9004006351867674,
+      "recall_ci95": [
+        0.7509601077629984,
+        0.795150538376139
+      ],
+      "fpr_ci95": [
+        0.12242925747575657,
+        0.13111159604758627
+      ]
+    }
+  ],
+  "fairness_gaps": {
+    "recall": 0.31861882345675896,
+    "false_positive_rate": 0.2762098228016943,
+    "false_negative_rate": 0.31861882345675896
+  },
+  "method": "Five saved development folds; frozen recipe refitted on training only; raw-input permutation with five repetitions by default, downstream flags/derived features recomputed; rank by validation cost increase, secondary mean-fold AUC decrease.",
+  "limits": "Descriptive audit of the selected recipe on selection development data, not an independent performance estimate. Correlated inputs may share importance; marginal permutations may create unlikely combinations. Importance is neither direction nor causation. Wilson intervals are approximate binomial intervals, not adjusted for duplicate-input groups or model/threshold selection. Failure cohorts can overlap. No subgroup-specific threshold was selected.",
+  "data_changes": "No changes to DB/CSV, preprocessing policy, selected features, model, threshold or prior evidence."
+}

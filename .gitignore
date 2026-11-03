@@ -10,6 +10,7 @@ data/curated_data/validation/
 data/reference_data/
 data/curated_data/population_join/
 data/curated_data/delivery/
+data/stage_03/predictions/
 ~$*.docx
 .env
 .env.*

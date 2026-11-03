@@ -1,6 +1,6 @@
-# Data Factory
+# Data Factory, databases and credit modeling
 
-A Python data-engineering project with three connected workflows:
+A Python data-engineering project with four connected workflows:
 
 - **NYC 311 Data Factory:** resumable acquisition, validation, quarantine,
   population enrichment, and reproducible case-level and monthly outputs.
@@ -9,8 +9,11 @@ A Python data-engineering project with three connected workflows:
   live views, result snapshots, a percentage Function, and a monthly refresh Procedure.
 - **Contract-driven CSV validation:** independent source contracts, typed records,
   quarantine evidence, and quality profiles for local CSVs, including Stage 03 credit data.
+- **Credit risk modeling:** database-based model development, leakage-controlled
+  preprocessing, cost-based threshold selection, frozen final evaluation,
+  interpretation, and inference on new credit CSVs using the saved pipeline.
 
-Use the CLI for the NYC pipeline and offline Olist cleaning. Use the stage
+Use the CLI for the NYC pipeline, offline Olist cleaning, CSV validation and credit prediction. Use the stage
 notebooks to review and execute the PostgreSQL work, analytical controls, and
 recorded results. The notebooks and database decision report are in Persian;
 this guide describes the public setup and execution paths in English.
@@ -25,10 +28,10 @@ root. Each stage has its own notebook and decision report.
 |---|---|---|
 | 01 - Data Factory | [Notebook](stages/stage_01/solution.ipynb), [report](stages/stage_01/report.docx) | Pipeline implemented; acquisition completeness is reported separately from processing success |
 | 02 - Database Performance | [Stage guide](stages/stage_02/README.md), [notebook](stages/stage_02/solution.ipynb), [Persian decision report](stages/stage_02/report.md) | Five analyses, bounded indexing trial, views/snapshots and monthly SQL routines executed; 94 database tests passed |
-| 03 - Machine Learning | [Stage guide](stages/stage_03/README.md), [notebook](stages/stage_03/solution.ipynb), [Persian report](stages/stage_03/report.md) | Sections 1–8 completed: frozen final evaluation, development-only feature importance, age fairness, three failure scenarios and model card recorded; Section 9 pending |
+| 03 - Machine Learning | [Stage guide](stages/stage_03/README.md), [notebook](stages/stage_03/solution.ipynb), [Persian report](stages/stage_03/report.md) | Sections 1–8 completed; Section 9 inference/API/CLI delivered; 8 required software tests omitted at user request; 21 existing related commits recorded |
 
 The 200 ms target remains unmet for the original Q1/Q3/Q4/Q5 executions. The
-stored Q5 result has a separately measured fast read path. A complete fresh-kernel
+stored Q5 result has a separately measured fast read path. A complete fresh-kernel Stage 02
 notebook run and empty-database end-to-end acceptance have not been verified.
 See [database results and limits](#database-results-and-limits) for the exact scope.
 
@@ -39,6 +42,7 @@ See [database results and limits](#database-results-and-limits) for the exact sc
 - [Run the pipeline](#run-the-pipeline)
 - [Use the notebook](#use-the-notebook)
 - [Validate a local CSV](#validate-a-local-csv)
+- [Credit risk model (stage 03)](#credit-risk-model-stage-03)
 - [Database workflow (stage 02)](#database-workflow-stage-02)
 - [Configuration](#configuration)
 - [Outputs](#outputs)
@@ -239,6 +243,65 @@ rule families need an engine extension. See the
 Validation does not perform imputation, scaling, Train/Test splitting, database
 loading or model fitting. Later ML analysis must read the loaded data through
 SQLAlchemy as required by the assignment.
+
+## Credit risk model (stage 03)
+
+The [Stage 03 notebook](stages/stage_03/solution.ipynb) develops the model from
+PostgreSQL `credit.accepted`. Only the new-file inference path reads a CSV.
+The selected **HistGradientBoosting** pipeline contains schema checks,
+training-only median imputation, five missing indicators and three business
+features. Its saved decision threshold is **0.07994084497831476**, with default
+as positive class `1` and costs `FN=12`, `FP=1`.
+
+Use the pinned Python 3.14 environment above: `requirements.txt` records the
+scikit-learn version required by the joblib artifact. Install the local package
+with `python -m pip install --no-build-isolation -e .` after the requirements.
+
+Run the included **synthetic** six-record example from the repository root:
+
+```bash
+python -m data_factory predict-credit --input stages/stage_03/examples/new_applicants.csv --output data/stage_03/predictions/new_applicants.csv
+```
+
+Replace `--input` and `--output` with your own paths. `--batch-size` defaults to
+10,000; `--model` defaults to the saved Section 7 classifier. Keep
+`section_07_evaluation.json` beside that model: its checksum and recipe are
+checked before loading. Inference needs no database, `.env`, fitting or
+threshold tuning. Existing Section 7 evaluation artifacts stay unchanged.
+
+Input requires the ten original feature names in the
+[example CSV](stages/stage_03/examples/new_applicants.csv); column order may vary.
+`row_id` and `SeriousDlqin2yrs` are optional metadata and never influence the
+prediction. Leave missing numeric fields empty; the existing pipeline masks
+96/98 in delinquency fields and applies the saved filling values. Do not pass
+the 18 transformed model columns. Invalid schemas/values fail with exit code
+`4`; the destination is replaced only after the entire input succeeds.
+
+The output preserves input order through `record_number`, retains `row_id`
+when supplied, and adds `probability_default` and `prediction` (`0` healthy,
+`1` default risk). The six synthetic records demonstrate execution and do not
+measure model performance. Reuse the same path from Python:
+
+```python
+import pandas as pd
+from data_factory.credit_inference import load_classifier, predict_frame
+
+classifier, metadata = load_classifier()
+predictions = predict_frame(pd.read_csv("stages/stage_03/examples/new_applicants.csv"), classifier)
+```
+
+Recorded final holdout metrics are AUC **0.8683**,
+Recall **73.97%**, Precision **24.40%**,
+cost **361.945 per 1,000**, and cost reduction
+**54.87%** against always predicting healthy.
+See the [Persian report](stages/stage_03/report.md),
+[model card](stages/stage_03/model_card.md) and
+[inference evidence](stages/stage_03/evidence/section_09_inference.json).
+
+Section 9's requirement for eight software tests remains **unmet**, deliberately
+omitted at the user's request. No new test suite was written or run. Existing
+history contains **21 Stage 03 related commits**; no artificial commits were
+created. The current delivery changes have not been committed or pushed.
 
 ## Database workflow (stage 02)
 
@@ -511,8 +574,9 @@ through the `postgres` administrative database. Saved reports are
 .
 |-- stages/
 |   |-- stage_01/                      # Existing notebook, report and data notes
-|   `-- stage_02/                      # Executed sections, Persian report and SQL evidence
-|-- src/data_factory/                 # Shared factory implementation and CLI
+|   |-- stage_02/                      # Executed sections, Persian report and SQL evidence
+|   `-- stage_03/                      # Credit notebook, report, model card, examples and frozen evidence
+|-- src/data_factory/                 # Shared factory, credit modeling/inference and CLI
 |   |-- sources/                      # Olist CSV source adapter
 |   |-- sinks/                        # Reserved for database destination adapters
 |   `-- database/                     # Connection, DDL, analytical controls, benchmarks, views and routines
@@ -565,6 +629,8 @@ CLI exit codes: `0` success, `2` configuration/argument error, `3` network error
 - [Data understanding notes](stages/stage_01/data_undrestandation_notes.docx): source fields and interpretation.
 - [Database stage guide](stages/stage_02/README.md): dependency/setup detail and executed database sections.
 - [Persian database decision report](stages/stage_02/report.md): definitions, choices, measured results and limitations.
+- [Credit stage guide](stages/stage_03/README.md): model, new-file prediction, evidence and delivery limits.
+- [Credit model card](stages/stage_03/model_card.md): intended use, populations and limitations.
 - [SQL layout](sql/README.md): versioned schema, queries, retained index, views, Function and Procedure.
 - [Database evidence guide](stages/stage_02/evidence/README.md): result, timing, plan and test artifacts.
 

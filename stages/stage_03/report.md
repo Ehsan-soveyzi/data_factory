@@ -1,6 +1,6 @@
 <div dir="rtl" style="direction:rtl;text-align:right;font-family:Tahoma,Arial,sans-serif;line-height:1.9;">
-<h1 dir="rtl" style="text-align:right;color:#173f5f;">گزارش مرحله سوم: مدل‌سازی، ارزیابی و تفسیر</h1>
-<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;margin:10px 0;">این گزارش بخش‌های یک تا هشت چالش سوم را پوشش می‌دهد. نتایج از اجرای بخش‌های ۴ تا ۱۱ نوت‌بوک به دست آمده‌اند؛ داده پایه از پایگاه داده و ورودی انتخاب آستانه از احتمال‌های OOF بخش پنج است. بخش سه، آماده‌سازی قابل استفاده مجدد و مرز آموزش/ارزیابی را به‌صورت اجرایی بررسی می‌کند. بخش یک توصیفی است؛ در بخش دو، یک طبقه‌بند مرجع برای مقایسه سیاست‌های گمشده به کار رفته است. مدل و آستانه روی توسعه انتخاب و ثابت شدند؛ ارزیابی نهایی، تفسیر توسعه، ممیزی سنی و شناسنامه مدل ثبت شده‌اند.</p>
+<h1 dir="rtl" style="text-align:right;color:#173f5f;">گزارش مرحله سوم: مدل اعتباری، ارزیابی و تحویل</h1>
+<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;margin:10px 0;">این گزارش بخش‌های یک تا نه چالش سوم را پوشش می‌دهد؛ تست‌های بخش نه طبق درخواست کاربر مستثنا شده‌اند. نتایج از اجرای بخش‌های ۴ تا ۱۲ نوت‌بوک به دست آمده‌اند؛ داده پایه از پایگاه داده و ورودی انتخاب آستانه از احتمال‌های OOF بخش پنج است. بخش سه، آماده‌سازی قابل استفاده مجدد و مرز آموزش/ارزیابی را به‌صورت اجرایی بررسی می‌کند. بخش یک توصیفی است؛ در بخش دو، یک طبقه‌بند مرجع برای مقایسه سیاست‌های گمشده به کار رفته است. مدل و آستانه روی توسعه انتخاب و ثابت شدند؛ ارزیابی نهایی، تفسیر توسعه، ممیزی سنی و شناسنامه مدل ثبت شده‌اند.</p>
 
 <h2 id="structure" dir="rtl" style="text-align:right;color:#173f5f;margin-top:32px;">۱. منبع، واحد مشاهده و ساختار داده</h2>
 <p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;margin:10px 0;">داده تحلیلی از جدول <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;white-space:normal;">credit.accepted</code> در پایگاه داده <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;white-space:normal;">ds_learning</code> و با اتصال SQLAlchemy خوانده شد. فایل CSV ورودی تحلیل این بخش نیست. هر سطر، یک رکورد اعتباری ناشناس از متقاضی است؛ شناسه ردیف، هویت یکتای شخص را تضمین نمی‌کند.</p>
@@ -449,3 +449,15 @@
 <p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;"><a href="solution.ipynb">نوت‌بوک، بخش ۱۱</a> · <a href="model_card.md">شناسنامه مستقل</a> · <a href="evidence/section_08_interpretation.json">شواهد و ممیزی</a> · <a href="../../src/data_factory/credit_interpretation.py">کد تحلیل</a> · <a href="https://scikit-learn.org/stable/modules/permutation_importance.html">مرجع اهمیت جابه‌جایی</a></p>
 </div>
 <!-- SECTION_08_END -->
+
+<!-- SECTION_09_START -->
+<div dir="rtl" style="direction:rtl;text-align:right;font-family:Tahoma,Arial,sans-serif;line-height:1.9;">
+<h1 id="section9" style="color:#173f5f;">بخش نه: مهندسی و تحویل</h1>
+<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;">کد پیش‌بینی در <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;">src/data_factory/credit_inference.py</code> قرار گرفت. فایل joblib بخش هفت، Pipeline برازش‌شده و آستانه ثابت را نگه می‌دارد؛ هش مدل و دستور تصمیم پیش از بارگذاری بررسی می‌شوند. ورودی، ده ویژگی خام و شناسه/هدف اختیاری است؛ شناسه و هدف در تصمیم نقشی ندارند.</p>
+<pre dir="ltr" style="direction:ltr;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:#eef2f6;padding:12px;">python -m data_factory predict-credit --input stages/stage_03/examples/new_applicants.csv --output data/stage_03/predictions/new_applicants.csv</pre>
+<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;">دستور، فایل تازه را دسته‌ای و بدون fit یا اتصال دیتابیس پردازش می‌کند. خروجی شامل ترتیب رکورد، شناسه در صورت وجود، <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;">probability_default</code> و <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;">prediction</code> است؛ کلاس ۱ با قاعده احتمال بزرگ‌تر یا مساوی <code dir="ltr" style="unicode-bidi:isolate;overflow-wrap:anywhere;">0.07994084497831476</code> تعیین می‌شود. schema یا مقدار نامعتبر رد می‌شود؛ خروجی فقط پس از موفقیت کامل منتشر می‌شود.</p>
+<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;">اجرای واقعی نمونه ساختگی: ۶ رکورد، ۳ دسته دو‌ردیفی و ۳ تصمیم مثبت؛ خروجی API و CLI دقیقاً یکسان بود. این مثال ارزیابی عملکرد نیست. داده، مدل، آستانه و شواهد پیشین تغییر نکردند؛ ارزیابی نهایی تازه‌ای انجام نشد.</p>
+
+<p dir="rtl" style="direction:rtl;text-align:right;line-height:1.95;"><a href="solution.ipynb">نوت‌بوک، بخش ۱۲</a> · <a href="README.md">راهنمای نهایی اجرا</a> · <a href="../../src/data_factory/credit_inference.py">کد پیش‌بینی</a> · <a href="evidence/section_09_inference.json">شواهد تحویل</a> · <a href="evidence/section_09_example_predictions.csv">خروجی نمونه</a></p>
+</div>
+<!-- SECTION_09_END -->

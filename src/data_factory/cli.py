@@ -48,7 +48,32 @@ def main():
     csv_parser = commands.add_parser("validate-csv", help="Validate a local CSV using an independent data contract.")
     csv_parser.add_argument("--config", required=True, help="CSV source/contract/output settings; paths resolve relative to this file.")
 
+    predict_parser = commands.add_parser("predict-credit", help="Predict new credit CSV records using the frozen Stage 03 model; no training or DB connection.")
+    predict_parser.add_argument("--input", required=True, help="UTF-8 CSV with the ten raw credit features; row_id and target are optional.")
+    predict_parser.add_argument("--output", required=True, help="Destination CSV for probabilities and binary predictions.")
+    predict_parser.add_argument("--model", default="stages/stage_03/evidence/section_07_fitted_classifier.joblib",
+                                help="Fitted joblib; keep section_07_evaluation.json beside it.")
+    predict_parser.add_argument("--batch-size", type=int, default=10000)
+
     args = parser.parse_args()
+
+    if args.command == "predict-credit":
+        try:
+            from .credit_inference import predict_csv
+            result = predict_csv(args.input, args.output, model_path=args.model, batch_size=args.batch_size)
+        except ImportError:
+            print('Missing ML dependencies: install requirements.txt and the project package.', file=sys.stderr)
+            return 2
+        except (ValueError, KeyError, TypeError) as error:
+            print(f"Prediction data/model error: {error}", file=sys.stderr)
+            return 4
+        except OSError as error:
+            print(f"File-system error: {error}", file=sys.stderr)
+            return 5
+        except KeyboardInterrupt:
+            return 130
+        print(json.dumps(result, indent=2))
+        return 0
 
     if args.command == "validate-csv":
         from .csv_quality import validate_csv

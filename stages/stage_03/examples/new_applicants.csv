@@ -1,0 +1,7 @@
+row_id,RevolvingUtilizationOfUnsecuredLines,age,NumberOfTime30-59DaysPastDueNotWorse,DebtRatio,MonthlyIncome,NumberOfOpenCreditLinesAndLoans,NumberOfTimes90DaysLate,NumberRealEstateLoansOrLines,NumberOfTime60-89DaysPastDueNotWorse,NumberOfDependents
+900000001,0.1,45,0,0.2,6000,8,0,1,0,1
+900000002,0.95,29,2,0.6,2500,5,1,0,1,2
+900000003,0.35,55,0,0.4,,10,0,1,0,
+900000004,1.2,38,1,0.8,3500,7,0,0,1,2
+900000005,0.7,33,96,0.5,,4,98,0,96,0
+900000006,0.03,72,0,0.1,9000,12,0,2,0,0

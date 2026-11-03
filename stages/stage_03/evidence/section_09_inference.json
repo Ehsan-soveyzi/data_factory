@@ -1,0 +1,55 @@
+{
+  "section": "Challenge 3 Section 9: engineering and fresh-file inference",
+  "execution": {
+    "status": "passed",
+    "input_sha256": "b8835f59149a24dd6e8b530182c43521c2dc971bf916b117cde7031a99034c91",
+    "output_sha256": "efd4525446643bb36d44f3e504eed187b837cabd6dcecb2191795131bd205d92",
+    "model_sha256": "4cdf027220029ff5385ca866161bc7286af0bdd8bdc645f35daf66a004b23f2f",
+    "recipe_sha256": "b2d6722a770e3424fdf94f3a43aad3903ff34d05452f96adee271513f1c6915b",
+    "model": "hist_gradient_boosting",
+    "threshold": 0.07994084497831476,
+    "threshold_hex": "0x1.47700d2cbe54fp-4",
+    "positive_label": 1,
+    "records": 6,
+    "predicted_default": 3,
+    "batches": 3,
+    "batch_size": 2,
+    "model_fits": 0,
+    "database_reads": 0,
+    "holdout_evaluations": 0,
+    "preprocessing_unchanged": true
+  },
+  "files": {
+    "input": "stages\\stage_03\\examples\\new_applicants.csv",
+    "output": "stages\\stage_03\\evidence\\section_09_example_predictions.csv",
+    "model": "stages\\stage_03\\evidence\\section_07_fitted_classifier.joblib"
+  },
+  "python_api_matches_cli": true,
+  "sample_is_synthetic": true,
+  "git": {
+    "available": true,
+    "head": "e650a5f3f1eaba91701b2325eb10e771659111a2",
+    "related_commit_count": 21,
+    "minimum_required": 10,
+    "minimum_met": true,
+    "recent_related_commits": [
+      "e650a5f iterpretation added to notebook and reports updated.",
+      "323d7c6 interpretation of data flow added.",
+      "d1e180d explanation and reports related to section 7 added.",
+      "9b01b93 evaluation outputed result added to notebook.",
+      "90507f5 evaluation script related to section 7 added.",
+      "de07dc3 related outputed results and reports related to section 6 added.",
+      "dc8f1eb section 6 code implementation completed.",
+      "f69d871 threshold selection main script added.",
+      "95dafc1 section 5 reports updated.",
+      "4abfe92 runaable cells in notebook updated based on the section 5."
+    ]
+  },
+  "software_tests": {
+    "required_by_assignment": 8,
+    "added": 0,
+    "executed": false,
+    "status": "omitted_at_user_request; assignment requirement remains unmet"
+  },
+  "scope": "Inference demonstration only; no DB reads, training, threshold selection or new holdout evaluation. Existing final metrics remain unchanged."
+}

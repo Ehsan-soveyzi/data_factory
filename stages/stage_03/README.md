@@ -41,7 +41,13 @@
 Random Forest و HistGradientBoosting روی پنج تقسیم ثابت توسعه مقایسه شد؛ شرط کاهش ۲۵٪ هزینه در
 [شواهد مقایسه](evidence/section_05_model_comparison.json) ثبت شده است. [نامزد منتخب توسعه](evidence/section_05_selected_model.json)
 و [احتمال‌های خارج از آموزش](evidence/section_05_oof_predictions.npz) برای بخش بعد ذخیره شده‌اند.
-کد در [credit_model_comparison.py](../../src/data_factory/credit_model_comparison.py) است. آستانه فعلاً ثابت است؛ ارزیابی نهایی انجام نشده است.
+کد در [credit_model_comparison.py](../../src/data_factory/credit_model_comparison.py) است. آستانه این مقایسه ثابت بود؛ انتخاب آستانه در بخش شش آمده و ارزیابی نهایی هنوز انجام نشده است.
+
+بخش شش («انتخاب آستانه بر اساس هزینه») در بخش ۹ نوت‌بوک اجرا شده است. [جستجوی دقیق](../../src/data_factory/credit_threshold_selection.py)
+روی احتمال‌های OOF، آستانه هر سه مدل را برای هزینه‌های ۱۲:۱ و ۴:۱ انتخاب می‌کند؛ مدل دوباره آموزش نمی‌بیند.
+[شواهد](evidence/section_06_threshold_selection.json)، [سیاست تصمیم دقیق](evidence/section_06_selected_decision.json)
+و [نمودار هزینه](evidence/section_06_cost_curves.png) ذخیره شده‌اند. `section6_classifier` یک `FixedThresholdClassifier`
+تازه با Pipeline منتخب است؛ ارزیابی مجموعه نهایی به بخش بعد تعلق دارد.
 
 برای نصب وابستگی‌های یادگیری ماشین از ریشه پروژه:
 
